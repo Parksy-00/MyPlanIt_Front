@@ -1,4 +1,4 @@
-function Signup() {
+function Signup2() {
   return (
     <>
       <img src="/images/logo.png" />
@@ -6,4 +6,4 @@ function Signup() {
   );
 }
 
-export default Signup;
+export default Signup2;
