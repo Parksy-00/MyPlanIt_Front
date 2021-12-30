@@ -37,7 +37,17 @@ function Login() {
           자동 로그인
         </p>
       </span>
-      <button className="login-button">로그인</button>
+      <form className="login-button">로그인</form>
+      <span
+        className="button-group"
+        style={{ marginTop: "8px", fontSize: "12px" }}
+      >
+        <p>아이디 찾기</p>
+        <p style={{ marginLeft: "12px", marginRight: "12px" }}>|</p>
+        <p>비밀번호 찾기</p>
+        <p style={{ marginLeft: "12px", marginRight: "12px" }}>|</p>
+        <p>회원가입</p>
+      </span>
     </div>
   );
 }
