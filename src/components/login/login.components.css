@@ -15,13 +15,12 @@
   height: 44px;
 }
 .login-button {
-  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 45px;
   width: 327px;
   height: 52px;
-  left: 50px;
-  top: 466px;
-  -webkit-writing-mode: horizontal-tb !important;
-  -webkit-appearance: button;
   /* my planit/main color 1 - 7965F4 */
   border: 0;
   background: #7965f4;
@@ -30,7 +29,10 @@
 }
 .switch {
   display: flex;
-  position: absolute;
-  left: 50px;
-  top: 400px;
+  margin-right: 210px;
+  justify-content: center;
+  align-items: center;
+}
+.button-group {
+  display: flex;
 }
