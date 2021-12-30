@@ -1,6 +1,7 @@
 import "./login.components.css";
 import { Button } from "@nextui-org/react";
 import { Input, Switch } from "antd";
+import { Link } from "react-router-dom";
 
 function Login() {
   return (
@@ -46,7 +47,11 @@ function Login() {
         <p style={{ marginLeft: "12px", marginRight: "12px" }}>|</p>
         <p>비밀번호 찾기</p>
         <p style={{ marginLeft: "12px", marginRight: "12px" }}>|</p>
-        <p>회원가입</p>
+        <p>
+          <Link style={{ color: "black" }} to="/signup1">
+            회원가입
+          </Link>
+        </p>
       </span>
     </div>
   );
