@@ -30,22 +30,37 @@ function Login() {
           style={{
             marginTop: "0px",
             marginBottom: "0px",
-            marginLeft: "5px",
+            marginLeft: "10px",
             color: "#C4C4C4",
-            fontSize: "14px",
+            fontSize: "14.5px",
           }}
         >
           자동 로그인
         </p>
       </span>
-      <form className="login-button">로그인</form>
+      <button
+        onClick={() => {
+          alert("alert");
+        }}
+        className="login-button"
+      >
+        로그인
+      </button>
       <span
         className="button-group"
         style={{ marginTop: "8px", fontSize: "12px" }}
       >
-        <p>아이디 찾기</p>
+        <p>
+          <Link style={{ color: "black" }} to="/find-id">
+            아이디 찾기
+          </Link>
+        </p>
         <p style={{ marginLeft: "12px", marginRight: "12px" }}>|</p>
-        <p>비밀번호 찾기</p>
+        <p>
+          <Link style={{ color: "black" }} to="/find-id">
+            비밀번호 찾기
+          </Link>
+        </p>
         <p style={{ marginLeft: "12px", marginRight: "12px" }}>|</p>
         <p>
           <Link style={{ color: "black" }} to="/signup1">
