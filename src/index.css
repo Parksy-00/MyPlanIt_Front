@@ -5,3 +5,14 @@ body {
   overflow: scroll;
   touch-action: pan-y, pan-x;
 }
+* {
+  -ms-overflow-style: none;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
