@@ -112,7 +112,7 @@ function Signup1() {
               <List.Item
                 style={{ display: "flex", justifyContent: "flex-start" }}
               >
-                <CheckIcon style={{ marginRight: "10px" }} />
+                <CheckIcon color="primary" style={{ marginRight: "10px" }} />
                 {item}
               </List.Item>
             )}
