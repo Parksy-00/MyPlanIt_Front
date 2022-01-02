@@ -1,0 +1,18 @@
+.txt1 {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 20px;
+}
+.txt2 {
+  margin-top: 2px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 14px;
+}
+.check {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
