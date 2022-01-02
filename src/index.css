@@ -1,0 +1,7 @@
+body {
+  touch-action: pan-y, pan-x;
+}
+.childViewPortElement {
+  overflow: scroll;
+  touch-action: pan-y, pan-x;
+}
