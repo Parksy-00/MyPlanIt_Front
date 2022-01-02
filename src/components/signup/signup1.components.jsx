@@ -47,7 +47,7 @@ function Signup1() {
         </div>
         <div className="pw-check">
           <p style={{ marginLeft: "10px" }}>비밀번호 확인</p>
-          <Input
+          <Input.Password
             className="password-check"
             size="large"
             placeholder="입력한 비밀번호와 일치하는지 확인"
