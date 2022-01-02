@@ -24,14 +24,22 @@ function Signup2() {
         사용하실 닉네임을 입력해주시면 회원가입이 완료돼요
       </p>
       <div className="nn-input">
-        <p style={{ marginLeft: "10px", marginBottom: "12px" }}>닉네임</p>
+        <p
+          style={{
+            marginLeft: "10px",
+            marginBottom: "12px",
+            marginTop: "60px",
+          }}
+        >
+          닉네임
+        </p>
         <Input
           className="nickname-input"
           size="large"
           placeholder="plan-it"
           style={{
             width: "327px",
-            marginBottom: "389px",
+            marginBottom: "320px",
             borderRadius: "5px",
           }}
         />

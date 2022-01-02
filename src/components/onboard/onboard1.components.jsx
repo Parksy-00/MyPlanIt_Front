@@ -9,10 +9,10 @@ function Onboard1() {
     <>
       <img
         src="/images/celebrate.png"
-        style={{ marginTop: "200px", marginBottom: "35px" }}
+        style={{ marginTop: "200px", marginBottom: "28px" }}
       />
       <p className="txt1">플랜잇님, 가입을 축하드려요!</p>
-      <p className="txt2" style={{ marginBottom: "190px" }}>
+      <p className="txt2" style={{ marginBottom: "180px" }}>
         간단한 응답으로 딱 맞는 플랜을 추천 받을 수 있어요
       </p>
       <div className="check">
