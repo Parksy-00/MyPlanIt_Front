@@ -4,8 +4,10 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import CheckIcon from "@mui/icons-material/Check";
 import { Input, Switch } from "antd";
 import { List, Typography, Divider } from "antd";
+import { useNavigate } from "react-router-dom";
 
 function Signup1() {
+  let navigate = useNavigate();
   const data = [
     "전체 동의",
     "만 14세 이상입니다. (필수)",
@@ -16,7 +18,12 @@ function Signup1() {
   return (
     <>
       <div className="header">
-        <ArrowBackIosIcon className="back-arrow" />
+        <ArrowBackIosIcon
+          className="back-arrow"
+          onClick={() => {
+            navigate("/");
+          }}
+        />
         <span className="title">회원가입 (1/2)</span>
       </div>
       <div className="main">
