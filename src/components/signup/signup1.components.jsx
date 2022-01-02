@@ -120,7 +120,7 @@ function Signup1() {
         </div>
         <button
           onClick={() => {
-            alert("alert");
+            navigate("/signup2");
           }}
           className="login-button"
         >
