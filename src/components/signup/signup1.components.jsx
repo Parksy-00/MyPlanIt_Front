@@ -8,7 +8,14 @@ import { List, Typography, Divider } from "antd";
 import { useNavigate } from "react-router-dom";
 import validator from "validator";
 
-function Signup1() {
+function Signup1({
+  setEmailSignup,
+  setPassword,
+  setRealname,
+  setPhoneNum,
+  setEmailAgree,
+  setSnsAgree,
+}) {
   let navigate = useNavigate();
   let passwordValidator = require("password-validator");
   let schema = new passwordValidator();
@@ -40,6 +47,7 @@ function Signup1() {
     if (validator.isEmail(email)) {
       setEmailCheck(true);
       setEmail(email);
+      setEmailSignup(email);
     } else {
       setEmailCheck(false);
     }
@@ -50,6 +58,7 @@ function Signup1() {
     if (schema.validate(pw)) {
       setPwCheck(true);
       setPw(pw);
+      setPassword(pwCheck);
     } else {
       setPwCheck(false);
     }
@@ -136,6 +145,7 @@ function Signup1() {
             placeholder="실명 입력"
             onChange={(e) => {
               setName(e.target.value);
+              setRealname(e.target.value);
               setNameCheck(true);
             }}
             suffix={
