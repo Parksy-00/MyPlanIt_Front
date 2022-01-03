@@ -20,7 +20,7 @@ function Signup2({
 
   function attemptSignup() {
     axios.post(
-      "http://ec2-13-124-228-86.ap-northeast-2.compute.amazonaws.com/signup",
+      `http://ec2-13-124-228-86.ap-northeast-2.compute.amazonaws.com/signup`,
       {
         email: email,
         password: password,
