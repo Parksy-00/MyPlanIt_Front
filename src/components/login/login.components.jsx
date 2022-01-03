@@ -15,6 +15,11 @@ function Login() {
       {
         email: email,
         password: password,
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
       }
     );
   }
@@ -26,7 +31,6 @@ function Login() {
         src="/images/logo.png"
         style={{ marginTop: "200px", width: "173px", marginBottom: "51px" }}
       />
-
       <Input
         className="email-input"
         size="large"
