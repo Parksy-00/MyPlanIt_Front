@@ -12,5 +12,11 @@
   margin-right: 110px;
   margin-bottom: 10px;
 }
-.id-input {
+.enabled {
+  margin-right: 10px;
+  color: #7965f4;
+}
+.disabled {
+  margin-right: 10px;
+  opacity: 0.5;
 }
