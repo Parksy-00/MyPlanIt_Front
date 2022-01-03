@@ -2,15 +2,21 @@
   margin-right: 100px;
 }
 .title {
-  font-size: 16px;
+  font-size: 18px;
   font-style: normal;
   font-weight: normal;
 }
 .header {
   display: flex;
   margin-top: 30px;
-  margin-right: 110px;
+  margin-right: 100px;
   margin-bottom: 10px;
 }
-.id-input {
+.enabled {
+  margin-right: 10px;
+  color: #7965f4;
+}
+.disabled {
+  margin-right: 10px;
+  opacity: 0.5;
 }
