@@ -245,6 +245,13 @@ function Signup1() {
                 }}
               />
               서비스 이용약관 동의 (필수)
+              <img
+                src="/images/detail.png"
+                style={{ marginLeft: "auto", width: "10px" }}
+                onClick={() => {
+                  navigate("/service");
+                }}
+              />
             </List.Item>
             <List.Item
               style={{ display: "flex", justifyContent: "flex-start" }}
@@ -261,6 +268,13 @@ function Signup1() {
                 }}
               />
               개인정보 수집 및 이용 동의 (필수)
+              <img
+                src="/images/detail.png"
+                style={{ marginLeft: "auto", width: "10px" }}
+                onClick={() => {
+                  navigate("/service");
+                }}
+              />
             </List.Item>
             <List.Item
               style={{ display: "flex", justifyContent: "flex-start" }}
@@ -277,6 +291,13 @@ function Signup1() {
                 }}
               />
               마케팅 수신 동의 (선택)
+              <img
+                src="/images/detail.png"
+                style={{ marginLeft: "auto", width: "10px" }}
+                onClick={() => {
+                  navigate("/service");
+                }}
+              />
             </List.Item>
           </List>
         </div>

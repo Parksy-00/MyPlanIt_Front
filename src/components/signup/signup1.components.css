@@ -2,14 +2,14 @@
   margin-right: 100px;
 }
 .title {
-  font-size: 16px;
+  font-size: 18px;
   font-style: normal;
   font-weight: normal;
 }
 .header {
   display: flex;
   margin-top: 30px;
-  margin-right: 110px;
+  margin-right: 100px;
   margin-bottom: 10px;
 }
 .enabled {
