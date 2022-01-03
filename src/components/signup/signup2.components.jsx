@@ -1,3 +1,5 @@
+import { useState } from "react";
+import axios from "axios";
 import "./signup2.components.css";
 import { Button } from "@nextui-org/react";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
@@ -6,7 +8,31 @@ import { Input, Switch } from "antd";
 import { List, Typography, Divider } from "antd";
 import { useNavigate } from "react-router-dom";
 
-function Signup2() {
+function Signup2({
+  email,
+  password,
+  realname,
+  phoneNum,
+  emailAgree,
+  snsAgree,
+}) {
+  const [username, setUsername] = useState("");
+
+  function attemptSignup() {
+    axios.post(
+      "http://ec2-13-124-228-86.ap-northeast-2.compute.amazonaws.com/signup",
+      {
+        email: email,
+        password: password,
+        realname: realname,
+        phone_num: phoneNum,
+        username: username,
+        email_agree: emailAgree,
+        sns_agree: snsAgree,
+      }
+    );
+  }
+
   let navigate = useNavigate();
   return (
     <>
@@ -37,6 +63,9 @@ function Signup2() {
           className="nickname-input"
           size="large"
           placeholder="plan-it"
+          onChange={(e) => {
+            setUsername(e.target.value);
+          }}
           style={{
             width: "327px",
             marginBottom: "320px",
@@ -46,6 +75,7 @@ function Signup2() {
       </div>
       <button
         onClick={() => {
+          attemptSignup();
           navigate("/onboard1");
         }}
         className="login-button"
