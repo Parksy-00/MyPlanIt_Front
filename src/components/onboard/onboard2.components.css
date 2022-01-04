@@ -1,0 +1,5 @@
+.unselected {
+}
+.selected {
+  border: 3px solid #7965f4 !important;
+}
