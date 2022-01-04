@@ -11,7 +11,7 @@ function Login() {
 
   function attemptLogin() {
     axios.post(
-      "http://ec2-13-124-228-86.ap-northeast-2.compute.amazonaws.com/login",
+      "https://myplanit.link/login",
       {
         email: email,
         password: password,
