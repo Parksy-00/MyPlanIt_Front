@@ -19,15 +19,25 @@ function Signup2({
   const [username, setUsername] = useState("");
 
   function attemptSignup() {
-    axios.post(`https://myplanit.link/signup`, {
-      email: email,
-      password: password,
-      realname: realname,
-      phone_num: phoneNum,
-      username: username,
-      email_agree: emailAgree,
-      sns_agree: snsAgree,
-    });
+    axios
+      .post(
+        `https://myplanit.link/signup`,
+        {
+          email: email,
+          password: password,
+          realname: realname,
+          phone_num: phoneNum,
+          username: username,
+          // "email_agree": emailAgree,
+          // "sns_agree": snsAgree,
+        },
+        {
+          withCredentials: true,
+        }
+      )
+      .then(function (response) {
+        console.log(response);
+      });
   }
 
   let navigate = useNavigate();
