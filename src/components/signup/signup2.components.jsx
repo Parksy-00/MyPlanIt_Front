@@ -19,18 +19,15 @@ function Signup2({
   const [username, setUsername] = useState("");
 
   function attemptSignup() {
-    axios.post(
-      `http://ec2-13-124-228-86.ap-northeast-2.compute.amazonaws.com/signup`,
-      {
-        email: email,
-        password: password,
-        realname: realname,
-        phone_num: phoneNum,
-        username: username,
-        email_agree: emailAgree,
-        sns_agree: snsAgree,
-      }
-    );
+    axios.post(`https://myplanit.link/signup`, {
+      email: email,
+      password: password,
+      realname: realname,
+      phone_num: phoneNum,
+      username: username,
+      email_agree: emailAgree,
+      sns_agree: snsAgree,
+    });
   }
 
   let navigate = useNavigate();
