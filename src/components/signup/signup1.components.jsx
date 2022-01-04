@@ -58,7 +58,7 @@ function Signup1({
     if (schema.validate(pw)) {
       setPwCheck(true);
       setPw(pw);
-      setPassword(pwCheck);
+      setPassword(pw);
     } else {
       setPwCheck(false);
     }
