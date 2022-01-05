@@ -20,6 +20,18 @@ function App() {
   const [emailAgree, setEmailAgree] = useState(1);
   const [snsAgree, setSnsAgree] = useState(1);
 
+  const [service1, setService1] = useState(false);
+  const [service2, setService2] = useState(false);
+  const [service3, setService3] = useState(false);
+  const [service4, setService4] = useState(false);
+  const [service5, setService5] = useState(false);
+
+  const [iconStyle1, setIconStyle1] = useState("disabled");
+  const [iconStyle2, setIconStyle2] = useState("disabled");
+  const [iconStyle3, setIconStyle3] = useState("disabled");
+  const [iconStyle4, setIconStyle4] = useState("disabled");
+  const [iconStyle5, setIconStyle5] = useState("disabled");
+
   return (
     <div id="main-container">
       <div className="App">
@@ -35,10 +47,56 @@ function App() {
                 setPhoneNum={setPhoneNum}
                 setEmailAgree={setEmailAgree}
                 setSnsAgree={setSnsAgree}
+                service1={service1}
+                service2={service2}
+                service3={service3}
+                service4={service4}
+                service5={service5}
+                setService1={setService1}
+                setService2={setService2}
+                setService3={setService3}
+                setService4={setService4}
+                setService5={setService5}
+                iconStyle1={iconStyle1}
+                iconStyle2={iconStyle2}
+                iconStyle3={iconStyle3}
+                iconStyle4={iconStyle4}
+                iconStyle5={iconStyle5}
+                setIconStyle1={setIconStyle1}
+                setIconStyle2={setIconStyle2}
+                setIconStyle3={setIconStyle3}
+                setIconStyle4={setIconStyle4}
+                setIconStyle5={setIconStyle5}
               />
             }
           />
-          <Route path="/service" element={<Service />} />
+          <Route
+            path="/service"
+            element={
+              <Service
+                service1={service1}
+                service2={service2}
+                service3={service3}
+                service4={service4}
+                service5={service5}
+                setService1={setService1}
+                setService2={setService2}
+                setService3={setService3}
+                setService4={setService4}
+                setService5={setService5}
+                iconStyle1={iconStyle1}
+                iconStyle2={iconStyle2}
+                iconStyle3={iconStyle3}
+                iconStyle4={iconStyle4}
+                iconStyle5={iconStyle5}
+                setIconStyle1={setIconStyle1}
+                setIconStyle2={setIconStyle2}
+                setIconStyle3={setIconStyle3}
+                setIconStyle4={setIconStyle4}
+                setIconStyle5={setIconStyle5}
+              />
+            }
+          />
           <Route
             path="/signup2"
             element={
