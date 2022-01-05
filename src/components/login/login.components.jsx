@@ -76,21 +76,12 @@ function Login() {
         className="button-group"
         style={{ marginTop: "8px", fontSize: "12px" }}
       >
-        <p>
-          <Link style={{ color: "black" }} to="/find-id">
-            아이디 찾기
-          </Link>
+        <p style={{ marginLeft: "12px", marginRight: "12px", opacity: 0.3 }}>
+          아직 계정이 없으신가요?
         </p>
-        <p style={{ marginLeft: "12px", marginRight: "12px" }}>|</p>
-        <p>
-          <Link style={{ color: "black" }} to="/find-id">
-            비밀번호 찾기
-          </Link>
-        </p>
-        <p style={{ marginLeft: "12px", marginRight: "12px" }}>|</p>
         <p>
           <Link style={{ color: "black" }} to="/signup1">
-            회원가입
+            회원가입하기
           </Link>
         </p>
       </span>
