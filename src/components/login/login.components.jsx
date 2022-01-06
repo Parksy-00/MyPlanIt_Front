@@ -10,18 +10,25 @@ function Login() {
   const [password, setPassword] = useState("");
 
   function attemptLogin() {
-    axios.post(
-      "https://myplanit.link/login",
-      {
-        email: email,
-        password: password,
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
+    axios
+      .post(
+        "https://myplanit.link/login",
+        {
+          email: email,
+          password: password,
         },
-      }
-    );
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error.data);
+      });
   }
 
   return (

@@ -28,8 +28,8 @@ function Signup2({
           realname: realname,
           phone_num: phoneNum,
           username: username,
-          // "email_agree": emailAgree,
-          // "sns_agree": snsAgree,
+          email_agree: emailAgree,
+          sns_agree: snsAgree,
         },
         {
           withCredentials: true,
