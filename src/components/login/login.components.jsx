@@ -94,6 +94,13 @@ function Login() {
           </Link>
         </p>
       </span>
+      <Link
+        to='./inapp'
+        className="search-button"
+        style={{border: '1px solid #D3d3d3'}}
+      >
+       test login
+      </Link>
     </div>
   );
 }
