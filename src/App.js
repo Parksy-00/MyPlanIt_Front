@@ -11,6 +11,12 @@ import FindPW from "./components/lost/findpw.components";
 import Onboard1 from "./components/onboard/onboard1.components";
 import Onboard2 from "./components/onboard/onboard2.components";
 import Onboard3 from "./components/onboard/onboard3.components";
+import WishTemplate from "./components/wishtemplate/wishtemplate.components";
+import MainTemplateRoutine from "./components/maintemplateroutine/maintemplateroutine.components";
+import EricsTodo from "./components/ericstodo/ericstodo.components";
+import ViewTemplate from "./components/viewtemplate/viewtemplate.components";
+import MainTemplateGrowth from "./components/maintemplategrowth/maintemplategrowth.components";
+import MoreTemplate from "./components/moretemplate/moretemplate.components";
 
 function App() {
   const [email, setEmail] = useState("");
@@ -57,6 +63,14 @@ function App() {
           <Route path="/onboard3" element={<Onboard3 />} />
           <Route path="/find-id" element={<FindID />} />
           <Route path="/find-pw" element={<FindPW />} />
+          <Route path="/inapp" element={<EricsTodo />} />
+        <Route path="/inapp/ericstodo" element={<EricsTodo />} />
+        <Route path="/inapp/maintemplateroutine" element={<MainTemplateRoutine />} />
+        <Route path="/inapp/maintemplategrowth" element={<MainTemplateGrowth />} />
+        <Route path="/inapp/wishtemplate" element={<WishTemplate />} />
+        <Route path="/inapp/viewtemplate" element={<ViewTemplate />} />
+        <Route path="/inapp/maintemplateroutine/moretemplate" element={<MoreTemplate />} />
+        <Route path="/inapp/moretemplate" element={<MoreTemplate />} />
         </Routes>
       </div>
     </div>
