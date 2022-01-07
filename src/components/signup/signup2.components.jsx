@@ -19,6 +19,15 @@ function Signup2({
   const [username, setUsername] = useState("");
 
   function attemptSignup() {
+    console.log({
+      email: email,
+      password: password,
+      realname: realname,
+      phone_num: phoneNum,
+      username: username,
+      email_agree: emailAgree,
+      sns_agree: snsAgree,
+    });
     axios
       .post(
         `https://myplanit.link/signup`,
@@ -28,8 +37,8 @@ function Signup2({
           realname: realname,
           phone_num: phoneNum,
           username: username,
-          // "email_agree": emailAgree,
-          // "sns_agree": snsAgree,
+          email_agree: emailAgree,
+          sns_agree: snsAgree,
         },
         {
           withCredentials: true,

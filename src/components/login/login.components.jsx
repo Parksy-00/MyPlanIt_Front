@@ -4,24 +4,33 @@ import { Button } from "@nextui-org/react";
 import { Input, Switch } from "antd";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+  let navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   function attemptLogin() {
-    axios.post(
-      "https://myplanit.link/login",
-      {
-        email: email,
-        password: password,
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
+    axios
+      .post(
+        "https://myplanit.link/login",
+        {
+          email: email,
+          password: password,
         },
-      }
-    );
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then(() => {
+        navigate("/main");
+      })
+      .catch(() => {
+        alert("아이디 또는 비밀번호가 틀렸습니다.");
+      });
   }
 
   return (

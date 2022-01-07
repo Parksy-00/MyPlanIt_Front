@@ -11,14 +11,14 @@ import FindPW from "./components/lost/findpw.components";
 import Onboard1 from "./components/onboard/onboard1.components";
 import Onboard2 from "./components/onboard/onboard2.components";
 import Onboard3 from "./components/onboard/onboard3.components";
-
+import Main from "./components/main/main.components";
 function App() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [realname, setRealname] = useState("");
   const [phoneNum, setPhoneNum] = useState("01012345678");
-  const [emailAgree, setEmailAgree] = useState(1);
-  const [snsAgree, setSnsAgree] = useState(1);
+  const [emailAgree, setEmailAgree] = useState(0);
+  const [snsAgree, setSnsAgree] = useState(0);
 
   const [service1, setService1] = useState(false);
   const [service2, setService2] = useState(false);
@@ -94,6 +94,8 @@ function App() {
                 setIconStyle3={setIconStyle3}
                 setIconStyle4={setIconStyle4}
                 setIconStyle5={setIconStyle5}
+                setEmailAgree={setEmailAgree}
+                setSnsAgree={setSnsAgree}
               />
             }
           />
@@ -115,6 +117,7 @@ function App() {
           <Route path="/onboard3" element={<Onboard3 />} />
           <Route path="/find-id" element={<FindID />} />
           <Route path="/find-pw" element={<FindPW />} />
+          <Route path="/main" element={<Main />} />
         </Routes>
       </div>
     </div>
