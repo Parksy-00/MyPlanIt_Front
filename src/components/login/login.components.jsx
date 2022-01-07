@@ -4,8 +4,10 @@ import { Button } from "@nextui-org/react";
 import { Input, Switch } from "antd";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+  let navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -23,11 +25,11 @@ function Login() {
           },
         }
       )
-      .then((response) => {
-        console.log(response.data);
+      .then(() => {
+        navigate("/inapp");
       })
-      .catch((error) => {
-        console.log(error.data);
+      .catch(() => {
+        alert("아이디 또는 비밀번호가 틀렸습니다.");
       });
   }
 
@@ -92,13 +94,6 @@ function Login() {
           </Link>
         </p>
       </span>
-      <Link
-        to='./inapp'
-        className="search-button"
-        style={{border: '1px solid #D3d3d3'}}
-      >
-       test login
-      </Link>
     </div>
   );
 }
