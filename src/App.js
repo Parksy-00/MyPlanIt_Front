@@ -21,7 +21,6 @@ function App() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [realname, setRealname] = useState("");
-  const [phoneNum, setPhoneNum] = useState("01012345678");
   const [emailAgree, setEmailAgree] = useState(0);
   const [snsAgree, setSnsAgree] = useState(0);
 
@@ -49,7 +48,6 @@ function App() {
                 setEmailSignup={setEmail}
                 setPassword={setPassword}
                 setRealname={setRealname}
-                setPhoneNum={setPhoneNum}
                 setEmailAgree={setEmailAgree}
                 setSnsAgree={setSnsAgree}
                 service1={service1}
@@ -111,7 +109,6 @@ function App() {
                 email={email}
                 password={password}
                 realname={realname}
-                phoneNum={phoneNum}
                 emailAgree={emailAgree}
                 snsAgree={snsAgree}
               />

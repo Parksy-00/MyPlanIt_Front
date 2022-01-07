@@ -12,7 +12,7 @@ function Signup2({
   email,
   password,
   realname,
-  phoneNum,
+
   emailAgree,
   snsAgree,
 }) {
@@ -23,7 +23,7 @@ function Signup2({
       email: email,
       password: password,
       realname: realname,
-      phone_num: phoneNum,
+
       username: username,
       email_agree: emailAgree,
       sns_agree: snsAgree,
@@ -35,7 +35,6 @@ function Signup2({
           email: email,
           password: password,
           realname: realname,
-          phone_num: phoneNum,
           username: username,
           email_agree: emailAgree,
           sns_agree: snsAgree,
