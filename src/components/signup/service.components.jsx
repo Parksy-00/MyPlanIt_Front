@@ -26,6 +26,8 @@ function Service({
   setIconStyle3,
   setIconStyle4,
   setIconStyle5,
+  setEmailAgree,
+  setSnsAgree,
 }) {
   let navigate = useNavigate();
   const [check1, setCheck1] = useState(false);
@@ -54,7 +56,7 @@ function Service({
               } else {
                 setIconStyle2("enabled");
               }
-              setService2(true);
+              setService2(!service2);
             }}
             className={iconStyle2}
           />
@@ -71,7 +73,7 @@ function Service({
               } else {
                 setIconStyle3("enabled");
               }
-              setService3(true);
+              setService3(!service3);
             }}
           />
           <span style={{ marginTop: "2px" }}>서비스 이용 약관 동의 (필수)</span>
@@ -98,7 +100,7 @@ function Service({
               } else {
                 setIconStyle4("enabled");
               }
-              setService4(true);
+              setService4(!service4);
             }}
           />
           <span style={{ marginTop: "2px" }}>
@@ -128,7 +130,9 @@ function Service({
               } else {
                 setIconStyle5("enabled");
               }
-              setService5(true);
+              setService5(!service5);
+              setCheck1(!check1);
+              setCheck2(!check2);
             }}
           />
           <span style={{ marginTop: "2px" }}>마케팅 정보 수신 동의 (선택)</span>
@@ -142,6 +146,7 @@ function Service({
                   src="/images/check1.png"
                   onClick={() => {
                     setCheck1(!check1);
+                    setEmailAgree(1);
                   }}
                   style={{
                     width: "18px",
@@ -154,6 +159,7 @@ function Service({
                   src="/images/check2.png"
                   onClick={() => {
                     setCheck1(!check1);
+                    setEmailAgree(0);
                   }}
                   style={{
                     width: "18px",
@@ -175,6 +181,7 @@ function Service({
                   src="/images/check1.png"
                   onClick={() => {
                     setCheck2(!check2);
+                    setSnsAgree(1);
                   }}
                   style={{
                     width: "18px",
@@ -187,6 +194,7 @@ function Service({
                   src="/images/check2.png"
                   onClick={() => {
                     setCheck2(!check2);
+                    setSnsAgree(0);
                   }}
                   style={{
                     width: "18px",
