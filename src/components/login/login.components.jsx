@@ -4,24 +4,33 @@ import { Button } from "@nextui-org/react";
 import { Input, Switch } from "antd";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+  let navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   function attemptLogin() {
-    axios.post(
-      "http://ec2-13-124-228-86.ap-northeast-2.compute.amazonaws.com/login",
-      {
-        email: email,
-        password: password,
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
+    axios
+      .post(
+        "https://myplanit.link/login",
+        {
+          email: email,
+          password: password,
         },
-      }
-    );
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then(() => {
+        navigate("/main");
+      })
+      .catch(() => {
+        alert("아이디 또는 비밀번호가 틀렸습니다.");
+      });
   }
 
   return (
@@ -76,31 +85,15 @@ function Login() {
         className="button-group"
         style={{ marginTop: "8px", fontSize: "12px" }}
       >
-        <p>
-          <Link style={{ color: "black" }} to="/find-id">
-            아이디 찾기
-          </Link>
+        <p style={{ marginLeft: "12px", marginRight: "12px", opacity: 0.3 }}>
+          아직 계정이 없으신가요?
         </p>
-        <p style={{ marginLeft: "12px", marginRight: "12px" }}>|</p>
-        <p>
-          <Link style={{ color: "black" }} to="/find-id">
-            비밀번호 찾기
-          </Link>
-        </p>
-        <p style={{ marginLeft: "12px", marginRight: "12px" }}>|</p>
         <p>
           <Link style={{ color: "black" }} to="/signup1">
-            회원가입
+            회원가입하기
           </Link>
         </p>
       </span>
-      <Link
-        to='./inapp'
-        className="search-button"
-        style={{border: '1px solid #D3d3d3'}}
-      >
-       test login
-      </Link>
     </div>
   );
 }
