@@ -63,14 +63,14 @@ function App() {
           <Route path="/onboard3" element={<Onboard3 />} />
           <Route path="/find-id" element={<FindID />} />
           <Route path="/find-pw" element={<FindPW />} />
-          <Route path="/inapp" element={<EricsTodo />} />
-        <Route path="/inapp/ericstodo" element={<EricsTodo />} />
-        <Route path="/inapp/maintemplateroutine" element={<MainTemplateRoutine />} />
-        <Route path="/inapp/maintemplategrowth" element={<MainTemplateGrowth />} />
-        <Route path="/inapp/wishtemplate" element={<WishTemplate />} />
-        <Route path="/inapp/viewtemplate" element={<ViewTemplate />} />
-        <Route path="/inapp/maintemplateroutine/moretemplate" element={<MoreTemplate />} />
-        <Route path="/inapp/moretemplate" element={<MoreTemplate />} />
+          <Route path="/main" element={<EricsTodo />} />
+        <Route path="/main/ericstodo" element={<EricsTodo />} />
+        <Route path="/main/maintemplateroutine" element={<MainTemplateRoutine />} />
+        <Route path="/main/maintemplategrowth" element={<MainTemplateGrowth />} />
+        <Route path="/main/wishtemplate" element={<WishTemplate />} />
+        <Route path="/main/viewtemplate" element={<ViewTemplate />} />
+        <Route path="/main/maintemplateroutine/moretemplate" element={<MoreTemplate />} />
+        <Route path="/main/moretemplate" element={<MoreTemplate />} />
         </Routes>
       </div>
     </div>

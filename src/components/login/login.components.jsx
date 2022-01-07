@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import "./login.components.css";
 import { Button } from "@nextui-org/react";
@@ -27,7 +26,7 @@ function Login() {
         }
       )
       .then(() => {
-        navigate("/inapp");
+        navigate("/main");
       })
       .catch(() => {
         alert("아이디 또는 비밀번호가 틀렸습니다.");
