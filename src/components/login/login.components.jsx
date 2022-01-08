@@ -20,15 +20,18 @@ function Login() {
           password: password,
         },
         {
+          withCredentials: true,
           headers: {
             "Content-Type": "application/json",
           },
         }
       )
-      .then(() => {
+      .then((response) => {
+        console.log(response);
         navigate("/main");
       })
-      .catch(() => {
+      .catch((error) => {
+        console.log(error);
         alert("아이디 또는 비밀번호가 틀렸습니다.");
       });
   }
@@ -94,13 +97,6 @@ function Login() {
           </Link>
         </p>
       </span>
-      <Link
-        to='./main'
-        className="search-button"
-        style={{border: '1px solid #D3d3d3'}}
-      >
-       test login
-      </Link>
     </div>
   );
 }
