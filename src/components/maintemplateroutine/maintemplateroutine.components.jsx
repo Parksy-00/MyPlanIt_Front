@@ -50,7 +50,7 @@ function MainTemplateRoutine() {
       <Link
         to='./maintemplateroutine'
         className="search-button"
-        style={{border: '1px solid #D3d3d3'}}
+        style={{border: '1px solid #Dedede'}}
       >
         <SearchIcon /> &nbsp;원하는 플랜을 검색해보세요
       </Link>
@@ -98,7 +98,7 @@ function MainTemplateRoutine() {
       <Link to="../main/viewtemplate" className="template-overall" style={{justifyContent:'center',color:'black'}}>
           {dummydata.contents_1.map(contents_1=>(
             <li key={dummydata.contents_1.id}>
-              <div style={{display:'flex',flexDirection:'column', boxShadow: '0px 0px 2px 0.5px #D3d3d3', justifyContent: 
+              <div style={{display:'flex',flexDirection:'column', boxShadow: '0px 0px 2px 0.5px #Dedede', justifyContent: 
           "center"}} className="template-all">
              <div style={{height: "5px"}}></div>
              <div style={{width: '350px', marginRight:'auto',marginLeft:'auto',display: "flex", flexDirection: "row", justifyContent: 'space-between'}}>

@@ -50,7 +50,7 @@ function MainTemplateGrowth() {
       <Link
         to='./maintemplateroutine'
         className="search-button"
-        style={{border: '1px solid #D3d3d3'}}
+        style={{border: '1px solid #Dedede'}}
       >
         <SearchIcon /> &nbsp;원하는 플랜을 검색해보세요
       </Link>
@@ -67,7 +67,7 @@ function MainTemplateGrowth() {
       </Link>
       <div style={{width: '5vw'}}></div>
       <Link
-        style={{border: '1px solid #D3d3d3'}}
+        style={{border: '1px solid #Dedede'}}
         to='../main/maintemplategrowth'
         className="growth-button"
         style={{width: "7.5vh", height: "35px"}}

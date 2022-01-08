@@ -4,6 +4,8 @@
   left: 0;
   right: 0;
   height: 45px;
+  color: green;
+  background-color: green;
 }
 .App {
   display: flex;
