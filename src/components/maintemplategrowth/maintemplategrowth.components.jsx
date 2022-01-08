@@ -48,7 +48,7 @@ function MainTemplateGrowth() {
         </Toolbar>
       </AppBar>
       <Link
-        to='./maintemplateroutine'
+        to='../main/searchtemplate'
         className="search-button"
         style={{border: '1px solid #Dedede'}}
       >
@@ -61,7 +61,14 @@ function MainTemplateGrowth() {
         <Link
        to='../main/maintemplateroutine'
         className="routine-button"
-        style={{width: "7.5vh", height: "35px"}}
+        style={{width: "7.5vh", height: "35px",display: 'flex',
+        justifyContent: 'center',
+        alignItems:'center',
+        marginTop: '10px',
+        border: '5px',
+        background: 'white',
+        borderRadius: '0',
+        color: 'gray'}}
       >
         Routine
       </Link>
@@ -70,7 +77,15 @@ function MainTemplateGrowth() {
         style={{border: '1px solid #Dedede'}}
         to='../main/maintemplategrowth'
         className="growth-button"
-        style={{width: "7.5vh", height: "35px"}}
+        style={{width: "7.5vh", height: "35px",display: 'flex',
+        justifyContent: 'center',
+        alignItems:'center',
+        marginTop: '10px',
+        border: '5px',
+        background: 'white',
+        borderRadius: '0',
+        color: 'black',
+        borderBottom:'solid #7965f4'}}
       >
         Growth
       </Link>
