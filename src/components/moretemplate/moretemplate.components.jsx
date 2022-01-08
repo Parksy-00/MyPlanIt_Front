@@ -25,7 +25,7 @@ function MoreTemplate(props) {
       <Toolbar style={{ justifyContent: "space-between" }}>
     
       <Link
-           to='../inapp/maintemplateroutine'
+           to='../main/maintemplateroutine'
           >
             <ArrowBackIosIcon />
           </Link>

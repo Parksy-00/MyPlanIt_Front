@@ -1,22 +1,16 @@
 import "./maintemplateroutine.components.css";
-import { Button } from "@nextui-org/react";
-import { Input, Switch } from "antd";
 import { Link } from "react-router-dom";
 import BottomNavBar from "../globalcomponents/bottomnavbar.components";
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { useNavigate } from "react-router-dom";
-import MedicalServicesOutlinedIcon from '@mui/icons-material/MedicalServicesOutlined';
 import { AppBar, Tabs, Tab } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
-import ListIcon from '@mui/icons-material/List';
-import ShowChartIcon from '@mui/icons-material/ShowChart';
 import SearchIcon from '@mui/icons-material/Search';
-import { height } from "@mui/system";
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import dummydata from "../../dummydata/dummydata.json";
 import MoreTemplate from "../moretemplate/moretemplate.components";
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+
 function MainTemplateRoutine() {
     let navigate = useNavigate();
     const categories = [
@@ -33,8 +27,7 @@ function MainTemplateRoutine() {
     
   return (
     <div className="container">
-         <AppBar position="static" style={{background: 'white'}}>
-         
+         <AppBar position="static" style={{background: 'white',width: "100vw"}}>
       <Toolbar style={{ justifyContent: "space-between" }}>
       <div style={{width: '40px'}}></div>
           <Typography
@@ -48,31 +41,12 @@ function MainTemplateRoutine() {
             <div style={{color: "black"}}>플랜</div>
           </Typography>
           <Link
-           to='../inapp/wishtemplate'
+           to='../main/wishtemplate'
           >
-            <MedicalServicesOutlinedIcon style={{color:"grey"}}/>
+            <FavoriteBorderIcon style={{color:"grey"}}/>
           </Link>
         </Toolbar>
       </AppBar>
-      <span
-        className="button-group"
-        style={{ marginTop: "8px", fontSize: "12px" }}
-      >
-        <Link
-       to='../maintemplateroutine'
-        className="main-routine-button"
-      >
-        <ListIcon /> &nbsp;Routine
-      </Link>
-      <div style={{width: '5vw'}}></div>
-      <Link
-        style={{border: '1px solid #D3d3d3'}}
-        to='../inapp/maintemplategrowth'
-        className="main-growth-button"
-      >
-        <ShowChartIcon /> &nbsp;Growth
-      </Link>
-      </span>
       <Link
         to='./maintemplateroutine'
         className="search-button"
@@ -80,70 +54,93 @@ function MainTemplateRoutine() {
       >
         <SearchIcon /> &nbsp;원하는 플랜을 검색해보세요
       </Link>
-      <div style={{height: '25px'}}></div>
-      <div  style={{height: '10px', background: '#dee2e6', width: '100vw'}}></div>
-      <div style={{height: '20px'}}></div>
+      <span
+        className="button-group"
+        style={{ marginTop: "8px", fontSize: "16px", fontWeight:"bold"}}
+      >
+        <Link
+       to='../main/maintemplateroutine'
+        className="main-routine-button"
+        style={{width: "7.5vh", height: "35px"}}
+      >
+        Routine
+      </Link>
+      <div style={{width: '5vw'}}></div>
+      <Link
+        style={{border: '1px solid #D3d3d3'}}
+        to='../main/maintemplategrowth'
+        className="main-growth-button"
+        style={{width: "7.5vh", height: "35px"}}
+      >
+        Growth
+      </Link>
+      <div style={{width: "55vw"}}></div>
+      </span>
+       <div style={{height: '10px'}}></div>
       <ul className="template-content"style={{overflowY: 'scroll',
   width:'inherit',
   float: 'left',
-  height:'480px',
+  height:'560px',
   position:'relative'}}>
       <div
         className="textbox"
       >
-      <div style={{width: '150px'}}>일주일을 알차게</div>
-      
-      <Link
-        to={{pathname: './moretemplate', state:{mytype: "abcd"}}}
-        style={{fontSize:"12px", color:"grey"}}
-
-      >
-        <ArrowForwardIosIcon style={{fontSize: "10px"}} /> &nbsp;더보기
-      </Link>
       </div>
       <div style={{height: '10px'}}></div>
-      <div className="template-overall">
-          {dummydata.contents_1.slice(0,2).map(contents_1=>(
+      <Link to="../main/viewtemplate" className="template-overall" style={{justifyContent:'center',color:'black'}}>
+          {dummydata.contents_1.map(contents_1=>(
             <li key={dummydata.contents_1.id}>
-              <div style={{display:'flex',flexDirection:'row'}}>
-              <img className="template-photourl" src= {contents_1.photourl}></img>
-              <div style={{display:'flex',flexDirection:'column', width:'120px', paddingLeft:'5px'}}>
-              <div className="template-title">{contents_1.title}</div>
-              <div className="template-content">{contents_1.content}</div>
+              <div style={{display:'flex',flexDirection:'column', boxShadow: '0px 0px 8px 1px #D3d3d3', justifyContent: 
+          "center"}} className="template-all">
+             <div style={{height: "5px"}}></div>
+             <div style={{width: '300px', marginRight:'auto',marginLeft:'auto',display: "flex", flexDirection: "row", justifyContent: 'space-between'}}>
+             <div className="template-title">{contents_1.title}</div>
+  
+             </div>
+
+             <div style={{height: "8px"}}></div>
+              <img className="template-photourl" src= {contents_1.photourl} style={{width: '300px'}}></img>
+              <div style={{display:'flex',flexDirection:'column', width:'300px', paddingLeft:'5px'}}>
+                
+              <div style={{display: 'flex', flexDirection: 'row', justifyContent:'space-between'}}>
+              <div style={{display: 'flex', flexDirection: 'row', marginTop: '10px', width: '280px'}}>
+              <img className="template-writerphoto" src= {contents_1.writerphoto} style={{width: '40px', height: '40px',borderRadius:'20px'}}></img>
+              <div style={{display: 'flex', flexDirection: 'column',marginLeft: '10px'}}>
+              <div className="template-writerintro" style={{fontSize: '10px',color:'gray', height: '15px'}}>{contents_1.writerintro}</div>
+              <div style={{fontSize:'10px'}}>{contents_1.writer}</div>
               </div>
               </div>
+              <div style={{marginTop:'auto',marginBottom:'auto', color: '#7965f4'}}>
+             {contents_1.checkHeart ? 
+             <FavoriteIcon />:
+             <FavoriteBorderIcon />}
+             </div>
+              </div>
+              <div className="template-content" style={{fontSize:'12px'}}>{contents_1.content}</div>
+              <div style={{height: '5px'}}></div>
+              <div style={{display:'flex', flexDirection:'row',justifyContent:'left'}}>
+                <div className="template-tag">
+                {contents_1.tag1}
+                </div>
+                <div style={{width: '10px'}}>
+                </div>
+                <div className="template-tag">
+                {contents_1.tag2}
+                </div>
+              </div>
+              <div style={{height: '5px'}}></div>
+              </div>
+              </div>
+              <div style={{height: "15px"}}></div>
             </li>
           ))}
       
-      </div>
+      </Link>
       <div
         className="textbox"
       >
-      <div style={{width: '150px'}}>건강한 몸</div>
-      <button
-        onClick={() => {
-       
-        }}
-        className="more-button" style={{width: '70px'}}
-      >
-        <ArrowForwardIosIcon style={{fontSize: "10px"}} /> &nbsp;더보기
-      </button>
       </div>
       <div style={{height: '10px'}}></div>
-      <div className="template-overall">
-          {dummydata.contents_2.slice(0,2).map(contents_2=>(
-            <li key={contents_2.id}>
-              <div style={{display:'flex',flexDirection:'row'}}>
-              <img className="template-photourl" src= {contents_2.photourl}></img>
-              <div style={{display:'flex',flexDirection:'column', width:'120px', paddingLeft:'5px'}}>
-              <div className="template-title">{contents_2.title}</div>
-              <div className="template-content">{contents_2.content}</div>
-              </div>
-              </div>
-            </li>
-          ))}
-      
-      </div>
       </ul>
       <BottomNavBar/>
     </div>
