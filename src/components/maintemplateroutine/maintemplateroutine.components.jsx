@@ -27,7 +27,7 @@ function MainTemplateRoutine() {
     
   return (
     <div className="container">
-         <AppBar position="static" style={{background: 'white',width: "100vw"}}>
+         <AppBar position="static" elevation={0} style={{background: 'white',width: "100vw"}}>
       <Toolbar style={{ justifyContent: "space-between" }}>
       <div style={{width: '40px'}}></div>
           <Typography
@@ -61,7 +61,15 @@ function MainTemplateRoutine() {
         <Link
        to='../main/maintemplateroutine'
         className="main-routine-button"
-        style={{width: "7.5vh", height: "35px"}}
+        style={{width: "7.5vh", height: "35px",display: 'flex',
+        justifyContent: 'center',
+        alignItems:'center',
+        marginTop: '10px',
+        border: '5px',
+        background: 'white',
+        borderRadius: '0',
+        color: 'black',
+        borderBottom:'solid #7965f4'}}
       >
         Routine
       </Link>
@@ -80,7 +88,7 @@ function MainTemplateRoutine() {
       <ul className="template-content"style={{overflowY: 'scroll',
   width:'inherit',
   float: 'left',
-  height:'560px',
+  height:'680px',
   position:'relative'}}>
       <div
         className="textbox"
@@ -90,17 +98,17 @@ function MainTemplateRoutine() {
       <Link to="../main/viewtemplate" className="template-overall" style={{justifyContent:'center',color:'black'}}>
           {dummydata.contents_1.map(contents_1=>(
             <li key={dummydata.contents_1.id}>
-              <div style={{display:'flex',flexDirection:'column', boxShadow: '0px 0px 8px 1px #D3d3d3', justifyContent: 
+              <div style={{display:'flex',flexDirection:'column', boxShadow: '0px 0px 2px 0.5px #D3d3d3', justifyContent: 
           "center"}} className="template-all">
              <div style={{height: "5px"}}></div>
-             <div style={{width: '300px', marginRight:'auto',marginLeft:'auto',display: "flex", flexDirection: "row", justifyContent: 'space-between'}}>
+             <div style={{width: '350px', marginRight:'auto',marginLeft:'auto',display: "flex", flexDirection: "row", justifyContent: 'space-between'}}>
              <div className="template-title">{contents_1.title}</div>
   
              </div>
 
              <div style={{height: "8px"}}></div>
-              <img className="template-photourl" src= {contents_1.photourl} style={{width: '300px'}}></img>
-              <div style={{display:'flex',flexDirection:'column', width:'300px', paddingLeft:'5px'}}>
+              <img className="template-photourl" src= {contents_1.photourl} style={{width: '350px', height: '130px'}}></img>
+              <div style={{display:'flex',flexDirection:'column', width:'350px', paddingLeft:'5px'}}>
                 
               <div style={{display: 'flex', flexDirection: 'row', justifyContent:'space-between'}}>
               <div style={{display: 'flex', flexDirection: 'row', marginTop: '10px', width: '280px'}}>

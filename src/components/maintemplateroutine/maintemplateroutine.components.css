@@ -7,6 +7,7 @@
   .add-item {
     margin-right: 100px;
   }
+
   .main-routine-button {
     display: flex;
     justify-content: center;
@@ -83,7 +84,7 @@
     max-lines: 1;
     overflow:hidden;
     text-overflow:ellipsis;
-    width: 300px;
+    width: 350px;
     white-space: nowrap;
     margin-left: auto;
     margin-right: auto;
@@ -91,7 +92,7 @@
   .template-content{
     font-size: 14px;
     max-lines: 3;
-    width: 300px;
+    width: 350px;
     margin-left: auto;
     margin-right: auto;
   
