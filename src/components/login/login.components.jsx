@@ -97,6 +97,8 @@ function Login() {
           </Link>
         </p>
       </span>
+      <Link to="../main/ericstodo">
+      t login</Link>
     </div>
   );
 }

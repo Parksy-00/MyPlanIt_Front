@@ -11,27 +11,21 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 30px;
-    width: 327px;
-    height: 52px;
-    border: 0;
-    background: #7965f4;
-    border-radius: 4px;
-    color: white;
-    width: 43vw;
+    margin-top: 10px;
+    border: 5px;
+    background: white;
+    border-radius: 0;
+    color: black;
+    border-bottom: solid #7965f4;
   }
   .main-growth-button {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 30px;
-    width: 327px;
-    height: 52px;
-    border: 1;
+    margin-top: 10px;
+    border: 5px;
     background: #ffffff;
-    border-radius: 4px;
     color: grey;
-    width: 43vw;
     box-shadow: 0;
     border-color: #D3D3d3;
   }
@@ -72,13 +66,16 @@
   }
   .template-overall{
     width: 91vw;
-    height: 270px;
+    height: 700px;
+    justify-content: center;
   }
   .template-photourl{
-    width: 200px;
+    width: 300px;
     height: 120px;
     border-radius: 8px;
     object-fit: fill;
+    margin-left: auto;
+    margin-right: auto;
   }
   .template-title{
     font-size: 16px;
@@ -86,12 +83,37 @@
     max-lines: 1;
     overflow:hidden;
     text-overflow:ellipsis;
-    width: 130px;
+    width: 300px;
     white-space: nowrap;
+    margin-left: auto;
+    margin-right: auto;
   }
   .template-content{
     font-size: 14px;
     max-lines: 3;
-    width: 130px;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
   
+  }
+  .template-all{
+    padding: 5px 5px 5px 5px;
+    border: 1;
+    border-radius: 4px;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 88vw;
+  }
+  .template-writerintro{
+    width: 300px;
+  }
+  .template-tag{
+    box-shadow: 0px 0px 5px 1px #D3d3d3;
+    width: 45px;
+    height: 20px;
+    text-align: center;
+    font-size: 12px;
+    color: #7965f4;
+    border-radius: 4px;
   }
