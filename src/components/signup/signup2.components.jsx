@@ -44,7 +44,17 @@ function Signup2({
         }
       )
       .then(function (response) {
-        console.log(response);
+        if (response.status === 201) {
+          navigate("/onboard1");
+        } else if (response.status === 200) {
+          alert("이미 존재하는 이메일입니다");
+        } else if (response.status === 202) {
+          alert("이미 존재하는 닉네임입니다");
+        } else if (response.status === 207) {
+          alert("이미 존재하는 이메일과 닉네임입니다");
+        } else {
+          alert("오류");
+        }
       });
   }
 
@@ -91,7 +101,6 @@ function Signup2({
       <button
         onClick={() => {
           attemptSignup();
-          navigate("/onboard1");
         }}
         className="login-button"
       >

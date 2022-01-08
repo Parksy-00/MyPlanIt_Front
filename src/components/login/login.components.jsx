@@ -31,8 +31,13 @@ function Login() {
         navigate("/main");
       })
       .catch((error) => {
-        console.log(error);
-        alert("아이디 또는 비밀번호가 틀렸습니다.");
+        if (error.response.status === 400) {
+          alert("존재하지 않는 이메일입니다");
+        } else if (error.response.status === 401) {
+          alert("비밀번호가 틀렸습니다");
+        } else {
+          alert("오류");
+        }
       });
   }
 
@@ -97,8 +102,7 @@ function Login() {
           </Link>
         </p>
       </span>
-      <Link to="../main/ericstodo">
-      t login</Link>
+      <Link to="../main/ericstodo">t login</Link>
     </div>
   );
 }
