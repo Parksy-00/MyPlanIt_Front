@@ -1,0 +1,36 @@
+.view-content{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font: 1em sans-serif; 
+}
+.view-contents{
+   margin-top: 20px;
+}
+.add-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    width: 327px;
+    height: 52px;
+    /* my planit/main color 1 - 7965F4 */
+    border: 0;
+    background: #7965f4;
+    border-radius: 4px;
+    color: white;
+  }
+  .select-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    width: 240px;
+    height: 52px;
+    /* my planit/main color 1 - 7965F4 */
+    border: 0;
+    background: #7965f4;
+    border-radius: 4px;
+    color: white;
+  }

@@ -1,7 +1,25 @@
-.container {
-  display: flex;
-  flex-direction: column;
+
+.wish-template-overall{
+  width: 91vw;
   justify-content: center;
-  align-items: center;
-  font: 1em sans-serif;
+}
+.wish-template-all{
+  padding: 5px 5px 5px 5px;
+  border: 1;
+  border-radius: 4px;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.wish-template-title{
+  height: 14px;
+  font-size: 12px;
+}
+.wish-template-photourl{
+  width: 150px;
+    height: 120px;
+    border-radius: 8px;
+    object-fit: fill;
+    margin-left: auto;
+    margin-right: auto;
 }

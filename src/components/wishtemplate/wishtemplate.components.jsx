@@ -8,18 +8,18 @@ import Typography from "@material-ui/core/Typography";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-
+import dummydata from "../../dummydata/dummydata.json";
 
 function WishTemplate() {
   return (
     <div className="container">
-     <AppBar position="static" style={{background: 'white'}}>
+     <AppBar position="static" elevation={0} style={{background: 'white',width: "100vw"}}>
       <Toolbar style={{ justifyContent: "space-between" }}>
     
       <Link
            to='../main/maintemplateroutine'
           >
-            <ArrowBackIosIcon />
+            <ArrowBackIosIcon style={{color:"black"}}/>
           </Link>
           <Typography
           edge = 'end'
@@ -33,23 +33,26 @@ function WishTemplate() {
           </Typography>
           <div style={{width: '40px'}}></div>
         </Toolbar>
-    
-      
       </AppBar>
-      <img
-        className="Pickicon"
-        src="/images/pick_icon.png"
-        style={{ marginTop: "200px", width: "60px", marginBottom: "51px" }}
-      />
-      <div className="wish-title" style={{fontSize: "20px", fontWeight: 'bold'}}>
-        아직 찜한 플랜이 없어요!
-      </div>
-      <div style={{height:'10px'}}>
-
-      </div>
-      <div className="wish-content" style={{color: "#808080", fontSize: "14px"}}>
-        원하는 플랜을 찜해 보세요
-      </div>
+      <Link to="../main/viewtemplate" className="wish-template-overall" style={{color:'black',listStyleType:"none", width:"90vw",display:'flex',flexDirection:'row', flexWrap:"wrap",justifyContent:"start", alignItems:"flex-start"}}>
+          {dummydata.contents_1.filter(contents_1=> contents_1.checkHeart===true).map(contents_1=>(
+            <li key={dummydata.contents_1.id} >
+              <div style={{justifyContent: 
+          "center", width: "45vw"}} className="wish-template-all">
+             <div style={{height: "5px"}}></div>
+             <div style={{width: '10px', marginRight:'auto',marginLeft:'auto',display: "flex", flexDirection: "row", justifyContent: 'space-between'}}>
+             </div>
+           <div style={{height: "4px"}}></div>
+           <div style={{height: "180px", borderRadius:"8px"}}>
+              <img className="wish-template-photourl" src= {contents_1.photourl} style={{width: '350px', height: '130px'}}></img>
+              <div style={{fontSize:'10px'}}>{contents_1.writer}</div>
+              <div className="wish-template-title">{contents_1.title}</div>
+              </div>
+              </div>
+            </li>
+          ))}
+      
+      </Link>
       <BottomNavBar/>
     </div>
    

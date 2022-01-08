@@ -17,6 +17,7 @@ import EricsTodo from "./components/ericstodo/ericstodo.components";
 import ViewTemplate from "./components/viewtemplate/viewtemplate.components";
 import MainTemplateGrowth from "./components/maintemplategrowth/maintemplategrowth.components";
 import MoreTemplate from "./components/moretemplate/moretemplate.components";
+import SearchTemplate from "./components/searchtemplate/searchtemplate.components";
 function App() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -127,6 +128,7 @@ function App() {
         <Route path="/main/viewtemplate" element={<ViewTemplate />} />
         <Route path="/main/maintemplateroutine/moretemplate" element={<MoreTemplate />} />
         <Route path="/main/moretemplate" element={<MoreTemplate />} />
+        <Route path="/main/searchtemplate" element={<SearchTemplate />} />
 
         </Routes>
       </div>
