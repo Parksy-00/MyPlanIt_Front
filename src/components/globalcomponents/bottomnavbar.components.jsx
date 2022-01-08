@@ -17,9 +17,9 @@ const BottomNavBar = () => {
     setValue(newValue);
   }}
 >
-<BottomNavigationAction label="To do" icon={<PlaylistAddCheckIcon />} component={Link} to="/inapp/ericstodo"/>
+<BottomNavigationAction label="To do" icon={<PlaylistAddCheckIcon />} component={Link} to="/main/ericstodo"/>
   <div style={{width: '20vw'}}></div>
-  <BottomNavigationAction label="Plan" icon={<CalendarTodayIcon />} component={Link} to="/inapp/maintemplateroutine"/>
+  <BottomNavigationAction label="Plan" icon={<CalendarTodayIcon />} component={Link} to="/main/maintemplateroutine"/>
 </BottomNavigation>   
     );
   };
