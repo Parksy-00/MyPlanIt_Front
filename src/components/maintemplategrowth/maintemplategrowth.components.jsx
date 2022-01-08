@@ -72,7 +72,7 @@ function MainTemplateGrowth() {
         className="growth-button"
         style={{width: "7.5vh", height: "35px"}}
       >
-        Growth
+        Growthd
       </Link>
       <div style={{width: "55vw"}}></div>
       </span>
