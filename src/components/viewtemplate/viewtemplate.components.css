@@ -1,0 +1,10 @@
+.view-content{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font: 1em sans-serif; 
+}
+.view-contents{
+   margin-top: 20px;
+}

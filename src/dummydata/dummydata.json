@@ -64,7 +64,7 @@
             "content":"계획 머시기 ㄴㅁㄹㅇㅁㄴㄹㅇㄴㅇㅇㅇㅇ",
             "writer": "마이플랜잇",
             "writerintro": "당신의 성장을 위해 모인 팀,",
-            "checkHeart":true,
+            "checkHeart":false,
             "tag1": "루틴",
             "tag2": "생산성",
             "writerphoto": "https://firebasestorage.googleapis.com/v0/b/single-life-manager.appspot.com/o/assets%2Fcat.png?alt=media&token=e28a0328-446f-4555-a1f0-f11a2138c42c",
@@ -129,7 +129,9 @@
             "writerphoto": "https://firebasestorage.googleapis.com/v0/b/single-life-manager.appspot.com/o/assets%2Fcat.png?alt=media&token=e28a0328-446f-4555-a1f0-f11a2138c42c",
             "photourl": "https://firebasestorage.googleapis.com/v0/b/single-life-manager.appspot.com/o/react_folder%2Freact_dummy_2.png?alt=media&token=84afd823-cc58-4e26-9af3-8f373b76efff"
         }
-    ]
-
+    ],
+    "content_image":{
+        "imagefile": "https://firebasestorage.googleapis.com/v0/b/single-life-manager.appspot.com/o/ceos%20test%2Fceos_test.png?alt=media&token=ced1b2b3-ab0d-4320-9f9d-1c34e692970b"
+    }
 
 }

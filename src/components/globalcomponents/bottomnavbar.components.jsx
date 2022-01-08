@@ -11,11 +11,13 @@ const BottomNavBar = () => {
       showLabels
       className="BottomNavBar"
       value={value}
+      backgroundColor= 'green'
       height="100px"
       onChange={(event, newValue) => {
         setValue(newValue);
       }}
     >
+      
       <BottomNavigationAction
         label="To do"
         icon={<PlaylistAddCheckIcon />}
