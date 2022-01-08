@@ -48,7 +48,7 @@ function MainTemplateRoutine() {
         </Toolbar>
       </AppBar>
       <Link
-        to='./maintemplateroutine'
+        to='../main/searchtemplate'
         className="search-button"
         style={{border: '1px solid #Dedede'}}
       >
@@ -78,7 +78,14 @@ function MainTemplateRoutine() {
         style={{border: '1px solid #D3d3d3'}}
         to='../main/maintemplategrowth'
         className="main-growth-button"
-        style={{width: "7.5vh", height: "35px"}}
+        style={{width: "7.5vh", height: "35px",display: 'flex',
+        justifyContent: 'center',
+        alignItems:'center',
+        marginTop: '10px',
+        border: '5px',
+        background: 'white',
+        borderRadius: '0',
+        color: 'gray'}}
       >
         Growth
       </Link>
