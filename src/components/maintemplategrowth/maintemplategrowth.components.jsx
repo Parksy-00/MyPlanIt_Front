@@ -27,7 +27,7 @@ function MainTemplateGrowth() {
     
   return (
     <div className="container">
-         <AppBar position="static" style={{background: 'white',width: "100vw"}}>
+         <AppBar position="static"  elevation={0} style={{background: 'white',width: "100vw"}}>
       <Toolbar style={{ justifyContent: "space-between" }}>
       <div style={{width: '40px'}}></div>
           <Typography
@@ -48,9 +48,9 @@ function MainTemplateGrowth() {
         </Toolbar>
       </AppBar>
       <Link
-        to='./maintemplateroutine'
+        to='../main/searchtemplate'
         className="search-button"
-        style={{border: '1px solid #D3d3d3'}}
+        style={{border: '1px solid #Dedede'}}
       >
         <SearchIcon /> &nbsp;원하는 플랜을 검색해보세요
       </Link>
@@ -61,16 +61,31 @@ function MainTemplateGrowth() {
         <Link
        to='../main/maintemplateroutine'
         className="routine-button"
-        style={{width: "7.5vh", height: "35px"}}
+        style={{width: "7.5vh", height: "35px",display: 'flex',
+        justifyContent: 'center',
+        alignItems:'center',
+        marginTop: '10px',
+        border: '5px',
+        background: 'white',
+        borderRadius: '0',
+        color: 'gray'}}
       >
         Routine
       </Link>
       <div style={{width: '5vw'}}></div>
       <Link
-        style={{border: '1px solid #D3d3d3'}}
+        style={{border: '1px solid #Dedede'}}
         to='../main/maintemplategrowth'
         className="growth-button"
-        style={{width: "7.5vh", height: "35px"}}
+        style={{width: "7.5vh", height: "35px",display: 'flex',
+        justifyContent: 'center',
+        alignItems:'center',
+        marginTop: '10px',
+        border: '5px',
+        background: 'white',
+        borderRadius: '0',
+        color: 'black',
+        borderBottom:'solid #7965f4'}}
       >
         Growth
       </Link>
@@ -80,7 +95,7 @@ function MainTemplateGrowth() {
       <ul className="template-content"style={{overflowY: 'scroll',
   width:'inherit',
   float: 'left',
-  height:'560px',
+  height:'680px',
   position:'relative'}}>
       <div
         className="textbox"
@@ -90,17 +105,17 @@ function MainTemplateGrowth() {
       <Link to="../main/viewtemplate" className="template-overall" style={{justifyContent:'center',color:'black'}}>
           {dummydata.contents_2.map(contents_2=>(
             <li key={dummydata.contents_2.id}>
-              <div style={{display:'flex',flexDirection:'column', boxShadow: '0px 0px 8px 1px #D3d3d3', justifyContent: 
+              <div style={{display:'flex',flexDirection:'column',boxShadow: '0px 0px 2px 0.5px #D3d3d3', justifyContent: 
           "center"}} className="template-all">
              <div style={{height: "5px"}}></div>
-             <div style={{width: '300px', marginRight:'auto',marginLeft:'auto',display: "flex", flexDirection: "row", justifyContent: 'space-between'}}>
+             <div style={{width: '350px', marginRight:'auto',marginLeft:'auto',display: "flex", flexDirection: "row", justifyContent: 'space-between'}}>
              <div className="template-title">{contents_2.title}</div>
   
              </div>
 
              <div style={{height: "8px"}}></div>
-              <img className="template-photourl" src= {contents_2.photourl} style={{width: '300px'}}></img>
-              <div style={{display:'flex',flexDirection:'column', width:'300px', paddingLeft:'5px'}}>
+              <img className="template-photourl" src= {contents_2.photourl} style={{width: '350px', height: '130px'}}></img>
+              <div style={{display:'flex',flexDirection:'column', width:'350px', paddingLeft:'5px'}}>
                 
               <div style={{display: 'flex', flexDirection: 'row', justifyContent:'space-between'}}>
               <div style={{display: 'flex', flexDirection: 'row', marginTop: '10px', width: '280px'}}>
