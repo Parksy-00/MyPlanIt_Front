@@ -2,13 +2,16 @@ import "./wishtemplate.components.css";
 import { Button } from "@nextui-org/react";
 import { Input, Switch } from "antd";
 import { Link } from "react-router-dom";
-import BottomNavBar from "../globalcomponents/bottomnavbar.components";
+import BottomNavBar from "../globalcomponents/bottomnavbartodo.components";
 import { AppBar, Tabs, Tab } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import dummydata from "../../dummydata/dummydata.json";
+import { v4 as uuidv4 } from 'uuid';
+import * as React from 'react';
+import BottomNavBarPlan from "../globalcomponents/bottomnavbarplan.components";
 
 function WishTemplate() {
   return (
@@ -27,15 +30,16 @@ function WishTemplate() {
             style={{
              marginLeft: '0'
             }}
-            color="black"
+            color="inherit"
           >
             <div style={{color: "black"}}>찜한 목록</div>
           </Typography>
           <div style={{width: '40px'}}></div>
         </Toolbar>
       </AppBar>
-      <Link to="../main/viewtemplate" className="wish-template-overall" style={{color:'black',listStyleType:"none", width:"90vw",display:'flex',flexDirection:'row', flexWrap:"wrap",justifyContent:"start", alignItems:"flex-start"}}>
+      <Link to="../main/viewtemplate" key={dummydata.contents_1.id} className="wish-template-overall" style={{color:'black',listStyleType:"none", width:"90vw",display:'flex',flexDirection:'row', flexWrap:"wrap",justifyContent:"start", alignItems:"flex-start"}}>
           {dummydata.contents_1.filter(contents_1=> contents_1.checkHeart===true).map(contents_1=>(
+             <React.Fragment key={uuidv4()}>
             <li key={dummydata.contents_1.id} >
               <div style={{justifyContent: 
           "center", width: "45vw"}} className="wish-template-all">
@@ -50,10 +54,11 @@ function WishTemplate() {
               </div>
               </div>
             </li>
+            </React.Fragment>
           ))}
       
       </Link>
-      <BottomNavBar/>
+      <BottomNavBarPlan/>
     </div>
    
   );

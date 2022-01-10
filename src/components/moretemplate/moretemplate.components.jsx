@@ -2,7 +2,7 @@ import "./moretemplate.components.css";
 import { Button } from "@nextui-org/react";
 import { Input, Switch } from "antd";
 import { Link } from "react-router-dom";
-import BottomNavBar from "../globalcomponents/bottomnavbar.components";
+import BottomNavBar from "../globalcomponents/bottomnavbartodo.components";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { useNavigate } from "react-router-dom";
 import MedicalServicesOutlinedIcon from '@mui/icons-material/MedicalServicesOutlined';
@@ -16,6 +16,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import { height } from "@mui/system";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import dummydata from "../../dummydata/dummydata.json";
+import BottomNavBarPlan from "../globalcomponents/bottomnavbarplan.components";
 
 function MoreTemplate(props) {
     let navigate = useNavigate();
@@ -66,7 +67,7 @@ function MoreTemplate(props) {
           ))}
       </div>
       </ul>
-      <BottomNavBar/>
+      <BottomNavBarPlan/>
     </div>
    
   );

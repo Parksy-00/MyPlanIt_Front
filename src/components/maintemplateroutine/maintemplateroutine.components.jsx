@@ -1,6 +1,6 @@
 import "./maintemplateroutine.components.css";
 import { Link } from "react-router-dom";
-import BottomNavBar from "../globalcomponents/bottomnavbar.components";
+import BottomNavBar from "../globalcomponents/bottomnavbartodo.components";
 import { useNavigate } from "react-router-dom";
 import { AppBar, Tabs, Tab } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
@@ -10,6 +10,9 @@ import dummydata from "../../dummydata/dummydata.json";
 import MoreTemplate from "../moretemplate/moretemplate.components";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import * as React from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import BottomNavBarPlan from "../globalcomponents/bottomnavbarplan.components";
 
 function MainTemplateRoutine() {
     let navigate = useNavigate();
@@ -34,9 +37,9 @@ function MainTemplateRoutine() {
           edge = 'end'
             variant="h6"
             style={{
-             marginLeft: '0'
+             marginLeft: '0',
+    
             }}
-            color="black"
           >
             <div style={{color: "black"}}>플랜</div>
           </Typography>
@@ -104,6 +107,7 @@ function MainTemplateRoutine() {
       <div style={{height: '10px'}}></div>
       <Link to="../main/viewtemplate" className="template-overall" style={{justifyContent:'center',color:'black'}}>
           {dummydata.contents_1.map(contents_1=>(
+            <React.Fragment key={uuidv4()}>
             <li key={dummydata.contents_1.id}>
               <div style={{display:'flex',flexDirection:'column', boxShadow: '0px 0px 2px 0.5px #Dedede', justifyContent: 
           "center"}} className="template-all">
@@ -148,6 +152,7 @@ function MainTemplateRoutine() {
               </div>
               <div style={{height: "15px"}}></div>
             </li>
+            </React.Fragment>
           ))}
       
       </Link>
@@ -157,7 +162,7 @@ function MainTemplateRoutine() {
       </div>
       <div style={{height: '10px'}}></div>
       </ul>
-      <BottomNavBar/>
+      <BottomNavBarPlan/>
     </div>
    
   );

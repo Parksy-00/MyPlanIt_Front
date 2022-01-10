@@ -1,6 +1,6 @@
 import "./maintemplategrowth.components.css";
 import { Link } from "react-router-dom";
-import BottomNavBar from "../globalcomponents/bottomnavbar.components";
+import BottomNavBar from "../globalcomponents/bottomnavbartodo.components";
 import { useNavigate } from "react-router-dom";
 import { AppBar, Tabs, Tab } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
@@ -10,6 +10,9 @@ import dummydata from "../../dummydata/dummydata.json";
 import MoreTemplate from "../moretemplate/moretemplate.components";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import React,{Component,Fragment} from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import BottomNavBarPlan from "../globalcomponents/bottomnavbarplan.components";
 
 function MainTemplateGrowth() {
     let navigate = useNavigate();
@@ -34,11 +37,12 @@ function MainTemplateGrowth() {
           edge = 'end'
             variant="h6"
             style={{
-             marginLeft: '0'
+             marginLeft: '0',
+      
             }}
-            color="black"
+           
           >
-            <div style={{color: "black"}}>플랜</div>
+            <div style={{textPrimary: "#000000"}}>플랜</div>
           </Typography>
           <Link
            to='../main/wishtemplate'
@@ -102,11 +106,12 @@ function MainTemplateGrowth() {
       >
       </div>
       <div style={{height: '10px'}}></div>
-      <Link to="../main/viewtemplate" className="template-overall" style={{justifyContent:'center',color:'black'}}>
+      <Link to="../main/viewtemplate" className="template-overall"key={dummydata.contents_2.id} style={{justifyContent:'center',color:'black'}}>
           {dummydata.contents_2.map(contents_2=>(
+                 <React.Fragment key={uuidv4()}>
             <li key={dummydata.contents_2.id}>
               <div style={{display:'flex',flexDirection:'column',boxShadow: '0px 0px 2px 0.5px #D3d3d3', justifyContent: 
-          "center"}} className="template-all">
+          "center"}} className="template-all"key={dummydata.contents_2.id}>
              <div style={{height: "5px"}}></div>
              <div style={{width: '350px', marginRight:'auto',marginLeft:'auto',display: "flex", flexDirection: "row", justifyContent: 'space-between'}}>
              <div className="template-title">{contents_2.title}</div>
@@ -148,6 +153,7 @@ function MainTemplateGrowth() {
               </div>
               <div style={{height: "15px"}}></div>
             </li>
+            </React.Fragment>
           ))}
       
       </Link>
@@ -157,7 +163,7 @@ function MainTemplateGrowth() {
       </div>
       <div style={{height: '10px'}}></div>
       </ul>
-      <BottomNavBar/>
+      <BottomNavBarPlan/>
     </div>
    
   );
