@@ -4,18 +4,17 @@ import PlaylistAddCheckIcon from "@mui/icons-material/PlaylistAddCheck";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import { Link } from "react-router-dom";
 
-const BottomNavBar = () => {
+const BottomNavBarTodo = () => {
   const [value, setValue] = React.useState(0);
   return (
     <BottomNavigation
-      showLabels
       className="BottomNavBar"
-      value={value}
-      backgroundColor= 'green'
+      value={0}
       height="100px"
       onChange={(event, newValue) => {
         setValue(newValue);
       }}
+      showLabels
     >
       
       <BottomNavigationAction
@@ -24,7 +23,7 @@ const BottomNavBar = () => {
         component={Link}
         to="/main/ericstodo"
       />
-      <div style={{ width: "20vw" }}></div>
+      
       <BottomNavigationAction
         label="Plan"
         icon={<CalendarTodayIcon />}
@@ -35,4 +34,4 @@ const BottomNavBar = () => {
   );
 };
 
-export default BottomNavBar;
+export default BottomNavBarTodo;

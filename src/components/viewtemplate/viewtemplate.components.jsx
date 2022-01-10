@@ -1,9 +1,7 @@
 import "./viewtemplate.components.css";
 import { Link } from "react-router-dom";
-import BottomNavBar from "../globalcomponents/bottomnavbar.components";
+import BottomNavBar from "../globalcomponents/bottomnavbartodo.components";
 import { AppBar, Tabs, Tab } from "@material-ui/core";
-import Typography from "@material-ui/core/Typography";
-import Toolbar from "@material-ui/core/Toolbar";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import dummydata from "../../dummydata/dummydata.json";
@@ -14,6 +12,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import BottomNavBarPlan from "../globalcomponents/bottomnavbarplan.components";
 
 function ViewTemplate() {
   const [open, setOpen] = React.useState(false);
@@ -83,7 +82,7 @@ function ViewTemplate() {
      </div>
   
      
-      <BottomNavBar/>
+      <BottomNavBarPlan/>
     </div>
    
   );
