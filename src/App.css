@@ -4,14 +4,15 @@
   left: 0;
   right: 0;
   height: 45px;
-  color: green;
-  background-color: green;
+
+  font-family: "EnglishDefault";
 }
 .App {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: "KoreanDefault";
 }
 
 #main-container {
@@ -24,4 +25,13 @@
   overflow-y: auto;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
+  font-family: "KoreanDefault";
+}
+@font-face {
+  font-family: "KoreanDefault";
+  src: url("./fonts/PretendardVariable.ttf") format("truetype");
+}
+@font-face {
+  font-family: "EnglishDefault";
+  src: url("./fonts/FontsFree-Net-SFProDisplay-Regular.ttf") format("truetype");
 }

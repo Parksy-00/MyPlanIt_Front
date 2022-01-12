@@ -113,8 +113,7 @@ function MainTemplateRoutine() {
           "center"}} className="template-all">
              <div style={{height: "5px"}}></div>
              <div style={{width: '350px', marginRight:'auto',marginLeft:'auto',display: "flex", flexDirection: "row", justifyContent: 'space-between'}}>
-             <div className="template-title">{contents_1.title}</div>
-  
+             <div style={{marginLeft:'0'}}className="template-title">{contents_1.title}</div>
              </div>
 
              <div style={{height: "8px"}}></div>

@@ -42,7 +42,7 @@ function MainTemplateGrowth() {
             }}
            
           >
-            <div style={{textPrimary: "#000000"}}>플랜</div>
+            <div style={{color: "black"}}>플랜</div>
           </Typography>
           <Link
            to='../main/wishtemplate'
@@ -114,7 +114,7 @@ function MainTemplateGrowth() {
           "center"}} className="template-all"key={dummydata.contents_2.id}>
              <div style={{height: "5px"}}></div>
              <div style={{width: '350px', marginRight:'auto',marginLeft:'auto',display: "flex", flexDirection: "row", justifyContent: 'space-between'}}>
-             <div className="template-title">{contents_2.title}</div>
+             <div style={{marginLeft:'0'}} className="template-title">{contents_2.title}</div>
   
              </div>
 
