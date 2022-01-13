@@ -18,6 +18,8 @@ import ViewTemplate from "./components/viewtemplate/viewtemplate.components";
 import MainTemplateGrowth from "./components/maintemplategrowth/maintemplategrowth.components";
 import MoreTemplate from "./components/moretemplate/moretemplate.components";
 import SearchTemplate from "./components/searchtemplate/searchtemplate.components";
+import TodoPlan from "./components/todoplan/todoplan.components";
+import TodoMy from "./components/todomy/todomy.components";
 function App() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -120,8 +122,8 @@ function App() {
           <Route path="/onboard3" element={<Onboard3 />} />
           <Route path="/find-id" element={<FindID />} />
           <Route path="/find-pw" element={<FindPW />} />
-          <Route path="/main" element={<EricsTodo />} />
-        <Route path="/main/ericstodo" element={<EricsTodo />} />
+          <Route path="/main" element={<TodoPlan />} />
+        <Route path="/main/todoplan" element={<TodoPlan />} />
         <Route path="/main/maintemplateroutine" element={<MainTemplateRoutine />} />
         <Route path="/main/maintemplategrowth" element={<MainTemplateGrowth />} />
         <Route path="/main/wishtemplate" element={<WishTemplate />} />
@@ -129,6 +131,7 @@ function App() {
         <Route path="/main/maintemplateroutine/moretemplate" element={<MoreTemplate />} />
         <Route path="/main/moretemplate" element={<MoreTemplate />} />
         <Route path="/main/searchtemplate" element={<SearchTemplate />} />
+        <Route path="/main/todomy" element={<TodoMy />} />
 
         </Routes>
       </div>
