@@ -1,6 +1,7 @@
 
 import { Link } from "react-router-dom";
 import BottomNavBar from "../globalcomponents/bottomnavbartodo.components";
+
 import { useNavigate } from "react-router-dom";
 import React,{useState} from 'react';
 import { v4 as uuidv4 } from 'uuid';
@@ -12,6 +13,7 @@ import {
 } from '@material-ui/pickers';
 import { ko } from "date-fns/locale";
 
+
 function EricsTodo() {
     let navigate = useNavigate();
 
@@ -22,6 +24,7 @@ function EricsTodo() {
   }
   return (
     <div className="container">
+
        <MuiPickersUtilsProvider locale={ko} utils={DateFnsUtils}>
       <KeyboardDatePicker
         disableToolbar
@@ -76,6 +79,7 @@ function EricsTodo() {
        <div style={{height: '10px'}}></div>
      
       <BottomNavBarTodo/>
+
     </div>
    
   );
