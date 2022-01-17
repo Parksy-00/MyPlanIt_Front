@@ -127,7 +127,7 @@ function App() {
         <Route path="/main/maintemplateroutine" element={<MainTemplateRoutine />} />
         <Route path="/main/maintemplategrowth" element={<MainTemplateGrowth />} />
         <Route path="/main/wishtemplate" element={<WishTemplate />} />
-        <Route path="/main/viewtemplate" element={<ViewTemplate />} />
+        <Route path="/main/viewtemplate/:id" element={<ViewTemplate />} />
         <Route path="/main/maintemplateroutine/moretemplate" element={<MoreTemplate />} />
         <Route path="/main/moretemplate" element={<MoreTemplate />} />
         <Route path="/main/searchtemplate" element={<SearchTemplate />} />

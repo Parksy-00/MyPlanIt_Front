@@ -11,13 +11,19 @@ import MoreTemplate from "../moretemplate/moretemplate.components";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import React, { useState, useEffect,Component } from "react";
+import { NavLink, Route } from 'react-router-dom';
+import axios from "axios";
 import { v4 as uuidv4 } from 'uuid';
 import BottomNavBarPlan from "../globalcomponents/bottomnavbarplan.components";
-import axios from "axios";
-
+import { Switch } from "@mui/material";
+import ViewTemplate from "../viewtemplate/viewtemplate.components";
+import {
+  useParams
+} from "react-router-dom";
 
 function MainTemplateRoutine() {
     let navigate = useNavigate();
+    let {plan_id} = useParams();
     const categories = [
       {title: '일주일을 알차게'},
       {title: '건강한 몸'}
@@ -133,10 +139,15 @@ function MainTemplateRoutine() {
       </div>
       <div style={{height: '10px'}}></div>
    
-      <Link to="../main/viewtemplate" className="template-overall" style={{justifyContent:'center',color:'black'}}>
+      
           {users.Routine.map(Routine=>(
-            <React.Fragment key={uuidv4()}>
+    
+           
+
             <li key={users.Routine.id}>
+               <NavLink to={"../main/viewtemplate/"+Routine.id} className="template-overall" style={{justifyContent:'center',color:'black'}}>
+ 
+ <React.Fragment key={uuidv4()}>
               <div style={{display:'flex',flexDirection:'column', boxShadow: '0px 0px 2px 0.5px #Dedede', justifyContent: 
           "center"}} className="template-all">
              <div style={{height: "5px"}}></div>
@@ -145,7 +156,7 @@ function MainTemplateRoutine() {
              </div>
 
              <div style={{height: "8px"}}></div>
-              <img className="template-photourl" src= {Routine.main_img_url} style={{width: '350px', height: '130px'}}></img>
+              <img className="template-photourl" src= {Routine.intro_img_url} style={{width: '350px', height: '130px'}}></img>
               <div style={{display:'flex',flexDirection:'column', width:'350px', paddingLeft:'5px'}}>
                 
               <div style={{display: 'flex', flexDirection: 'row', justifyContent:'space-between'}}>
@@ -178,11 +189,14 @@ function MainTemplateRoutine() {
               </div>
               </div>
               <div style={{height: "15px"}}></div>
+              </React.Fragment>
+            </NavLink>
             </li>
-            </React.Fragment>
+         
+         
           ))}
       
-      </Link>
+     
       <div
         className="textbox"
       >

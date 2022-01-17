@@ -11,9 +11,15 @@ import MoreTemplate from "../moretemplate/moretemplate.components";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import React, { useState, useEffect,Component } from "react";
+import { NavLink, Route } from 'react-router-dom';
+import axios from "axios";
 import { v4 as uuidv4 } from 'uuid';
 import BottomNavBarPlan from "../globalcomponents/bottomnavbarplan.components";
-import axios from "axios";
+import { Switch } from "@mui/material";
+import ViewTemplate from "../viewtemplate/viewtemplate.components";
+import {
+  useParams
+} from "react-router-dom";
 
 function MainTemplateGrowth() {
     let navigate = useNavigate();
@@ -132,57 +138,61 @@ function MainTemplateGrowth() {
       >
       </div>
       <div style={{height: '10px'}}></div>
-      <Link to="../main/viewtemplate" className="template-overall"key={users.Growth.id} style={{justifyContent:'center',color:'black'}}>
-          {users.Growth.map(Growth=>(
-                 <React.Fragment key={uuidv4()}>
-            <li key={users.Growth.id}>
-              <div style={{display:'flex',flexDirection:'column',boxShadow: '0px 0px 2px 0.5px #D3d3d3', justifyContent: 
-          "center"}} className="template-all"key={users.Growth.id}>
-             <div style={{height: "5px"}}></div>
-             <div style={{width: '350px', marginRight:'auto',marginLeft:'auto',display: "flex", flexDirection: "row", justifyContent: 'space-between'}}>
-             <div style={{marginLeft:'0'}} className="template-title">{Growth.name}</div>
-  
-             </div>
+      {users.Growth.map(Growth=>(
+    
+           
 
-             <div style={{height: "8px"}}></div>
-              <img className="template-photourl" src= {Growth.main_img_url} style={{width: '350px', height: '130px'}}></img>
-              <div style={{display:'flex',flexDirection:'column', width:'350px', paddingLeft:'5px'}}>
-                
-              <div style={{display: 'flex', flexDirection: 'row', justifyContent:'space-between'}}>
-              <div style={{display: 'flex', flexDirection: 'row', marginTop: '10px', width: '280px'}}>
-              <img className="template-writerphoto" src= {Growth.writer_img} style={{width: '40px', height: '40px',borderRadius:'20px'}}></img>
-              <div style={{display: 'flex', flexDirection: 'column',marginLeft: '10px'}}>
-              <div className="template-writerintro" style={{fontSize: '10px',color:'gray', height: '15px'}}>{Growth.writer_intro}</div>
-              <div style={{fontSize:'10px'}}>{Growth.writer_name}</div>
-              </div>
-              </div>
-              <div style={{marginTop:'auto',marginBottom:'auto', color: '#7965f4'}}>
-             {Growth.checkHeart ? 
-             <FavoriteIcon />:
-             <FavoriteBorderIcon />}
-             </div>
-              </div>
-              <div className="template-content" style={{fontSize:'12px'}}>{Growth.desc}</div>
-              <div style={{height: '5px'}}></div>
-              <div style={{display:'flex', flexDirection:'row',justifyContent:'left'}}>
-                <div className="template-tag">
-                {Growth.tags[0]}
-                </div>
-                <div style={{width: '10px'}}>
-                </div>
-                <div className="template-tag">
-                {Growth.tags[1]}
-                </div>
-              </div>
-              <div style={{height: '5px'}}></div>
-              </div>
-              </div>
-              <div style={{height: "15px"}}></div>
-            </li>
-            </React.Fragment>
-          ))}
-      
-      </Link>
+    <li key={users.Growth.id}>
+       <NavLink to={"../main/viewtemplate/"+Growth.id} className="template-overall" style={{justifyContent:'center',color:'black'}}>
+
+<React.Fragment key={uuidv4()}>
+      <div style={{display:'flex',flexDirection:'column', boxShadow: '0px 0px 2px 0.5px #Dedede', justifyContent: 
+  "center"}} className="template-all">
+     <div style={{height: "5px"}}></div>
+     <div style={{width: '350px', marginRight:'auto',marginLeft:'auto',display: "flex", flexDirection: "row", justifyContent: 'space-between'}}>
+     <div style={{marginLeft:'0'}}className="template-title">{Growth.name}</div>
+     </div>
+
+     <div style={{height: "8px"}}></div>
+      <img className="template-photourl" src= {Growth.intro_img_url} style={{width: '350px', height: '130px'}}></img>
+      <div style={{display:'flex',flexDirection:'column', width:'350px', paddingLeft:'5px'}}>
+        
+      <div style={{display: 'flex', flexDirection: 'row', justifyContent:'space-between'}}>
+      <div style={{display: 'flex', flexDirection: 'row', marginTop: '10px', width: '280px'}}>
+      <img className="template-writerphoto" src= {Growth.writer_img} style={{width: '40px', height: '40px',borderRadius:'20px'}}></img>
+      <div style={{display: 'flex', flexDirection: 'column',marginLeft: '10px'}}>
+      <div className="template-writerintro" style={{fontSize: '10px',color:'gray', height: '15px'}}>{Growth.writer_intro}</div>
+      <div style={{fontSize:'10px'}}>{Growth.writer_name}</div>
+      </div>
+      </div>
+      <div style={{marginTop:'auto',marginBottom:'auto', color: '#7965f4'}}>
+     {Growth.checkHeart ? 
+     <FavoriteIcon />:
+     <FavoriteBorderIcon />}
+     </div>
+      </div>
+      <div className="template-content" style={{fontSize:'12px'}}>{Growth.desc}</div>
+      <div style={{height: '5px'}}></div>
+      <div style={{display:'flex', flexDirection:'row',justifyContent:'left'}}>
+        <div className="template-tag">
+        {Growth.tags[0]}
+        </div>
+        <div style={{width: '10px'}}>
+        </div>
+        <div className="template-tag">
+        {Growth.tags[1]}
+        </div>
+      </div>
+      <div style={{height: '5px'}}></div>
+      </div>
+      </div>
+      <div style={{height: "15px"}}></div>
+      </React.Fragment>
+    </NavLink>
+    </li>
+ 
+ 
+  ))}
       <div
         className="textbox"
       >

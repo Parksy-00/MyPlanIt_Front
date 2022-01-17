@@ -5,7 +5,7 @@ import { AppBar, Tabs, Tab } from "@material-ui/core";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import dummydata from "../../dummydata/dummydata.json";
-import * as React from 'react';
+import React, { useState, useEffect,Component } from "react";
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -13,14 +13,18 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import BottomNavBarPlan from "../globalcomponents/bottomnavbarplan.components";
+import axios from "axios";
+import { render } from "@testing-library/react";
+import {
+  useParams,
+} from "react-router-dom";
 
-function ViewTemplate() {
+function ViewTemplate(props) {
   const [open, setOpen] = React.useState(false);
-
+  
   const handleClickOpen = () => {
     setOpen(true);
   };
-
   const handleClose = (event, reason) => {
     if(reason&&reason == "backdropClick")
     return;
@@ -29,6 +33,33 @@ function ViewTemplate() {
      navigate("../main"); 백엔드 연결 후 이거 여기다가 추가하면 될 듯
     */
   };
+  const {id} = useParams();
+  const [users, setUsers] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+  
+    useEffect(() => {
+      const fetchUsers = async () => {
+        try {
+          setError(null);
+          setUsers(null);
+          setLoading(true);
+          const response = await axios.get(
+            "https://myplanit.link/plans/"+ id
+          );
+          setUsers(response.data); 
+        } catch (e) {
+          setError(e);
+        }
+        setLoading(false);
+      };
+  
+      fetchUsers();
+    }, []);
+  
+    if (loading) return <div>로딩중..</div>;
+    if (error) return <div>에러가 발생했습니다</div>;
+    if (!users) return null;
 
   return (
     <div className="view-content">
@@ -50,7 +81,7 @@ function ViewTemplate() {
      </div>
      
      <div style={{display:"flex", flexDirection:"column",width:"10", position:'absolute',top:"0", alignContent:"center"}}>
-     <img className="view-image" src= {dummydata.content_image.imagefile} style={{width: '100vw'}}></img>
+     <img className="view-image" src= {users.main_img_url} style={{width: '100vw'}}></img>
      <button
         onClick={handleClickOpen}
         className="add-button"
@@ -85,7 +116,7 @@ function ViewTemplate() {
       <BottomNavBarPlan/>
     </div>
    
-  );
-}
+  );}
+
 
 export default ViewTemplate;
