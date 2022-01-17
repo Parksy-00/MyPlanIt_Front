@@ -10,9 +10,11 @@ import dummydata from "../../dummydata/dummydata.json";
 import MoreTemplate from "../moretemplate/moretemplate.components";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import * as React from 'react';
+import React, { useState, useEffect,Component } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import BottomNavBarPlan from "../globalcomponents/bottomnavbarplan.components";
+import axios from "axios";
+
 
 function MainTemplateRoutine() {
     let navigate = useNavigate();
@@ -27,7 +29,32 @@ function MainTemplateRoutine() {
       );
 
     });
-    
+    const [users, setUsers] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+  
+    useEffect(() => {
+      const fetchUsers = async () => {
+        try {
+          setError(null);
+          setUsers(null);
+          setLoading(true);
+          const response = await axios.get(
+            'https://myplanit.link/plans'
+          );
+          setUsers(response.data); 
+        } catch (e) {
+          setError(e);
+        }
+        setLoading(false);
+      };
+  
+      fetchUsers();
+    }, []);
+  
+    if (loading) return <div>로딩중..</div>;
+    if (error) return <div>에러가 발생했습니다</div>;
+    if (!users) return null;
   return (
     <div className="container">
          <AppBar position="static" elevation={0} style={{background: 'white',width: "100vw"}}>
@@ -105,45 +132,46 @@ function MainTemplateRoutine() {
       >
       </div>
       <div style={{height: '10px'}}></div>
+   
       <Link to="../main/viewtemplate" className="template-overall" style={{justifyContent:'center',color:'black'}}>
-          {dummydata.contents_1.map(contents_1=>(
+          {users.Routine.map(Routine=>(
             <React.Fragment key={uuidv4()}>
-            <li key={dummydata.contents_1.id}>
+            <li key={users.Routine.id}>
               <div style={{display:'flex',flexDirection:'column', boxShadow: '0px 0px 2px 0.5px #Dedede', justifyContent: 
           "center"}} className="template-all">
              <div style={{height: "5px"}}></div>
              <div style={{width: '350px', marginRight:'auto',marginLeft:'auto',display: "flex", flexDirection: "row", justifyContent: 'space-between'}}>
-             <div style={{marginLeft:'0'}}className="template-title">{contents_1.title}</div>
+             <div style={{marginLeft:'0'}}className="template-title">{Routine.name}</div>
              </div>
 
              <div style={{height: "8px"}}></div>
-              <img className="template-photourl" src= {contents_1.photourl} style={{width: '350px', height: '130px'}}></img>
+              <img className="template-photourl" src= {Routine.main_img_url} style={{width: '350px', height: '130px'}}></img>
               <div style={{display:'flex',flexDirection:'column', width:'350px', paddingLeft:'5px'}}>
                 
               <div style={{display: 'flex', flexDirection: 'row', justifyContent:'space-between'}}>
               <div style={{display: 'flex', flexDirection: 'row', marginTop: '10px', width: '280px'}}>
-              <img className="template-writerphoto" src= {contents_1.writerphoto} style={{width: '40px', height: '40px',borderRadius:'20px'}}></img>
+              <img className="template-writerphoto" src= {Routine.writer_img} style={{width: '40px', height: '40px',borderRadius:'20px'}}></img>
               <div style={{display: 'flex', flexDirection: 'column',marginLeft: '10px'}}>
-              <div className="template-writerintro" style={{fontSize: '10px',color:'gray', height: '15px'}}>{contents_1.writerintro}</div>
-              <div style={{fontSize:'10px'}}>{contents_1.writer}</div>
+              <div className="template-writerintro" style={{fontSize: '10px',color:'gray', height: '15px'}}>{Routine.writer_intro}</div>
+              <div style={{fontSize:'10px'}}>{Routine.writer_name}</div>
               </div>
               </div>
               <div style={{marginTop:'auto',marginBottom:'auto', color: '#7965f4'}}>
-             {contents_1.checkHeart ? 
+             {Routine.checkHeart ? 
              <FavoriteIcon />:
              <FavoriteBorderIcon />}
              </div>
               </div>
-              <div className="template-content" style={{fontSize:'12px'}}>{contents_1.content}</div>
+              <div className="template-content" style={{fontSize:'12px'}}>{Routine.desc}</div>
               <div style={{height: '5px'}}></div>
               <div style={{display:'flex', flexDirection:'row',justifyContent:'left'}}>
                 <div className="template-tag">
-                {contents_1.tag1}
+                {Routine.tags[0]}
                 </div>
                 <div style={{width: '10px'}}>
                 </div>
                 <div className="template-tag">
-                {contents_1.tag2}
+                {Routine.tags[1]}
                 </div>
               </div>
               <div style={{height: '5px'}}></div>
