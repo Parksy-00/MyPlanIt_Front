@@ -16,24 +16,36 @@ import BottomNavBarPlan from "../globalcomponents/bottomnavbarplan.components";
 import axios from "axios";
 import { render } from "@testing-library/react";
 import {
-  useParams,
+  useParams
 } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+
 
 function ViewTemplate(props) {
+  const {id} = useParams();
   const [open, setOpen] = React.useState(false);
-  
+  const navigate = useNavigate();
   const handleClickOpen = () => {
     setOpen(true);
   };
   const handleClose = (event, reason) => {
     if(reason&&reason == "backdropClick")
     return;
-    setOpen(false);
     /*
-     navigate("../main"); 백엔드 연결 후 이거 여기다가 추가하면 될 듯
-    */
+    axios
+      .post(
+        "https://myplanit.link/plans/"+id+"buy",
+      
+      )
+      .then((response) => {
+        console.log(response);
+        navigate("/main");
+      })
+      */
+     navigate("../main");
+    setOpen(false);
   };
-  const {id} = useParams();
+ 
   const [users, setUsers] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
