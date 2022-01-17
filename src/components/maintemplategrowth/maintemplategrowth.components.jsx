@@ -10,10 +10,12 @@ import dummydata from "../../dummydata/dummydata.json";
 import MoreTemplate from "../moretemplate/moretemplate.components";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+
 import React, { useState, useEffect,Component } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import BottomNavBarPlan from "../globalcomponents/bottomnavbarplan.components";
 import axios from "axios";
+
 
 function MainTemplateGrowth() {
     let navigate = useNavigate();
@@ -68,7 +70,7 @@ function MainTemplateGrowth() {
             }}
            
           >
-            <div style={{color: "black"}}>플랜</div>
+            <div style={{textPrimary: "#000000"}}>플랜</div>
           </Typography>
           <Link
            to='../main/wishtemplate'
@@ -132,12 +134,14 @@ function MainTemplateGrowth() {
       >
       </div>
       <div style={{height: '10px'}}></div>
+
       <Link to="../main/viewtemplate" className="template-overall"key={users.Growth.id} style={{justifyContent:'center',color:'black'}}>
           {users.Growth.map(Growth=>(
                  <React.Fragment key={uuidv4()}>
             <li key={users.Growth.id}>
               <div style={{display:'flex',flexDirection:'column',boxShadow: '0px 0px 2px 0.5px #D3d3d3', justifyContent: 
           "center"}} className="template-all"key={users.Growth.id}>
+
              <div style={{height: "5px"}}></div>
              <div style={{width: '350px', marginRight:'auto',marginLeft:'auto',display: "flex", flexDirection: "row", justifyContent: 'space-between'}}>
              <div style={{marginLeft:'0'}} className="template-title">{Growth.name}</div>

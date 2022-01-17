@@ -10,6 +10,7 @@ import dummydata from "../../dummydata/dummydata.json";
 import MoreTemplate from "../moretemplate/moretemplate.components";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+
 import React, { useState, useEffect,Component } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import BottomNavBarPlan from "../globalcomponents/bottomnavbarplan.components";
@@ -134,9 +135,11 @@ function MainTemplateRoutine() {
       <div style={{height: '10px'}}></div>
    
       <Link to="../main/viewtemplate" className="template-overall" style={{justifyContent:'center',color:'black'}}>
+
           {users.Routine.map(Routine=>(
             <React.Fragment key={uuidv4()}>
             <li key={users.Routine.id}>
+
               <div style={{display:'flex',flexDirection:'column', boxShadow: '0px 0px 2px 0.5px #Dedede', justifyContent: 
           "center"}} className="template-all">
              <div style={{height: "5px"}}></div>
