@@ -121,15 +121,23 @@ function App() {
           <Route path="/find-id" element={<FindID />} />
           <Route path="/find-pw" element={<FindPW />} />
           <Route path="/main" element={<EricsTodo />} />
-        <Route path="/main/ericstodo" element={<EricsTodo />} />
-        <Route path="/main/maintemplateroutine" element={<MainTemplateRoutine />} />
-        <Route path="/main/maintemplategrowth" element={<MainTemplateGrowth />} />
-        <Route path="/main/wishtemplate" element={<WishTemplate />} />
-        <Route path="/main/viewtemplate" element={<ViewTemplate />} />
-        <Route path="/main/maintemplateroutine/moretemplate" element={<MoreTemplate />} />
-        <Route path="/main/moretemplate" element={<MoreTemplate />} />
-        <Route path="/main/searchtemplate" element={<SearchTemplate />} />
-
+          <Route path="/main/ericstodo" element={<EricsTodo />} />
+          <Route
+            path="/main/maintemplateroutine"
+            element={<MainTemplateRoutine />}
+          />
+          <Route
+            path="/main/maintemplategrowth"
+            element={<MainTemplateGrowth />}
+          />
+          <Route path="/main/wishtemplate" element={<WishTemplate />} />
+          <Route path="/main/viewtemplate" element={<ViewTemplate />} />
+          <Route
+            path="/main/maintemplateroutine/moretemplate"
+            element={<MoreTemplate />}
+          />
+          <Route path="/main/moretemplate" element={<MoreTemplate />} />
+          <Route path="/main/searchtemplate" element={<SearchTemplate />} />
         </Routes>
       </div>
     </div>
