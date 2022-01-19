@@ -1,35 +1,77 @@
 import "./viewtemplate.components.css";
 import { Link } from "react-router-dom";
-import BottomNavBar from "../globalcomponents/bottomnavbar.components";
+import BottomNavBar from "../globalcomponents/bottomnavbartodo.components";
 import { AppBar, Tabs, Tab } from "@material-ui/core";
-import Typography from "@material-ui/core/Typography";
-import Toolbar from "@material-ui/core/Toolbar";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import dummydata from "../../dummydata/dummydata.json";
-import * as React from 'react';
+import React, { useState, useEffect,Component } from "react";
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import BottomNavBarPlan from "../globalcomponents/bottomnavbarplan.components";
+import axios from "axios";
+import { render } from "@testing-library/react";
+import {
+  useParams
+} from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
-function ViewTemplate() {
+
+function ViewTemplate(props) {
+  const {id} = useParams();
   const [open, setOpen] = React.useState(false);
-
+  const navigate = useNavigate();
   const handleClickOpen = () => {
     setOpen(true);
   };
-
   const handleClose = (event, reason) => {
     if(reason&&reason == "backdropClick")
     return;
-    setOpen(false);
     /*
-     navigate("../main"); 백엔드 연결 후 이거 여기다가 추가하면 될 듯
-    */
+    axios
+      .post(
+        "https://myplanit.link/plans/"+id+"buy",
+      
+      )
+      .then((response) => {
+        console.log(response);
+        navigate("/main");
+      })
+      */
+     navigate("../main");
+    setOpen(false);
   };
+ 
+  const [users, setUsers] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+  
+    useEffect(() => {
+      const fetchUsers = async () => {
+        try {
+          setError(null);
+          setUsers(null);
+          setLoading(true);
+          const response = await axios.get(
+            "https://myplanit.link/plans/"+ id
+          );
+          setUsers(response.data); 
+        } catch (e) {
+          setError(e);
+        }
+        setLoading(false);
+      };
+  
+      fetchUsers();
+    }, []);
+  
+    if (loading) return <div>로딩중..</div>;
+    if (error) return <div>에러가 발생했습니다</div>;
+    if (!users) return null;
 
   return (
     <div className="view-content">
@@ -51,7 +93,7 @@ function ViewTemplate() {
      </div>
      
      <div style={{display:"flex", flexDirection:"column",width:"10", position:'absolute',top:"0", alignContent:"center"}}>
-     <img className="view-image" src= {dummydata.content_image.imagefile} style={{width: '100vw'}}></img>
+     <img className="view-image" src= {users.main_img_url} style={{width: '100vw'}}></img>
      <button
         onClick={handleClickOpen}
         className="add-button"
@@ -83,10 +125,10 @@ function ViewTemplate() {
      </div>
   
      
-      <BottomNavBar/>
+      <BottomNavBarPlan/>
     </div>
    
-  );
-}
+  );}
+
 
 export default ViewTemplate;

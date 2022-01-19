@@ -102,7 +102,7 @@ function Login() {
           </Link>
         </p>
       </span>
-      <Link to="../main/ericstodo">t login</Link>
+      <Link to="../main/todoplan">t login</Link>
     </div>
   );
 }
