@@ -27,7 +27,8 @@ function Login() {
         }
       )
       .then((response) => {
-        console.log(response);
+        console.log(response.data.jwt_token.access_token);
+        console.log(response.data.jwt_token.refresh_token);
         navigate("/main");
       })
       .catch((error) => {
