@@ -125,9 +125,7 @@ function TodoPlan() {
       </Card>
       <Card style={{ width: 327, height: 190, marginTop: 9 }}>
         <span style={{ display: "flex" }}>
-          <span
-            style={{ marginTop: "2px", fontWeight: "bold", fontSize: "16px" }}
-          >
+          <span style={{ marginTop: "2px", fontSize: "16px" }}>
             <span>데이트 요리 10가지 배우기</span>
             <span
               style={{
@@ -141,19 +139,19 @@ function TodoPlan() {
         <hr style={{ opacity: 0.2 }} />
         <div style={{ display: "flex", flexDirection: "column" }}>
           <Checkbox
-            style={{ marginLeft: 0, marginTop: 12, fontWeight: "bold" }}
+            style={{ marginLeft: 0, marginTop: 12 }}
             onChange={onChange}
           >
             차돌박이 파스타 재료 사기
           </Checkbox>
           <Checkbox
-            style={{ marginLeft: 0, marginTop: 16, fontWeight: "bold" }}
+            style={{ marginLeft: 0, marginTop: 16 }}
             onChange={onChange}
           >
             차돌박이 파스타 재료 손질하기
           </Checkbox>
           <Checkbox
-            style={{ marginLeft: 0, marginTop: 16, fontWeight: "bold" }}
+            style={{ marginLeft: 0, marginTop: 16 }}
             onChange={onChange}
           >
             차돌박이 파스타 요리하기
@@ -162,9 +160,7 @@ function TodoPlan() {
       </Card>
       <Card style={{ width: 327, height: 150, marginTop: 9 }}>
         <span style={{ display: "flex" }}>
-          <span
-            style={{ marginTop: "2px", fontWeight: "bold", fontSize: "16px" }}
-          >
+          <span style={{ marginTop: "2px", fontSize: "16px" }}>
             <span>엑셀 함수 10개 배우기</span>
             <span style={{ marginLeft: 70 }}>
               <span style={{ color: "#8977F7" }}>33%</span> 달성
@@ -174,13 +170,13 @@ function TodoPlan() {
         <hr style={{ opacity: 0.2 }} />
         <div style={{ display: "flex", flexDirection: "column" }}>
           <Checkbox
-            style={{ marginLeft: 0, marginTop: 12, fontWeight: "bold" }}
+            style={{ marginLeft: 0, marginTop: 12 }}
             onChange={onChange}
           >
             SUMIF 함수
           </Checkbox>
           <Checkbox
-            style={{ marginLeft: 0, marginTop: 16, fontWeight: "bold" }}
+            style={{ marginLeft: 0, marginTop: 16 }}
             onChange={onChange}
           >
             VLookUp 함수
