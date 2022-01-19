@@ -13,7 +13,6 @@ import Onboard2 from "./components/onboard/onboard2.components";
 import Onboard3 from "./components/onboard/onboard3.components";
 import WishTemplate from "./components/wishtemplate/wishtemplate.components";
 import MainTemplateRoutine from "./components/maintemplateroutine/maintemplateroutine.components";
-import EricsTodo from "./components/ericstodo/ericstodo.components";
 import ViewTemplate from "./components/viewtemplate/viewtemplate.components";
 import MainTemplateGrowth from "./components/maintemplategrowth/maintemplategrowth.components";
 import MoreTemplate from "./components/moretemplate/moretemplate.components";
