@@ -12,7 +12,6 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import React, { useState, useEffect,Component } from "react";
 import { NavLink, Route } from 'react-router-dom';
-import axios from "axios";
 import { v4 as uuidv4 } from 'uuid';
 import BottomNavBarPlan from "../globalcomponents/bottomnavbarplan.components";
 import { Switch } from "@mui/material";
@@ -21,8 +20,12 @@ import {
   useParams
 } from "react-router-dom";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-
-
+import axios from "axios";
+const refreshToken =  localStorage.getItem("refreshToken");
+const accessToken =  localStorage.getItem("accessToken");
+axios.interceptors.request.use(
+  
+)
 function WishTemplate() {
     let navigate = useNavigate();
     let {plan_id} = useParams();
@@ -30,6 +33,7 @@ function WishTemplate() {
       {title: '일주일을 알차게'},
       {title: '건강한 몸'}
     ];
+ 
     const renderCategories = categories.map(categories =>{
       return (
         
@@ -40,7 +44,6 @@ function WishTemplate() {
     const [users, setUsers] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-  
     useEffect(() => {
       const fetchUsers = async () => {
         try {
@@ -48,8 +51,14 @@ function WishTemplate() {
           setUsers(null);
           setLoading(true);
           const response = await axios.get(
-            'https://myplanit.link/plans'
-          );
+            'https://myplanit.link/myplans/wish',
+            {
+              headers: {
+                access_token: accessToken,
+                      refresh_token:
+                  refreshToken  },
+            }
+         );
           setUsers(response.data); 
         } catch (e) {
           setError(e);

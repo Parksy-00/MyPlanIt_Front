@@ -10,7 +10,9 @@ function Login() {
   let navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const access_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQyNDQ5MDUyLCJpYXQiOjE2NDIzNjI2NTIsImp0aSI6ImZmNWVkMzQzNTJkNzQxZDI5YTk3ZTg0ZTFjNTkwNmUwIiwidXNlcl9pZCI6Mzd9.LhzBMGI7ibYwUqPtmbvANRLsMBL_abdxruDNwQhY2D0'
+  const apiUrl = 'https://myplanit.link/login'
+  
   function attemptLogin() {
     axios
       .post(
@@ -20,15 +22,24 @@ function Login() {
           password: password,
         },
         {
+
           withCredentials: true,
+          
           headers: {
             "Content-Type": "application/json",
-            
+          
           },
+          
+          
         }
+        
       )
       .then((response) => {
         console.log(response);
+        console.log(response.data.jwt_token.access_token);
+        console.log(response.data.jwt_token.refresh_token);
+        localStorage.setItem("accessToken", response.data.jwt_token.access_token);
+        localStorage.setItem("refreshToken", response.data.jwt_token.refresh_token);
         navigate("/main");
       })
       .catch((error) => {
