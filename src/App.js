@@ -20,6 +20,8 @@ import MoreTemplate from "./components/moretemplate/moretemplate.components";
 import SearchTemplate from "./components/searchtemplate/searchtemplate.components";
 import TodoPlan from "./components/todoplan/todoplan.components";
 import TodoMy from "./components/todomy/todomy.components";
+import BuyTemplate from "./components/wishtemplate/buytemplate.components";
+import UseTemplate from "./components/wishtemplate/usetemplate.components";
 function App() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -131,6 +133,8 @@ function App() {
         <Route path="/main/maintemplateroutine/moretemplate" element={<MoreTemplate />} />
         <Route path="/main/moretemplate" element={<MoreTemplate />} />
         <Route path="/main/searchtemplate" element={<SearchTemplate />} />
+        <Route path="/main/buytemplate" element={<BuyTemplate />} />
+        <Route path="/main/usetemplate" element={<UseTemplate />} />
         <Route path="/main/todomy" element={<TodoMy />} />
 
         </Routes>

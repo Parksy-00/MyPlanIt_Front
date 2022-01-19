@@ -31,18 +31,24 @@ function ViewTemplate(props) {
   const handleClose = (event, reason) => {
     if(reason&&reason == "backdropClick")
     return;
-    /*
     axios
       .post(
-        "https://myplanit.link/plans/"+id+"buy",
-      
+        "https://myplanit.link/plans/"+id+"/buy",
+      {
+         "message": "",
+      },
+      {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "application/json",
+          
+        }
+      }
       )
       .then((response) => {
         console.log(response);
         navigate("/main");
       })
-      */
-     navigate("../main");
     setOpen(false);
   };
  
