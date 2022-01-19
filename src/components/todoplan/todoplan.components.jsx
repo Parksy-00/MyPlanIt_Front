@@ -91,7 +91,7 @@ function TodoPlan() {
             style={{
               display: "flex",
               marginTop: "2px",
-              fontWeight: "bold",
+              // fontWeight: "bold",
               fontSize: "16px",
             }}
           >
@@ -104,19 +104,19 @@ function TodoPlan() {
         <hr style={{ opacity: 0.2 }} />
         <div style={{ display: "flex", flexDirection: "column" }}>
           <Checkbox
-            style={{ marginLeft: 0, marginTop: 12, fontWeight: "bold" }}
+            style={{ marginLeft: 0, marginTop: 12 }}
             onChange={onChange}
           >
             소비패턴 분석하기
           </Checkbox>
           <Checkbox
-            style={{ marginLeft: 0, marginTop: 16, fontWeight: "bold" }}
+            style={{ marginLeft: 0, marginTop: 16 }}
             onChange={onChange}
           >
             저금계좌 설립하기
           </Checkbox>
           <Checkbox
-            style={{ marginLeft: 0, marginTop: 16, fontWeight: "bold" }}
+            style={{ marginLeft: 0, marginTop: 16 }}
             onChange={onChange}
           >
             자동이체 걸어놓기
