@@ -87,7 +87,7 @@ function Signup1({
       <div className="main">
         <div className="id-input">
           <p style={{ marginBottom:"8px", marginLeft: "10px", fontFamily: "PretendardMedium", fontSize:"14px"}}>아이디 (이메일)</p>
-          <Input
+          <Input id="inputID"
           style={{fontFamily: "PretendardRegular", fontSize:"14px"}}
             className="email-input"
             size="large"
@@ -100,12 +100,13 @@ function Signup1({
                 <span />
               )
             }
-            style={{ width: "327px", marginBottom: "5px" }}
+            style={{ width: "327px", marginBottom: "5px", borderColor: "#EDEDED" }}
           />
         </div>
         <div className="pw-input">
           <p style={{marginBottom:"8px", marginLeft: "10px",fontFamily: "PretendardMedium", fontSize:"14px"}}>비밀번호</p>
           <Input
+          id="inputID"
             type="password"
             className="password-input"
             size="large"
@@ -120,12 +121,13 @@ function Signup1({
               )
             }
             placeholder="영문, 숫자, 특수문자 포함 8자 이상"
-            style={{ width: "327px", marginBottom: "5px" }}
+            style={{ width: "327px", marginBottom: "5px", borderColor: "#EDEDED" }}
           />
         </div>
         <div className="pw-check">
           <p style={{marginBottom:"8px", marginLeft: "10px",fontFamily: "PretendardMedium", fontSize:"14px" }}>비밀번호 확인</p>
           <Input
+          id="inputID"
             type="password"
             className="password-check"
             size="large"
@@ -144,12 +146,14 @@ function Signup1({
               width: "327px",
               marginBottom: "5px",
               borderRadius: "5px",
+              borderColor: "#EDEDED"
             }}
           />
         </div>
         <div className="nm-input">
           <p style={{marginBottom:"8px", marginLeft: "10px",fontFamily: "PretendardMedium", fontSize:"14px" }}>이름</p>
           <Input
+          id="inputID"
             className="name-input"
             size="large"
             placeholder="실명 입력"
@@ -169,6 +173,7 @@ function Signup1({
               width: "327px",
               marginBottom: "12px",
               borderRadius: "5px",
+              borderColor: "#EDEDED"
             }}
           />
         </div>

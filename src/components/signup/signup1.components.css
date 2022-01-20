@@ -22,3 +22,11 @@
   margin-right: 10px;
   opacity: 0.5;
 }
+#inputID::placeholder{
+  font-size: 14px;
+  font-family: PretendardRegular;
+}
+#inputID{
+  border-color: #EDEDED;
+  border-width: 1px;
+}
