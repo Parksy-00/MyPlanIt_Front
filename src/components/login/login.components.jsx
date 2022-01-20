@@ -58,7 +58,7 @@ function Login() {
       <img
         className="Logo"
         src="/images/logo.png"
-        style={{ marginTop: "200px", width: "173px", marginBottom: "51px" }}
+        style={{ marginTop: "200px", width: "173px", marginBottom: "101px" }}
       />
       <Input
         className="email-input"
@@ -67,16 +67,15 @@ function Login() {
         onChange={(e) => {
           setEmail(e.target.value);
         }}
-        style={{ width: "327px", marginBottom: "12px" }}
-      />
-      <Input.Password
+        style={{ width: "327px", marginBottom: "12px", fontFamily: "PretendardRegular",fontSize: "16px", color:"#CECECE"}}
+      />  <Input.Password
         className="password-input"
         size="large"
         placeholder="비밀번호 입력"
         onChange={(e) => {
           setPassword(e.target.value);
         }}
-        style={{ width: "327px", marginBottom: "19px" }}
+        style={{ width: "327px", marginBottom: "19px", fontFamily: "PretendardRegular",fontSize: "16px", color:"#CECECE"}}
       />
       <span className="switch">
         <Switch />
@@ -105,16 +104,16 @@ function Login() {
         className="button-group"
         style={{ marginTop: "8px", fontSize: "12px" }}
       >
-        <p style={{ marginLeft: "12px", marginRight: "12px", opacity: 0.3 }}>
+        <p style={{ marginLeft: "12px", marginRight: "12px", opacity: 0.3 , fontFamily: "PretendardRegular",fontSize: "12px", color:"#929292"}}>
           아직 계정이 없으신가요?
         </p>
         <p>
-          <Link style={{ color: "black" }} to="/signup1">
+          <Link style={{ color: "black" , fontFamily: "PretendardRegular",fontSize: "12px", color:"#000000"}} to="/signup1">
             회원가입하기
           </Link>
         </p>
       </span>
-      <Link to="../main/todoplan">t login</Link>
+   
     </div>
   );
 }

@@ -5,12 +5,14 @@
   font-size: 18px;
   font-style: normal;
   font-weight: normal;
+  font-family: PretendardMedium;
 }
 .header {
   display: flex;
   margin-top: 30px;
   margin-right: 100px;
   margin-bottom: 10px;
+  font-family: PretendardMedium;
 }
 .enabled {
   margin-right: 10px;

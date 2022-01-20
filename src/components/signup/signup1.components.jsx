@@ -7,6 +7,7 @@ import { Input, Switch } from "antd";
 import { List, Typography, Divider } from "antd";
 import { useNavigate } from "react-router-dom";
 import validator from "validator";
+import { height } from "@mui/system";
 
 function Signup1({
   setEmailSignup,
@@ -81,12 +82,13 @@ function Signup1({
             navigate("/");
           }}
         />
-        <span className="title">회원가입 (1/2)</span>
+        <span className="title" >회원가입 (1/2)</span>
       </div>
       <div className="main">
         <div className="id-input">
-          <p style={{ marginLeft: "10px" }}>아이디 (이메일)</p>
+          <p style={{ marginBottom:"8px", marginLeft: "10px", fontFamily: "PretendardMedium", fontSize:"14px"}}>아이디 (이메일)</p>
           <Input
+          style={{fontFamily: "PretendardRegular", fontSize:"14px"}}
             className="email-input"
             size="large"
             placeholder="자주 사용하는 이메일 입력"
@@ -98,11 +100,11 @@ function Signup1({
                 <span />
               )
             }
-            style={{ width: "327px", marginBottom: "12px" }}
+            style={{ width: "327px", marginBottom: "5px" }}
           />
         </div>
         <div className="pw-input">
-          <p style={{ marginLeft: "10px" }}>비밀번호</p>
+          <p style={{marginBottom:"8px", marginLeft: "10px",fontFamily: "PretendardMedium", fontSize:"14px"}}>비밀번호</p>
           <Input
             type="password"
             className="password-input"
@@ -118,11 +120,11 @@ function Signup1({
               )
             }
             placeholder="영문, 숫자, 특수문자 포함 8자 이상"
-            style={{ width: "327px", marginBottom: "12px" }}
+            style={{ width: "327px", marginBottom: "5px" }}
           />
         </div>
         <div className="pw-check">
-          <p style={{ marginLeft: "10px" }}>비밀번호 확인</p>
+          <p style={{marginBottom:"8px", marginLeft: "10px",fontFamily: "PretendardMedium", fontSize:"14px" }}>비밀번호 확인</p>
           <Input
             type="password"
             className="password-check"
@@ -140,13 +142,13 @@ function Signup1({
             }
             style={{
               width: "327px",
-              marginBottom: "12px",
+              marginBottom: "5px",
               borderRadius: "5px",
             }}
           />
         </div>
         <div className="nm-input">
-          <p style={{ marginLeft: "10px" }}>이름</p>
+          <p style={{marginBottom:"8px", marginLeft: "10px",fontFamily: "PretendardMedium", fontSize:"14px" }}>이름</p>
           <Input
             className="name-input"
             size="large"
@@ -202,13 +204,14 @@ function Signup1({
           />
         </div> */}
         <div className="service">
-          <p>서비스 정책</p>
+          <p style={{fontFamily: "PretendardMedium", fontSize:"14px"}}>서비스 정책</p>
           <List size="small" bordered>
             <List.Item
               style={{ display: "flex", justifyContent: "flex-start" }}
             >
               <CheckIcon
                 className={iconStyle1}
+                style={{fontFamily: "PretendardMedium", fontSize:"14px"}}
                 onClick={() => {
                   if (iconStyle1 === "enabled") {
                     setIconStyle1("disabled");
@@ -236,6 +239,7 @@ function Signup1({
               style={{ display: "flex", justifyContent: "flex-start" }}
             >
               <CheckIcon
+              style={{fontFamily: "PretendardRegular", fontSize:"14px"}}
                 className={iconStyle2}
                 onClick={() => {
                   if (iconStyle2 === "enabled") {
@@ -253,6 +257,7 @@ function Signup1({
             >
               <CheckIcon
                 className={iconStyle3}
+                style={{fontFamily: "PretendardRegular", fontSize:"14px"}}
                 onClick={() => {
                   if (iconStyle3 === "enabled") {
                     setIconStyle3("disabled");
@@ -265,7 +270,7 @@ function Signup1({
               서비스 이용약관 동의 (필수)
               <img
                 src="/images/detail.png"
-                style={{ marginLeft: "auto", width: "10px" }}
+                style={{ marginLeft: "auto", width: "6px" }}
                 onClick={() => {
                   navigate("/service");
                 }}
@@ -276,6 +281,7 @@ function Signup1({
             >
               <CheckIcon
                 className={iconStyle4}
+                style={{fontFamily: "PretendardRegular", fontSize:"14px"}}
                 onClick={() => {
                   if (iconStyle4 === "enabled") {
                     setIconStyle4("disabled");
@@ -288,7 +294,7 @@ function Signup1({
               개인정보 수집 및 이용 동의 (필수)
               <img
                 src="/images/detail.png"
-                style={{ marginLeft: "auto", width: "10px" }}
+                style={{ marginLeft: "auto", width: "6px" }}
                 onClick={() => {
                   navigate("/service");
                 }}
@@ -298,6 +304,7 @@ function Signup1({
               style={{ display: "flex", justifyContent: "flex-start" }}
             >
               <CheckIcon
+                style={{fontFamily: "PretendardRegular", fontSize:"14px"}}
                 className={iconStyle5}
                 onClick={() => {
                   if (iconStyle5 === "enabled") {
@@ -311,7 +318,7 @@ function Signup1({
               마케팅 수신 동의 (선택)
               <img
                 src="/images/detail.png"
-                style={{ marginLeft: "auto", width: "10px" }}
+                style={{ marginLeft: "auto", width: "6px" }}
                 onClick={() => {
                   navigate("/service");
                 }}
