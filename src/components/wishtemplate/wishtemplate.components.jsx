@@ -51,12 +51,13 @@ function WishTemplate() {
           setUsers(null);
           setLoading(true);
           const response = await axios.get(
-            'https://myplanit.link/myplans/wish',
+            'https://cors-anywhere.herokuapp.com/https://myplanit.link/myplans/wish',
             {
+              withCredentials:true,
               headers: {
-                access_token: accessToken,
-                      refresh_token:
-                  refreshToken  },
+               access_token: accessToken,
+               refresh_token: refreshToken
+               },
             }
          );
           setUsers(response.data); 
