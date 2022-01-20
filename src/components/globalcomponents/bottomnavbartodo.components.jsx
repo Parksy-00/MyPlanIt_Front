@@ -16,16 +16,13 @@ const BottomNavBarTodo = () => {
       }}
       showLabels
     >
-      
       <BottomNavigationAction
         label="To do"
         icon={<PlaylistAddCheckIcon />}
         component={Link}
-
         to="/main/todoplan"
-
       />
-      
+
       <BottomNavigationAction
         label="Plan"
         icon={<CalendarTodayIcon />}
