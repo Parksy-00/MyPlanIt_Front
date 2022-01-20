@@ -13,7 +13,6 @@ import Onboard2 from "./components/onboard/onboard2.components";
 import Onboard3 from "./components/onboard/onboard3.components";
 import WishTemplate from "./components/wishtemplate/wishtemplate.components";
 import MainTemplateRoutine from "./components/maintemplateroutine/maintemplateroutine.components";
-import EricsTodo from "./components/ericstodo/ericstodo.components";
 import ViewTemplate from "./components/viewtemplate/viewtemplate.components";
 import MainTemplateGrowth from "./components/maintemplategrowth/maintemplategrowth.components";
 import MoreTemplate from "./components/moretemplate/moretemplate.components";
@@ -125,17 +124,26 @@ function App() {
           <Route path="/find-id" element={<FindID />} />
           <Route path="/find-pw" element={<FindPW />} />
           <Route path="/main" element={<TodoPlan />} />
-        <Route path="/main/todoplan" element={<TodoPlan />} />
-        <Route path="/main/maintemplateroutine" element={<MainTemplateRoutine />} />
-        <Route path="/main/maintemplategrowth" element={<MainTemplateGrowth />} />
-        <Route path="/main/wishtemplate" element={<WishTemplate />} />
-        <Route path="/main/viewtemplate/:id" element={<ViewTemplate />} />
-        <Route path="/main/maintemplateroutine/moretemplate" element={<MoreTemplate />} />
-        <Route path="/main/moretemplate" element={<MoreTemplate />} />
-        <Route path="/main/searchtemplate" element={<SearchTemplate />} />
-        <Route path="/main/buytemplate" element={<BuyTemplate />} />
+          <Route path="/main/todoplan" element={<TodoPlan />} />
+          <Route
+            path="/main/maintemplateroutine"
+            element={<MainTemplateRoutine />}
+          />
+          <Route
+            path="/main/maintemplategrowth"
+            element={<MainTemplateGrowth />}
+          />
+          <Route path="/main/wishtemplate" element={<WishTemplate />} />
+          <Route path="/main/viewtemplate/:id" element={<ViewTemplate />} />
+          <Route
+            path="/main/maintemplateroutine/moretemplate"
+            element={<MoreTemplate />}
+          />
+          <Route path="/main/moretemplate" element={<MoreTemplate />} />
+          <Route path="/main/searchtemplate" element={<SearchTemplate />} />
+          <Route path="/main/todomy" element={<TodoMy />} />
+          <Route path="/main/buytemplate" element={<BuyTemplate />} />
         <Route path="/main/usetemplate" element={<UseTemplate />} />
-        <Route path="/main/todomy" element={<TodoMy />} />
 
         </Routes>
       </div>
