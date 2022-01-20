@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import BottomNavBar from "../globalcomponents/bottomnavbartodo.components";
 import { useNavigate } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import BottomNavBarTodo from "../globalcomponents/bottomnavbartodo.components";
 import DateFnsUtils from "@date-io/date-fns";
@@ -11,10 +11,21 @@ import {
 } from "@material-ui/pickers";
 import { ko } from "date-fns/locale";
 import DatePicker from "react-datepicker";
-import { Checkbox, Card } from "antd";
+import { Checkbox, Card, Button } from "antd";
 import "./todoplan.components.css";
+import axios from "axios";
 
 function TodoPlan() {
+  useEffect(() => {
+    axios.get("https://myplanit.link/todos/plan/2022-01-17", {
+      headers: {
+        access_token:
+          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQyNjk3MzkwLCJpYXQiOjE2NDI2MTA5OTAsImp0aSI6IjA3Njk1NzhjMTc5YzQzZGJhMWE5MWU0ZGY3NWY4MTkzIiwidXNlcl9pZCI6NDB9.tJPSFHBoA7ibIJAobwN7h8-W1B7Yqh85KnsD_zFEPEY",
+        refresh_token:
+          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY0NTIwMjk5MCwiaWF0IjoxNjQyNjEwOTkwLCJqdGkiOiI0OTUwM2MzNTQ3YmU0NzIwYTRjNTI2YzQ5OGU2ZDQ1OSIsInVzZXJfaWQiOjQwfQ.VLshLAoIcdg9zQYEmOnKP_SjCahth4lKppiyT9Una2k",
+      },
+    });
+  }, []);
   let navigate = useNavigate();
 
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -26,19 +37,28 @@ function TodoPlan() {
   };
   return (
     <div className="container">
-      <MuiPickersUtilsProvider locale={ko} utils={DateFnsUtils}>
-        <KeyboardDatePicker
-          disableToolbar
-          format="MM월 dd일 eee요일"
-          margin="normal"
-          id="date-picker-outline"
-          value={selectedDate}
-          onChange={handleDateChange}
-          KeyboardButtonProps={{
-            "aria-label": "change date",
-          }}
-        />
-      </MuiPickersUtilsProvider>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <MuiPickersUtilsProvider locale={ko} utils={DateFnsUtils}>
+          <KeyboardDatePicker
+            disableToolbar
+            format="MM월 dd일 eee요일"
+            margin="normal"
+            id="date-picker-outline"
+            value={selectedDate}
+            onChange={handleDateChange}
+            KeyboardButtonProps={{
+              "aria-label": "change date",
+            }}
+          />
+        </MuiPickersUtilsProvider>
+        <Button style={{ marginLeft: 30 }}>MY PLAN</Button>
+      </div>
       <span
         className="button-group"
         style={{ marginTop: "8px", fontSize: "16px", fontWeight: "bold" }}
