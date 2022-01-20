@@ -27,6 +27,9 @@
   background: #7965f4;
   border-radius: 4px;
   color: white;
+  font-family: PretendardMedium;
+  font-size: 18px;
+  
 }
 .login-button:hover {
   background: #a498f1;
