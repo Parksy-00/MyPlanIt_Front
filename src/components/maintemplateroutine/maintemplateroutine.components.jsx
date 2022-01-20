@@ -20,6 +20,7 @@ import ViewTemplate from "../viewtemplate/viewtemplate.components";
 import {
   useParams
 } from "react-router-dom";
+import {Oval} from "react-loader-spinner";
 
 function MainTemplateRoutine() {
     let navigate = useNavigate();
@@ -58,7 +59,7 @@ function MainTemplateRoutine() {
       fetchUsers();
     }, []);
   
-    if (loading) return <div>로딩중..</div>;
+    if (loading) return <div style={{marginTop:"50vh", marginBottom:"auto"}}><Oval color="#7965f4" height="40px" width="40px" /></div>;
     if (error) return <div>에러가 발생했습니다</div>;
     if (!users) return null;
   return (
@@ -74,7 +75,7 @@ function MainTemplateRoutine() {
     
             }}
           >
-            <div style={{color: "black"}}>플랜</div>
+            <div style={{fontFamily: "PretendardMedium",fontSize: "20px", textAlign:"center", color: "black"}}>플랜</div>
           </Typography>
           <Link
            to='../main/wishtemplate'
@@ -84,11 +85,12 @@ function MainTemplateRoutine() {
         </Toolbar>
       </AppBar>
       <Link
-        to='../main/searchtemplate'
+        to='./'
         className="search-button"
-        style={{border: '1px solid #Dedede'}}
+    
+        style={{fontFamily: "PretendardRegular",fontSize: "16px", textAlign:"center",color:"#CECECE",border: '1px solid #Dedede'}}
       >
-        <SearchIcon /> &nbsp;원하는 플랜을 검색해보세요
+        <SearchIcon style={{size: "16px", color: "#000000", opacity: "8%"}}/> &nbsp;원하는 플랜을 검색해보세요
       </Link>
       <span
         className="button-group"
@@ -101,11 +103,13 @@ function MainTemplateRoutine() {
         justifyContent: 'center',
         alignItems:'center',
         marginTop: '10px',
+        marginLeft: '20px',
         border: '5px',
         background: 'white',
         borderRadius: '0',
         color: 'black',
-        borderBottom:'solid #7965f4'}}
+        borderBottom:'solid #7965f4',
+        fontFamily: "SFProDisplay",fontSize: "18px"}}
       >
         Routine
       </Link>
@@ -121,7 +125,8 @@ function MainTemplateRoutine() {
         border: '5px',
         background: 'white',
         borderRadius: '0',
-        color: 'gray'}}
+        color: 'gray',
+        fontFamily: "SFProDisplay",fontSize: "18px"}}
       >
         Growth
       </Link>
@@ -163,8 +168,8 @@ function MainTemplateRoutine() {
               <div style={{display: 'flex', flexDirection: 'row', marginTop: '10px', width: '280px'}}>
               <img className="template-writerphoto" src= {Routine.writer_img} style={{width: '40px', height: '40px',borderRadius:'20px'}}></img>
               <div style={{display: 'flex', flexDirection: 'column',marginLeft: '10px'}}>
-              <div className="template-writerintro" style={{fontSize: '10px',color:'gray', height: '15px'}}>{Routine.writer_intro}</div>
-              <div style={{fontSize:'10px'}}>{Routine.writer_name}</div>
+              <div className="template-writerintro" style={{fontSize: '14px',color:'gray', height: '14px',marginBottom:"4px"}}>{Routine.writer_intro}</div>
+              <div style={{fontSize:'14px'}}>{Routine.writer_name}</div>
               </div>
               </div>
               <div style={{marginTop:'auto',marginBottom:'auto', color: '#7965f4'}}>
@@ -204,6 +209,7 @@ function MainTemplateRoutine() {
       <div style={{height: '10px'}}></div>
       </ul>
       <BottomNavBarPlan/>
+      <div style={{height:'20px'}}></div>
     </div>
    
   );

@@ -17,7 +17,7 @@ import axios from "axios";
 
 function TodoPlan() {
   useEffect(() => {
-    axios.get("https://myplanit.link/todos/plan/2022-01-17", {
+    axios.get("https://cors-anywhere.herokuapp.com/https://myplanit.link/todos/plan/2022-01-17", {
       headers: {
         access_token:
           "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQyNjk3MzkwLCJpYXQiOjE2NDI2MTA5OTAsImp0aSI6IjA3Njk1NzhjMTc5YzQzZGJhMWE5MWU0ZGY3NWY4MTkzIiwidXNlcl9pZCI6NDB9.tJPSFHBoA7ibIJAobwN7h8-W1B7Yqh85KnsD_zFEPEY",
@@ -203,7 +203,7 @@ function TodoPlan() {
           </Checkbox>
         </div>
       </Card>
-      <BottomNavBarTodo />
+      <BottomNavBarTodo style={{height: '200px'}}/>
     </div>
   );
 }
