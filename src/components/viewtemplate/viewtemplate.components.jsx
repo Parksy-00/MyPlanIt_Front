@@ -15,8 +15,13 @@ import DialogTitle from "@mui/material/DialogTitle";
 import BottomNavBarPlan from "../globalcomponents/bottomnavbarplan.components";
 import axios from "axios";
 import { render } from "@testing-library/react";
-import { useParams } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+
+import {
+  useParams
+} from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+const refreshToken =  localStorage.getItem("refreshToken");
+const accessToken =  localStorage.getItem("accessToken");
 
 function ViewTemplate(props) {
   const { id } = useParams();
@@ -25,20 +30,32 @@ function ViewTemplate(props) {
   const handleClickOpen = () => {
     setOpen(true);
   };
+  const accessToken = localStorage.getItem("accessToken");
   const handleClose = (event, reason) => {
-    if (reason && reason == "backdropClick") return;
-    /*
+
+    if(reason&&reason == "backdropClick")
+    return;
+
     axios
       .post(
-        "https://myplanit.link/plans/"+id+"buy",
+        "https://myplanit.link/plans/"+id+"/buy",
+        
+         
+      {
+        withCredentials: true,
+        headers: {
+          access_token: accessToken,
+                refresh_token:
+            refreshToken,
+            "Content-Type": "application/json",  },
+      },
       
       )
       .then((response) => {
         console.log(response);
         navigate("/main");
       })
-      */
-    navigate("../main");
+
     setOpen(false);
   };
 
