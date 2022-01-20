@@ -87,7 +87,7 @@ function MainTemplateGrowth() {
       <Link
         to='./'
         className="search-button"
-        style={{fontFamily: "PretendardRegular",fontSize: "16px", textAlign:"center",color:"#CECECE",border: '1px solid #Dedede'}}
+        style={{width: "88vw",fontFamily: "PretendardRegular",fontSize: "16px", textAlign:"center",color:"#CECECE",border: '1px solid #Dedede'}}
       >
         <SearchIcon style={{size: "16px", color: "#000000", opacity: "8%"}}/> &nbsp;원하는 플랜을 검색해보세요
       </Link>
@@ -102,6 +102,7 @@ function MainTemplateGrowth() {
         justifyContent: 'center',
         alignItems:'center',
         marginTop: '10px',
+        marginLeft: '20px',
         border: '5px',
         background: 'white',
         borderRadius: '0',
