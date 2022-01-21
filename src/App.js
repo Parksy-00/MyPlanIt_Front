@@ -19,6 +19,11 @@ import MoreTemplate from "./components/moretemplate/moretemplate.components";
 import SearchTemplate from "./components/searchtemplate/searchtemplate.components";
 import TodoPlan from "./components/todoplan/todoplan.components";
 import TodoMy from "./components/todomy/todomy.components";
+
+import Notion from "./components/todotest/notion.todotest.components";
+import Growth from "./components/todotest/growth.todotest.components";
+import Zapier from "./components/todotest/zapier.todotest.components";
+
 function App() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -140,6 +145,11 @@ function App() {
           <Route path="/main/moretemplate" element={<MoreTemplate />} />
           <Route path="/main/searchtemplate" element={<SearchTemplate />} />
           <Route path="/main/todomy" element={<TodoMy />} />
+
+          {/* hackathon dummy */}
+          <Route path="todo/notion/:id" element={<Notion />} />
+          <Route path="todo/growth/:id" element={<Growth />} />
+          <Route path="todo/zapier/:id" element={<Zapier />} />
         </Routes>
       </div>
     </div>

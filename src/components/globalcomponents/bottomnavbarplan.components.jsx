@@ -20,7 +20,7 @@ const BottomNavBarPlan = () => {
         label="To do"
         icon={<PlaylistAddCheckIcon />}
         component={Link}
-        to="/main/todoplan"
+        to="/main"
       />
 
       <BottomNavigationAction
