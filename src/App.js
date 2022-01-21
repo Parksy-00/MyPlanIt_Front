@@ -23,6 +23,8 @@ import TodoMy from "./components/todomy/todomy.components";
 import Notion from "./components/todotest/notion.todotest.components";
 import Growth from "./components/todotest/growth.todotest.components";
 import Zapier from "./components/todotest/zapier.todotest.components";
+import BuyTemplate from "./components/wishtemplate/buytemplate.components";
+import UseTemplate from "./components/wishtemplate/usetemplate.components";
 
 function App() {
   const [email, setEmail] = useState("");
@@ -146,10 +148,13 @@ function App() {
           <Route path="/main/searchtemplate" element={<SearchTemplate />} />
           <Route path="/main/todomy" element={<TodoMy />} />
 
-          {/* hackathon dummy */}
+            {/* hackathon dummy */}
           <Route path="todo/notion/:id" element={<Notion />} />
           <Route path="todo/growth/:id" element={<Growth />} />
           <Route path="todo/zapier/:id" element={<Zapier />} />
+          <Route path="/main/buytemplate" element={<BuyTemplate />} />
+        <Route path="/main/usetemplate" element={<UseTemplate />} />
+
         </Routes>
       </div>
     </div>

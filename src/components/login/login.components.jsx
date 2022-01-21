@@ -10,7 +10,9 @@ function Login() {
   let navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const access_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQyNDQ5MDUyLCJpYXQiOjE2NDIzNjI2NTIsImp0aSI6ImZmNWVkMzQzNTJkNzQxZDI5YTk3ZTg0ZTFjNTkwNmUwIiwidXNlcl9pZCI6Mzd9.LhzBMGI7ibYwUqPtmbvANRLsMBL_abdxruDNwQhY2D0'
+  const apiUrl = 'https://myplanit.link/login'
+  
   function attemptLogin() {
     axios
       .post(
@@ -20,15 +22,23 @@ function Login() {
           password: password,
         },
         {
+
           withCredentials: true,
+          
           headers: {
             "Content-Type": "application/json",
           },
+          
+          
         }
+        
       )
       .then((response) => {
+        console.log(response);
         console.log(response.data.jwt_token.access_token);
         console.log(response.data.jwt_token.refresh_token);
+        localStorage.setItem("accessToken", response.data.jwt_token.access_token);
+        localStorage.setItem("refreshToken", response.data.jwt_token.refresh_token);
         navigate("/main");
       })
       .catch((error) => {
@@ -47,7 +57,7 @@ function Login() {
       <img
         className="Logo"
         src="/images/logo.png"
-        style={{ marginTop: "200px", width: "173px", marginBottom: "51px" }}
+        style={{ marginTop: "200px", width: "173px", marginBottom: "101px" }}
       />
       <Input
         className="email-input"
@@ -56,16 +66,15 @@ function Login() {
         onChange={(e) => {
           setEmail(e.target.value);
         }}
-        style={{ width: "327px", marginBottom: "12px" }}
-      />
-      <Input.Password
+        style={{ width: "327px", marginBottom: "12px", fontFamily: "PretendardRegular",fontSize: "16px", color:"#CECECE"}}
+      />  <Input.Password
         className="password-input"
         size="large"
         placeholder="비밀번호 입력"
         onChange={(e) => {
           setPassword(e.target.value);
         }}
-        style={{ width: "327px", marginBottom: "19px" }}
+        style={{ width: "327px", marginBottom: "19px", fontFamily: "PretendardRegular",fontSize: "16px", color:"#CECECE"}}
       />
       <span className="switch">
         <Switch />
@@ -94,16 +103,16 @@ function Login() {
         className="button-group"
         style={{ marginTop: "8px", fontSize: "12px" }}
       >
-        <p style={{ marginLeft: "12px", marginRight: "12px", opacity: 0.3 }}>
+        <p style={{ marginLeft: "12px", marginRight: "12px", opacity: 0.3 , fontFamily: "PretendardRegular",fontSize: "12px", color:"#929292"}}>
           아직 계정이 없으신가요?
         </p>
         <p>
-          <Link style={{ color: "black" }} to="/signup1">
+          <Link style={{ color: "black" , fontFamily: "PretendardRegular",fontSize: "12px", color:"#000000"}} to="/signup1">
             회원가입하기
           </Link>
         </p>
       </span>
-      <Link to="../main/todoplan">t login</Link>
+   
     </div>
   );
 }

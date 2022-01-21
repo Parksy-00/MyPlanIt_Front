@@ -18,12 +18,12 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 function TodoPlan() {
   useEffect(() => {
-    axios.get("https://myplanit.link/todos/plan/2022-01-17", {
-      withCredentials: true,
+    axios.get("https://myplanit.link/todos/plan/2022-01-21", {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ1MzQxNzk1LCJpYXQiOjE2NDI3NDk3OTUsImp0aSI6ImM0NWEyNDI0ZGZmNDQ2MzlhMzYwY2ExMDNmYzZjOWYxIiwidXNlcl9pZCI6NDB9.mi67W4Yk6vM47qPtlwLXWVJeQUEfVJV8jqQRj8zhi5M`,
       },
+      withCredentials: true
     });
   }, []);
   let navigate = useNavigate();
@@ -339,10 +339,12 @@ function TodoPlan() {
           </Checkbox>
         </div>
       </Card>
+
       <br />
       <br />
       <br />
-      <BottomNavBarTodo />
+      <BottomNavBarTodo style={{height: '200px'}}/>
+
     </div>
   );
 }

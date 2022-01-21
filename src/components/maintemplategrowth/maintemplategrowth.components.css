@@ -37,7 +37,7 @@
   justify-content: start;
   align-items: center;
   margin-top: 10px;
-  width: 327px;
+  width: 300px;
   height: 46px;
   border: 1;
   background: #ffffff;
@@ -93,10 +93,12 @@
 .template-content{
   font-size: 14px;
   max-lines: 3;
-  width: 300px;
+  width: 355px;
   margin-left: auto;
   margin-right: auto;
-
+  font-family: PretendardMedium;
+  line-height: 18px;
+  color: #929292;
 }
 .template-all{
   padding: 5px 5px 5px 5px;
@@ -117,5 +119,7 @@
   text-align: center;
   font-size: 12px;
   color: #7965f4;
+  margin-top: 5px;
   border-radius: 4px;
+  font-family: PretendardMedium;
 }
