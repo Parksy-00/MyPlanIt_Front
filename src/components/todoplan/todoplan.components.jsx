@@ -30,6 +30,9 @@ function TodoPlan() {
 
   const [selectedDate, setSelectedDate] = useState(new Date());
 
+  const [notionNum, setNotionNum] = useState(0);
+  const [growthNum, setGrowthNum] = useState(0);
+
   function onChange(e) {}
 
   const handleDateChange = (date) => {
@@ -137,7 +140,7 @@ function TodoPlan() {
           >
             <span>노션 포트폴리오와 퍼스널 브랜딩</span>
             <span style={{ marginLeft: 20 }}>
-              <span style={{ color: "#8977F7" }}>0%</span> 달성
+              <span style={{ color: "#8977F7" }}>{notionNum}%</span> 달성
             </span>
           </span>
         </span>
@@ -145,7 +148,13 @@ function TodoPlan() {
         <div style={{ display: "flex", flexDirection: "column" }}>
           <Checkbox
             style={{ marginLeft: 0, marginTop: 12 }}
-            onChange={onChange}
+            onChange={(e) => {
+              if (e.target.checked) {
+                setNotionNum(notionNum + 1);
+              } else {
+                setNotionNum(notionNum - 1);
+              }
+            }}
           >
             노션 회원가입
             <span>
@@ -163,7 +172,13 @@ function TodoPlan() {
           </Checkbox>
           <Checkbox
             style={{ marginLeft: 0, marginTop: 16 }}
-            onChange={onChange}
+            onChange={(e) => {
+              if (e.target.checked) {
+                setNotionNum(notionNum + 1);
+              } else {
+                setNotionNum(notionNum - 1);
+              }
+            }}
           >
             노션 다운로드
             <span>
@@ -181,7 +196,13 @@ function TodoPlan() {
           </Checkbox>
           <Checkbox
             style={{ marginLeft: 0, marginTop: 16 }}
-            onChange={onChange}
+            onChange={(e) => {
+              if (e.target.checked) {
+                setNotionNum(notionNum + 1);
+              } else {
+                setNotionNum(notionNum - 1);
+              }
+            }}
           >
             포트폴리오 레퍼런스 보기
             <span>
@@ -199,7 +220,13 @@ function TodoPlan() {
           </Checkbox>
           <Checkbox
             style={{ marginLeft: 0, marginTop: 16 }}
-            onChange={onChange}
+            onChange={(e) => {
+              if (e.target.checked) {
+                setNotionNum(notionNum + 2);
+              } else {
+                setNotionNum(notionNum - 2);
+              }
+            }}
           >
             기초 개념 다루기 - 화면 구성
             <span>
@@ -217,7 +244,13 @@ function TodoPlan() {
           </Checkbox>
           <Checkbox
             style={{ marginLeft: 0, marginTop: 16 }}
-            onChange={onChange}
+            onChange={(e) => {
+              if (e.target.checked) {
+                setNotionNum(notionNum + 2);
+              } else {
+                setNotionNum(notionNum - 2);
+              }
+            }}
           >
             기초 개념 다루기 - 블록
             <span>
@@ -244,7 +277,7 @@ function TodoPlan() {
                 marginLeft: 55,
               }}
             >
-              <span style={{ color: "#8977F7" }}>0%</span> 달성
+              <span style={{ color: "#8977F7" }}>{growthNum}%</span> 달성
             </span>
           </span>
         </span>
@@ -252,7 +285,13 @@ function TodoPlan() {
         <div style={{ display: "flex", flexDirection: "column" }}>
           <Checkbox
             style={{ marginLeft: 0, marginTop: 12 }}
-            onChange={onChange}
+            onChange={(e) => {
+              if (e.target.checked) {
+                setGrowthNum(growthNum + 4);
+              } else {
+                setGrowthNum(growthNum - 4);
+              }
+            }}
           >
             한 달 목표 세우기
             <span>
@@ -270,7 +309,13 @@ function TodoPlan() {
           </Checkbox>
           <Checkbox
             style={{ marginLeft: 0, marginTop: 16 }}
-            onChange={onChange}
+            onChange={(e) => {
+              if (e.target.checked) {
+                setGrowthNum(growthNum + 4);
+              } else {
+                setGrowthNum(growthNum - 4);
+              }
+            }}
           >
             회고 질문 3개 만들기
             <span>
