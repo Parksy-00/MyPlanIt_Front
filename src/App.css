@@ -1,9 +1,8 @@
 .BottomNavBar {
   position: fixed;
-  bottom: 0;
+  bottom: 30px;
   left: 0;
   right: 0;
-  height: 45px;
 
   font-family: "EnglishDefault";
 }
@@ -34,4 +33,16 @@
 @font-face {
   font-family: "EnglishDefault";
   src: url("./fonts/FontsFree-Net-SFProDisplay-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "PretendardMedium";
+  src: url("./fonts/Pretendard-Medium.otf") format("truetype");
+}
+@font-face {
+  font-family: "PretendardRegular";
+  src: url("./fonts/Pretendard-Regular.otf") format("truetype");
+}
+@font-face {
+  font-family: "SFProDisplay";
+  src: url("./fonts/SF-Pro-Display-Medium.otf") format("truetype");
 }

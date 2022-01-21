@@ -1,4 +1,4 @@
-import "./maintemplateroutine.components.css";
+import "./wishtemplate.components.css";
 import { Link } from "react-router-dom";
 import BottomNavBar from "../globalcomponents/bottomnavbartodo.components";
 import { useNavigate } from "react-router-dom";
@@ -20,9 +20,10 @@ import ViewTemplate from "../viewtemplate/viewtemplate.components";
 import {
   useParams
 } from "react-router-dom";
-import {Oval} from "react-loader-spinner";
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
-function MainTemplateRoutine() {
+
+function UseTemplate() {
     let navigate = useNavigate();
     let {plan_id} = useParams();
     const categories = [
@@ -59,14 +60,19 @@ function MainTemplateRoutine() {
       fetchUsers();
     }, []);
   
-    if (loading) return <div style={{marginTop:"50vh", marginBottom:"auto"}}><Oval color="#7965f4" height="40px" width="40px" /></div>;
+    if (loading) return <div>로딩중..</div>;
     if (error) return <div>에러가 발생했습니다</div>;
     if (!users) return null;
   return (
     <div className="container">
          <AppBar position="static" elevation={0} style={{background: 'white',width: "100vw"}}>
       <Toolbar style={{ justifyContent: "space-between" }}>
-      <div style={{width: '40px'}}></div>
+    
+      <Link
+           to='../main/maintemplateroutine'
+          >
+            <ArrowBackIosIcon style={{color:"black"}} />
+          </Link>
           <Typography
           edge = 'end'
             variant="h6"
@@ -75,48 +81,34 @@ function MainTemplateRoutine() {
     
             }}
           >
-            <div style={{fontFamily: "PretendardMedium",fontSize: "20px", textAlign:"center", color: "black"}}>플랜</div>
+            <div style={{color: "black"}}>MY PLAN</div>
           </Typography>
-          <Link
-           to='../main/wishtemplate'
-          >
-            <FavoriteBorderIcon style={{color:"grey"}}/>
-          </Link>
+            <div style={{width: '40px'}}></div>
         </Toolbar>
       </AppBar>
-      <Link
-        to='./'
-        className="search-button"
-    
-        style={{fontFamily: "PretendardRegular",fontSize: "16px", textAlign:"center",color:"#CECECE",border: '1px solid #Dedede'}}
-      >
-        <SearchIcon style={{size: "16px", color: "#000000", opacity: "8%"}}/> &nbsp;원하는 플랜을 검색해보세요
-      </Link>
       <span
         className="button-group"
         style={{ marginTop: "8px", fontSize: "16px", fontWeight:"bold"}}
       >
         <Link
-       to='../main/maintemplateroutine'
+       to='../main/wishtemplate'
         className="main-routine-button"
+       
         style={{width: "7.5vh", height: "35px",display: 'flex',
         justifyContent: 'center',
         alignItems:'center',
         marginTop: '10px',
-        marginLeft: '20px',
         border: '5px',
         background: 'white',
         borderRadius: '0',
-        color: 'black',
-        borderBottom:'solid #7965f4',
-        fontFamily: "SFProDisplay",fontSize: "18px"}}
+        color: 'gray'}}
       >
-        Routine
+        찜하기
       </Link>
-      <div style={{width: '5vw'}}></div>
+      <div style={{width: '3vw'}}></div>
       <Link
         style={{border: '1px solid #D3d3d3'}}
-        to='../main/maintemplategrowth'
+        to='../main/buytemplate'
         className="main-growth-button"
         style={{width: "7.5vh", height: "35px",display: 'flex',
         justifyContent: 'center',
@@ -125,12 +117,28 @@ function MainTemplateRoutine() {
         border: '5px',
         background: 'white',
         borderRadius: '0',
-        color: 'gray',
-        fontFamily: "SFProDisplay",fontSize: "18px"}}
+        color: 'gray'}}
       >
-        Growth
+        구매 플랜
       </Link>
-      <div style={{width: "55vw"}}></div>
+      <div style={{width: "3vw"}}></div>
+      <Link
+        style={{border: '1px solid #D3d3d3'}}
+        to='../main/usetemplate'
+        className="main-growth-button"
+        style={{width: "7.5vh", height: "35px",display: 'flex',
+        justifyContent: 'center',
+        alignItems:'center',
+        marginTop: '10px',
+        border: '5px',
+        background: 'white',
+        borderRadius: '0',
+        color: 'black',
+        borderBottom:'solid #7965f4'}}
+      >
+        이용 중
+      </Link>
+      <div style={{width: "30vw"}}></div>
       </span>
        <div style={{height: '10px'}}></div>
       <ul className="template-content"style={{overflowY: 'scroll',
@@ -168,8 +176,8 @@ function MainTemplateRoutine() {
               <div style={{display: 'flex', flexDirection: 'row', marginTop: '10px', width: '280px'}}>
               <img className="template-writerphoto" src= {Routine.writer_img} style={{width: '40px', height: '40px',borderRadius:'20px'}}></img>
               <div style={{display: 'flex', flexDirection: 'column',marginLeft: '10px'}}>
-              <div className="template-writerintro" style={{fontSize: '14px',color:'gray', height: '14px',marginBottom:"4px"}}>{Routine.writer_intro}</div>
-              <div style={{fontSize:'14px'}}>{Routine.writer_name}</div>
+              <div className="template-writerintro" style={{fontSize: '10px',color:'gray', height: '15px'}}>{Routine.writer_intro}</div>
+              <div style={{fontSize:'10px'}}>{Routine.writer_name}</div>
               </div>
               </div>
               <div style={{marginTop:'auto',marginBottom:'auto', color: '#7965f4'}}>
@@ -209,10 +217,9 @@ function MainTemplateRoutine() {
       <div style={{height: '10px'}}></div>
       </ul>
       <BottomNavBarPlan/>
-      <div style={{height:'20px'}}></div>
     </div>
    
   );
 }
 
-export default MainTemplateRoutine;
+export default UseTemplate;

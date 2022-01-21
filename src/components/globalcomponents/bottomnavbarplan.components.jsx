@@ -10,7 +10,7 @@ const BottomNavBarPlan = () => {
     <BottomNavigation
       className="BottomNavBar"
       value={1}
-      height="100px"
+      height="10px"
       onChange={(event, newValue) => {
         setValue(newValue);
       }}

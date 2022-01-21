@@ -68,10 +68,10 @@ function Signup2({
             navigate("/signup1");
           }}
         />
-        <span className="title">회원가입 (2/2)</span>
+        <span className="title"style={{fontFamily: "PretendardMedium",fontSize: "18px", color: "black"}}>회원가입 (2/2)</span>
       </div>
-      <p className="text1">플랜잇에 오신 것을 환영합니다!</p>
-      <p className="text2">
+      <p className="text1"style={{fontFamily: "PretendardRegular",fontSize: "18px", color: "black"}}>마이플랜잇에 오신 것을 환영합니다!</p>
+      <p className="text2"style={{fontFamily: "PretendardRegular",fontSize: "14px", color: "#929292"}}>
         사용하실 닉네임을 입력해주시면 회원가입이 완료돼요
       </p>
       <div className="nn-input">
@@ -79,12 +79,14 @@ function Signup2({
           style={{
             marginLeft: "10px",
             marginBottom: "12px",
-            marginTop: "60px",
+            marginTop: "100px",
+            fontFamily: "PretendardRegular",fontSize: "16px", color: "black"
           }}
         >
           닉네임
         </p>
         <Input
+        id="inputID"
           className="nickname-input"
           size="large"
           placeholder="plan-it"
@@ -93,8 +95,9 @@ function Signup2({
           }}
           style={{
             width: "327px",
-            marginBottom: "320px",
+            marginBottom: "430px",
             borderRadius: "5px",
+            borderColor:"#EDEDED",
           }}
         />
       </div>
@@ -103,6 +106,7 @@ function Signup2({
           attemptSignup();
         }}
         className="login-button"
+        style={{fontFamily: "PretendardMedium",fontSize: "18px", color: "white"}}
       >
         가입 완료
       </button>
