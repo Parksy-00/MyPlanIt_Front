@@ -90,22 +90,6 @@ function UseTemplate() {
         className="button-group"
         style={{ marginTop: "8px", fontSize: "16px", fontWeight:"bold"}}
       >
-        <Link
-       to='../main/wishtemplate'
-        className="main-routine-button"
-       
-        style={{width: "7.5vh", height: "35px",display: 'flex',
-        justifyContent: 'center',
-        alignItems:'center',
-        marginTop: '10px',
-        border: '5px',
-        background: 'white',
-        borderRadius: '0',
-        color: 'gray'}}
-      >
-        찜하기
-      </Link>
-      <div style={{width: '3vw'}}></div>
       <Link
         style={{border: '1px solid #D3d3d3'}}
         to='../main/buytemplate'
@@ -138,7 +122,7 @@ function UseTemplate() {
       >
         이용 중
       </Link>
-      <div style={{width: "30vw"}}></div>
+      <div style={{width: "50vw"}}></div>
       </span>
        <div style={{height: '10px'}}></div>
       <ul className="template-content"style={{overflowY: 'scroll',

@@ -78,7 +78,7 @@ function MainTemplateRoutine() {
             <div style={{fontFamily: "PretendardMedium",fontSize: "20px", textAlign:"center", color: "black"}}>플랜</div>
           </Typography>
           <Link
-           to='../main/wishtemplate'
+           to='../main/buytemplate'
           >
             <FavoriteBorderIcon style={{color:"grey"}}/>
           </Link>
