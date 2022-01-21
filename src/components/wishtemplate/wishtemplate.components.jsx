@@ -21,11 +21,11 @@ import {
 } from "react-router-dom";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import axios from "axios";
+import Cookies from "js-cookie";
+
 const refreshToken =  localStorage.getItem("refreshToken");
 const accessToken =  localStorage.getItem("accessToken");
-axios.interceptors.request.use(
-  
-)
+
 function WishTemplate() {
     let navigate = useNavigate();
     let {plan_id} = useParams();
@@ -50,16 +50,24 @@ function WishTemplate() {
           setError(null);
           setUsers(null);
           setLoading(true);
-          const response = await axios.get(
-            'https://cors-anywhere.herokuapp.com/https://myplanit.link/myplans/wish',
+          const response = await axios
+          .get(
+            "https://myplanit.link/myplans/buy",
+        
             {
-              withCredentials:true,
+    
+              withCredentials: true,
+              
               headers: {
-               access_token: accessToken,
-               refresh_token: refreshToken
-               },
+                "Content-Type": "application/json",
+                "Set-Cookie": accessToken,
+                "Set-Cookie": refreshToken,
+              },
+              
+              
             }
-         );
+          
+          );
           setUsers(response.data); 
         } catch (e) {
           setError(e);
@@ -71,7 +79,6 @@ function WishTemplate() {
     }, []);
   
     if (loading) return <div>로딩중..</div>;
-    if (error) return <div>에러가 발생했습니다</div>;
     if (!users) return null;
   return (
     <div className="container">
@@ -162,49 +169,49 @@ function WishTemplate() {
       <div style={{height: '10px'}}></div>
    
       
-          {users.Routine.map(Routine=>(
+          {users.plan.map(plan=>(
     
            
 
-            <li key={users.Routine.id}>
-               <NavLink to={"../main/viewtemplate/"+Routine.id} className="template-overall" style={{justifyContent:'center',color:'black'}}>
+            <li key={users.plan.id}>
+               <NavLink to={"../main/viewtemplate/"+plan.id} className="template-overall" style={{justifyContent:'center',color:'black'}}>
  
  <React.Fragment key={uuidv4()}>
               <div style={{display:'flex',flexDirection:'column', boxShadow: '0px 0px 2px 0.5px #Dedede', justifyContent: 
           "center"}} className="template-all">
              <div style={{height: "5px"}}></div>
              <div style={{width: '350px', marginRight:'auto',marginLeft:'auto',display: "flex", flexDirection: "row", justifyContent: 'space-between'}}>
-             <div style={{marginLeft:'0'}}className="template-title">{Routine.name}</div>
+             <div style={{marginLeft:'0'}}className="template-title">{plan.name}</div>
              </div>
 
              <div style={{height: "8px"}}></div>
-              <img className="template-photourl" src= {Routine.intro_img_url} style={{width: '350px', height: '130px'}}></img>
+              <img className="template-photourl" src= {plan.intro_img_url} style={{width: '350px', height: '130px'}}></img>
               <div style={{display:'flex',flexDirection:'column', width:'350px', paddingLeft:'5px'}}>
                 
               <div style={{display: 'flex', flexDirection: 'row', justifyContent:'space-between'}}>
               <div style={{display: 'flex', flexDirection: 'row', marginTop: '10px', width: '280px'}}>
-              <img className="template-writerphoto" src= {Routine.writer_img} style={{width: '40px', height: '40px',borderRadius:'20px'}}></img>
+              <img className="template-writerphoto" src= {plan.writer_img} style={{width: '40px', height: '40px',borderRadius:'20px'}}></img>
               <div style={{display: 'flex', flexDirection: 'column',marginLeft: '10px'}}>
-              <div className="template-writerintro" style={{fontSize: '10px',color:'gray', height: '15px'}}>{Routine.writer_intro}</div>
-              <div style={{fontSize:'10px'}}>{Routine.writer_name}</div>
+              <div className="template-writerintro" style={{fontSize: '10px',color:'gray', height: '15px'}}>{plan.writer_intro}</div>
+              <div style={{fontSize:'10px'}}>{plan.writer_name}</div>
               </div>
               </div>
               <div style={{marginTop:'auto',marginBottom:'auto', color: '#7965f4'}}>
-             {Routine.checkHeart ? 
+             {plan.checkHeart ? 
              <FavoriteIcon />:
              <FavoriteBorderIcon />}
              </div>
               </div>
-              <div className="template-content" style={{fontSize:'12px'}}>{Routine.desc}</div>
+              <div className="template-content" style={{fontSize:'12px'}}>{plan.desc}</div>
               <div style={{height: '5px'}}></div>
               <div style={{display:'flex', flexDirection:'row',justifyContent:'left'}}>
                 <div className="template-tag">
-                {Routine.tags[0]}
+                {plan.tags[0]}
                 </div>
                 <div style={{width: '10px'}}>
                 </div>
                 <div className="template-tag">
-                {Routine.tags[1]}
+                {plan.tags[1]}
                 </div>
               </div>
               <div style={{height: '5px'}}></div>
