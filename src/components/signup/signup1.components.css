@@ -5,12 +5,14 @@
   font-size: 18px;
   font-style: normal;
   font-weight: normal;
+  font-family: PretendardMedium;
 }
 .header {
   display: flex;
   margin-top: 30px;
   margin-right: 100px;
   margin-bottom: 10px;
+  font-family: PretendardMedium;
 }
 .enabled {
   margin-right: 10px;
@@ -19,4 +21,12 @@
 .disabled {
   margin-right: 10px;
   opacity: 0.5;
+}
+#inputID::placeholder{
+  font-size: 14px;
+  font-family: PretendardRegular;
+}
+#inputID{
+  border-color: #EDEDED;
+  border-width: 1px;
 }
