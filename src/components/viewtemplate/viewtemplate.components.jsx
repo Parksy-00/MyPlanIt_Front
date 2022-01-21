@@ -37,16 +37,20 @@ function ViewTemplate(props) {
     axios
       .post(
         "https://myplanit.link/plans/"+id+"/buy",
-        
-         
-      {
-        withCredentials: true,
-        headers: {
+        {
           access_token: accessToken,
-                refresh_token:
-            refreshToken,
-            "Content-Type": "application/json",  },
-      },
+          refresh_token: refreshToken,
+        },
+        {
+
+          withCredentials: true,
+          
+          headers: {
+            "Content-Type": "application/json",
+          },
+          
+          
+        }
       
       )
       .then((response) => {

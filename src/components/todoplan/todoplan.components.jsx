@@ -17,13 +17,14 @@ import axios from "axios";
 
 function TodoPlan() {
   useEffect(() => {
-    axios.get("https://cors-anywhere.herokuapp.com/https://myplanit.link/todos/plan/2022-01-17", {
+    axios.get("https://myplanit.link/todos/plan/2022-01-21", {
       headers: {
         access_token:
           "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQyNjk3MzkwLCJpYXQiOjE2NDI2MTA5OTAsImp0aSI6IjA3Njk1NzhjMTc5YzQzZGJhMWE5MWU0ZGY3NWY4MTkzIiwidXNlcl9pZCI6NDB9.tJPSFHBoA7ibIJAobwN7h8-W1B7Yqh85KnsD_zFEPEY",
         refresh_token:
           "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY0NTIwMjk5MCwiaWF0IjoxNjQyNjEwOTkwLCJqdGkiOiI0OTUwM2MzNTQ3YmU0NzIwYTRjNTI2YzQ5OGU2ZDQ1OSIsInVzZXJfaWQiOjQwfQ.VLshLAoIcdg9zQYEmOnKP_SjCahth4lKppiyT9Una2k",
       },
+      withCredentials: true
     });
   }, []);
   let navigate = useNavigate();

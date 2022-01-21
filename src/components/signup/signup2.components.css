@@ -13,3 +13,7 @@
   line-height: 12px;
   color: #929292;
 }
+#inputID::placeholder{
+  font-size: 14px;
+  font-family: PretendardRegular;
+}
