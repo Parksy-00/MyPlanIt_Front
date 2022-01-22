@@ -23,7 +23,7 @@ function TodoPlan() {
         "Content-Type": "application/json",
         Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ1MzQxNzk1LCJpYXQiOjE2NDI3NDk3OTUsImp0aSI6ImM0NWEyNDI0ZGZmNDQ2MzlhMzYwY2ExMDNmYzZjOWYxIiwidXNlcl9pZCI6NDB9.mi67W4Yk6vM47qPtlwLXWVJeQUEfVJV8jqQRj8zhi5M`,
       },
-      withCredentials: true
+      withCredentials: true,
     });
   }, []);
   let navigate = useNavigate();
@@ -68,21 +68,18 @@ function TodoPlan() {
             }
           />
         </MuiPickersUtilsProvider>
-        <Link
-           to='../main/buytemplate'
+        <Link to="../main/buytemplate">
+          <Button
+            style={{
+              marginLeft: 50,
+              height: 25,
+              width: 73,
+              fontSize: 9,
+              marginTop: 10,
+            }}
           >
-
-        <Button
-          style={{
-            marginLeft: 50,
-            height: 25,
-            width: 73,
-            fontSize: 9,
-            marginTop: 10,
-          }}
-        >
-          MY PLAN
-        </Button>
+            MY PLAN
+          </Button>
         </Link>
       </div>
       <span
@@ -354,7 +351,7 @@ function TodoPlan() {
             checked={true}
             onChange={onChange}
           >
-            자피어 회원가입
+            메일 자동 회신 시스템 만들기 (1)
             <span>
               <img
                 src="images/detail.png"
@@ -362,7 +359,7 @@ function TodoPlan() {
                   navigate("/todo/zapier/1");
                 }}
                 style={{
-                  marginLeft: 143,
+                  marginLeft: 52,
                   width: 8,
                 }}
               />
@@ -373,7 +370,7 @@ function TodoPlan() {
             checked={true}
             onChange={onChange}
           >
-            자피어 기초 개념
+            메일 자동 회신 시스템 만들기 (2)
             <span>
               <img
                 src="images/detail.png"
@@ -381,7 +378,7 @@ function TodoPlan() {
                   navigate("/todo/zapier/2");
                 }}
                 style={{
-                  marginLeft: 140,
+                  marginLeft: 52,
                   width: 8,
                 }}
               />
@@ -393,9 +390,16 @@ function TodoPlan() {
       <br />
       <br />
       <br />
-      <BottomNavBarTodo style={{height: '200px'}}/>
-      <div style={{height: "33px", backgroundColor:"white",width:"100vw",position:"fixed", bottom:"0px"}}></div>
-  
+      <BottomNavBarTodo style={{ height: "200px" }} />
+      <div
+        style={{
+          height: "33px",
+          backgroundColor: "white",
+          width: "100vw",
+          position: "fixed",
+          bottom: "0px",
+        }}
+      ></div>
     </div>
   );
 }
