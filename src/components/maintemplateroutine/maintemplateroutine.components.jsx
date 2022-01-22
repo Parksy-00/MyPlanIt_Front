@@ -200,9 +200,10 @@ function MainTemplateRoutine() {
               </div>
               </div>
               <div style={{marginTop:'auto',marginBottom:'auto', color: '#7965f4'}}>
-             {Routine.checkHeart ? 
+             {/* {Routine.checkHeart ? 
              <FavoriteIcon />:
-             <FavoriteBorderIcon />}
+             <FavoriteBorderIcon />} */}
+            
              </div>
               </div>
               <div className="template-content" style={{fontSize:'12px'}}>{Routine.desc}</div>
