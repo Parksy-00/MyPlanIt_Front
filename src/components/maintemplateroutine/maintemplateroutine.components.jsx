@@ -65,8 +65,8 @@ function MainTemplateRoutine() {
   return (
     <div className="container">
          <AppBar position="static" elevation={0} style={{background: 'white',width: "100vw"}}>
-      <Toolbar style={{ justifyContent: "space-between" }}>
-      <div style={{width: '40px'}}></div>
+      <Toolbar style={{ justifyContent: "center" }}>
+        {/*  <div style={{width: '40px'}}></div>*/}
           <Typography
           edge = 'end'
             variant="h6"
@@ -77,11 +77,13 @@ function MainTemplateRoutine() {
           >
             <div style={{fontFamily: "PretendardMedium",fontSize: "20px", textAlign:"center", color: "black"}}>플랜</div>
           </Typography>
+          {/*
           <Link
            to='../main/buytemplate'
           >
             <FavoriteBorderIcon style={{color:"grey"}}/>
           </Link>
+          */}
         </Toolbar>
       </AppBar>
       <Link
@@ -209,6 +211,7 @@ function MainTemplateRoutine() {
       <div style={{height: '10px'}}></div>
       </ul>
       <BottomNavBarPlan/>
+      <div style={{height: "33px", backgroundColor:"white",width:"100vw",position:"fixed", bottom:"0px"}}></div>
       <div style={{height:'20px'}}></div>
     </div>
    

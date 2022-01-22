@@ -203,6 +203,8 @@ function BuyTemplate() {
       <div style={{height: '10px'}}></div>
       </ul>
       <BottomNavBarPlan/>
+      <div style={{height: "33px", backgroundColor:"white",width:"100vw",position:"fixed", bottom:"0px"}}></div>
+  
     </div>
    
   );
