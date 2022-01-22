@@ -21,7 +21,8 @@ import {
   useParams
 } from "react-router-dom";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-
+import {Oval} from "react-loader-spinner";
+import BottomNavBarTodo from "../globalcomponents/bottomnavbartodo.components";
 
 function BuyTemplate() {
     let navigate = useNavigate();
@@ -60,8 +61,33 @@ function BuyTemplate() {
       fetchUsers();
     }, []);
   
-    if (loading) return <div>로딩중..</div>;
-    if (error) return <div>에러가 발생했습니다</div>;
+    if (loading) return <div>  
+    <AppBar position="static"  elevation={0} style={{background: 'white',width: "100vw"}}>
+   <Toolbar style={{ justifyContent: "center" }}>
+  {/*  <div style={{width: '40px'}}></div>*/}
+       <Typography
+       edge = 'end'
+         variant="h6"
+         style={{
+          marginLeft: '0',
+   
+         }}
+        
+       >
+     <div style={{fontFamily: "PretendardMedium",fontSize: "20px", textAlign:"center", color: "black"}}>MY PLAN</div>
+       </Typography>
+       {/*
+       <Link
+        to='../main/buytemplate'
+       >
+         <FavoriteBorderIcon style={{color:"grey"}}/>
+       </Link>
+       */}
+     </Toolbar>
+   </AppBar>
+   <div style={{marginTop:"40vh", marginBottom:"auto", marginLeft:"40vw",marginRight:"auto"}}><Oval color="#7965f4" height="40px" width="40px" justifyContent="true"/></div><BottomNavBarTodo/>
+ <div style={{height: "33px", backgroundColor:"white",width:"100vw",position:"fixed", bottom:"0px"}}></div>
+</div>;  if (error) return <div>에러가 발생했습니다</div>;
     if (!users) return null;
   return (
     <div className="container">
@@ -202,7 +228,7 @@ function BuyTemplate() {
       </div>
       <div style={{height: '10px'}}></div>
       </ul>
-      <BottomNavBarPlan/>
+      <BottomNavBarTodo/>
       <div style={{height: "33px", backgroundColor:"white",width:"100vw",position:"fixed", bottom:"0px"}}></div>
   
     </div>
