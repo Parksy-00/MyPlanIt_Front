@@ -15,7 +15,7 @@ function Growth() {
       <br />
       <br />
       <BottomNavBarTodo />
-      <div style={{height: "30px", backgroundColor:"white",width:"100vw",position:"fixed", bottom:"0px"}}>.</div>
+      <div style={{height: "33px", backgroundColor:"white",width:"100vw",position:"fixed", bottom:"0px"}}></div>
     </>
   );
 }
