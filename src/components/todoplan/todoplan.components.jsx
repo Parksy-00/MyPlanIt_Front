@@ -68,6 +68,10 @@ function TodoPlan() {
             }
           />
         </MuiPickersUtilsProvider>
+        <Link
+           to='../main/buytemplate'
+          >
+
         <Button
           style={{
             marginLeft: 50,
@@ -79,6 +83,7 @@ function TodoPlan() {
         >
           MY PLAN
         </Button>
+        </Link>
       </div>
       <span
         className="button-group"
@@ -389,7 +394,8 @@ function TodoPlan() {
       <br />
       <br />
       <BottomNavBarTodo style={{height: '200px'}}/>
-
+      <div style={{height: "33px", backgroundColor:"white",width:"100vw",position:"fixed", bottom:"0px"}}></div>
+  
     </div>
   );
 }

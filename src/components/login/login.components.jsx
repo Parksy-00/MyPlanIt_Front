@@ -66,7 +66,7 @@ function Login() {
         onChange={(e) => {
           setEmail(e.target.value);
         }}
-        style={{ width: "327px", marginBottom: "12px", fontFamily: "PretendardRegular",fontSize: "16px", color:"#CECECE"}}
+        style={{ width: "327px", marginBottom: "12px", fontFamily: "PretendardRegular",fontSize: "16px", color:"black"}}
       />  <Input.Password
         className="password-input"
         size="large"

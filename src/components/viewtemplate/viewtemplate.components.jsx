@@ -100,13 +100,13 @@ function ViewTemplate(props) {
         }}
       >
         <Link to="../main/maintemplateroutine">
-          <ArrowBackIosIcon style={{ color: "white" }} />
+          <ArrowBackIosIcon style={{ color: "#7965f4" }} />
         </Link>
         <button
           onClick={() => {}}
           style={{ backgroundColor: "transparent", border: "0" }}
         >
-          <FavoriteBorderIcon style={{ color: "white" }}/>
+          <FavoriteBorderIcon style={{ color: "#7965f4" }}/>
         </button>
       </div>
 
@@ -176,6 +176,7 @@ function ViewTemplate(props) {
       </div>
 
       <BottomNavBarPlan />
+      <div style={{height: "33px", backgroundColor:"white",width:"100vw",position:"fixed", bottom:"0px"}}></div>
     </div>
   );
 }

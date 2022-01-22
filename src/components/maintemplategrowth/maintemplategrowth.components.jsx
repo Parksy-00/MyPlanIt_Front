@@ -64,8 +64,8 @@ function MainTemplateGrowth() {
   return (
     <div className="container">
          <AppBar position="static"  elevation={0} style={{background: 'white',width: "100vw"}}>
-      <Toolbar style={{ justifyContent: "space-between" }}>
-      <div style={{width: '40px'}}></div>
+      <Toolbar style={{ justifyContent: "center" }}>
+
           <Typography
           edge = 'end'
             variant="h6"
@@ -77,11 +77,13 @@ function MainTemplateGrowth() {
           >
         <div style={{fontFamily: "PretendardMedium",fontSize: "20px", textAlign:"center", color: "black"}}>플랜</div>
           </Typography>
+          {/*
           <Link
-           to='../main/wishtemplate'
+           to='../main/buytemplate'
           >
             <FavoriteBorderIcon style={{color:"grey"}}/>
           </Link>
+          */}
         </Toolbar>
       </AppBar>
       <Link
@@ -104,7 +106,7 @@ function MainTemplateGrowth() {
         marginTop: '10px',
         marginLeft: '20px',
         border: '5px',
-        background: 'white',
+        background: 'transparent',
         borderRadius: '0',
         color: 'gray',
         fontFamily: "SFProDisplay",fontSize: "18px"}}
@@ -121,7 +123,7 @@ function MainTemplateGrowth() {
         alignItems:'center',
         marginTop: '10px',
         border: '5px',
-        background: 'white',
+        background: 'transparent',
         borderRadius: '0',
         color: 'black',
         borderBottom:'solid #7965f4',fontFamily: "SFProDisplay",fontSize: "18px"}}
@@ -203,6 +205,7 @@ function MainTemplateGrowth() {
       <div style={{height: '10px'}}></div>
       </ul>
       <BottomNavBarPlan/>
+      <div style={{height: "33px", backgroundColor:"white",width:"100vw",position:"fixed", bottom:"0px"}}></div>
     </div>
    
   );
