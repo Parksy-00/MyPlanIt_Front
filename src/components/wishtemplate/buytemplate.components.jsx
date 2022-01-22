@@ -69,7 +69,7 @@ function BuyTemplate() {
       <Toolbar style={{ justifyContent: "space-between" }}>
     
       <Link
-           to='../main/maintemplateroutine'
+           to='../main'
           >
             <ArrowBackIosIcon style={{color:"black"}} />
           </Link>

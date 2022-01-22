@@ -69,7 +69,7 @@ function UseTemplate() {
       <Toolbar style={{ justifyContent: "space-between" }}>
     
       <Link
-           to='../main/maintemplateroutine'
+           to='../main'
           >
             <ArrowBackIosIcon style={{color:"black"}} />
           </Link>
@@ -141,7 +141,7 @@ function UseTemplate() {
     
            
 
-    <li key={users.Routine.id+1}>
+    <li key={users.Routine.id}>
        <NavLink to={"../main/viewtemplate/"+Routine.id} className="template-overall" style={{justifyContent:'center',color:'black'}}>
 
 <React.Fragment key={uuidv4()}>
