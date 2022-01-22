@@ -69,7 +69,7 @@ function BuyTemplate() {
       <Toolbar style={{ justifyContent: "space-between" }}>
     
       <Link
-           to='../main/maintemplateroutine'
+           to='../main'
           >
             <ArrowBackIosIcon style={{color:"black"}} />
           </Link>
@@ -90,22 +90,8 @@ function BuyTemplate() {
         className="button-group"
         style={{ marginTop: "8px", fontSize: "16px", fontWeight:"bold"}}
       >
-        <Link
-       to='../main/wishtemplate'
-        className="main-routine-button"
-       
-        style={{width: "7.5vh", height: "35px",display: 'flex',
-        justifyContent: 'center',
-        alignItems:'center',
-        marginTop: '10px',
-        border: '5px',
-        background: 'white',
-        borderRadius: '0',
-        color: 'gray'}}
-      >
-        찜하기
-      </Link>
-      <div style={{width: '3vw'}}></div>
+    
+     
       <Link
         style={{border: '1px solid #D3d3d3'}}
         to='../main/buytemplate'
@@ -115,7 +101,7 @@ function BuyTemplate() {
         alignItems:'center',
         marginTop: '10px',
         border: '5px',
-        background: 'white',
+        background: 'transparent',
         borderRadius: '0',
         color: 'black',
         borderBottom:'solid #7965f4'}}
@@ -132,13 +118,13 @@ function BuyTemplate() {
         alignItems:'center',
         marginTop: '10px',
         border: '5px',
-        background: 'white',
+        background: 'transparent',
         borderRadius: '0',
         color: 'gray'}}
       >
         이용 중
       </Link>
-      <div style={{width: "30vw"}}></div>
+      <div style={{width: "50vw"}}></div>
       </span>
        <div style={{height: '10px'}}></div>
       <ul className="template-content"style={{overflowY: 'scroll',
@@ -153,61 +139,61 @@ function BuyTemplate() {
       <div style={{height: '10px'}}></div>
    
       
-          {users.Routine.map(Routine=>(
+      {users.Routine.map(Routine=>(
     
            
 
-            <li key={users.Routine.id}>
-               <NavLink to={"../main/viewtemplate/"+Routine.id} className="template-overall" style={{justifyContent:'center',color:'black'}}>
- 
- <React.Fragment key={uuidv4()}>
-              <div style={{display:'flex',flexDirection:'column', boxShadow: '0px 0px 2px 0.5px #Dedede', justifyContent: 
-          "center"}} className="template-all">
-             <div style={{height: "5px"}}></div>
-             <div style={{width: '350px', marginRight:'auto',marginLeft:'auto',display: "flex", flexDirection: "row", justifyContent: 'space-between'}}>
-             <div style={{marginLeft:'0'}}className="template-title">{Routine.name}</div>
-             </div>
+    <li key={users.Routine.id}>
+       <NavLink to={"../main/viewtemplate/"+Routine.id} className="template-overall" style={{justifyContent:'center',color:'black'}}>
 
-             <div style={{height: "8px"}}></div>
-              <img className="template-photourl" src= {Routine.intro_img_url} style={{width: '350px', height: '130px'}}></img>
-              <div style={{display:'flex',flexDirection:'column', width:'350px', paddingLeft:'5px'}}>
-                
-              <div style={{display: 'flex', flexDirection: 'row', justifyContent:'space-between'}}>
-              <div style={{display: 'flex', flexDirection: 'row', marginTop: '10px', width: '280px'}}>
-              <img className="template-writerphoto" src= {Routine.writer_img} style={{width: '40px', height: '40px',borderRadius:'20px'}}></img>
-              <div style={{display: 'flex', flexDirection: 'column',marginLeft: '10px'}}>
-              <div className="template-writerintro" style={{fontSize: '10px',color:'gray', height: '15px'}}>{Routine.writer_intro}</div>
-              <div style={{fontSize:'10px'}}>{Routine.writer_name}</div>
-              </div>
-              </div>
-              <div style={{marginTop:'auto',marginBottom:'auto', color: '#7965f4'}}>
-             {Routine.checkHeart ? 
-             <FavoriteIcon />:
-             <FavoriteBorderIcon />}
-             </div>
-              </div>
-              <div className="template-content" style={{fontSize:'12px'}}>{Routine.desc}</div>
-              <div style={{height: '5px'}}></div>
-              <div style={{display:'flex', flexDirection:'row',justifyContent:'left'}}>
-                <div className="template-tag">
-                {Routine.tags[0]}
-                </div>
-                <div style={{width: '10px'}}>
-                </div>
-                <div className="template-tag">
-                {Routine.tags[1]}
-                </div>
-              </div>
-              <div style={{height: '5px'}}></div>
-              </div>
-              </div>
-              <div style={{height: "15px"}}></div>
-              </React.Fragment>
-            </NavLink>
-            </li>
-         
-         
-          ))}
+<React.Fragment key={uuidv4()}>
+      <div style={{display:'flex',flexDirection:'column', boxShadow: '0px 0px 2px 0.5px #Dedede', justifyContent: 
+  "center"}} className="template-all">
+     <div style={{height: "5px"}}></div>
+     <div style={{width: '350px', marginRight:'auto',marginLeft:'auto',display: "flex", flexDirection: "row", justifyContent: 'space-between'}}>
+     <div style={{marginLeft:'0'}}className="template-title">{Routine.name}</div>
+     </div>
+
+     <div style={{height: "8px"}}></div>
+      <img className="template-photourl" src= {Routine.intro_img_url} style={{width: '350px', height: '130px'}}></img>
+      <div style={{display:'flex',flexDirection:'column', width:'350px', paddingLeft:'5px'}}>
+        
+      <div style={{display: 'flex', flexDirection: 'row', justifyContent:'space-between'}}>
+      <div style={{display: 'flex', flexDirection: 'row', marginTop: '10px', width: '280px'}}>
+      <img className="template-writerphoto" src= {Routine.writer_img} style={{width: '40px', height: '40px',borderRadius:'20px'}}></img>
+      <div style={{display: 'flex', flexDirection: 'column',marginLeft: '10px'}}>
+      <div className="template-writerintro" style={{fontSize: '14px',color:'gray', height: '14px',marginBottom:"4px"}}>{Routine.writer_intro}</div>
+      <div style={{fontSize:'14px'}}>{Routine.writer_name}</div>
+      </div>
+      </div>
+      <div style={{marginTop:'auto',marginBottom:'auto', color: '#7965f4'}}>
+     {Routine.checkHeart ? 
+     <FavoriteIcon />:
+     <FavoriteBorderIcon />}
+     </div>
+      </div>
+      <div className="template-content" style={{fontSize:'12px'}}>{Routine.desc}</div>
+      <div style={{height: '5px'}}></div>
+      <div style={{display:'flex', flexDirection:'row',justifyContent:'left'}}>
+        <div className="template-tag">
+        {Routine.tags[0]}
+        </div>
+        <div style={{width: '10px'}}>
+        </div>
+        <div className="template-tag">
+        {Routine.tags[1]}
+        </div>
+      </div>
+      <div style={{height: '5px'}}></div>
+      </div>
+      </div>
+      <div style={{height: "15px"}}></div>
+      </React.Fragment>
+    </NavLink>
+    </li>
+ 
+ 
+  ))}
       
      
       <div
