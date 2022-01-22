@@ -14,15 +14,14 @@ import DatePicker from "react-datepicker";
 import { Checkbox, Card, Button } from "antd";
 import "./todoplan.components.css";
 import axios from "axios";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 function TodoPlan() {
   useEffect(() => {
     axios.get("https://myplanit.link/todos/plan/2022-01-21", {
       headers: {
-        access_token:
-          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQyNjk3MzkwLCJpYXQiOjE2NDI2MTA5OTAsImp0aSI6IjA3Njk1NzhjMTc5YzQzZGJhMWE5MWU0ZGY3NWY4MTkzIiwidXNlcl9pZCI6NDB9.tJPSFHBoA7ibIJAobwN7h8-W1B7Yqh85KnsD_zFEPEY",
-        refresh_token:
-          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY0NTIwMjk5MCwiaWF0IjoxNjQyNjEwOTkwLCJqdGkiOiI0OTUwM2MzNTQ3YmU0NzIwYTRjNTI2YzQ5OGU2ZDQ1OSIsInVzZXJfaWQiOjQwfQ.VLshLAoIcdg9zQYEmOnKP_SjCahth4lKppiyT9Una2k",
+        "Content-Type": "application/json",
+        Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ1MzQxNzk1LCJpYXQiOjE2NDI3NDk3OTUsImp0aSI6ImM0NWEyNDI0ZGZmNDQ2MzlhMzYwY2ExMDNmYzZjOWYxIiwidXNlcl9pZCI6NDB9.mi67W4Yk6vM47qPtlwLXWVJeQUEfVJV8jqQRj8zhi5M`,
       },
       withCredentials: true
     });
@@ -30,6 +29,9 @@ function TodoPlan() {
   let navigate = useNavigate();
 
   const [selectedDate, setSelectedDate] = useState(new Date());
+
+  const [notionNum, setNotionNum] = useState(0);
+  const [growthNum, setGrowthNum] = useState(0);
 
   function onChange(e) {}
 
@@ -47,8 +49,9 @@ function TodoPlan() {
       >
         <MuiPickersUtilsProvider locale={ko} utils={DateFnsUtils}>
           <KeyboardDatePicker
+            style={{ width: 210 }}
             disableToolbar
-            format="MM월 dd일 eee요일"
+            format="M월 d일 eee요일"
             margin="normal"
             id="date-picker-outline"
             value={selectedDate}
@@ -56,41 +59,59 @@ function TodoPlan() {
             KeyboardButtonProps={{
               "aria-label": "change date",
             }}
+            keyboardIcon={
+              <ExpandMoreIcon
+                color="black"
+                fontSize="large"
+                style={{ padding: 0 }}
+              />
+            }
           />
         </MuiPickersUtilsProvider>
-        <Button style={{ marginLeft: 30 }}>MY PLAN</Button>
+        <Button
+          style={{
+            marginLeft: 50,
+            height: 25,
+            width: 73,
+            fontSize: 9,
+            marginTop: 10,
+          }}
+        >
+          MY PLAN
+        </Button>
       </div>
       <span
         className="button-group"
-        style={{ marginTop: "8px", fontSize: "16px", fontWeight: "bold" }}
+        style={{ fontSize: "16px", fontWeight: "bold" }}
       >
         <Link
-          to="../main/todoplan"
+          to="../main"
           className="main-routine-button"
           style={{
-            width: "7.5vh",
-            height: "35px",
+            width: 42,
+            height: "20px",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             marginTop: "10px",
-            border: "5px",
+            border: "1px",
             background: "#fbfbfb",
             borderRadius: "0",
             color: "black",
-            borderBottom: "solid #7965f4",
+            borderBottom: " 2px solid #7965f4",
+            paddingBottom: 2,
           }}
         >
           PLAN
         </Link>
-        <div style={{ width: "5vw" }}></div>
+        <div style={{ width: 15 }}></div>
         <Link
           style={{ border: "1px solid #D3d3d3" }}
           to="../main/todomy"
           className="main-growth-button"
           style={{
-            width: "7.5vh",
-            height: "35px",
+            width: 42,
+            height: "17px",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
@@ -99,14 +120,15 @@ function TodoPlan() {
             background: "#fbfbfb",
             borderRadius: "0",
             color: "gray",
+            marginRight: 30,
           }}
         >
           MY
         </Link>
-        <div style={{ width: "55vw" }}></div>
+        <div style={{ width: 190 }}></div>
       </span>
       <div style={{ height: "10px" }}></div>
-      <Card style={{ width: 327, height: 190, marginTop: 9 }}>
+      <Card style={{ borderRadius: 5, width: 327, height: 260, marginTop: 9 }}>
         <span style={{ display: "flex" }}>
           <span
             style={{
@@ -116,9 +138,9 @@ function TodoPlan() {
               fontSize: "16px",
             }}
           >
-            <span>1000만원 모으기</span>
-            <span style={{ marginLeft: 100 }}>
-              <span style={{ color: "#8977F7" }}>25%</span> 달성
+            <span>노션 포트폴리오와 퍼스널 브랜딩</span>
+            <span style={{ marginLeft: 20 }}>
+              <span style={{ color: "#8977F7" }}>{notionNum}%</span> 달성
             </span>
           </span>
         </span>
@@ -126,34 +148,136 @@ function TodoPlan() {
         <div style={{ display: "flex", flexDirection: "column" }}>
           <Checkbox
             style={{ marginLeft: 0, marginTop: 12 }}
-            onChange={onChange}
+            onChange={(e) => {
+              if (e.target.checked) {
+                setNotionNum(notionNum + 1);
+              } else {
+                setNotionNum(notionNum - 1);
+              }
+            }}
           >
-            소비패턴 분석하기
+            노션 회원가입
+            <span>
+              <img
+                src="images/detail.png"
+                onClick={() => {
+                  navigate("/todo/notion/1");
+                }}
+                style={{
+                  marginLeft: 160,
+                  width: 8,
+                }}
+              />
+            </span>
           </Checkbox>
           <Checkbox
             style={{ marginLeft: 0, marginTop: 16 }}
-            onChange={onChange}
+            onChange={(e) => {
+              if (e.target.checked) {
+                setNotionNum(notionNum + 1);
+              } else {
+                setNotionNum(notionNum - 1);
+              }
+            }}
           >
-            저금계좌 설립하기
+            노션 다운로드
+            <span>
+              <img
+                src="images/detail.png"
+                onClick={() => {
+                  navigate("/todo/notion/2");
+                }}
+                style={{
+                  marginLeft: 160,
+                  width: 8,
+                }}
+              />
+            </span>
           </Checkbox>
           <Checkbox
             style={{ marginLeft: 0, marginTop: 16 }}
-            onChange={onChange}
+            onChange={(e) => {
+              if (e.target.checked) {
+                setNotionNum(notionNum + 1);
+              } else {
+                setNotionNum(notionNum - 1);
+              }
+            }}
           >
-            자동이체 걸어놓기
+            포트폴리오 레퍼런스 보기
+            <span>
+              <img
+                src="images/detail.png"
+                onClick={() => {
+                  navigate("/todo/notion/3");
+                }}
+                style={{
+                  marginLeft: 95,
+                  width: 8,
+                }}
+              />
+            </span>
+          </Checkbox>
+          <Checkbox
+            style={{ marginLeft: 0, marginTop: 16 }}
+            onChange={(e) => {
+              if (e.target.checked) {
+                setNotionNum(notionNum + 2);
+              } else {
+                setNotionNum(notionNum - 2);
+              }
+            }}
+          >
+            기초 개념 다루기 - 화면 구성
+            <span>
+              <img
+                src="images/detail.png"
+                onClick={() => {
+                  navigate("/todo/notion/4");
+                }}
+                style={{
+                  marginLeft: 78,
+                  width: 8,
+                }}
+              />
+            </span>
+          </Checkbox>
+          <Checkbox
+            style={{ marginLeft: 0, marginTop: 16 }}
+            onChange={(e) => {
+              if (e.target.checked) {
+                setNotionNum(notionNum + 2);
+              } else {
+                setNotionNum(notionNum - 2);
+              }
+            }}
+          >
+            기초 개념 다루기 - 블록
+            <span>
+              <img
+                src="images/detail.png"
+                onClick={() => {
+                  navigate("/todo/notion/5");
+                }}
+                style={{
+                  marginLeft: 105,
+                  width: 8,
+                }}
+              />
+            </span>
           </Checkbox>
         </div>
       </Card>
-      <Card style={{ width: 327, height: 190, marginTop: 9 }}>
+      <Card style={{ borderRadius: 5, width: 327, height: 150, marginTop: 9 }}>
         <span style={{ display: "flex" }}>
           <span style={{ marginTop: "2px", fontSize: "16px" }}>
-            <span>데이트 요리 10가지 배우기</span>
+            <span>한 달 동안 200% 성장하기</span>
             <span
               style={{
-                marginLeft: 40,
+                marginLeft: 55,
               }}
             >
-              <span style={{ color: "#8977F7" }}>50%</span> 달성
+              <span style={{ color: "#8977F7" }}>{growthNum}%</span> 달성
             </span>
           </span>
         </span>
@@ -161,30 +285,60 @@ function TodoPlan() {
         <div style={{ display: "flex", flexDirection: "column" }}>
           <Checkbox
             style={{ marginLeft: 0, marginTop: 12 }}
-            onChange={onChange}
+            onChange={(e) => {
+              if (e.target.checked) {
+                setGrowthNum(growthNum + 4);
+              } else {
+                setGrowthNum(growthNum - 4);
+              }
+            }}
           >
-            차돌박이 파스타 재료 사기
+            한 달 목표 세우기
+            <span>
+              <img
+                src="images/detail.png"
+                onClick={() => {
+                  navigate("/todo/growth/1");
+                }}
+                style={{
+                  marginLeft: 137,
+                  width: 8,
+                }}
+              />
+            </span>
           </Checkbox>
           <Checkbox
             style={{ marginLeft: 0, marginTop: 16 }}
-            onChange={onChange}
+            onChange={(e) => {
+              if (e.target.checked) {
+                setGrowthNum(growthNum + 4);
+              } else {
+                setGrowthNum(growthNum - 4);
+              }
+            }}
           >
-            차돌박이 파스타 재료 손질하기
-          </Checkbox>
-          <Checkbox
-            style={{ marginLeft: 0, marginTop: 16 }}
-            onChange={onChange}
-          >
-            차돌박이 파스타 요리하기
+            회고 질문 3개 만들기
+            <span>
+              <img
+                src="images/detail.png"
+                onClick={() => {
+                  navigate("/todo/growth/2");
+                }}
+                style={{
+                  marginLeft: 117,
+                  width: 8,
+                }}
+              />
+            </span>
           </Checkbox>
         </div>
       </Card>
-      <Card style={{ width: 327, height: 150, marginTop: 9 }}>
+      <Card style={{ borderRadius: 5, width: 327, height: 150, marginTop: 9 }}>
         <span style={{ display: "flex" }}>
           <span style={{ marginTop: "2px", fontSize: "16px" }}>
-            <span>엑셀 함수 10개 배우기</span>
-            <span style={{ marginLeft: 70 }}>
-              <span style={{ color: "#8977F7" }}>33%</span> 달성
+            <span>자피어로 자동화 시스템 만들기</span>
+            <span style={{ marginLeft: 15 }}>
+              <span style={{ color: "#8977F7" }}>100%</span> 달성
             </span>
           </span>
         </span>
@@ -192,19 +346,50 @@ function TodoPlan() {
         <div style={{ display: "flex", flexDirection: "column" }}>
           <Checkbox
             style={{ marginLeft: 0, marginTop: 12 }}
+            checked={true}
             onChange={onChange}
           >
-            SUMIF 함수
+            자피어 회원가입
+            <span>
+              <img
+                src="images/detail.png"
+                onClick={() => {
+                  navigate("/todo/zapier/1");
+                }}
+                style={{
+                  marginLeft: 143,
+                  width: 8,
+                }}
+              />
+            </span>
           </Checkbox>
           <Checkbox
             style={{ marginLeft: 0, marginTop: 16 }}
+            checked={true}
             onChange={onChange}
           >
-            VLookUp 함수
+            자피어 기초 개념
+            <span>
+              <img
+                src="images/detail.png"
+                onClick={() => {
+                  navigate("/todo/zapier/2");
+                }}
+                style={{
+                  marginLeft: 140,
+                  width: 8,
+                }}
+              />
+            </span>
           </Checkbox>
         </div>
       </Card>
+
+      <br />
+      <br />
+      <br />
       <BottomNavBarTodo style={{height: '200px'}}/>
+
     </div>
   );
 }

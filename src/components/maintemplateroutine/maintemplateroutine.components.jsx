@@ -105,7 +105,7 @@ function MainTemplateRoutine() {
         marginTop: '10px',
         marginLeft: '20px',
         border: '5px',
-        background: 'white',
+        background: 'transparent',
         borderRadius: '0',
         color: 'black',
         borderBottom:'solid #7965f4',
@@ -123,7 +123,7 @@ function MainTemplateRoutine() {
         alignItems:'center',
         marginTop: '10px',
         border: '5px',
-        background: 'white',
+        background: 'transparent',
         borderRadius: '0',
         color: 'gray',
         fontFamily: "SFProDisplay",fontSize: "18px"}}
