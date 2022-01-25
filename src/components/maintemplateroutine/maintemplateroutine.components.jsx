@@ -59,8 +59,33 @@ function MainTemplateRoutine() {
       fetchUsers();
     }, []);
   
-    if (loading) return <div style={{marginTop:"50vh", marginBottom:"auto"}}><Oval color="#7965f4" height="40px" width="40px" /></div>;
-    if (error) return <div>에러가 발생했습니다</div>;
+    if (loading) return <div>  
+       <AppBar position="static"  elevation={0} style={{background: 'white',width: "100vw"}}>
+      <Toolbar style={{ justifyContent: "center" }}>
+     {/*  <div style={{width: '40px'}}></div>*/}
+          <Typography
+          edge = 'end'
+            variant="h6"
+            style={{
+             marginLeft: '0',
+      
+            }}
+           
+          >
+        <div style={{fontFamily: "PretendardMedium",fontSize: "20px", textAlign:"center", color: "black"}}>플랜</div>
+          </Typography>
+          {/*
+          <Link
+           to='../main/buytemplate'
+          >
+            <FavoriteBorderIcon style={{color:"grey"}}/>
+          </Link>
+          */}
+        </Toolbar>
+      </AppBar>
+      <div style={{marginTop:"40vh", marginBottom:"auto", marginLeft:"40vw",marginRight:"auto"}}><Oval color="#7965f4" height="40px" width="40px" justifyContent="true"/></div><BottomNavBarPlan/>
+    <div style={{height: "33px", backgroundColor:"white",width:"100vw",position:"fixed", bottom:"0px"}}></div>
+</div>;  if (error) return <div>에러가 발생했습니다</div>;
     if (!users) return null;
   return (
     <div className="container">
@@ -175,9 +200,10 @@ function MainTemplateRoutine() {
               </div>
               </div>
               <div style={{marginTop:'auto',marginBottom:'auto', color: '#7965f4'}}>
-             {Routine.checkHeart ? 
+             {/* {Routine.checkHeart ? 
              <FavoriteIcon />:
-             <FavoriteBorderIcon />}
+             <FavoriteBorderIcon />} */}
+            
              </div>
               </div>
               <div className="template-content" style={{fontSize:'12px'}}>{Routine.desc}</div>
