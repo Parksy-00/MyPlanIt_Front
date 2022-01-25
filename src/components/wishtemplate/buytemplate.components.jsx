@@ -23,7 +23,9 @@ import {
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import {Oval} from "react-loader-spinner";
 import BottomNavBarTodo from "../globalcomponents/bottomnavbartodo.components";
-
+const accessToken =  localStorage.getItem("token");
+console.log(accessToken);
+console.log(localStorage.getItem("token"));
 function BuyTemplate() {
     let navigate = useNavigate();
     let {plan_id} = useParams();
@@ -48,9 +50,20 @@ function BuyTemplate() {
           setError(null);
           setUsers(null);
           setLoading(true);
+          console.log(accessToken);
           const response = await axios.get(
-            'https://myplanit.link/plans'
+            'https://myplanit.link/myplans/buy',
+            {
+            
+              withCredentials:true,
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${accessToken}`
+                  },
+          
+            }
           );
+          console.log("성공하면 이거 출력");
           setUsers(response.data); 
         } catch (e) {
           setError(e);
@@ -165,61 +178,7 @@ function BuyTemplate() {
       <div style={{height: '10px'}}></div>
    
       
-      {users.Routine.map(Routine=>(
-    
-           
-
-    <li key={users.Routine.id}>
-       <NavLink to={"../main/viewtemplate/"+Routine.id} className="template-overall" style={{justifyContent:'center',color:'black'}}>
-
-<React.Fragment key={uuidv4()}>
-      <div style={{display:'flex',flexDirection:'column', boxShadow: '0px 0px 2px 0.5px #Dedede', justifyContent: 
-  "center"}} className="template-all">
-     <div style={{height: "5px"}}></div>
-     <div style={{width: '350px', marginRight:'auto',marginLeft:'auto',display: "flex", flexDirection: "row", justifyContent: 'space-between'}}>
-     <div style={{marginLeft:'0'}}className="template-title">{Routine.name}</div>
-     </div>
-
-     <div style={{height: "8px"}}></div>
-      <img className="template-photourl" src= {Routine.intro_img_url} style={{width: '350px', height: '130px'}}></img>
-      <div style={{display:'flex',flexDirection:'column', width:'350px', paddingLeft:'5px'}}>
-        
-      <div style={{display: 'flex', flexDirection: 'row', justifyContent:'space-between'}}>
-      <div style={{display: 'flex', flexDirection: 'row', marginTop: '10px', width: '280px'}}>
-      <img className="template-writerphoto" src= {Routine.writer_img} style={{width: '40px', height: '40px',borderRadius:'20px'}}></img>
-      <div style={{display: 'flex', flexDirection: 'column',marginLeft: '10px'}}>
-      <div className="template-writerintro" style={{fontSize: '14px',color:'gray', height: '14px',marginBottom:"4px"}}>{Routine.writer_intro}</div>
-      <div style={{fontSize:'14px'}}>{Routine.writer_name}</div>
-      </div>
-      </div>
-      <div style={{marginTop:'auto',marginBottom:'auto', color: '#7965f4'}}>
-     {Routine.checkHeart ? 
-     <FavoriteIcon />:
-     <FavoriteBorderIcon />}
-     </div>
-      </div>
-      <div className="template-content" style={{fontSize:'12px'}}>{Routine.desc}</div>
-      <div style={{height: '5px'}}></div>
-      <div style={{display:'flex', flexDirection:'row',justifyContent:'left'}}>
-        <div className="template-tag">
-        {Routine.tags[0]}
-        </div>
-        <div style={{width: '10px'}}>
-        </div>
-        <div className="template-tag">
-        {Routine.tags[1]}
-        </div>
-      </div>
-      <div style={{height: '5px'}}></div>
-      </div>
-      </div>
-      <div style={{height: "15px"}}></div>
-      </React.Fragment>
-    </NavLink>
-    </li>
- 
- 
-  ))}
+   
       
      
       <div

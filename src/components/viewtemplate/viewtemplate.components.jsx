@@ -21,7 +21,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 import {Oval} from "react-loader-spinner";
 const refreshToken =  localStorage.getItem("refreshToken");
-const accessToken =  localStorage.getItem("accessToken");
+const accessToken =  localStorage.getItem("token");
 
 function ViewTemplate(props) {
   const { id } = useParams();
@@ -38,8 +38,7 @@ function ViewTemplate(props) {
       .post(
         "https://myplanit.link/plans/"+id+"/buy",
         {
-          access_token: accessToken,
-          refresh_token: refreshToken,
+          token: accessToken,
         },
         {
 
@@ -47,6 +46,7 @@ function ViewTemplate(props) {
           
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`
           },
           
           
