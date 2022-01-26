@@ -204,7 +204,7 @@ function TodoPlan() {
                     key={i}
                     style={{ marginLeft: 0, marginTop: 12 }}
                     checked={plan[1][1]["finish_flag"]}
-                    onChange={(e) => {
+                    onChange={async (e) => {
                       if (e.target.checked) {
                         axios.post(
                           `https://myplanit.link/todos/plan/${plan[1][1]["plan_id"]}/${plan[1][1]["id"]}/check`,
@@ -216,7 +216,7 @@ function TodoPlan() {
                             },
                           }
                         );
-                        setRerender(!rerender);
+                        await setRerender(!rerender);
                       } else {
                         // setNotionNum(notionNum - 1);
                         axios.post(
@@ -229,7 +229,7 @@ function TodoPlan() {
                             },
                           }
                         );
-                        setRerender(!rerender);
+                        await setRerender(!rerender);
                       }
                     }}
                   >
