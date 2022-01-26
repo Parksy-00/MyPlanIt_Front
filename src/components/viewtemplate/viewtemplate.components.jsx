@@ -36,21 +36,30 @@ function ViewTemplate(props) {
   const handleClose = (event, reason) => {
     if(reason&&reason == "backdropClick")
     return;
-    axios
+    axios.all([
+      axios
       .post(
         "https://myplanit.link/plans/"+id+"/buy",
         {token:  `Bearer ${token}`},
         {
-
           headers: {
             "Content-Type": "application/json",
            Authorization: `Bearer ${token}`,
           },
-          
-          
+        }
+      ),
+      axios
+      .post(
+        "https://myplanit.link/myplans/"+id+"/register",
+        {token:  `Bearer ${token}`},
+        {
+          headers: {
+            "Content-Type": "application/json",
+           Authorization: `Bearer ${token}`,
+          },
         }
       )
-      .then((response) => {
+    ]).then((response) => {
         console.log(response);
         navigate("/main");
       })
