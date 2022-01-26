@@ -49,6 +49,7 @@ function MainTemplateRoutine() {
           const response = await axios.get(
             'https://myplanit.link/plans'
           );
+          console.log(response.data);
           setUsers(response.data); 
         } catch (e) {
           setError(e);
