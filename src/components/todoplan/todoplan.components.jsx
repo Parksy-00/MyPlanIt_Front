@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import BottomNavBar from "../globalcomponents/bottomnavbartodo.components";
 import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-import { v4 as uuidv4 } from "uuid";
 import BottomNavBarTodo from "../globalcomponents/bottomnavbartodo.components";
 import DateFnsUtils from "@date-io/date-fns";
 import {
@@ -10,7 +9,6 @@ import {
   KeyboardDatePicker,
 } from "@material-ui/pickers";
 import { ko } from "date-fns/locale";
-import DatePicker from "react-datepicker";
 import { Checkbox, Card, Button } from "antd";
 import "./todoplan.components.css";
 import axios from "axios";
@@ -25,6 +23,8 @@ function TodoPlan() {
   const [data, setData] = useState();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [rerender, setRerender] = useState(false);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -36,7 +36,7 @@ function TodoPlan() {
             "0" +
             selectedDate.getMonth() +
             1
-          ).slice(-2)}-${("0" + (selectedDate.getDate() + 1)).slice(-2)}`,
+          ).slice(-2)}-${("0" + selectedDate.getDate()).slice(-2)}`,
           {
             Authorization: `Bearer ${accessToken}`,
             withCredentials: true,
@@ -53,7 +53,7 @@ function TodoPlan() {
       setLoading(false);
     };
     fetchData();
-  }, [selectedDate]);
+  }, [selectedDate, rerender]);
   let navigate = useNavigate();
 
   function onChange(e) {}
@@ -65,6 +65,7 @@ function TodoPlan() {
     return (
       <div style={{ marginTop: "50vh", marginBottom: "auto" }}>
         <Oval color="#7965f4" height="40px" width="40px" />
+        <BottomNavBarTodo />
       </div>
     );
   if (error) return <div>에러가 발생했습니다</div>;
@@ -162,11 +163,22 @@ function TodoPlan() {
       </span>
       <div style={{ height: "10px" }}></div>
       {data.map((plan, i) => {
-        console.log(plan);
+        let title = plan[0];
+        if (title.length > 17) {
+          title = plan[0].slice(0, 16) + "...";
+        }
+        let percent = plan[1][0]["달성률"];
+        let todos = plan[1].slice(1);
+        let count = parseInt(todos.length) * 110;
         return (
           <Card
             key={i}
-            style={{ borderRadius: 5, width: 327, height: 260, marginTop: 9 }}
+            style={{
+              borderRadius: 5,
+              width: 327,
+              height: `${count}px`,
+              marginTop: 9,
+            }}
           >
             <span style={{ display: "flex" }}>
               <span
@@ -177,41 +189,64 @@ function TodoPlan() {
                   fontSize: "16px",
                 }}
               >
-                <span>{plan[0]}</span>
+                {title}
+                <span></span>
                 <span style={{ marginLeft: 20 }}>
-                  <span style={{ color: "#8977F7" }}>
-                    {plan[1][0]["달성률"]}%
-                  </span>{" "}
-                  달성
+                  <span style={{ color: "#8977F7" }}>{percent}%</span> 달성
                 </span>
               </span>
             </span>
             <hr style={{ opacity: 0.2 }} />
             <div style={{ display: "flex", flexDirection: "column" }}>
-              {plan[1].slice(1).map((item, i) => {
+              {todos.map((item, i) => {
                 return (
                   <Checkbox
+                    key={i}
                     style={{ marginLeft: 0, marginTop: 12 }}
+                    checked={plan[1][1]["finish_flag"]}
                     onChange={(e) => {
                       if (e.target.checked) {
-                        setNotionNum(notionNum + 1);
+                        axios.post(
+                          `https://myplanit.link/todos/plan/${plan[1][1]["plan_id"]}/${plan[1][1]["id"]}/check`,
+                          { token: `Bearer ${accessToken}` },
+                          {
+                            headers: {
+                              "Content-Type": "application/json",
+                              Authorization: `Bearer ${accessToken}`,
+                            },
+                          }
+                        );
+                        setRerender(!rerender);
                       } else {
-                        setNotionNum(notionNum - 1);
+                        // setNotionNum(notionNum - 1);
+                        axios.post(
+                          `https://myplanit.link/todos/plan/${plan[1][1]["plan_id"]}/${plan[1][1]["id"]}/check`,
+                          { token: `Bearer ${accessToken}` },
+                          {
+                            headers: {
+                              "Content-Type": "application/json",
+                              Authorization: `Bearer ${accessToken}`,
+                            },
+                          }
+                        );
+                        setRerender(!rerender);
                       }
                     }}
                   >
-                    {item["plan_todo"]}
-                    <span>
-                      <img
-                        src="images/detail.png"
-                        onClick={() => {
-                          navigate("/todo/notion/1");
-                        }}
-                        style={{
-                          marginLeft: 160,
-                          width: 8,
-                        }}
-                      />
+                    <span style={{ width: "100%" }}>
+                      <span>{item["plan_todo"]}</span>
+                      <span>
+                        <img
+                          src="images/detail.png"
+                          onClick={() => {
+                            navigate(`/todo/detail/${item["todo_id"]}`);
+                          }}
+                          style={{
+                            width: 8,
+                            marginLeft: 50,
+                          }}
+                        />
+                      </span>
                     </span>
                   </Checkbox>
                 );
@@ -220,6 +255,19 @@ function TodoPlan() {
           </Card>
         );
       })}
+      <br />
+      <br />
+      <br />
+      <BottomNavBarTodo style={{ height: "200px" }} />
+      <div
+        style={{
+          height: "33px",
+          backgroundColor: "white",
+          width: "100vw",
+          position: "fixed",
+          bottom: "0px",
+        }}
+      ></div>
     </div>
   );
 }
