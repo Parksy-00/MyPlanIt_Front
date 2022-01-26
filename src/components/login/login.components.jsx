@@ -33,6 +33,8 @@ function Login() {
       )
       .then((response) => {
         localStorage.setItem("token", response.data.token);
+        localStorage.setItem("email", response.data.email);
+        localStorage.setItem("password", response.data.password);
         console.log(response.data.token)
          navigate("/main");
       })

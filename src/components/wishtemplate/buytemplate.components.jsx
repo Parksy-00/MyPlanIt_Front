@@ -63,7 +63,7 @@ function BuyTemplate() {
           
             }
           );
-          console.log("성공하면 이거 출력");
+          console.log(response.data);
           setUsers(response.data); 
         } catch (e) {
           setError(e);
