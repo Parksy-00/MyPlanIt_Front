@@ -23,6 +23,8 @@ import {
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import {Oval} from "react-loader-spinner";
 import BottomNavBarTodo from "../globalcomponents/bottomnavbartodo.components";
+import Sheet from 'react-modal-sheet';
+
 const accessToken =  localStorage.getItem("token");
 console.log(accessToken);
 console.log(localStorage.getItem("token"));
@@ -43,7 +45,7 @@ function BuyTemplate() {
     const [users, setUsers] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-  
+    const [isOpen, setOpen] = React.useState(false);
     useEffect(() => {
       const fetchUsers = async () => {
         try {
@@ -180,8 +182,8 @@ function BuyTemplate() {
       {users.buy_plans.map(buy_plans=>(
 
     <li key={users.buy_plans.id}>
-       <NavLink to={"../main/viewtemplate/"+buy_plans.plan.id} className="template-overall" style={{justifyContent:'center',color:'black'}}>
-
+      <NavLink to={"../main/buytemplate/"} className="template-overall" style={{justifyContent:'center',color:'black'}}>
+   
 <React.Fragment key={uuidv4()}>
       <div style={{display:'flex',flexDirection:'column', boxShadow: '0px 0px 2px 0.5px #Dedede', justifyContent: 
   "center"}} className="template-all">
@@ -209,7 +211,7 @@ function BuyTemplate() {
     
      </div>
       </div>
-      <div className="template-content" style={{fontSize:'12px'}}>{buy_plans.plan.desc}</div>
+      <div className="template-content" style={{fontSize:'12px', width: '335px'}}>{buy_plans.plan.desc}</div>
       <div style={{height: '5px'}}></div>
       <div style={{display:'flex', flexDirection:'row',justifyContent:'left'}}>
         <div className="template-tag">
@@ -226,7 +228,8 @@ function BuyTemplate() {
       </div>
       <div style={{height: "15px"}}></div>
       </React.Fragment>
-    </NavLink>
+
+      </NavLink>
     </li>
  
  

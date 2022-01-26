@@ -203,7 +203,7 @@ function MainTemplateGrowth() {
      
      </div>
       </div>
-      <div className="template-content" style={{fontSize:'12px'}}>{Growth.desc}</div>
+      <div className="template-content" style={{fontSize:'12px', width: '335px'}}>{Growth.desc}</div>
       <div style={{height: '5px'}}></div>
       <div style={{display:'flex', flexDirection:'row',justifyContent:'left'}}>
         <div className="template-tag">
