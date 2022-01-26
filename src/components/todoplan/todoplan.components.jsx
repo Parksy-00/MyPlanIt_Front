@@ -206,30 +206,42 @@ function TodoPlan() {
                     checked={plan[1][1]["finish_flag"]}
                     onChange={async (e) => {
                       if (e.target.checked) {
-                        axios.post(
-                          `https://myplanit.link/todos/plan/${plan[1][1]["plan_id"]}/${plan[1][1]["id"]}/check`,
-                          { token: `Bearer ${accessToken}` },
-                          {
-                            headers: {
-                              "Content-Type": "application/json",
-                              Authorization: `Bearer ${accessToken}`,
-                            },
-                          }
-                        );
-                        await setRerender(!rerender);
+                        axios
+                          .post(
+                            `https://myplanit.link/todos/plan/${plan[1][1]["plan_id"]}/${plan[1][1]["id"]}/check`,
+                            { token: `Bearer ${accessToken}` },
+                            {
+                              headers: {
+                                "Content-Type": "application/json",
+                                Authorization: `Bearer ${accessToken}`,
+                              },
+                            }
+                          )
+                          .then((response) => {
+                            console.log(response.data.message);
+                            if (response.data.message == "success") {
+                              setRerender(!rerender);
+                            }
+                          });
                       } else {
                         // setNotionNum(notionNum - 1);
-                        axios.post(
-                          `https://myplanit.link/todos/plan/${plan[1][1]["plan_id"]}/${plan[1][1]["id"]}/check`,
-                          { token: `Bearer ${accessToken}` },
-                          {
-                            headers: {
-                              "Content-Type": "application/json",
-                              Authorization: `Bearer ${accessToken}`,
-                            },
-                          }
-                        );
-                        await setRerender(!rerender);
+                        axios
+                          .post(
+                            `https://myplanit.link/todos/plan/${plan[1][1]["plan_id"]}/${plan[1][1]["id"]}/check`,
+                            { token: `Bearer ${accessToken}` },
+                            {
+                              headers: {
+                                "Content-Type": "application/json",
+                                Authorization: `Bearer ${accessToken}`,
+                              },
+                            }
+                          )
+                          .then((response) => {
+                            console.log(response.data.message);
+                            if (response.data.message == "success") {
+                              setRerender(!rerender);
+                            }
+                          });
                       }
                     }}
                   >
