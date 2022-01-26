@@ -9,7 +9,7 @@ function Notion() {
   let route = `/images/notion/${id}.png`;
   return (
     <>
-    <div
+      <div
         className="view-contents"
         style={{
           position: "relative",
@@ -24,12 +24,12 @@ function Notion() {
         <Link to="../main">
           <ArrowBackIosIcon style={{ color: "#7965f4" }} />
         </Link>
-       
       </div>
-      
-         
-      <PageHeader style={{position: "absolute",
-          top: "0",}} title="노션 포트폴리오와 퍼스널 브랜딩" />
+
+      <PageHeader
+        style={{ position: "absolute", top: "0" }}
+        title="노션 포트폴리오와 퍼스널 브랜딩"
+      />
       <hr style={{ width: "100%", marginTop: 20, marginBottom: 20 }} />
       <img src={route} width="85%" />
       <br />
@@ -37,7 +37,15 @@ function Notion() {
       <br />
       <br />
       <BottomNavBarTodo />
-      <div style={{height: "33px", backgroundColor:"white",width:"100vw",position:"fixed", bottom:"0px"}}></div>
+      <div
+        style={{
+          height: "33px",
+          backgroundColor: "white",
+          width: "100vw",
+          position: "fixed",
+          bottom: "0px",
+        }}
+      ></div>
     </>
   );
 }
