@@ -82,13 +82,23 @@ function Signup1({
             navigate("/");
           }}
         />
-        <span className="title" >회원가입 (1/2)</span>
+        <span className="title">회원가입 (1/2)</span>
       </div>
       <div className="main">
         <div className="id-input">
-          <p style={{ marginBottom:"8px", marginLeft: "10px", fontFamily: "PretendardMedium", fontSize:"14px"}}>아이디 (이메일)</p>
-          <Input id="inputID"
-          style={{fontFamily: "PretendardRegular", fontSize:"14px"}}
+          <p
+            style={{
+              marginBottom: "8px",
+              marginLeft: "10px",
+              fontFamily: "PretendardMedium",
+              fontSize: "14px",
+            }}
+          >
+            아이디 (이메일)
+          </p>
+          <Input
+            id="inputID"
+            style={{ fontFamily: "PretendardRegular", fontSize: "14px" }}
             className="email-input"
             size="large"
             placeholder="자주 사용하는 이메일 입력"
@@ -100,13 +110,26 @@ function Signup1({
                 <span />
               )
             }
-            style={{ width: "327px", marginBottom: "5px", borderColor: "#EDEDED" }}
+            style={{
+              width: "327px",
+              marginBottom: "5px",
+              borderColor: "#EDEDED",
+            }}
           />
         </div>
         <div className="pw-input">
-          <p style={{marginBottom:"8px", marginLeft: "10px",fontFamily: "PretendardMedium", fontSize:"14px"}}>비밀번호</p>
+          <p
+            style={{
+              marginBottom: "8px",
+              marginLeft: "10px",
+              fontFamily: "PretendardMedium",
+              fontSize: "14px",
+            }}
+          >
+            비밀번호
+          </p>
           <Input
-          id="inputID"
+            id="inputID"
             type="password"
             className="password-input"
             size="large"
@@ -121,13 +144,26 @@ function Signup1({
               )
             }
             placeholder="영문, 숫자, 특수문자 포함 8자 이상"
-            style={{ width: "327px", marginBottom: "5px", borderColor: "#EDEDED" }}
+            style={{
+              width: "327px",
+              marginBottom: "5px",
+              borderColor: "#EDEDED",
+            }}
           />
         </div>
         <div className="pw-check">
-          <p style={{marginBottom:"8px", marginLeft: "10px",fontFamily: "PretendardMedium", fontSize:"14px" }}>비밀번호 확인</p>
+          <p
+            style={{
+              marginBottom: "8px",
+              marginLeft: "10px",
+              fontFamily: "PretendardMedium",
+              fontSize: "14px",
+            }}
+          >
+            비밀번호 확인
+          </p>
           <Input
-          id="inputID"
+            id="inputID"
             type="password"
             className="password-check"
             size="large"
@@ -146,14 +182,23 @@ function Signup1({
               width: "327px",
               marginBottom: "5px",
               borderRadius: "5px",
-              borderColor: "#EDEDED"
+              borderColor: "#EDEDED",
             }}
           />
         </div>
         <div className="nm-input">
-          <p style={{marginBottom:"8px", marginLeft: "10px",fontFamily: "PretendardMedium", fontSize:"14px" }}>이름</p>
+          <p
+            style={{
+              marginBottom: "8px",
+              marginLeft: "10px",
+              fontFamily: "PretendardMedium",
+              fontSize: "14px",
+            }}
+          >
+            이름
+          </p>
           <Input
-          id="inputID"
+            id="inputID"
             className="name-input"
             size="large"
             placeholder="실명 입력"
@@ -173,7 +218,7 @@ function Signup1({
               width: "327px",
               marginBottom: "12px",
               borderRadius: "5px",
-              borderColor: "#EDEDED"
+              borderColor: "#EDEDED",
             }}
           />
         </div>
@@ -209,14 +254,16 @@ function Signup1({
           />
         </div> */}
         <div className="service">
-          <p style={{fontFamily: "PretendardMedium", fontSize:"14px"}}>서비스 정책</p>
+          <p style={{ fontFamily: "PretendardMedium", fontSize: "14px" }}>
+            서비스 정책
+          </p>
           <List size="small" bordered>
             <List.Item
               style={{ display: "flex", justifyContent: "flex-start" }}
             >
               <CheckIcon
                 className={iconStyle1}
-                style={{fontFamily: "PretendardMedium", fontSize:"14px"}}
+                style={{ fontFamily: "PretendardMedium", fontSize: "14px" }}
                 onClick={() => {
                   if (iconStyle1 === "enabled") {
                     setIconStyle1("disabled");
@@ -244,7 +291,7 @@ function Signup1({
               style={{ display: "flex", justifyContent: "flex-start" }}
             >
               <CheckIcon
-              style={{fontFamily: "PretendardRegular", fontSize:"14px"}}
+                style={{ fontFamily: "PretendardRegular", fontSize: "14px" }}
                 className={iconStyle2}
                 onClick={() => {
                   if (iconStyle2 === "enabled") {
@@ -262,7 +309,7 @@ function Signup1({
             >
               <CheckIcon
                 className={iconStyle3}
-                style={{fontFamily: "PretendardRegular", fontSize:"14px"}}
+                style={{ fontFamily: "PretendardRegular", fontSize: "14px" }}
                 onClick={() => {
                   if (iconStyle3 === "enabled") {
                     setIconStyle3("disabled");
@@ -286,7 +333,7 @@ function Signup1({
             >
               <CheckIcon
                 className={iconStyle4}
-                style={{fontFamily: "PretendardRegular", fontSize:"14px"}}
+                style={{ fontFamily: "PretendardRegular", fontSize: "14px" }}
                 onClick={() => {
                   if (iconStyle4 === "enabled") {
                     setIconStyle4("disabled");
@@ -309,7 +356,7 @@ function Signup1({
               style={{ display: "flex", justifyContent: "flex-start" }}
             >
               <CheckIcon
-                style={{fontFamily: "PretendardRegular", fontSize:"14px"}}
+                style={{ fontFamily: "PretendardRegular", fontSize: "14px" }}
                 className={iconStyle5}
                 onClick={() => {
                   if (iconStyle5 === "enabled") {
@@ -333,6 +380,7 @@ function Signup1({
         </div>
         {nameCheck &&
         emailCheck &&
+        equalPw == pw &&
         pwCheck &&
         service2 &&
         service3 &&
