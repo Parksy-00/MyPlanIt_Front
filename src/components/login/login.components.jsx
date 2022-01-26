@@ -23,8 +23,6 @@ function Login() {
         },
         {
 
-          withCredentials: true,
-          
           headers: {
             "Content-Type": "application/json",
           },
@@ -34,12 +32,11 @@ function Login() {
         
       )
       .then((response) => {
-        console.log(response);
-        console.log(response.data.jwt_token.access_token);
-        console.log(response.data.jwt_token.refresh_token);
-        localStorage.setItem("accessToken", response.data.jwt_token.access_token);
-        localStorage.setItem("refreshToken", response.data.jwt_token.refresh_token);
-        navigate("/main");
+        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("email", response.data.email);
+        localStorage.setItem("password", response.data.password);
+        console.log(response.data.token)
+         navigate("/main");
       })
       .catch((error) => {
         if (error.response.status === 400) {

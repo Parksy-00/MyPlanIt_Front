@@ -21,8 +21,9 @@ import {
 import { useNavigate } from 'react-router-dom';
 import {Oval} from "react-loader-spinner";
 const refreshToken =  localStorage.getItem("refreshToken");
-const accessToken =  localStorage.getItem("accessToken");
-
+const token =  localStorage.getItem("token");
+const email =  localStorage.getItem("email");
+const password =  localStorage.getItem("password");
 function ViewTemplate(props) {
   const { id } = useParams();
   const [open, setOpen] = React.useState(false);
@@ -31,27 +32,23 @@ function ViewTemplate(props) {
     setOpen(true);
   };
   const accessToken = localStorage.getItem("accessToken");
+  console.log(accessToken);
   const handleClose = (event, reason) => {
     if(reason&&reason == "backdropClick")
     return;
     axios
       .post(
         "https://myplanit.link/plans/"+id+"/buy",
-        {
-          access_token: accessToken,
-          refresh_token: refreshToken,
-        },
+        {token:  `Bearer ${token}`},
         {
 
-          withCredentials: true,
-          
           headers: {
             "Content-Type": "application/json",
+           Authorization: `Bearer ${token}`,
           },
           
           
         }
-      
       )
       .then((response) => {
         console.log(response);
