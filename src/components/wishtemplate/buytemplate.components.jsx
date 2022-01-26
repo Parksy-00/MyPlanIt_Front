@@ -23,12 +23,13 @@ import {
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import {Oval} from "react-loader-spinner";
 import BottomNavBarTodo from "../globalcomponents/bottomnavbartodo.components";
-import Sheet from 'react-modal-sheet';
 
-const accessToken =  localStorage.getItem("token");
+
+
+function BuyTemplate() {
+  const accessToken =  localStorage.getItem("token");
 console.log(accessToken);
 console.log(localStorage.getItem("token"));
-function BuyTemplate() {
     let navigate = useNavigate();
     let {plan_id} = useParams();
     const categories = [
@@ -45,7 +46,7 @@ function BuyTemplate() {
     const [users, setUsers] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const [isOpen, setOpen] = React.useState(false);
+
     useEffect(() => {
       const fetchUsers = async () => {
         try {

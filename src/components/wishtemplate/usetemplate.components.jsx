@@ -1,7 +1,6 @@
 import "./wishtemplate.components.css";
 import { Link } from "react-router-dom";
 import BottomNavBar from "../globalcomponents/bottomnavbartodo.components";
-import { useNavigate } from "react-router-dom";
 import { AppBar, Tabs, Tab } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -24,9 +23,11 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import {Oval} from "react-loader-spinner";
 import BottomNavBarTodo from "../globalcomponents/bottomnavbartodo.components";
 import Sheet from 'react-modal-sheet';
+import { useNavigate } from 'react-router-dom';
+import { sortAndDeduplicateDiagnostics } from "typescript";
+
+
 const accessToken =  localStorage.getItem("token");
-
-
 function UseTemplate() {
     let navigate = useNavigate();
     let {plan_id} = useParams();
@@ -45,7 +46,13 @@ function UseTemplate() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [isOpen, setOpen] = React.useState(false);
+    const [planId, setPlanId] = React.useState(null);
+    const [planAll, setPlanAll] = React.useState(null);
+    const [planName, setPlanName] = React.useState(null);
+    const [planWriter, setPlanWriter] = React.useState(null);
+
     useEffect(() => {
+      
       const fetchUsers = async () => {
         try {
           setError(null);
@@ -180,7 +187,7 @@ function UseTemplate() {
       {users.register_plans.map(register_plans=>(
 
 <li key={users.register_plans.id}>
-<button onClick={() => setOpen(true)}>
+<button style={{textAlign:'start',color:'black',backgroundColor:"transparent", borderColor:"transparent"}} onClick={function(event){setOpen(true); setPlanId(register_plans.plan.id);setPlanName(register_plans.plan.name);setPlanWriter(register_plans.plan.writer_name);setPlanAll(register_plans.plan)}}>
 
 <React.Fragment key={uuidv4()}>
   <div style={{display:'flex',flexDirection:'column', boxShadow: '0px 0px 2px 0.5px #Dedede', justifyContent: 
@@ -227,19 +234,53 @@ function UseTemplate() {
   <div style={{height: "15px"}}></div>
   </React.Fragment>
   </button>
-  <Sheet isOpen={isOpen} onClose={() => setOpen(false)} initialSnap={1}>
-        <Sheet.Container>
-          <Sheet.Header />
-          <Sheet.Content><div style={{marginLeft:'0'}}className="template-title">{register_plans.plan.name}</div></Sheet.Content>
-        </Sheet.Container>
-
-        <Sheet.Backdrop />
-      </Sheet>
+ 
 
 </li>
 
 ))}
-      
+       <Sheet isOpen={isOpen} onClose={() => setOpen(false)} snapPoints={[400]}>
+        <Sheet.Container>
+          <Sheet.Header />
+          <Sheet.Content>
+            <div style={{marginLeft:'0'}}className="template-title">{planName}</div>
+            <div style={{marginLeft:'0'}}className="template-content">{planWriter}</div>
+            <button
+          onClick={() => navigate("../main/viewtemplate/"+planId)}
+          style={{ backgroundColor: "transparent"}}
+        >
+          <div>상세 정보 보기</div>
+        </button>
+        <button
+          onClick={()=>{
+        
+            axios.delete(
+            `https://myplanit.link/myplans/${planId}/delete`,
+            {
+              data:{
+              plan: planAll
+              },
+              withCredentials:true,
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${accessToken}`
+                  },
+                  
+          
+            }
+          ).then((response) => {
+
+            navigate("/main");
+          });}}
+          style={{ backgroundColor: "transparent"}}
+        >
+          <div>투두 리스트에서 제거하기</div>
+        </button>
+            </Sheet.Content>
+        </Sheet.Container>
+
+        <Sheet.Backdrop />
+      </Sheet>
       <div
         className="textbox"
       >
