@@ -34,8 +34,7 @@ function TodoPlan() {
         const response = await axios.get(
           `https://myplanit.link/todos/plan/${selectedDate.getFullYear()}-${(
             "0" +
-            selectedDate.getMonth() +
-            1
+            (selectedDate.getMonth() + 1)
           ).slice(-2)}-${("0" + selectedDate.getDate()).slice(-2)}`,
           {
             Authorization: `Bearer ${accessToken}`,
