@@ -239,42 +239,41 @@ function UseTemplate() {
 </li>
 
 ))}
-       <Sheet isOpen={isOpen} onClose={() => setOpen(false)} snapPoints={[400]}>
+       <Sheet isOpen={isOpen} onClose={() => setOpen(false)} snapPoints={[300]}>
         <Sheet.Container>
           <Sheet.Header />
           <Sheet.Content>
-            <div style={{marginLeft:'0'}}className="template-title">{planName}</div>
-            <div style={{marginLeft:'0'}}className="template-content">{planWriter}</div>
-            <button
+            <div style={{marginLeft:'30px'}}className="template-title">{planName}</div>
+            <div style={{marginLeft:'30px', marginBottom:"20px"}}className="template-content">{planWriter}</div>
+            <button 
           onClick={() => navigate("../main/viewtemplate/"+planId)}
-          style={{ backgroundColor: "transparent"}}
+          style={{ backgroundColor: "transparent", border:"0", marginLeft:"24px",height:"60px"}}
         >
-          <div>상세 정보 보기</div>
-        </button>
+          <div className="see-content" style={{textAlign:"start"}}>상세 정보 보기</div>
+        </button><br/>
+        <div style={{marginLeft:"30px", marginRight: "30px",height:"1px", backgroundColor:"#d3d3d3", width:"370px"}}></div>
         <button
           onClick={()=>{
         
-            axios.delete(
+            axios.post(
             `https://myplanit.link/myplans/${planId}/delete`,
             {
-              data:{
-              plan: planAll
-              },
+              plan_id:planId
+            },
+            {
               withCredentials:true,
               headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${accessToken}`
                   },
-                  
-          
             }
           ).then((response) => {
 
             navigate("/main");
           });}}
-          style={{ backgroundColor: "transparent"}}
+          style={{ backgroundColor: "transparent", border:"0",  marginLeft:"24px",height:"60px"}}
         >
-          <div>투두 리스트에서 제거하기</div>
+          <div className="delete-content" style={{textAlign:"start"}}>투두 리스트에서 제거하기</div>
         </button>
             </Sheet.Content>
         </Sheet.Container>
