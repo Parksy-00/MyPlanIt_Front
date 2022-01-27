@@ -198,16 +198,19 @@ function TodoPlan() {
             <hr style={{ opacity: 0.2 }} />
             <div style={{ display: "flex", flexDirection: "column" }}>
               {todos.map((item, i) => {
+                console.log(plan);
+                console.log(todos);
+                console.log(item);
                 return (
                   <Checkbox
                     key={i}
                     style={{ marginLeft: 0, marginTop: 12 }}
-                    checked={plan[1][1]["finish_flag"]}
+                    checked={item["finish_flag"]}
                     onChange={async (e) => {
                       if (e.target.checked) {
                         axios
                           .post(
-                            `https://myplanit.link/todos/plan/${plan[1][1]["plan_id"]}/${plan[1][1]["id"]}/check`,
+                            `https://myplanit.link/todos/plan/${item["plan_id"]}/${item["id"]}/check`,
                             { token: `Bearer ${accessToken}` },
                             {
                               headers: {
@@ -226,7 +229,7 @@ function TodoPlan() {
                         // setNotionNum(notionNum - 1);
                         axios
                           .post(
-                            `https://myplanit.link/todos/plan/${plan[1][1]["plan_id"]}/${plan[1][1]["id"]}/check`,
+                            `https://myplanit.link/todos/plan/${item["plan_id"]}/${item["id"]}/check`,
                             { token: `Bearer ${accessToken}` },
                             {
                               headers: {
