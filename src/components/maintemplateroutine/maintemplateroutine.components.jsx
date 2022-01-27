@@ -74,6 +74,7 @@ function MainTemplateRoutine() {
            
           >
         <div style={{fontFamily: "PretendardMedium",fontSize: "20px", textAlign:"center", color: "black"}}>플랜</div>
+        
           </Typography>
           {/*
           <Link
@@ -116,9 +117,16 @@ function MainTemplateRoutine() {
         to='./'
         className="search-button"
     
-        style={{fontFamily: "PretendardRegular",fontSize: "16px", textAlign:"center",color:"#CECECE",border: '1px solid #Dedede'}}
+        style={{
+          width: "88vw",
+          fontFamily: "PretendardRegular",
+          fontSize: "16px",
+          textAlign: "center",
+          color: "#CECECE",
+          border: "1px solid #Dedede",
+        }}
       >
-        <SearchIcon style={{size: "16px", color: "#000000", opacity: "8%"}}/> &nbsp;원하는 플랜을 검색해보세요
+        <SearchIcon style={{marginLeft: "12px",marginRight: "6px",size: "16px", color: "#000000", opacity: "8%"}}/>원하는 플랜을 검색해보세요
       </Link>
       <span
         className="button-group"
