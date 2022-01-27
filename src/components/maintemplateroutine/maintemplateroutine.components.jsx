@@ -49,6 +49,7 @@ function MainTemplateRoutine() {
           const response = await axios.get(
             'https://myplanit.link/plans'
           );
+          console.log(response.data);
           setUsers(response.data); 
         } catch (e) {
           setError(e);
@@ -206,7 +207,7 @@ function MainTemplateRoutine() {
             
              </div>
               </div>
-              <div className="template-content" style={{fontSize:'12px'}}>{Routine.desc}</div>
+              <div className="template-content" style={{fontSize:'12px', width: '335px'}}>{Routine.desc}</div>
               <div style={{height: '5px'}}></div>
               <div style={{display:'flex', flexDirection:'row',justifyContent:'left'}}>
                 <div className="template-tag">

@@ -326,6 +326,7 @@ function MainTemplateGrowth() {
                         {/*{Growth.checkHeart ? 
      <FavoriteIcon />:
      <FavoriteBorderIcon />}*/}
+
                       </div>
                     </div>
                     <div
@@ -356,6 +357,7 @@ function MainTemplateGrowth() {
         ))}
         <div className="textbox"></div>
         <div style={{ height: "10px" }}></div>
+
       </ul>
       <BottomNavBarPlan />
       <div
