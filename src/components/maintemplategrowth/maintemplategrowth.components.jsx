@@ -156,8 +156,7 @@ function MainTemplateGrowth() {
           border: "1px solid #Dedede",
         }}
       >
-        <SearchIcon style={{ size: "16px", color: "#000000", opacity: "8%" }} />{" "}
-        &nbsp;원하는 플랜을 검색해보세요
+       <SearchIcon style={{marginLeft: "12px",marginRight: "6px",size: "16px", color: "#000000", opacity: "8%"}}/>원하는 플랜을 검색해보세요
       </Link>
       <span
         className="button-group"
