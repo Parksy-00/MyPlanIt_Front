@@ -30,7 +30,6 @@ function TodoPlan() {
       try {
         setError(null);
         setData(null);
-        setLoading(true);
         const response = await axios.get(
           `https://myplanit.link/todos/plan/${selectedDate.getFullYear()}-${(
             "0" +
@@ -49,7 +48,6 @@ function TodoPlan() {
       } catch (e) {
         setError(e);
       }
-      setLoading(false);
     };
     fetchData();
   }, [selectedDate, rerender]);
@@ -163,12 +161,12 @@ function TodoPlan() {
       <div style={{ height: "10px" }}></div>
       {data.map((plan, i) => {
         let title = plan[0];
-        if (title.length > 17) {
-          title = plan[0].slice(0, 16) + "...";
+        if (title.length > 15) {
+          title = plan[0].slice(0, 14) + "...";
         }
         let percent = plan[1][0]["달성률"];
         let todos = plan[1].slice(1);
-        let count = parseInt(todos.length) * 110;
+        let count = 70 + parseInt(todos.length) * 40;
         return (
           <Card
             key={i}
@@ -249,12 +247,13 @@ function TodoPlan() {
                   >
                     <span style={{ width: "100%" }}>
                       <span>{item["plan_todo"]}</span>
-                      <span>
+                      <span
+                        onClick={() => {
+                          navigate(`/todo/detail/${item["todo_id"]}`);
+                        }}
+                      >
                         <img
                           src="images/detail.png"
-                          onClick={() => {
-                            navigate(`/todo/detail/${item["todo_id"]}`);
-                          }}
                           style={{
                             width: 8,
                             marginLeft: 50,
