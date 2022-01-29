@@ -15,15 +15,42 @@ import { Checkbox, Card, Button } from "antd";
 import axios from "axios";
 import { Cookies } from "react-cookies";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import Fab from '@mui/material/Fab';
+import AddIcon from '@mui/icons-material/Add';
+import Sheet from 'react-modal-sheet';
+import { Input, Switch } from "antd";
+import "./todomy.components.css";
+
 const accessToken = localStorage.getItem("token");
 function TodoMy() {
   let navigate = useNavigate();
-
+  const [todo, setTodo] = useState("");
   const [selectedDate, setSelectedDate] = useState(new Date());
-
+  const [isOpen, setOpen] = React.useState(false);
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
+  function addTodo() {
+    axios
+      .post(
+        `https://myplanit.link/todos/my/${selectedDate.getFullYear()}-${(
+            "0" +
+            (selectedDate.getMonth() + 1)
+          ).slice(-2)}-${("0" + selectedDate.getDate()).slice(-2)}`,
+        {
+          todo_name: todo,
+        },
+        {
+            headers: {
+              "Content-Type": "application/json",
+             Authorization: `Bearer ${accessToken}`,
+            }
+          }
+      )
+      .then((response) => {
+         navigate("/main/todomy");
+      })
+  }
   return (
     <div className="container">
       <div
@@ -54,17 +81,19 @@ function TodoMy() {
             }
           />
         </MuiPickersUtilsProvider>
-        <Button
-          style={{
-            marginLeft: 50,
-            height: 25,
-            width: 73,
-            fontSize: 9,
-            marginTop: 10,
-          }}
-        >
-          MY PLAN
-        </Button>
+        <Link to="../main/buytemplate">
+          <Button
+            style={{
+              marginLeft: 50,
+              height: 25,
+              width: 73,
+              fontSize: 9,
+              marginTop: 10,
+            }}
+          >
+            MY PLAN
+          </Button>
+        </Link>
       </div>
       <span
         className="button-group"
@@ -113,7 +142,60 @@ function TodoMy() {
         </Link>
         <div style={{ width: 190 }}></div>
       </span>
-      <BottomNavBarTodo />
+      <Fab 
+      onClick={function(event){setOpen(true);}}
+      size="large" color="secondary" aria-label="add" style={{position:"fixed",
+  bottom: "100px",
+  right: "20px",}}>
+        <AddIcon />
+      </Fab>
+      <Sheet isOpen={isOpen} onClose={() => setOpen(false)} snapPoints={[250]}>
+        <Sheet.Container>
+          <Sheet.Header />
+          <Sheet.Content>
+          <Input
+        className="email-input"
+        size="large"
+        placeholder="오늘 할 일을 입력해주세요.."
+        onChange={(e) => {
+          setTodo(e.target.value);
+        }}
+        style={{ marginLeft:"39px", width: "350px", fontFamily: "PretendardRegular",fontSize: "16px", color:"black"}}
+      /> 
+       <button
+        onClick={() => {
+          axios
+          .post(
+            `https://myplanit.link/todos/my/${selectedDate.getFullYear()}-${(
+                "0" +
+                (selectedDate.getMonth() + 1)
+              ).slice(-2)}-${("0" + selectedDate.getDate()).slice(-2)}`,
+            {
+              todo_name: todo,
+            },
+            {
+                headers: {
+                  "Content-Type": "application/json",
+                 Authorization: `Bearer ${accessToken}`,
+                }
+              }
+          )
+          .then((response) => {
+            console.log(response);
+            navigate("/main");
+          })
+        }}
+        className="todo-add-button"
+        style={{marginLeft:"64px"}}
+      >
+        추가하기
+      </button>
+            </Sheet.Content>
+        </Sheet.Container>
+
+        <Sheet.Backdrop />
+      </Sheet>
+      <BottomNavBarTodo style={{zIndex:"100"}}/>
     </div>
   );
 }
