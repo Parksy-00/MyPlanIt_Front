@@ -306,12 +306,12 @@ function TodoPlan() {
                         key={i}
                         style={{ marginLeft: 0, marginTop: 12 }}
                         onChange={() => {
-                          if (delay.includes(item["todo_id"])) {
+                          if (delay.includes(item["id"])) {
                             let temp = [...delay];
-                            temp = temp.filter((i) => i !== item["todo_id"]);
+                            temp = temp.filter((i) => i !== item["id"]);
                             setDelay(temp);
                           } else {
-                            let temp = [...delay, item["todo_id"]];
+                            let temp = [...delay, item["id"]];
                             setDelay(temp);
                           }
                         }}
@@ -340,12 +340,12 @@ function TodoPlan() {
                         checked={false}
                         disabled
                         onChange={() => {
-                          if (delay.includes(item["todo_id"])) {
+                          if (delay.includes(item["id"])) {
                             let temp = [...delay];
-                            temp = temp.filter((i) => i !== item["todo_id"]);
+                            temp = temp.filter((i) => i !== item["id"]);
                             setDelay(temp);
                           } else {
-                            let temp = [...delay, item["todo_id"]];
+                            let temp = [...delay, item["id"]];
                             setDelay(temp);
                           }
                         }}
@@ -400,20 +400,26 @@ function TodoPlan() {
             textAlign: "center",
           }}
           onClick={() => {
+            let response = "";
             for (let i = 0; i < delay.length; i++) {
-              console.log(`https://myplanit.link/todos/plan/${delay[i]}/delay`);
-              axios.post(
-                `https://myplanit.link/todos/plan/${delay[i]}/delay`,
-                { token: `Bearer ${accessToken}` },
-                {
-                  headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${accessToken}`,
-                  },
-                }
-              );
+              axios
+                .post(
+                  `https://myplanit.link/todos/plan/${delay[i]}/delay`,
+                  { token: `Bearer ${accessToken}` },
+                  {
+                    headers: {
+                      "Content-Type": "application/json",
+                      Authorization: `Bearer ${accessToken}`,
+                    },
+                  }
+                )
+                .then((res) => {
+                  response = res.data.message;
+                  if (response == "success") {
+                    setRerender(!rerender);
+                  }
+                });
             }
-            setRerender(!rerender);
           }}
         >
           <img src="/images/next.png" style={{ width: 35, marginTop: 15 }} />
