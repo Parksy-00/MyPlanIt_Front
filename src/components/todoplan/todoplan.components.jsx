@@ -18,12 +18,11 @@ import { Oval } from "react-loader-spinner";
 function TodoPlan() {
   const accessToken = localStorage.getItem("token");
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [notionNum, setNotionNum] = useState(0);
-  const [growthNum, setGrowthNum] = useState(0);
   const [data, setData] = useState();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [rerender, setRerender] = useState(false);
+  const [edit, setEdit] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -50,10 +49,9 @@ function TodoPlan() {
       }
     };
     fetchData();
+    setEdit(false);
   }, [selectedDate, rerender]);
   let navigate = useNavigate();
-
-  function onChange(e) {}
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
@@ -156,7 +154,49 @@ function TodoPlan() {
         >
           MY
         </Link>
-        <div style={{ width: 190 }}></div>
+        <div style={{ width: 190 }}>
+          {!edit ? (
+            <p
+              style={{
+                justifyContent: "center",
+                alignItem: "center",
+                textAlign: "right",
+                marginTop: 9,
+                marginBottom: 0,
+                fontSize: "12px",
+                color: "#929292",
+              }}
+              onClick={() => {
+                setEdit(!edit);
+                console.log(edit);
+              }}
+            >
+              편집하기
+            </p>
+          ) : (
+            <p
+              style={{
+                justifyContent: "center",
+                alignItem: "center",
+                textAlign: "right",
+                marginTop: 9,
+                marginBottom: 0,
+                fontSize: "12px",
+                color: "#8977F7",
+              }}
+              onClick={() => {
+                setEdit(!edit);
+                console.log(edit);
+              }}
+            >
+              <img
+                src="/images/purpletick.png"
+                style={{ width: "12px", marginRight: 4 }}
+              />
+              편집완료
+            </p>
+          )}
+        </div>
       </span>
       <div style={{ height: "10px" }}></div>
       {data.map((plan, i) => {
@@ -196,9 +236,6 @@ function TodoPlan() {
             <hr style={{ opacity: 0.2 }} />
             <div style={{ display: "flex", flexDirection: "column" }}>
               {todos.map((item, i) => {
-                console.log(plan);
-                console.log(todos);
-                console.log(item);
                 return (
                   <Checkbox
                     key={i}
@@ -218,7 +255,6 @@ function TodoPlan() {
                             }
                           )
                           .then((response) => {
-                            console.log(response.data.message);
                             if (response.data.message == "success") {
                               setRerender(!rerender);
                             }
@@ -237,7 +273,6 @@ function TodoPlan() {
                             }
                           )
                           .then((response) => {
-                            console.log(response.data.message);
                             if (response.data.message == "success") {
                               setRerender(!rerender);
                             }
@@ -271,16 +306,33 @@ function TodoPlan() {
       <br />
       <br />
       <br />
-      <BottomNavBarTodo style={{ height: "200px" }} />
-      <div
-        style={{
-          height: "33px",
-          backgroundColor: "white",
-          width: "100vw",
-          position: "fixed",
-          bottom: "0px",
-        }}
-      ></div>
+      {!edit ? (
+        <span>
+          <BottomNavBarTodo />{" "}
+          <div
+            style={{
+              height: "33px",
+              backgroundColor: "white",
+              width: "100vw",
+              position: "fixed",
+              bottom: "0px",
+            }}
+          ></div>
+        </span>
+      ) : (
+        <div
+          style={{
+            width: "100vw",
+            height: "90px",
+            backgroundColor: "#7965f4",
+            position: "fixed",
+            bottom: 0,
+            textAlign: "center",
+          }}
+        >
+          <img src="/images/next.png" style={{ width: 35, marginTop: 15 }} />
+        </div>
+      )}
     </div>
   );
 }
