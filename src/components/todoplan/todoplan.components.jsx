@@ -23,6 +23,7 @@ function TodoPlan() {
   const [error, setError] = useState(null);
   const [rerender, setRerender] = useState(false);
   const [edit, setEdit] = useState(false);
+  const [delay, setDelay] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -50,6 +51,7 @@ function TodoPlan() {
     };
     fetchData();
     setEdit(false);
+    setDelay([]);
   }, [selectedDate, rerender]);
   let navigate = useNavigate();
 
@@ -168,7 +170,6 @@ function TodoPlan() {
               }}
               onClick={() => {
                 setEdit(!edit);
-                console.log(edit);
               }}
             >
               편집하기
@@ -186,7 +187,6 @@ function TodoPlan() {
               }}
               onClick={() => {
                 setEdit(!edit);
-                console.log(edit);
               }}
             >
               <img
@@ -235,70 +235,140 @@ function TodoPlan() {
             </span>
             <hr style={{ opacity: 0.2 }} />
             <div style={{ display: "flex", flexDirection: "column" }}>
-              {todos.map((item, i) => {
-                return (
-                  <Checkbox
-                    key={i}
-                    style={{ marginLeft: 0, marginTop: 12 }}
-                    checked={item["finish_flag"]}
-                    onChange={async (e) => {
-                      if (e.target.checked) {
-                        axios
-                          .post(
-                            `https://myplanit.link/todos/plan/${item["plan_id"]}/${item["id"]}/check`,
-                            { token: `Bearer ${accessToken}` },
-                            {
-                              headers: {
-                                "Content-Type": "application/json",
-                                Authorization: `Bearer ${accessToken}`,
-                              },
-                            }
-                          )
-                          .then((response) => {
-                            if (response.data.message == "success") {
-                              setRerender(!rerender);
-                            }
-                          });
-                      } else {
-                        // setNotionNum(notionNum - 1);
-                        axios
-                          .post(
-                            `https://myplanit.link/todos/plan/${item["plan_id"]}/${item["id"]}/check`,
-                            { token: `Bearer ${accessToken}` },
-                            {
-                              headers: {
-                                "Content-Type": "application/json",
-                                Authorization: `Bearer ${accessToken}`,
-                              },
-                            }
-                          )
-                          .then((response) => {
-                            if (response.data.message == "success") {
-                              setRerender(!rerender);
-                            }
-                          });
-                      }
-                    }}
-                  >
-                    <span style={{ width: "100%" }}>
-                      <span>{item["plan_todo"]}</span>
-                      <span
-                        onClick={() => {
-                          navigate(`/todo/detail/${item["todo_id"]}`);
+              {!edit
+                ? todos.map((item, i) => {
+                    return (
+                      <Checkbox
+                        key={i}
+                        style={{ marginLeft: 0, marginTop: 12 }}
+                        checked={item["finish_flag"]}
+                        onChange={async (e) => {
+                          if (e.target.checked) {
+                            axios
+                              .post(
+                                `https://myplanit.link/todos/plan/${item["plan_id"]}/${item["id"]}/check`,
+                                { token: `Bearer ${accessToken}` },
+                                {
+                                  headers: {
+                                    "Content-Type": "application/json",
+                                    Authorization: `Bearer ${accessToken}`,
+                                  },
+                                }
+                              )
+                              .then((response) => {
+                                if (response.data.message == "success") {
+                                  setRerender(!rerender);
+                                }
+                              });
+                          } else {
+                            // setNotionNum(notionNum - 1);
+                            axios
+                              .post(
+                                `https://myplanit.link/todos/plan/${item["plan_id"]}/${item["id"]}/check`,
+                                { token: `Bearer ${accessToken}` },
+                                {
+                                  headers: {
+                                    "Content-Type": "application/json",
+                                    Authorization: `Bearer ${accessToken}`,
+                                  },
+                                }
+                              )
+                              .then((response) => {
+                                if (response.data.message == "success") {
+                                  setRerender(!rerender);
+                                }
+                              });
+                          }
                         }}
                       >
-                        <img
-                          src="images/detail.png"
-                          style={{
-                            width: 8,
-                            marginLeft: 50,
-                          }}
-                        />
-                      </span>
-                    </span>
-                  </Checkbox>
-                );
-              })}
+                        <span style={{ width: "100%" }}>
+                          <span>{item["plan_todo"]}</span>
+                          <span
+                            onClick={() => {
+                              navigate(`/todo/detail/${item["todo_id"]}`);
+                            }}
+                          >
+                            <img
+                              src="images/detail.png"
+                              style={{
+                                width: 8,
+                                marginLeft: 50,
+                              }}
+                            />
+                          </span>
+                        </span>
+                      </Checkbox>
+                    );
+                  })
+                : todos.map((item, i) => {
+                    return !item["finish_flag"] ? (
+                      <Checkbox
+                        key={i}
+                        style={{ marginLeft: 0, marginTop: 12 }}
+                        onChange={() => {
+                          if (delay.includes(item["todo_id"])) {
+                            let temp = [...delay];
+                            temp = temp.filter((i) => i !== item["todo_id"]);
+                            setDelay(temp);
+                          } else {
+                            let temp = [...delay, item["todo_id"]];
+                            setDelay(temp);
+                          }
+                        }}
+                      >
+                        <span style={{ width: "100%" }}>
+                          <span>{item["plan_todo"]}</span>
+                          <span
+                            onClick={() => {
+                              navigate(`/todo/detail/${item["todo_id"]}`);
+                            }}
+                          >
+                            <img
+                              src="images/detail.png"
+                              style={{
+                                width: 8,
+                                marginLeft: 50,
+                              }}
+                            />
+                          </span>
+                        </span>
+                      </Checkbox>
+                    ) : (
+                      <Checkbox
+                        key={i}
+                        style={{ marginLeft: 0, marginTop: 12 }}
+                        checked={false}
+                        disabled
+                        onChange={() => {
+                          if (delay.includes(item["todo_id"])) {
+                            let temp = [...delay];
+                            temp = temp.filter((i) => i !== item["todo_id"]);
+                            setDelay(temp);
+                          } else {
+                            let temp = [...delay, item["todo_id"]];
+                            setDelay(temp);
+                          }
+                        }}
+                      >
+                        <span style={{ width: "100%" }}>
+                          <span>{item["plan_todo"]}</span>
+                          <span
+                            onClick={() => {
+                              navigate(`/todo/detail/${item["todo_id"]}`);
+                            }}
+                          >
+                            <img
+                              src="images/detail.png"
+                              style={{
+                                width: 8,
+                                marginLeft: 50,
+                              }}
+                            />
+                          </span>
+                        </span>
+                      </Checkbox>
+                    );
+                  })}
             </div>
           </Card>
         );
@@ -328,6 +398,22 @@ function TodoPlan() {
             position: "fixed",
             bottom: 0,
             textAlign: "center",
+          }}
+          onClick={() => {
+            for (let i = 0; i < delay.length; i++) {
+              console.log(`https://myplanit.link/todos/plan/${delay[i]}/delay`);
+              axios.post(
+                `https://myplanit.link/todos/plan/${delay[i]}/delay`,
+                { token: `Bearer ${accessToken}` },
+                {
+                  headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${accessToken}`,
+                  },
+                }
+              );
+            }
+            setRerender(!rerender);
           }}
         >
           <img src="/images/next.png" style={{ width: 35, marginTop: 15 }} />
