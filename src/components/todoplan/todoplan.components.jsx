@@ -68,7 +68,7 @@ function TodoPlan() {
   if (error) return <div>에러가 발생했습니다</div>;
   if (!data) return null;
   return (
-    <div className="container">
+    <div className="container" style={{ position: "fixed" }}>
       <div
         style={{
           position: "fixed",
