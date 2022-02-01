@@ -4,10 +4,7 @@ import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import BottomNavBarTodo from "../globalcomponents/bottomnavbartodo.components";
 import DateFnsUtils from "@date-io/date-fns";
-import {
-  MuiPickersUtilsProvider,
-  KeyboardDatePicker,
-} from "@material-ui/pickers";
+import { MuiPickersUtilsProvider, DatePicker } from "@material-ui/pickers";
 import { ko } from "date-fns/locale";
 import { Checkbox, Card, Button } from "antd";
 import "./todoplan.components.css";
@@ -135,13 +132,62 @@ function TodoPlan() {
             paddingBottom: 2,
           }}
         >
-          PLAN
-        </Link>
-        <div style={{ width: 15 }}></div>
-        <Link
-          style={{ border: "1px solid #D3d3d3" }}
-          to="../main/todomy"
-          className="main-growth-button"
+          <MuiPickersUtilsProvider
+            locale={ko}
+            utils={DateFnsUtils}
+            style={{ fontFamily: "Pretendard-SemiBold" }}
+          >
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "center",
+                marginRight: 30,
+              }}
+            >
+              <DatePicker
+                style={{
+                  width: "auto",
+                  fontFamily: "Pretendard-SemiBold",
+                }}
+                InputProps={{
+                  disableUnderline: true,
+                }}
+                disableToolbar
+                format="M월 d일 eee요일"
+                margin="normal"
+                value={selectedDate}
+                className="date"
+                onChange={handleDateChange}
+              />
+              <ExpandMoreIcon
+                color="black"
+                fontSize="large"
+                style={{
+                  padding: 0,
+                  marginTop: 5,
+                  marginRight: 10,
+                }}
+              />
+            </div>
+          </MuiPickersUtilsProvider>
+          <Link to="../main/buytemplate">
+            <Button
+              style={{
+                marginLeft: 20,
+                height: 25,
+                width: 73,
+                fontSize: 9,
+                marginTop: 10,
+              }}
+            >
+              MY PLAN
+            </Button>
+          </Link>
+        </div>
+        <span
+          className="button-group"
           style={{
             width: 42,
             height: "17px",
@@ -188,57 +234,207 @@ function TodoPlan() {
                   fontSize: "16px",
                 }}
               >
-                {title}
-                <span></span>
-                <span style={{ marginLeft: 20 }}>
-                  <span style={{ color: "#8977F7" }}>{percent}%</span> 달성
+                <img
+                  src="/images/purpletick.png"
+                  style={{ width: "12px", marginRight: 4 }}
+                />
+                편집완료
+              </p>
+            )}
+          </div>
+        </span>
+      </div>
+      <div style={{ height: "110px" }}></div>
+      <div
+        style={{
+          top: "110px",
+          bottom: "50px",
+          fontFamily: "Pretendard-SemiBold",
+        }}
+      >
+        {data.map((plan, i) => {
+          let title = plan[0];
+          if (title.length > 15) {
+            title = plan[0].slice(0, 14) + "...";
+          }
+          let percent = plan[1][0]["달성률"];
+          let todos = plan[1].slice(1);
+          let count = 65 + parseInt(todos.length) * 38;
+          return (
+            <Card
+              key={i}
+              style={{
+                borderRadius: 5,
+                width: 327,
+                height: `${count}px`,
+                marginTop: 9,
+              }}
+            >
+              <span style={{ display: "flex" }}>
+                <span
+                  style={{
+                    display: "flex",
+                    marginTop: "2px",
+                    fontSize: "16px",
+                    marginBottom: "12px",
+                    width: "300px",
+                  }}
+                >
+                  <span style={{ font: "p", marginRight: "auto" }}>
+                    {title}
+                  </span>
+                  <span
+                    style={{
+                      marginLeft: "auto",
+                      color: "#8977F7",
+                    }}
+                  >
+                    {percent}%
+                  </span>{" "}
+                  <span
+                    style={{
+                      fontFamily: "Pretendard-Medium",
+                      marginLeft: 5,
+                    }}
+                  >
+                    달성
+                  </span>
                 </span>
               </span>
-            </span>
-            <hr style={{ opacity: 0.2 }} />
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              {todos.map((item, i) => {
-                return (
-                  <Checkbox
-                    key={i}
-                    style={{ marginLeft: 0, marginTop: 12 }}
-                    checked={plan[1][1]["finish_flag"]}
-                    onChange={async (e) => {
-                      if (e.target.checked) {
-                        axios
-                          .post(
-                            `https://myplanit.link/todos/plan/${plan[1][1]["plan_id"]}/${plan[1][1]["id"]}/check`,
-                            { token: `Bearer ${accessToken}` },
-                            {
-                              headers: {
-                                "Content-Type": "application/json",
-                                Authorization: `Bearer ${accessToken}`,
-                              },
+              <hr style={{ opacity: 0.2, margin: 0 }} />
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                {!edit
+                  ? todos.map((item, i) => {
+                      return (
+                        <Checkbox
+                          key={i}
+                          style={{
+                            marginLeft: 0,
+                            marginTop: 14,
+                          }}
+                          checked={item["finish_flag"]}
+                          onChange={async (e) => {
+                            if (e.target.checked) {
+                              axios
+                                .post(
+                                  `https://myplanit.link/todos/plan/${item["plan_id"]}/${item["id"]}/check`,
+                                  { token: `Bearer ${accessToken}` },
+                                  {
+                                    headers: {
+                                      "Content-Type": "application/json",
+                                      Authorization: `Bearer ${accessToken}`,
+                                    },
+                                  }
+                                )
+                                .then((response) => {
+                                  if (response.data.message == "success") {
+                                    setRerender(!rerender);
+                                  }
+                                });
+                            } else {
+                              axios
+                                .post(
+                                  `https://myplanit.link/todos/plan/${item["plan_id"]}/${item["id"]}/check`,
+                                  { token: `Bearer ${accessToken}` },
+                                  {
+                                    headers: {
+                                      "Content-Type": "application/json",
+                                      Authorization: `Bearer ${accessToken}`,
+                                    },
+                                  }
+                                )
+                                .then((response) => {
+                                  if (response.data.message == "success") {
+                                    setRerender(!rerender);
+                                  }
+                                });
                             }
-                          )
-                          .then((response) => {
-                            console.log(response.data.message);
-                            if (response.data.message == "success") {
-                              setRerender(!rerender);
+                          }}
+                        >
+                          <span
+                            style={{
+                              display: "flex",
+                              width: "255px",
+                            }}
+                          >
+                            <span style={{ fontFamily: "Pretendard-Medium" }}>
+                              {item["plan_todo"]}
+                            </span>
+                            <span
+                              onClick={() => {
+                                navigate(`/todo/detail/${item["todo_id"]}`);
+                              }}
+                              style={{
+                                flexDirection: "row",
+                                marginLeft: "auto",
+                              }}
+                            >
+                              <img
+                                src="images/detail.png"
+                                style={{
+                                  width: 6,
+                                  marginLeft: "auto",
+                                  alignItems: "center",
+                                  justifyContent: "center",
+                                }}
+                              />
+                            </span>
+                          </span>
+                        </Checkbox>
+                      );
+                    })
+                  : todos.map((item, i) => {
+                      return !item["finish_flag"] ? (
+                        <Checkbox
+                          key={i}
+                          style={{ marginLeft: 0, marginTop: 14 }}
+                          onChange={() => {
+                            if (delay.includes(item["id"])) {
+                              let temp = [...delay];
+                              temp = temp.filter((i) => i !== item["id"]);
+                              setDelay(temp);
+                            } else {
+                              let temp = [...delay, item["id"]];
+                              setDelay(temp);
                             }
-                          });
-                      } else {
-                        // setNotionNum(notionNum - 1);
-                        axios
-                          .post(
-                            `https://myplanit.link/todos/plan/${plan[1][1]["plan_id"]}/${plan[1][1]["id"]}/check`,
-                            { token: `Bearer ${accessToken}` },
-                            {
-                              headers: {
-                                "Content-Type": "application/json",
-                                Authorization: `Bearer ${accessToken}`,
-                              },
-                            }
-                          )
-                          .then((response) => {
-                            console.log(response.data.message);
-                            if (response.data.message == "success") {
-                              setRerender(!rerender);
+                          }}
+                        >
+                          <span style={{ display: "flex", width: "255px" }}>
+                            <span style={{ fontFamily: "Pretendard-Medium" }}>
+                              {item["plan_todo"]}
+                            </span>
+                            <span
+                              onClick={() => {
+                                navigate(`/todo/detail/${item["todo_id"]}`);
+                              }}
+                              style={{
+                                flexDirection: "row",
+                                marginLeft: "auto",
+                              }}
+                            >
+                              <img
+                                src="images/detail.png"
+                                style={{
+                                  width: 6,
+                                }}
+                              />
+                            </span>
+                          </span>
+                        </Checkbox>
+                      ) : (
+                        <Checkbox
+                          key={i}
+                          style={{ marginLeft: 0, marginTop: 14 }}
+                          checked={false}
+                          disabled
+                          onChange={() => {
+                            if (delay.includes(item["id"])) {
+                              let temp = [...delay];
+                              temp = temp.filter((i) => i !== item["id"]);
+                              setDelay(temp);
+                            } else {
+                              let temp = [...delay, item["id"]];
+                              setDelay(temp);
                             }
                           });
                       }
@@ -252,35 +448,95 @@ function TodoPlan() {
                           onClick={() => {
                             navigate(`/todo/detail/${item["todo_id"]}`);
                           }}
-                          style={{
-                            width: 8,
-                            marginLeft: 50,
-                          }}
-                        />
-                      </span>
-                    </span>
-                  </Checkbox>
-                );
-              })}
-            </div>
-          </Card>
-        );
-      })}
+                        >
+                          <span style={{ display: "flex", width: "255px" }}>
+                            <span style={{ fontFamily: "Pretendard-Medium" }}>
+                              {item["plan_todo"]}
+                            </span>
+                            <span
+                              onClick={() => {
+                                navigate(`/todo/detail/${item["todo_id"]}`);
+                              }}
+                              style={{
+                                flexDirection: "row",
+                                marginLeft: "auto",
+                              }}
+                            >
+                              <img
+                                src="images/detail.png"
+                                style={{
+                                  width: 6,
+                                }}
+                              />
+                            </span>
+                          </span>
+                        </Checkbox>
+                      );
+                    })}
+              </div>
+            </Card>
+          );
+        })}
+      </div>
       <br />
       <br />
       <br />
-      <BottomNavBarTodo style={{ height: "200px" }} />
-      <div
-        style={{
-          height: "33px",
-          backgroundColor: "white",
-          width: "100vw",
-          position: "fixed",
-          bottom: "0px",
-        }}
-      ></div>
+      <br />
+      <br />
+      {!edit ? (
+        <span>
+          <BottomNavBarTodo />
+          <div
+            style={{
+              height: "33px",
+              backgroundColor: "white",
+              right: 0,
+              left: 0,
+              position: "fixed",
+              bottom: 0,
+              textAlign: "center",
+            }}
+          />
+        </span>
+      ) : (
+        <div
+          style={{
+            right: 0,
+            left: 0,
+            height: "90px",
+            backgroundColor: "#7965f4",
+            position: "fixed",
+            bottom: 0,
+            textAlign: "center",
+          }}
+          onClick={() => {
+            let response = "";
+            for (let i = 0; i < delay.length; i++) {
+              axios
+                .post(
+                  `https://myplanit.link/todos/plan/${delay[i]}/delay`,
+                  { token: `Bearer ${accessToken}` },
+                  {
+                    headers: {
+                      "Content-Type": "application/json",
+                      Authorization: `Bearer ${accessToken}`,
+                    },
+                  }
+                )
+                .then((res) => {
+                  response = res.data.message;
+                  if (response == "success") {
+                    setRerender(!rerender);
+                  }
+                });
+            }
+          }}
+        >
+          <img src="/images/next.png" style={{ width: 35, marginTop: 15 }} />
+        </div>
+      )}
     </div>
   );
 }
-
+          
 export default TodoPlan;
