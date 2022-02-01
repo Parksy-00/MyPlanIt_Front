@@ -4,10 +4,7 @@ import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import BottomNavBarTodo from "../globalcomponents/bottomnavbartodo.components";
 import DateFnsUtils from "@date-io/date-fns";
-import {
-  MuiPickersUtilsProvider,
-  KeyboardDatePicker,
-} from "@material-ui/pickers";
+import { MuiPickersUtilsProvider, DatePicker } from "@material-ui/pickers";
 import { ko } from "date-fns/locale";
 import { Checkbox, Card, Button } from "antd";
 import "./todoplan.components.css";
@@ -91,26 +88,36 @@ function TodoPlan() {
             utils={DateFnsUtils}
             style={{ fontFamily: "Pretendard-SemiBold" }}
           >
-            <KeyboardDatePicker
-              style={{ width: 210, fontFamily: "Pretendard-SemiBold" }}
-              disableToolbar
-              format="M월 d일 eee요일"
-              margin="normal"
-              id="date-picker-outline"
-              value={selectedDate}
-              onChange={handleDateChange}
-              KeyboardButtonProps={{
-                "aria-label": "change date",
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "center",
+                marginRight: 30,
               }}
-              className="date"
-              keyboardIcon={
-                <ExpandMoreIcon
-                  color="black"
-                  fontSize="large"
-                  style={{ padding: 0 }}
-                />
-              }
-            />
+            >
+              <DatePicker
+                style={{
+                  width: "auto",
+                  fontFamily: "Pretendard-SemiBold",
+                }}
+                disableToolbar
+                format="M월 d일 eee요일"
+                margin="normal"
+                value={selectedDate}
+                className="date"
+                onChange={handleDateChange}
+              />
+              <ExpandMoreIcon
+                color="black"
+                fontSize="large"
+                style={{
+                  padding: 0,
+                  marginTop: 5,
+                }}
+              />
+            </div>
           </MuiPickersUtilsProvider>
           <Link to="../main/buytemplate">
             <Button
