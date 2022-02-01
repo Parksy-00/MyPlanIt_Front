@@ -68,7 +68,7 @@ function TodoPlan() {
   if (error) return <div>에러가 발생했습니다</div>;
   if (!data) return null;
   return (
-    <div className="container" style={{ position: "fixed" }}>
+    <div className="container">
       <div
         style={{
           position: "fixed",
@@ -98,6 +98,7 @@ function TodoPlan() {
               KeyboardButtonProps={{
                 "aria-label": "change date",
               }}
+              className="date"
               keyboardIcon={
                 <ExpandMoreIcon
                   color="black"
@@ -214,7 +215,7 @@ function TodoPlan() {
         </span>
       </div>
       <div style={{ height: "110px" }}></div>
-      <div style={{ position: "fixed", top: "110px" }}>
+      <div style={{ top: "110px", bottom: "50px" }}>
         {data.map((plan, i) => {
           let title = plan[0];
           if (title.length > 15) {
@@ -222,7 +223,7 @@ function TodoPlan() {
           }
           let percent = plan[1][0]["달성률"];
           let todos = plan[1].slice(1);
-          let count = 70 + parseInt(todos.length) * 40;
+          let count = 65 + parseInt(todos.length) * 38;
           return (
             <Card
               key={i}
@@ -238,25 +239,26 @@ function TodoPlan() {
                   style={{
                     display: "flex",
                     marginTop: "2px",
-                    // fontWeight: "bold",
                     fontSize: "16px",
+                    marginBottom: "12px",
                   }}
                 >
-                  {title}
-                  <span></span>
-                  <span style={{ marginLeft: 20 }}>
-                    <span style={{ color: "#8977F7" }}>{percent}%</span> 달성
-                  </span>
+                  <span>{title}</span>
+                  <span style={{ color: "#8977F7" }}>{percent}%</span> 달성
                 </span>
               </span>
-              <hr style={{ opacity: 0.2 }} />
+              <hr style={{ opacity: 0.2, margin: 0 }} />
               <div style={{ display: "flex", flexDirection: "column" }}>
                 {!edit
                   ? todos.map((item, i) => {
                       return (
                         <Checkbox
                           key={i}
-                          style={{ marginLeft: 0, marginTop: 12 }}
+                          style={{
+                            marginLeft: 0,
+                            marginTop: 14,
+                            width: "100vw",
+                          }}
                           checked={item["finish_flag"]}
                           onChange={async (e) => {
                             if (e.target.checked) {
@@ -277,7 +279,6 @@ function TodoPlan() {
                                   }
                                 });
                             } else {
-                              // setNotionNum(notionNum - 1);
                               axios
                                 .post(
                                   `https://myplanit.link/todos/plan/${item["plan_id"]}/${item["id"]}/check`,
@@ -297,18 +298,24 @@ function TodoPlan() {
                             }
                           }}
                         >
-                          <span style={{ width: "100%" }}>
+                          <span style={{ display: "flex" }}>
                             <span>{item["plan_todo"]}</span>
                             <span
                               onClick={() => {
                                 navigate(`/todo/detail/${item["todo_id"]}`);
                               }}
+                              style={{
+                                flexDirection: "row",
+                                marginLeft: "auto",
+                              }}
                             >
                               <img
                                 src="images/detail.png"
                                 style={{
-                                  width: 8,
-                                  marginLeft: 50,
+                                  width: 6,
+                                  marginLeft: "auto",
+                                  alignItems: "center",
+                                  justifyContent: "center",
                                 }}
                               />
                             </span>
@@ -320,7 +327,7 @@ function TodoPlan() {
                       return !item["finish_flag"] ? (
                         <Checkbox
                           key={i}
-                          style={{ marginLeft: 0, marginTop: 12 }}
+                          style={{ marginLeft: 0, marginTop: 14 }}
                           onChange={() => {
                             if (delay.includes(item["id"])) {
                               let temp = [...delay];
@@ -342,8 +349,7 @@ function TodoPlan() {
                               <img
                                 src="images/detail.png"
                                 style={{
-                                  width: 8,
-                                  marginLeft: 50,
+                                  width: 6,
                                 }}
                               />
                             </span>
@@ -352,7 +358,7 @@ function TodoPlan() {
                       ) : (
                         <Checkbox
                           key={i}
-                          style={{ marginLeft: 0, marginTop: 12 }}
+                          style={{ marginLeft: 0, marginTop: 14 }}
                           checked={false}
                           disabled
                           onChange={() => {
@@ -376,8 +382,7 @@ function TodoPlan() {
                               <img
                                 src="images/detail.png"
                                 style={{
-                                  width: 8,
-                                  marginLeft: 50,
+                                  width: 6,
                                 }}
                               />
                             </span>
@@ -390,6 +395,8 @@ function TodoPlan() {
           );
         })}
       </div>
+      <br />
+      <br />
       <br />
       <br />
       <br />
