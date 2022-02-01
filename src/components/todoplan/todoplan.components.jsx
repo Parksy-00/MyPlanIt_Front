@@ -71,134 +71,149 @@ function TodoPlan() {
     <div className="container">
       <div
         style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
+          position: "fixed",
+          top: 0,
+          zIndex: 2,
+          backgroundColor: "#fbfbfb",
+          width: "100vw",
+          height: "110px",
         }}
       >
-        <MuiPickersUtilsProvider locale={ko} utils={DateFnsUtils}>
-          <KeyboardDatePicker
-            style={{ width: 210 }}
-            disableToolbar
-            format="M월 d일 eee요일"
-            margin="normal"
-            id="date-picker-outline"
-            value={selectedDate}
-            onChange={handleDateChange}
-            KeyboardButtonProps={{
-              "aria-label": "change date",
-            }}
-            keyboardIcon={
-              <ExpandMoreIcon
-                color="black"
-                fontSize="large"
-                style={{ padding: 0 }}
-              />
-            }
-          />
-        </MuiPickersUtilsProvider>
-        <Link to="../main/buytemplate">
-          <Button
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <MuiPickersUtilsProvider locale={ko} utils={DateFnsUtils}>
+            <KeyboardDatePicker
+              style={{ width: 210 }}
+              disableToolbar
+              format="M월 d일 eee요일"
+              margin="normal"
+              id="date-picker-outline"
+              value={selectedDate}
+              onChange={handleDateChange}
+              KeyboardButtonProps={{
+                "aria-label": "change date",
+              }}
+              keyboardIcon={
+                <ExpandMoreIcon
+                  color="black"
+                  fontSize="large"
+                  style={{ padding: 0 }}
+                />
+              }
+            />
+          </MuiPickersUtilsProvider>
+          <Link to="../main/buytemplate">
+            <Button
+              style={{
+                marginLeft: 50,
+                height: 25,
+                width: 73,
+                fontSize: 9,
+                marginTop: 10,
+              }}
+            >
+              MY PLAN
+            </Button>
+          </Link>
+        </div>
+        <span
+          className="button-group"
+          style={{
+            fontSize: "16px",
+            fontWeight: "bold",
+            justifyContent: "center",
+          }}
+        >
+          <Link
+            to="../main"
+            className="main-routine-button"
             style={{
-              marginLeft: 50,
-              height: 25,
-              width: 73,
-              fontSize: 9,
-              marginTop: 10,
+              width: 42,
+              height: "20px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              marginTop: "10px",
+              border: "1px",
+              background: "#fbfbfb",
+              borderRadius: "0",
+              color: "black",
+              borderBottom: " 2px solid #7965f4",
+              paddingBottom: 2,
             }}
           >
-            MY PLAN
-          </Button>
-        </Link>
+            PLAN
+          </Link>
+          <div style={{ width: 15 }}></div>
+          <Link
+            style={{ border: "1px solid #D3d3d3" }}
+            to="../main/todomy"
+            className="main-growth-button"
+            style={{
+              width: 42,
+              height: "17px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              marginTop: "10px",
+              border: "5px",
+              background: "#fbfbfb",
+              borderRadius: "0",
+              color: "gray",
+              marginRight: 30,
+            }}
+          >
+            MY
+          </Link>
+          <div style={{ width: 190 }}>
+            {!edit ? (
+              <p
+                style={{
+                  justifyContent: "center",
+                  alignItem: "center",
+                  textAlign: "right",
+                  marginTop: 9,
+                  marginBottom: 0,
+                  fontSize: "12px",
+                  color: "#929292",
+                }}
+                onClick={() => {
+                  setEdit(!edit);
+                }}
+              >
+                편집하기
+              </p>
+            ) : (
+              <p
+                style={{
+                  justifyContent: "center",
+                  alignItem: "center",
+                  textAlign: "right",
+                  marginTop: 9,
+                  marginBottom: 0,
+                  fontSize: "12px",
+                  color: "#8977F7",
+                }}
+                onClick={() => {
+                  setEdit(!edit);
+                }}
+              >
+                <img
+                  src="/images/purpletick.png"
+                  style={{ width: "12px", marginRight: 4 }}
+                />
+                편집완료
+              </p>
+            )}
+          </div>
+        </span>
       </div>
-      <span
-        className="button-group"
-        style={{ fontSize: "16px", fontWeight: "bold" }}
-      >
-        <Link
-          to="../main"
-          className="main-routine-button"
-          style={{
-            width: 42,
-            height: "20px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            marginTop: "10px",
-            border: "1px",
-            background: "#fbfbfb",
-            borderRadius: "0",
-            color: "black",
-            borderBottom: " 2px solid #7965f4",
-            paddingBottom: 2,
-          }}
-        >
-          PLAN
-        </Link>
-        <div style={{ width: 15 }}></div>
-        <Link
-          style={{ border: "1px solid #D3d3d3" }}
-          to="../main/todomy"
-          className="main-growth-button"
-          style={{
-            width: 42,
-            height: "17px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            marginTop: "10px",
-            border: "5px",
-            background: "#fbfbfb",
-            borderRadius: "0",
-            color: "gray",
-            marginRight: 30,
-          }}
-        >
-          MY
-        </Link>
-        <div style={{ width: 190 }}>
-          {!edit ? (
-            <p
-              style={{
-                justifyContent: "center",
-                alignItem: "center",
-                textAlign: "right",
-                marginTop: 9,
-                marginBottom: 0,
-                fontSize: "12px",
-                color: "#929292",
-              }}
-              onClick={() => {
-                setEdit(!edit);
-              }}
-            >
-              편집하기
-            </p>
-          ) : (
-            <p
-              style={{
-                justifyContent: "center",
-                alignItem: "center",
-                textAlign: "right",
-                marginTop: 9,
-                marginBottom: 0,
-                fontSize: "12px",
-                color: "#8977F7",
-              }}
-              onClick={() => {
-                setEdit(!edit);
-              }}
-            >
-              <img
-                src="/images/purpletick.png"
-                style={{ width: "12px", marginRight: 4 }}
-              />
-              편집완료
-            </p>
-          )}
-        </div>
-      </span>
-      <div style={{ height: "10px" }}></div>
+      <div style={{ height: "110px" }}></div>
       {data.map((plan, i) => {
         let title = plan[0];
         if (title.length > 15) {
@@ -378,21 +393,24 @@ function TodoPlan() {
       <br />
       {!edit ? (
         <span>
-          <BottomNavBarTodo />{" "}
+          <BottomNavBarTodo />
           <div
             style={{
               height: "33px",
               backgroundColor: "white",
-              width: "100vw",
-              position: "fixed",
-              bottom: "0px",
+              right: 0,
+              left: 0,
+              position: "absolute",
+              bottom: 0,
+              textAlign: "center",
             }}
-          ></div>
+          />
         </span>
       ) : (
         <div
           style={{
-            width: "100vw",
+            right: 0,
+            left: 0,
             height: "90px",
             backgroundColor: "#7965f4",
             position: "fixed",
