@@ -36,12 +36,15 @@
   border-bottom: none !important;
 }
 .MuiInputBase-input {
-  margin-left: 5px !important;
+  margin-left: 20px !important;
   font-size: 19px !important;
   font-weight: bold !important;
-  width: 140px;
+  width: 150px !important;
 }
 .MuiIconButton-root {
   padding-left: 0 !important;
   color: black !important;
+}
+.MuiButtonBase-root {
+  padding: 12px !important;
 }
