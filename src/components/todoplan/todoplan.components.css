@@ -1,9 +1,23 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
 @import url("http://fonts.cdnfonts.com/css/sf-pro-display");
-
+@import url("https://fonts.googleapis.com/css2?family=Alata&family=Dongle:wght@300&display=swap");
+@font-face {
+  font-family: "SFProDisplay";
+  src: url("/src/fonts/SF-Pro-Display-Medium.otf") format("truetype");
+}
+@font-face {
+  font-family: "Pretendard-SemiBold";
+  src: url("/src/fonts/Pretendard-SemiBold.otf");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Pretendard-Medium";
+  src: url("/src/fonts/Pretendard-Medium.otf") format("truetype");
+}
 #main-container {
   background: #fbfbfb;
-  font-family: "SF Pro Display", sans-serif !important;
+  font-family: "SF Pro Display" !important;
 }
 
 .date {
