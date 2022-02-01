@@ -15,18 +15,19 @@ import { Oval } from "react-loader-spinner";
 function TodoPlan() {
   const accessToken = localStorage.getItem("token");
   const [selectedDate, setSelectedDate] = useState(new Date());
+  const [notionNum, setNotionNum] = useState(0);
+  const [growthNum, setGrowthNum] = useState(0);
   const [data, setData] = useState();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [rerender, setRerender] = useState(false);
-  const [edit, setEdit] = useState(false);
-  const [delay, setDelay] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         setError(null);
         setData(null);
+        setLoading(true);
         const response = await axios.get(
           `https://myplanit.link/todos/plan/${selectedDate.getFullYear()}-${(
             "0" +
@@ -45,12 +46,13 @@ function TodoPlan() {
       } catch (e) {
         setError(e);
       }
+      setLoading(false);
     };
     fetchData();
-    setEdit(false);
-    setDelay([]);
   }, [selectedDate, rerender]);
   let navigate = useNavigate();
+
+  function onChange(e) {}
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
@@ -68,19 +70,66 @@ function TodoPlan() {
     <div className="container">
       <div
         style={{
-          position: "fixed",
-          top: 0,
-          zIndex: 2,
-          backgroundColor: "#fbfbfb",
-          width: "100vw",
-          height: "110px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
-        <div
+        <MuiPickersUtilsProvider locale={ko} utils={DateFnsUtils}>
+          <KeyboardDatePicker
+            style={{ width: 210 }}
+            disableToolbar
+            format="M월 d일 eee요일"
+            margin="normal"
+            id="date-picker-outline"
+            value={selectedDate}
+            onChange={handleDateChange}
+            KeyboardButtonProps={{
+              "aria-label": "change date",
+            }}
+            keyboardIcon={
+              <ExpandMoreIcon
+                color="black"
+                fontSize="large"
+                style={{ padding: 0 }}
+              />
+            }
+          />
+        </MuiPickersUtilsProvider>
+        <Link to="../main/buytemplate">
+          <Button
+            style={{
+              marginLeft: 50,
+              height: 25,
+              width: 73,
+              fontSize: 9,
+              marginTop: 10,
+            }}
+          >
+            MY PLAN
+          </Button>
+        </Link>
+      </div>
+      <span
+        className="button-group"
+        style={{ fontSize: "16px", fontWeight: "bold" }}
+      >
+        <Link
+          to="../main"
+          className="main-routine-button"
           style={{
+            width: 42,
+            height: "20px",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
+            marginTop: "10px",
+            border: "1px",
+            background: "#fbfbfb",
+            borderRadius: "0",
+            color: "black",
+            borderBottom: " 2px solid #7965f4",
+            paddingBottom: 2,
           }}
         >
           <MuiPickersUtilsProvider
@@ -140,83 +189,49 @@ function TodoPlan() {
         <span
           className="button-group"
           style={{
-            fontSize: "16px",
-            fontWeight: "bold",
+            width: 42,
+            height: "17px",
+            display: "flex",
             justifyContent: "center",
+            alignItems: "center",
+            marginTop: "10px",
+            border: "5px",
+            background: "#fbfbfb",
+            borderRadius: "0",
+            color: "gray",
+            marginRight: 30,
           }}
         >
-          <Link
-            to="../main"
-            className="main-routine-button"
+          MY
+        </Link>
+        <div style={{ width: 190 }}></div>
+      </span>
+      <div style={{ height: "10px" }}></div>
+      {data.map((plan, i) => {
+        let title = plan[0];
+        if (title.length > 17) {
+          title = plan[0].slice(0, 16) + "...";
+        }
+        let percent = plan[1][0]["달성률"];
+        let todos = plan[1].slice(1);
+        let count = parseInt(todos.length) * 110;
+        return (
+          <Card
+            key={i}
             style={{
-              width: 42,
-              height: "20px",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              marginTop: "10px",
-              border: "1px",
-              background: "#fbfbfb",
-              borderRadius: "0",
-              color: "black",
-              borderBottom: " 2px solid #7965f4",
-              paddingBottom: 2,
+              borderRadius: 5,
+              width: 327,
+              height: `${count}px`,
+              marginTop: 9,
             }}
           >
-            PLAN
-          </Link>
-          <div style={{ width: 15 }}></div>
-          <Link
-            style={{ border: "1px solid #D3d3d3" }}
-            to="../main/todomy"
-            className="main-growth-button"
-            style={{
-              width: 42,
-              height: "17px",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              marginTop: "10px",
-              border: "5px",
-              background: "#fbfbfb",
-              borderRadius: "0",
-              color: "gray",
-              marginRight: 30,
-            }}
-          >
-            MY
-          </Link>
-          <div style={{ width: 190 }}>
-            {!edit ? (
-              <p
+            <span style={{ display: "flex" }}>
+              <span
                 style={{
-                  justifyContent: "center",
-                  alignItem: "center",
-                  textAlign: "right",
-                  marginTop: 9,
-                  marginBottom: 0,
-                  fontSize: "12px",
-                  color: "#929292",
-                }}
-                onClick={() => {
-                  setEdit(!edit);
-                }}
-              >
-                편집하기
-              </p>
-            ) : (
-              <p
-                style={{
-                  justifyContent: "center",
-                  alignItem: "center",
-                  textAlign: "right",
-                  marginTop: 9,
-                  marginBottom: 0,
-                  fontSize: "12px",
-                  color: "#8977F7",
-                }}
-                onClick={() => {
-                  setEdit(!edit);
+                  display: "flex",
+                  marginTop: "2px",
+                  // fontWeight: "bold",
+                  fontSize: "16px",
                 }}
               >
                 <img
@@ -421,6 +436,17 @@ function TodoPlan() {
                               let temp = [...delay, item["id"]];
                               setDelay(temp);
                             }
+                          });
+                      }
+                    }}
+                  >
+                    <span style={{ width: "100%" }}>
+                      <span>{item["plan_todo"]}</span>
+                      <span>
+                        <img
+                          src="images/detail.png"
+                          onClick={() => {
+                            navigate(`/todo/detail/${item["todo_id"]}`);
                           }}
                         >
                           <span style={{ display: "flex", width: "255px" }}>
@@ -512,5 +538,5 @@ function TodoPlan() {
     </div>
   );
 }
-
+          
 export default TodoPlan;

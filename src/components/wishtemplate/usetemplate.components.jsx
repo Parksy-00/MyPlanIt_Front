@@ -224,9 +224,7 @@ function UseTemplate() {
     </div>
     <div style={{width: '10px'}}>
     </div>
-    <div className="template-tag">
-    {register_plans.plan.tags[1]}
-    </div>
+
   </div>
   <div style={{height: '5px'}}></div>
   </div>
