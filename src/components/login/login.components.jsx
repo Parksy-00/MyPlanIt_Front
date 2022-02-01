@@ -10,9 +10,10 @@ function Login() {
   let navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const access_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQyNDQ5MDUyLCJpYXQiOjE2NDIzNjI2NTIsImp0aSI6ImZmNWVkMzQzNTJkNzQxZDI5YTk3ZTg0ZTFjNTkwNmUwIiwidXNlcl9pZCI6Mzd9.LhzBMGI7ibYwUqPtmbvANRLsMBL_abdxruDNwQhY2D0'
-  const apiUrl = 'https://myplanit.link/login'
-  
+  const access_token =
+    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQyNDQ5MDUyLCJpYXQiOjE2NDIzNjI2NTIsImp0aSI6ImZmNWVkMzQzNTJkNzQxZDI5YTk3ZTg0ZTFjNTkwNmUwIiwidXNlcl9pZCI6Mzd9.LhzBMGI7ibYwUqPtmbvANRLsMBL_abdxruDNwQhY2D0";
+  const apiUrl = "https://myplanit.link/login";
+
   function attemptLogin() {
     axios
       .post(
@@ -22,21 +23,16 @@ function Login() {
           password: password,
         },
         {
-
           headers: {
             "Content-Type": "application/json",
           },
-          
-          
         }
-        
       )
       .then((response) => {
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("email", response.data.email);
         localStorage.setItem("password", response.data.password);
-        console.log(response.data.token)
-         navigate("/main");
+        navigate("/main");
       })
       .catch((error) => {
         if (error.response.status === 400) {
@@ -63,15 +59,28 @@ function Login() {
         onChange={(e) => {
           setEmail(e.target.value);
         }}
-        style={{ width: "327px", marginBottom: "12px", fontFamily: "PretendardRegular",fontSize: "16px", color:"black"}}
-      />  <Input.Password
+        style={{
+          width: "327px",
+          marginBottom: "12px",
+          fontFamily: "PretendardRegular",
+          fontSize: "16px",
+          color: "black",
+        }}
+      />{" "}
+      <Input.Password
         className="password-input"
         size="large"
         placeholder="비밀번호 입력"
         onChange={(e) => {
           setPassword(e.target.value);
         }}
-        style={{ width: "327px", marginBottom: "19px", fontFamily: "PretendardRegular",fontSize: "16px", color:"#CECECE"}}
+        style={{
+          width: "327px",
+          marginBottom: "19px",
+          fontFamily: "PretendardRegular",
+          fontSize: "16px",
+          color: "#CECECE",
+        }}
       />
       <span className="switch">
         <Switch />
@@ -89,7 +98,6 @@ function Login() {
       </span>
       <button
         onClick={() => {
-          console.log(email, password);
           attemptLogin();
         }}
         className="login-button"
@@ -100,16 +108,32 @@ function Login() {
         className="button-group"
         style={{ marginTop: "8px", fontSize: "12px" }}
       >
-        <p style={{ marginLeft: "12px", marginRight: "12px", opacity: 0.3 , fontFamily: "PretendardRegular",fontSize: "12px", color:"#929292"}}>
+        <p
+          style={{
+            marginLeft: "12px",
+            marginRight: "12px",
+            opacity: 0.3,
+            fontFamily: "PretendardRegular",
+            fontSize: "12px",
+            color: "#929292",
+          }}
+        >
           아직 계정이 없으신가요?
         </p>
         <p>
-          <Link style={{ color: "black" , fontFamily: "PretendardRegular",fontSize: "12px", color:"#000000"}} to="/signup1">
+          <Link
+            style={{
+              color: "black",
+              fontFamily: "PretendardRegular",
+              fontSize: "12px",
+              color: "#000000",
+            }}
+            to="/signup1"
+          >
             회원가입하기
           </Link>
         </p>
       </span>
-   
     </div>
   );
 }
