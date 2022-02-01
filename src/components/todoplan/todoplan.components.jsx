@@ -86,7 +86,11 @@ function TodoPlan() {
             alignItems: "center",
           }}
         >
-          <MuiPickersUtilsProvider locale={ko} utils={DateFnsUtils}>
+          <MuiPickersUtilsProvider
+            locale={ko}
+            utils={DateFnsUtils}
+            style={{ fontFamily: "Pretendard-SemiBold" }}
+          >
             <KeyboardDatePicker
               style={{ width: 210, fontFamily: "Pretendard-SemiBold" }}
               disableToolbar
@@ -247,11 +251,15 @@ function TodoPlan() {
                     marginTop: "2px",
                     fontSize: "16px",
                     marginBottom: "12px",
+                    width: "300px",
                   }}
                 >
-                  <span style={{ font: "p" }}>{title}</span>
+                  <span style={{ font: "p", marginRight: "auto" }}>
+                    {title}
+                  </span>
                   <span
                     style={{
+                      marginLeft: "auto",
                       color: "#8977F7",
                     }}
                   >
@@ -260,6 +268,7 @@ function TodoPlan() {
                   <span
                     style={{
                       fontFamily: "Pretendard-Medium",
+                      marginLeft: 5,
                     }}
                   >
                     달성
@@ -276,7 +285,6 @@ function TodoPlan() {
                           style={{
                             marginLeft: 0,
                             marginTop: 14,
-                            width: "100vw",
                           }}
                           checked={item["finish_flag"]}
                           onChange={async (e) => {
@@ -320,6 +328,7 @@ function TodoPlan() {
                           <span
                             style={{
                               display: "flex",
+                              width: "255px",
                             }}
                           >
                             <span style={{ fontFamily: "Pretendard-Medium" }}>
@@ -364,11 +373,17 @@ function TodoPlan() {
                             }
                           }}
                         >
-                          <span style={{ width: "100%" }}>
-                            <span>{item["plan_todo"]}</span>
+                          <span style={{ display: "flex", width: "255px" }}>
+                            <span style={{ fontFamily: "Pretendard-Medium" }}>
+                              {item["plan_todo"]}
+                            </span>
                             <span
                               onClick={() => {
                                 navigate(`/todo/detail/${item["todo_id"]}`);
+                              }}
+                              style={{
+                                flexDirection: "row",
+                                marginLeft: "auto",
                               }}
                             >
                               <img
@@ -397,11 +412,17 @@ function TodoPlan() {
                             }
                           }}
                         >
-                          <span style={{ width: "100%" }}>
-                            <span>{item["plan_todo"]}</span>
+                          <span style={{ display: "flex", width: "255px" }}>
+                            <span style={{ fontFamily: "Pretendard-Medium" }}>
+                              {item["plan_todo"]}
+                            </span>
                             <span
                               onClick={() => {
                                 navigate(`/todo/detail/${item["todo_id"]}`);
+                              }}
+                              style={{
+                                flexDirection: "row",
+                                marginLeft: "auto",
                               }}
                             >
                               <img
