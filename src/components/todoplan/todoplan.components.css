@@ -21,11 +21,11 @@
 }
 
 .date {
-  font-family: "Pretendard-Regular" !important;
+  font-family: "Pretendard-SemiBold";
 }
 
 .MuiInputBase-input {
-  font-family: "Pretendard-Regular" !important;
+  font-family: "Pretendard-Medium";
 }
 
 .ant-checkbox-checked .ant-checkbox-inner {
@@ -39,7 +39,7 @@
   margin-left: 5px !important;
   font-size: 19px !important;
   font-weight: bold !important;
-  font-family: "Pretendard-Regular" !important;
+  width: 140px;
 }
 .MuiIconButton-root {
   padding-left: 0 !important;
