@@ -88,7 +88,7 @@ function TodoPlan() {
         >
           <MuiPickersUtilsProvider locale={ko} utils={DateFnsUtils}>
             <KeyboardDatePicker
-              style={{ width: 210 }}
+              style={{ width: 210, fontFamily: "Pretendard-SemiBold" }}
               disableToolbar
               format="M월 d일 eee요일"
               margin="normal"
@@ -215,7 +215,13 @@ function TodoPlan() {
         </span>
       </div>
       <div style={{ height: "110px" }}></div>
-      <div style={{ top: "110px", bottom: "50px" }}>
+      <div
+        style={{
+          top: "110px",
+          bottom: "50px",
+          fontFamily: "Pretendard-SemiBold",
+        }}
+      >
         {data.map((plan, i) => {
           let title = plan[0];
           if (title.length > 15) {
@@ -243,8 +249,21 @@ function TodoPlan() {
                     marginBottom: "12px",
                   }}
                 >
-                  <span>{title}</span>
-                  <span style={{ color: "#8977F7" }}>{percent}%</span> 달성
+                  <span style={{ font: "p" }}>{title}</span>
+                  <span
+                    style={{
+                      color: "#8977F7",
+                    }}
+                  >
+                    {percent}%
+                  </span>{" "}
+                  <span
+                    style={{
+                      fontFamily: "Pretendard-Medium",
+                    }}
+                  >
+                    달성
+                  </span>
                 </span>
               </span>
               <hr style={{ opacity: 0.2, margin: 0 }} />
@@ -298,8 +317,14 @@ function TodoPlan() {
                             }
                           }}
                         >
-                          <span style={{ display: "flex" }}>
-                            <span>{item["plan_todo"]}</span>
+                          <span
+                            style={{
+                              display: "flex",
+                            }}
+                          >
+                            <span style={{ fontFamily: "Pretendard-Medium" }}>
+                              {item["plan_todo"]}
+                            </span>
                             <span
                               onClick={() => {
                                 navigate(`/todo/detail/${item["todo_id"]}`);
