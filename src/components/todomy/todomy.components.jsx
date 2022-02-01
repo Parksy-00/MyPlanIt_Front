@@ -90,7 +90,7 @@ function TodoMy() {
           <KeyboardDatePicker
             style={{ width: 210 }}
             disableToolbar
-            format="M월 dd일 eee요일"
+            format="M월 d일 eee요일"
             margin="normal"
             id="date-picker-outline"
             value={selectedDate}

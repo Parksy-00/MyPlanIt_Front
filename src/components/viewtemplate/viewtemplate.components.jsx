@@ -96,24 +96,19 @@ function ViewTemplate(props) {
       <div
         className="view-contents"
         style={{
-          position: "relative",
+          position: "fixed",
           display: "flex",
           flexDirection: "row",
           justifyContent: "space-between",
           width: "90vw",
-          marginTop: "30",
+          marginTop: "30px",
           zIndex: "20",
         }}
       >
         <Link to="../main/maintemplateroutine">
-          <ArrowBackIosIcon style={{ color: "#7965f4" }} />
+          <ArrowBackIosIcon style={{ color: "#7965f4",marginTop: "30px" }} />
         </Link>
-        <button
-          onClick={() => {}}
-          style={{ backgroundColor: "transparent", border: "0" }}
-        >
-          <FavoriteBorderIcon style={{ color: "#7965f4" }}/>
-        </button>
+       
       </div>
 
       <div
