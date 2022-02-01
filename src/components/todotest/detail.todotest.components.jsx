@@ -61,7 +61,10 @@ function Detail() {
         </Link>
       </div>
 
-      <PageHeader style={{ position: "absolute", top: "0" }} title={title} />
+      <PageHeader
+        style={{ position: "absolute", top: "0", paddingBottom: 0 }}
+        title={title}
+      />
       <hr style={{ width: "100%", marginTop: 20, marginBottom: 20 }} />
       <img src={route} width="85%" />
       <br />
