@@ -214,180 +214,182 @@ function TodoPlan() {
         </span>
       </div>
       <div style={{ height: "110px" }}></div>
-      {data.map((plan, i) => {
-        let title = plan[0];
-        if (title.length > 15) {
-          title = plan[0].slice(0, 14) + "...";
-        }
-        let percent = plan[1][0]["달성률"];
-        let todos = plan[1].slice(1);
-        let count = 70 + parseInt(todos.length) * 40;
-        return (
-          <Card
-            key={i}
-            style={{
-              borderRadius: 5,
-              width: 327,
-              height: `${count}px`,
-              marginTop: 9,
-            }}
-          >
-            <span style={{ display: "flex" }}>
-              <span
-                style={{
-                  display: "flex",
-                  marginTop: "2px",
-                  // fontWeight: "bold",
-                  fontSize: "16px",
-                }}
-              >
-                {title}
-                <span></span>
-                <span style={{ marginLeft: 20 }}>
-                  <span style={{ color: "#8977F7" }}>{percent}%</span> 달성
+      <div style={{ position: "fixed", top: "110px" }}>
+        {data.map((plan, i) => {
+          let title = plan[0];
+          if (title.length > 15) {
+            title = plan[0].slice(0, 14) + "...";
+          }
+          let percent = plan[1][0]["달성률"];
+          let todos = plan[1].slice(1);
+          let count = 70 + parseInt(todos.length) * 40;
+          return (
+            <Card
+              key={i}
+              style={{
+                borderRadius: 5,
+                width: 327,
+                height: `${count}px`,
+                marginTop: 9,
+              }}
+            >
+              <span style={{ display: "flex" }}>
+                <span
+                  style={{
+                    display: "flex",
+                    marginTop: "2px",
+                    // fontWeight: "bold",
+                    fontSize: "16px",
+                  }}
+                >
+                  {title}
+                  <span></span>
+                  <span style={{ marginLeft: 20 }}>
+                    <span style={{ color: "#8977F7" }}>{percent}%</span> 달성
+                  </span>
                 </span>
               </span>
-            </span>
-            <hr style={{ opacity: 0.2 }} />
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              {!edit
-                ? todos.map((item, i) => {
-                    return (
-                      <Checkbox
-                        key={i}
-                        style={{ marginLeft: 0, marginTop: 12 }}
-                        checked={item["finish_flag"]}
-                        onChange={async (e) => {
-                          if (e.target.checked) {
-                            axios
-                              .post(
-                                `https://myplanit.link/todos/plan/${item["plan_id"]}/${item["id"]}/check`,
-                                { token: `Bearer ${accessToken}` },
-                                {
-                                  headers: {
-                                    "Content-Type": "application/json",
-                                    Authorization: `Bearer ${accessToken}`,
-                                  },
-                                }
-                              )
-                              .then((response) => {
-                                if (response.data.message == "success") {
-                                  setRerender(!rerender);
-                                }
-                              });
-                          } else {
-                            // setNotionNum(notionNum - 1);
-                            axios
-                              .post(
-                                `https://myplanit.link/todos/plan/${item["plan_id"]}/${item["id"]}/check`,
-                                { token: `Bearer ${accessToken}` },
-                                {
-                                  headers: {
-                                    "Content-Type": "application/json",
-                                    Authorization: `Bearer ${accessToken}`,
-                                  },
-                                }
-                              )
-                              .then((response) => {
-                                if (response.data.message == "success") {
-                                  setRerender(!rerender);
-                                }
-                              });
-                          }
-                        }}
-                      >
-                        <span style={{ width: "100%" }}>
-                          <span>{item["plan_todo"]}</span>
-                          <span
-                            onClick={() => {
-                              navigate(`/todo/detail/${item["todo_id"]}`);
-                            }}
-                          >
-                            <img
-                              src="images/detail.png"
-                              style={{
-                                width: 8,
-                                marginLeft: 50,
+              <hr style={{ opacity: 0.2 }} />
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                {!edit
+                  ? todos.map((item, i) => {
+                      return (
+                        <Checkbox
+                          key={i}
+                          style={{ marginLeft: 0, marginTop: 12 }}
+                          checked={item["finish_flag"]}
+                          onChange={async (e) => {
+                            if (e.target.checked) {
+                              axios
+                                .post(
+                                  `https://myplanit.link/todos/plan/${item["plan_id"]}/${item["id"]}/check`,
+                                  { token: `Bearer ${accessToken}` },
+                                  {
+                                    headers: {
+                                      "Content-Type": "application/json",
+                                      Authorization: `Bearer ${accessToken}`,
+                                    },
+                                  }
+                                )
+                                .then((response) => {
+                                  if (response.data.message == "success") {
+                                    setRerender(!rerender);
+                                  }
+                                });
+                            } else {
+                              // setNotionNum(notionNum - 1);
+                              axios
+                                .post(
+                                  `https://myplanit.link/todos/plan/${item["plan_id"]}/${item["id"]}/check`,
+                                  { token: `Bearer ${accessToken}` },
+                                  {
+                                    headers: {
+                                      "Content-Type": "application/json",
+                                      Authorization: `Bearer ${accessToken}`,
+                                    },
+                                  }
+                                )
+                                .then((response) => {
+                                  if (response.data.message == "success") {
+                                    setRerender(!rerender);
+                                  }
+                                });
+                            }
+                          }}
+                        >
+                          <span style={{ width: "100%" }}>
+                            <span>{item["plan_todo"]}</span>
+                            <span
+                              onClick={() => {
+                                navigate(`/todo/detail/${item["todo_id"]}`);
                               }}
-                            />
+                            >
+                              <img
+                                src="images/detail.png"
+                                style={{
+                                  width: 8,
+                                  marginLeft: 50,
+                                }}
+                              />
+                            </span>
                           </span>
-                        </span>
-                      </Checkbox>
-                    );
-                  })
-                : todos.map((item, i) => {
-                    return !item["finish_flag"] ? (
-                      <Checkbox
-                        key={i}
-                        style={{ marginLeft: 0, marginTop: 12 }}
-                        onChange={() => {
-                          if (delay.includes(item["id"])) {
-                            let temp = [...delay];
-                            temp = temp.filter((i) => i !== item["id"]);
-                            setDelay(temp);
-                          } else {
-                            let temp = [...delay, item["id"]];
-                            setDelay(temp);
-                          }
-                        }}
-                      >
-                        <span style={{ width: "100%" }}>
-                          <span>{item["plan_todo"]}</span>
-                          <span
-                            onClick={() => {
-                              navigate(`/todo/detail/${item["todo_id"]}`);
-                            }}
-                          >
-                            <img
-                              src="images/detail.png"
-                              style={{
-                                width: 8,
-                                marginLeft: 50,
+                        </Checkbox>
+                      );
+                    })
+                  : todos.map((item, i) => {
+                      return !item["finish_flag"] ? (
+                        <Checkbox
+                          key={i}
+                          style={{ marginLeft: 0, marginTop: 12 }}
+                          onChange={() => {
+                            if (delay.includes(item["id"])) {
+                              let temp = [...delay];
+                              temp = temp.filter((i) => i !== item["id"]);
+                              setDelay(temp);
+                            } else {
+                              let temp = [...delay, item["id"]];
+                              setDelay(temp);
+                            }
+                          }}
+                        >
+                          <span style={{ width: "100%" }}>
+                            <span>{item["plan_todo"]}</span>
+                            <span
+                              onClick={() => {
+                                navigate(`/todo/detail/${item["todo_id"]}`);
                               }}
-                            />
+                            >
+                              <img
+                                src="images/detail.png"
+                                style={{
+                                  width: 8,
+                                  marginLeft: 50,
+                                }}
+                              />
+                            </span>
                           </span>
-                        </span>
-                      </Checkbox>
-                    ) : (
-                      <Checkbox
-                        key={i}
-                        style={{ marginLeft: 0, marginTop: 12 }}
-                        checked={false}
-                        disabled
-                        onChange={() => {
-                          if (delay.includes(item["id"])) {
-                            let temp = [...delay];
-                            temp = temp.filter((i) => i !== item["id"]);
-                            setDelay(temp);
-                          } else {
-                            let temp = [...delay, item["id"]];
-                            setDelay(temp);
-                          }
-                        }}
-                      >
-                        <span style={{ width: "100%" }}>
-                          <span>{item["plan_todo"]}</span>
-                          <span
-                            onClick={() => {
-                              navigate(`/todo/detail/${item["todo_id"]}`);
-                            }}
-                          >
-                            <img
-                              src="images/detail.png"
-                              style={{
-                                width: 8,
-                                marginLeft: 50,
+                        </Checkbox>
+                      ) : (
+                        <Checkbox
+                          key={i}
+                          style={{ marginLeft: 0, marginTop: 12 }}
+                          checked={false}
+                          disabled
+                          onChange={() => {
+                            if (delay.includes(item["id"])) {
+                              let temp = [...delay];
+                              temp = temp.filter((i) => i !== item["id"]);
+                              setDelay(temp);
+                            } else {
+                              let temp = [...delay, item["id"]];
+                              setDelay(temp);
+                            }
+                          }}
+                        >
+                          <span style={{ width: "100%" }}>
+                            <span>{item["plan_todo"]}</span>
+                            <span
+                              onClick={() => {
+                                navigate(`/todo/detail/${item["todo_id"]}`);
                               }}
-                            />
+                            >
+                              <img
+                                src="images/detail.png"
+                                style={{
+                                  width: 8,
+                                  marginLeft: 50,
+                                }}
+                              />
+                            </span>
                           </span>
-                        </span>
-                      </Checkbox>
-                    );
-                  })}
-            </div>
-          </Card>
-        );
-      })}
+                        </Checkbox>
+                      );
+                    })}
+              </div>
+            </Card>
+          );
+        })}
+      </div>
       <br />
       <br />
       <br />
