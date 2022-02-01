@@ -209,9 +209,7 @@ function MainTemplateRoutine() {
                 </div>
                 <div style={{width: '10px'}}>
                 </div>
-                <div className="template-tag">
-                {Routine.tags[1]}
-                </div>
+
               </div>
               <div style={{height: '5px'}}></div>
               </div>

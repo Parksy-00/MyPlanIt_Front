@@ -20,37 +20,57 @@ import AddIcon from '@mui/icons-material/Add';
 import Sheet from 'react-modal-sheet';
 import { Input, Switch } from "antd";
 import "./todomy.components.css";
+import { NavLink, Route } from 'react-router-dom';
 
 const accessToken = localStorage.getItem("token");
 function TodoMy() {
   let navigate = useNavigate();
+  const [users, setUsers] = useState(null);
   const [todo, setTodo] = useState("");
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [isOpen, setOpen] = React.useState(false);
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState();
+  const [error, setError] = useState(null);
+  const [rerender, setRerender] = useState(false);
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
-  function addTodo() {
-    axios
-      .post(
-        `https://myplanit.link/todos/my/${selectedDate.getFullYear()}-${(
+  const accessToken = localStorage.getItem("token");
+  useEffect(() => {
+    const accessToken = localStorage.getItem("token");
+    const fetchData = async () => {
+      try {
+        setError(null);
+        setData(null);
+        setUsers(null);
+        setLoading(true);
+        const response = await axios.get(
+          `https://myplanit.link/todos/my/${selectedDate.getFullYear()}-${(
             "0" +
             (selectedDate.getMonth() + 1)
           ).slice(-2)}-${("0" + selectedDate.getDate()).slice(-2)}`,
-        {
-          todo_name: todo,
-        },
-        {
+          {
+            Authorization: `Bearer ${accessToken}`,
+            withCredentials: true,
             headers: {
               "Content-Type": "application/json",
-             Authorization: `Bearer ${accessToken}`,
-            }
+              Authorization: `Bearer ${accessToken}`,
+            },
           }
-      )
-      .then((response) => {
-         navigate("/main/todomy");
-      })
-  }
+        );
+        setData(Object.entries(response.data));
+        setUsers(response.data);
+        console.log(response.data);
+       
+      } catch (e) {
+        setError(e);
+      }
+      setLoading(false);
+    };
+    fetchData();
+  }, []);
+  if (loading) return <div></div>
   return (
     <div className="container">
       <div
@@ -141,7 +161,15 @@ function TodoMy() {
           MY
         </Link>
         <div style={{ width: 190 }}></div>
+        
       </span>
+      {users.personal_todos.map(personal_todos=>(
+      <li key= {users.personal_todos.id}>
+
+          <div>{personal_todos.todo_name.toString}</div>
+      </li>
+        ))}
+  <div></div>
       <Fab 
       onClick={function(event){setOpen(true);}}
       size="large" color="secondary" aria-label="add" style={{position:"fixed",

@@ -220,9 +220,6 @@ console.log(localStorage.getItem("token"));
         </div>
         <div style={{width: '10px'}}>
         </div>
-        <div className="template-tag">
-        {buy_plans.plan.tags[1]}
-        </div>
       </div>
       <div style={{height: '5px'}}></div>
       </div>

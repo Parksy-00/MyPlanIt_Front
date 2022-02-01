@@ -331,7 +331,7 @@ function MainTemplateGrowth() {
                     >
                       <div className="template-tag">{Growth.tags[0]}</div>
                       <div style={{ width: "10px" }}></div>
-                      <div className="template-tag">{Growth.tags[1]}</div>
+                  
                     </div>
                     <div style={{ height: "5px" }}></div>
                   </div>
