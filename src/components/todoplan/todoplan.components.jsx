@@ -102,6 +102,9 @@ function TodoPlan() {
                   width: "auto",
                   fontFamily: "Pretendard-SemiBold",
                 }}
+                InputProps={{
+                  disableUnderline: true,
+                }}
                 disableToolbar
                 format="M월 d일 eee요일"
                 margin="normal"
@@ -115,6 +118,7 @@ function TodoPlan() {
                 style={{
                   padding: 0,
                   marginTop: 5,
+                  marginRight: 10,
                 }}
               />
             </div>
@@ -122,7 +126,7 @@ function TodoPlan() {
           <Link to="../main/buytemplate">
             <Button
               style={{
-                marginLeft: 50,
+                marginLeft: 20,
                 height: 25,
                 width: 73,
                 fontSize: 9,
