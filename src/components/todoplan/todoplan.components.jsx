@@ -378,21 +378,24 @@ function TodoPlan() {
       <br />
       {!edit ? (
         <span>
-          <BottomNavBarTodo />{" "}
+          <BottomNavBarTodo />
           <div
             style={{
               height: "33px",
               backgroundColor: "white",
-              width: "100vw",
-              position: "fixed",
-              bottom: "0px",
+              right: 0,
+              left: 0,
+              position: "absolute",
+              bottom: 0,
+              textAlign: "center",
             }}
-          ></div>
+          />
         </span>
       ) : (
         <div
           style={{
-            width: "100vw",
+            right: 0,
+            left: 0,
             height: "90px",
             backgroundColor: "#7965f4",
             position: "fixed",
