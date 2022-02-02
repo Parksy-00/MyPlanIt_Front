@@ -5,25 +5,20 @@ import React, { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import BottomNavBarTodo from "../globalcomponents/bottomnavbartodo.components";
 import DateFnsUtils from "@date-io/date-fns";
-import {
-  MuiPickersUtilsProvider,
-  KeyboardDatePicker,
-} from "@material-ui/pickers";
+import { MuiPickersUtilsProvider, DatePicker } from "@material-ui/pickers";
 import { ko } from "date-fns/locale";
-import DatePicker from "react-datepicker";
 import { Checkbox, Card, Button } from "antd";
 import axios from "axios";
 import { Cookies } from "react-cookies";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import Fab from '@mui/material/Fab';
-import AddIcon from '@mui/icons-material/Add';
-import Sheet from 'react-modal-sheet';
+import Fab from "@mui/material/Fab";
+import AddIcon from "@mui/icons-material/Add";
+import Sheet from "react-modal-sheet";
 import { Input, Switch } from "antd";
 import "./todomy.components.css";
-import { NavLink, Route } from 'react-router-dom';
+import { NavLink, Route } from "react-router-dom";
+import { PlusOutlined } from "@ant-design/icons";
 
-
-const accessToken = localStorage.getItem("token");
 function TodoMy() {
   let navigate = useNavigate();
   const [users, setUsers] = useState([]);
@@ -65,7 +60,6 @@ function TodoMy() {
         setData(Object.entries(response.data));
         setUsers(response.data);
         console.log(response.data);
-       
       } catch (e) {
         setError(e);
       }
@@ -81,253 +75,452 @@ function TodoMy() {
     <div className="container">
       <div
         style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
+          position: "fixed",
+          top: 0,
+          zIndex: 2,
+          backgroundColor: "#fbfbfb",
+          width: "100vw",
+          height: "100px",
         }}
       >
-        <MuiPickersUtilsProvider locale={ko} utils={DateFnsUtils}>
-          <KeyboardDatePicker
-            style={{ width: 210 }}
-            disableToolbar
-            format="M월 d일 eee요일"
-            margin="normal"
-            id="date-picker-outline"
-            value={selectedDate}
-            onChange={handleDateChange}
-            KeyboardButtonProps={{
-              "aria-label": "change date",
-            }}
-            keyboardIcon={
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <MuiPickersUtilsProvider
+            locale={ko}
+            utils={DateFnsUtils}
+            style={{ fontFamily: "Pretendard-SemiBold" }}
+          >
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "center",
+                marginRight: 30,
+              }}
+            >
+              <DatePicker
+                style={{
+                  width: "auto",
+                  fontFamily: "Pretendard-SemiBold",
+                }}
+                InputProps={{
+                  disableUnderline: true,
+                }}
+                disableToolbar
+                format="M월 d일 eee요일"
+                margin="normal"
+                value={selectedDate}
+                className="date"
+                onChange={handleDateChange}
+              />
               <ExpandMoreIcon
                 color="black"
                 fontSize="large"
-                style={{ padding: 0 }}
+                style={{
+                  padding: 0,
+                  marginTop: 5,
+                  marginRight: 10,
+                }}
               />
-            }
-          />
-        </MuiPickersUtilsProvider>
-        <Link to="../main/buytemplate">
-          <Button
+            </div>
+          </MuiPickersUtilsProvider>
+          <Link to="../main/buytemplate">
+            <Button
+              style={{
+                marginLeft: 20,
+                height: 25,
+                width: 73,
+                fontSize: 9,
+                marginTop: 10,
+              }}
+            >
+              MY PLAN
+            </Button>
+          </Link>
+        </div>
+        <span
+          className="button-group"
+          style={{
+            fontSize: "16px",
+            fontWeight: "bold",
+            justifyContent: "center",
+          }}
+        >
+          <Link
+            to="../main"
+            className="main-routine-button"
             style={{
-              marginLeft: 50,
-              height: 25,
-              width: 73,
-              fontSize: 9,
-              marginTop: 10,
+              width: 42,
+              height: "17px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              marginTop: "10px",
+              border: "5px",
+              background: "#fbfbfb",
+              borderRadius: "0",
+              color: "gray",
             }}
           >
-            MY PLAN
-          </Button>
-        </Link>
+            PLAN
+          </Link>
+          <div style={{ width: 15 }}></div>
+          <Link
+            style={{ border: "1px solid #D3d3d3" }}
+            to="../main/todomy"
+            className="main-growth-button"
+            style={{
+              width: 42,
+              height: "20px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              marginTop: "10px",
+              border: "5px",
+              background: "#fbfbfb",
+              borderRadius: "0",
+              color: "black",
+              borderBottom: "2px solid #7965f4",
+              marginRight: 30,
+              paddingBottom: 2,
+            }}
+          >
+            MY
+          </Link>
+          <div style={{ width: 190 }}>
+            {!edit ? (
+              <p
+                style={{
+                  justifyContent: "center",
+                  alignItem: "center",
+                  textAlign: "right",
+                  marginTop: 9,
+                  marginBottom: 0,
+                  fontSize: "12px",
+                  color: "#929292",
+                }}
+                onClick={() => {
+                  setEdit(!edit);
+                }}
+              >
+                편집하기
+              </p>
+            ) : (
+              <p
+                style={{
+                  justifyContent: "center",
+                  alignItem: "center",
+                  textAlign: "right",
+                  marginTop: 9,
+                  marginBottom: 0,
+                  fontSize: "12px",
+                  color: "#8977F7",
+                }}
+                onClick={() => {
+                  setEdit(!edit);
+                }}
+              >
+                <img
+                  src="/images/purpletick.png"
+                  style={{ width: "12px", marginRight: 4 }}
+                />
+                편집완료
+              </p>
+            )}
+          </div>
+        </span>
       </div>
-      <span
-        className="button-group"
-        style={{ fontSize: "16px", fontWeight: "bold" }}
-      >
-        <Link
-          to="../main"
-          className="main-routine-button"
-          style={{
-            width: 42,
-            height: "17px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            marginTop: "10px",
-            border: "5px",
-            background: "#fbfbfb",
-            borderRadius: "0",
-            color: "gray",
-          }}
-        >
-          PLAN
-        </Link>
-        <div style={{ width: 15 }}></div>
-        <Link
-          style={{ border: "1px solid #D3d3d3" }}
-          to="../main/todomy"
-          className="main-growth-button"
-          style={{
-            width: 42,
-            height: "20px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            marginTop: "10px",
-            border: "5px",
-            background: "#fbfbfb",
-            borderRadius: "0",
-            color: "black",
-            borderBottom: "2px solid #7965f4",
-            marginRight: 30,
-            paddingBottom: 2,
-          }}
-        >
-          MY
-        </Link>
-        <div style={{ width: 190 }}></div>
-        
-      </span>
-      <div style={{height:"20px"}}></div>
-
-      <div style={{ position: "fixed", top: "110px" }}>
-      {users && users.personal_todos?.map(personal_todos=>(
-      <li style={{listStyle:"none"}} key= {users.personal_todos.id }>
-
-          <div style={{fontFamily: "PretendardRegular",display:'flex',flexDirection:'column', boxShadow: '0px 0px 2px 0.5px #Dedede', justifyContent: 
-  "center", width: "78vw", height:"50px",marginBottom:"20px",fontSize:"16px"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{personal_todos.todo_name}</div>
-      </li>
-        ))}
-        </div>
-  <div></div>
-  {!edit
-                  ? users.personal_todos?.map((item, i) => {
-                      return (
-                        <Checkbox
-                          key={i}
-                          style={{ marginRight: 290, marginTop: 15, marginBottom: "33px", alignContent:"start" }}
-                          checked={item["finish_flag"]}
-                          onChange={async (e) => {
-                            if (e.target.checked) {
-                              axios
-                                .post(
-                                  `https://myplanit.link/todos/my/${item["id"]}/check`,
-                                  { token: `Bearer ${accessToken}` },
-                                  {
-                                    headers: {
-                                      "Content-Type": "application/json",
-                                      Authorization: `Bearer ${accessToken}`,
-                                    },
-                                  }
-                                )
-                                .then((response) => {
-                                
-                                    setRerender(!rerender);
-                                  
-                                });
-                            } else {
-                              // setNotionNum(notionNum - 1);
-                              axios
-                                .post(
-                                  `https://myplanit.link/todos/my/${item["id"]}/check`,
-                                  { token: `Bearer ${accessToken}` },
-                                  {
-                                    headers: {
-                                      "Content-Type": "application/json",
-                                      Authorization: `Bearer ${accessToken}`,
-                                    },
-                                  }
-                                )
-                                .then((response) => {
-                             
-                                    setRerender(!rerender);
-                                  
-                                });
+      <div style={{ height: "20px" }}></div>
+      <div style={{ position: "fixed", top: "100px" }}>
+        {!edit
+          ? users.personal_todos.map((item, i) => {
+              return (
+                <Card
+                  style={{
+                    borderRadius: 5,
+                    width: 327,
+                    marginTop: 8,
+                    height: 52,
+                  }}
+                >
+                  <Checkbox
+                    key={i}
+                    style={{
+                      marginLeft: 0,
+                      marginTop: 14,
+                    }}
+                    checked={item["finish_flag"]}
+                    onChange={async (e) => {
+                      if (e.target.checked) {
+                        axios
+                          .post(
+                            `https://myplanit.link/todos/my/${item["id"]}/check`,
+                            { token: `Bearer ${accessToken}` },
+                            {
+                              headers: {
+                                "Content-Type": "application/json",
+                                Authorization: `Bearer ${accessToken}`,
+                              },
                             }
-                          }}
-                        >
-                        
-                        </Checkbox>
-                      );
-                    })
-                  : users.personal_todos?.map((item, i) => {
-                      return !item["finish_flag"] ? (
-                        <Checkbox
-                          key={i}
-                          style={{ marginLeft: 0, marginTop: 12 }}
-                          onChange={() => {
-                            if (delay.includes(item["id"])) {
-                              let temp = [...delay];
-                              temp = temp.filter((i) => i !== item["id"]);
-                              setDelay(temp);
-                            } else {
-                              let temp = [...delay, item["id"]];
-                              setDelay(temp);
+                          )
+                          .then((response) => {
+                            setRerender(!rerender);
+                          });
+                      } else {
+                        axios
+                          .post(
+                            `https://myplanit.link/todos/my/${item["id"]}/check`,
+                            { token: `Bearer ${accessToken}` },
+                            {
+                              headers: {
+                                "Content-Type": "application/json",
+                                Authorization: `Bearer ${accessToken}`,
+                              },
                             }
-                          }}
-                        >
-                          
-                        </Checkbox>
-                      ) : (
-                        <Checkbox
-                          key={i}
-                          style={{ marginLeft: 0, marginTop: 12 }}
-                          checked={false}
-                          disabled
-                          onChange={() => {
-                            if (delay.includes(item["id"])) {
-                              let temp = [...delay];
-                              temp = temp.filter((i) => i !== item["id"]);
-                              setDelay(temp);
-                            } else {
-                              let temp = [...delay, item["id"]];
-                              setDelay(temp);
-                            }
-                          }}
-                        >
-                         
-                        </Checkbox>
-                      );
-                    })}
-      <Fab 
-      onClick={function(event){setOpen(true);}}
-      size="large" color="secondary" aria-label="add" style={{position:"fixed",
-  bottom: "100px",
-  right: "20px",}}>
-      
-        <AddIcon />
-      </Fab>
+                          )
+                          .then((response) => {
+                            setRerender(!rerender);
+                          });
+                      }
+                    }}
+                  >
+                    <span style={{ marginLeft: 5, fontWeight: "bold" }}>
+                      {item.todo_name}
+                    </span>
+                  </Checkbox>
+                </Card>
+              );
+            })
+          : users.personal_todos.map((item, i) => {
+              return !item["finish_flag"] ? (
+                <Card
+                  style={{
+                    borderRadius: 5,
+                    width: 327,
+                    marginTop: 8,
+                    height: 52,
+                  }}
+                >
+                  <Checkbox
+                    key={i}
+                    style={{
+                      marginLeft: 0,
+                      marginTop: 14,
+                    }}
+                    onChange={() => {
+                      if (delay.includes(item["id"])) {
+                        let temp = [...delay];
+                        temp = temp.filter((i) => i !== item["id"]);
+                        setDelay(temp);
+                        console.log(temp);
+                      } else {
+                        let temp = [...delay, item["id"]];
+                        setDelay(temp);
+                        console.log(temp);
+                      }
+                    }}
+                  >
+                    <span style={{ marginLeft: 5, fontWeight: "bold" }}>
+                      {item.todo_name}
+                    </span>
+                  </Checkbox>
+                </Card>
+              ) : (
+                <Card
+                  style={{
+                    borderRadius: 5,
+                    width: 327,
+                    marginTop: 8,
+                    height: 52,
+                  }}
+                >
+                  <Checkbox
+                    checked={false}
+                    disabled
+                    key={i}
+                    style={{
+                      marginLeft: 0,
+                      marginTop: 14,
+                    }}
+                    checked={false}
+                    onChange={() => {
+                      if (delay.includes(item["id"])) {
+                        let temp = [...delay];
+                        temp = temp.filter((i) => i !== item["id"]);
+                        setDelay(temp);
+                        console.log(temp);
+                      } else {
+                        let temp = [...delay, item["id"]];
+                        setDelay(temp);
+                        console.log(temp);
+                      }
+                    }}
+                  >
+                    <span style={{ marginLeft: 5, fontWeight: "bold" }}>
+                      {item.todo_name}
+                    </span>
+                  </Checkbox>
+                </Card>
+              );
+            })}
+      </div>
+      <Button
+        style={{
+          backgroundColor: "#7965f4",
+          position: "fixed",
+          bottom: "110px",
+          right: "8.5vw",
+        }}
+        onClick={function (event) {
+          setOpen(true);
+        }}
+        size="large"
+        type="primary"
+        shape="circle"
+        icon={<PlusOutlined />}
+      />
       <Sheet isOpen={isOpen} onClose={() => setOpen(false)} snapPoints={[250]}>
         <Sheet.Container>
           <Sheet.Header />
           <Sheet.Content>
-          <Input
-        className="email-input"
-        size="large"
-        placeholder="오늘 할 일을 입력해주세요.."
-        onChange={(e) => {
-          setTodo(e.target.value);
-        }}
-        style={{ marginLeft:"39px", width: "350px", fontFamily: "PretendardRegular",fontSize: "16px", color:"black"}}
-      /> 
-       <button
-        onClick={() => {
-          axios
-          .post(
-            `https://myplanit.link/todos/my/${selectedDate.getFullYear()}-${(
-                "0" +
-                (selectedDate.getMonth() + 1)
-              ).slice(-2)}-${("0" + selectedDate.getDate()).slice(-2)}`,
-            {
-              todo_name: todo,
-            },
-            {
-                headers: {
-                  "Content-Type": "application/json",
-                 Authorization: `Bearer ${accessToken}`,
-                }
-              }
-          )
-          .then((response) => {
-            console.log(response);
-            setRerender(!rerender);
-            setOpen(false);
-          })
-        }}
-        className="todo-add-button"
-        style={{marginLeft:"64px"}}
-      >
-        추가하기
-      </button>
-            </Sheet.Content>
+            <Input
+              className="email-input"
+              size="large"
+              placeholder="오늘 할 일을 입력해주세요.."
+              onChange={(e) => {
+                setTodo(e.target.value);
+              }}
+              style={{
+                marginLeft: "39px",
+                width: "350px",
+                fontFamily: "PretendardRegular",
+                fontSize: "16px",
+                color: "black",
+              }}
+            />
+            <button
+              onClick={() => {
+                axios
+                  .post(
+                    `https://myplanit.link/todos/my/${selectedDate.getFullYear()}-${(
+                      "0" +
+                      (selectedDate.getMonth() + 1)
+                    ).slice(-2)}-${("0" + selectedDate.getDate()).slice(-2)}`,
+                    {
+                      todo_name: todo,
+                    },
+                    {
+                      headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${accessToken}`,
+                      },
+                    }
+                  )
+                  .then((response) => {
+                    console.log(response);
+                    setRerender(!rerender);
+                    setOpen(false);
+                  });
+              }}
+              className="todo-add-button"
+              style={{ marginLeft: "64px" }}
+            >
+              추가하기
+            </button>
+          </Sheet.Content>
         </Sheet.Container>
 
         <Sheet.Backdrop />
       </Sheet>
-      <BottomNavBarTodo style={{zIndex:"100"}}/>
-      <div style={{height: "33px", backgroundColor:"white",width:"100vw",position:"fixed", bottom:"0px"}}></div>
-  
+      {!edit ? (
+        <span>
+          <BottomNavBarTodo />
+          <div
+            style={{
+              height: "33px",
+              backgroundColor: "white",
+              right: 0,
+              left: 0,
+              position: "fixed",
+              bottom: 0,
+              textAlign: "center",
+            }}
+          />
+        </span>
+      ) : (
+        <div
+          style={{
+            right: 0,
+            left: 0,
+            height: "90px",
+            backgroundColor: "#7965f4",
+            position: "fixed",
+            bottom: 0,
+            textAlign: "center",
+          }}
+        >
+          <span
+            onClick={() => {
+              let response = "";
+              for (let i = 0; i < delay.length; i++) {
+                axios
+                  .post(
+                    `https://myplanit.link/todos/my/${delay[i]}/delay`,
+                    { token: `Bearer ${accessToken}` },
+                    {
+                      headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${accessToken}`,
+                      },
+                    }
+                  )
+                  .then((res) => {
+                    response = res.data.message;
+                    if (response == "투두를 내일로 미뤘습니다.") {
+                      setRerender(!rerender);
+                    }
+                  });
+              }
+            }}
+          >
+            <img
+              src="/images/next.png"
+              style={{ width: 35, marginTop: 15, marginRight: "16vw" }}
+            />
+          </span>
+          <span
+            onClick={() => {
+              let response = "";
+              for (let i = 0; i < delay.length; i++) {
+                axios
+                  .delete(`https://myplanit.link/todos/my/${delay[i]}/delete`, {
+                    headers: {
+                      "Content-Type": "application/json",
+                      Authorization: `Bearer ${accessToken}`,
+                    },
+                  })
+                  .then((res) => {
+                    response = res.data.message;
+                    if (response == "투두를 삭제하였습니다.") {
+                      setRerender(!rerender);
+                    }
+                  });
+              }
+            }}
+          >
+            <img
+              src="/images/delete.png"
+              style={{ width: 35, marginTop: 15, marginLeft: "16vw" }}
+            />
+          </span>
+        </div>
+      )}
     </div>
   );
 }

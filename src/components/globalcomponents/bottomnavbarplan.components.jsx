@@ -17,16 +17,26 @@ const BottomNavBarPlan = () => {
       showLabels
     >
       <BottomNavigationAction
-    
-        icon={<img src="https://firebasestorage.googleapis.com/v0/b/single-life-manager.appspot.com/o/ceos%20test%2Ftodoc.png?alt=media&token=3f20e0e8-1b61-4c72-a99b-a2d3fe24949e" width={36} height={36}/>}
+        icon={
+          <img
+            src="https://firebasestorage.googleapis.com/v0/b/single-life-manager.appspot.com/o/ceos%20test%2Ftodoc.png?alt=media&token=3f20e0e8-1b61-4c72-a99b-a2d3fe24949e"
+            width={36}
+            height={36}
+          />
+        }
         component={Link}
         to="/main"
       />
 
       <BottomNavigationAction
-  
-     icon={<img src="https://firebasestorage.googleapis.com/v0/b/single-life-manager.appspot.com/o/ceos%20test%2Ftodod.png?alt=media&token=55c5a1c6-a771-4619-ae0e-fa6a674683e3" width={44} height={44}/>}
-           component={Link}
+        icon={
+          <img
+            src="https://firebasestorage.googleapis.com/v0/b/single-life-manager.appspot.com/o/ceos%20test%2Ftodod.png?alt=media&token=55c5a1c6-a771-4619-ae0e-fa6a674683e3"
+            width={44}
+            height={44}
+          />
+        }
+        component={Link}
         to="/main/maintemplateroutine"
       />
     </BottomNavigation>

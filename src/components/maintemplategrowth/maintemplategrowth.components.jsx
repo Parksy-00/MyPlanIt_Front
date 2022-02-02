@@ -144,7 +144,7 @@ function MainTemplateGrowth() {
           */}
         </Toolbar>
       </AppBar>
-     
+
       <span
         className="button-group"
         style={{ marginTop: "8px", fontSize: "16px", fontWeight: "bold" }}
@@ -245,7 +245,11 @@ function MainTemplateGrowth() {
                   <img
                     className="template-photourl"
                     src={Growth.intro_img_url}
-                    style={{ width: "350px", height: "130px", objectFit:"cover" }}
+                    style={{
+                      width: "350px",
+                      height: "130px",
+                      objectFit: "cover",
+                    }}
                   ></img>
                   <div
                     style={{
@@ -312,7 +316,6 @@ function MainTemplateGrowth() {
                         {/*{Growth.checkHeart ? 
      <FavoriteIcon />:
      <FavoriteBorderIcon />}*/}
-
                       </div>
                     </div>
                     <div
@@ -331,7 +334,6 @@ function MainTemplateGrowth() {
                     >
                       <div className="template-tag">{Growth.tags[0]}</div>
                       <div style={{ width: "10px" }}></div>
-                  
                     </div>
                     <div style={{ height: "5px" }}></div>
                   </div>
@@ -343,7 +345,6 @@ function MainTemplateGrowth() {
         ))}
         <div className="textbox"></div>
         <div style={{ height: "10px" }}></div>
-
       </ul>
       <BottomNavBarPlan />
       <div

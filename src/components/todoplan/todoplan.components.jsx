@@ -259,7 +259,7 @@ function TodoPlan() {
                 <span
                   style={{
                     display: "flex",
-                    marginTop: "2px",
+                    marginTop: "12px",
                     fontSize: "16px",
                     marginBottom: "12px",
                     width: "300px",
