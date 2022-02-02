@@ -1,4 +1,3 @@
-
 .todo-add-button {
   display: flex;
   justify-content: center;
@@ -13,5 +12,39 @@
   color: white;
   font-family: PretendardMedium;
   font-size: 18px;
-  
+}
+#main-container {
+  background: #fbfbfb;
+  font-family: "SF Pro Display" !important;
+}
+
+.date {
+  font-family: "Pretendard-SemiBold";
+}
+
+.ant-checkbox-checked .ant-checkbox-inner {
+  background-color: #7965f4;
+  border-color: #7965f4;
+}
+.ant-card-body {
+  padding-top: 0px !important;
+}
+.ant-btn-primary {
+  border-color: #7965f4 !important;
+  box-shadow: none !important;
+}
+.MuiInput-underline::before {
+  border-bottom: none !important;
+}
+.MuiInputBase-input {
+  font-family: "Pretendard-Medium" !important;
+  font-size: 22px !important;
+  width: 150px !important;
+}
+.MuiIconButton-root {
+  padding-left: 0 !important;
+  color: black !important;
+}
+.MuiButtonBase-root {
+  padding: 12px !important;
 }
