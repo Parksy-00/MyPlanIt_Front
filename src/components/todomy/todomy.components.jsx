@@ -57,6 +57,7 @@ function TodoMy() {
             },
           }
         );
+        console.log(response);
         setData(Object.entries(response.data));
         setUsers(response.data);
         console.log(response.data);
@@ -238,8 +239,9 @@ function TodoMy() {
       </div>
       <div style={{ height: "20px" }}></div>
       <div style={{ position: "fixed", top: "100px" }}>
-        {!edit
-          ? users.personal_todos.map((item, i) => {
+        {users.personal_todos ? (
+          !edit ? (
+            users.personal_todos.map((item, i) => {
               return (
                 <Card
                   style={{
@@ -297,7 +299,8 @@ function TodoMy() {
                 </Card>
               );
             })
-          : users.personal_todos.map((item, i) => {
+          ) : (
+            users.personal_todos.map((item, i) => {
               return !item["finish_flag"] ? (
                 <Card
                   style={{
@@ -368,7 +371,11 @@ function TodoMy() {
                   </Checkbox>
                 </Card>
               );
-            })}
+            })
+          )
+        ) : (
+          <div>nothing</div>
+        )}
       </div>
       <Button
         style={{
