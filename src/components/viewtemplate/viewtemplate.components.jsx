@@ -36,21 +36,30 @@ function ViewTemplate(props) {
   const handleClose = (event, reason) => {
     if(reason&&reason == "backdropClick")
     return;
-    axios
+    axios.all([
+      axios
       .post(
         "https://myplanit.link/plans/"+id+"/buy",
         {token:  `Bearer ${token}`},
         {
-
           headers: {
             "Content-Type": "application/json",
            Authorization: `Bearer ${token}`,
           },
-          
-          
+        }
+      ),
+      axios
+      .post(
+        "https://myplanit.link/myplans/"+id+"/register",
+        {token:  `Bearer ${token}`},
+        {
+          headers: {
+            "Content-Type": "application/json",
+           Authorization: `Bearer ${token}`,
+          },
         }
       )
-      .then((response) => {
+    ]).then((response) => {
         console.log(response);
         navigate("/main");
       })
@@ -87,24 +96,19 @@ function ViewTemplate(props) {
       <div
         className="view-contents"
         style={{
-          position: "relative",
+          position: "fixed",
           display: "flex",
           flexDirection: "row",
           justifyContent: "space-between",
           width: "90vw",
-          marginTop: "30",
+          marginTop: "30px",
           zIndex: "20",
         }}
       >
         <Link to="../main/maintemplateroutine">
-          <ArrowBackIosIcon style={{ color: "#7965f4" }} />
+          <ArrowBackIosIcon style={{ color: "#7965f4",marginTop: "30px" }} />
         </Link>
-        <button
-          onClick={() => {}}
-          style={{ backgroundColor: "transparent", border: "0" }}
-        >
-          <FavoriteBorderIcon style={{ color: "#7965f4" }}/>
-        </button>
+       
       </div>
 
       <div

@@ -1,7 +1,6 @@
 import "./wishtemplate.components.css";
 import { Link } from "react-router-dom";
 import BottomNavBar from "../globalcomponents/bottomnavbartodo.components";
-import { useNavigate } from "react-router-dom";
 import { AppBar, Tabs, Tab } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -23,7 +22,12 @@ import {
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import {Oval} from "react-loader-spinner";
 import BottomNavBarTodo from "../globalcomponents/bottomnavbartodo.components";
+import Sheet from 'react-modal-sheet';
+import { useNavigate } from 'react-router-dom';
+import { sortAndDeduplicateDiagnostics } from "typescript";
 
+
+const accessToken =  localStorage.getItem("token");
 function UseTemplate() {
     let navigate = useNavigate();
     let {plan_id} = useParams();
@@ -41,16 +45,33 @@ function UseTemplate() {
     const [users, setUsers] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-  
+    const [isOpen, setOpen] = React.useState(false);
+    const [planId, setPlanId] = React.useState(null);
+    const [planAll, setPlanAll] = React.useState(null);
+    const [planName, setPlanName] = React.useState(null);
+    const [planWriter, setPlanWriter] = React.useState(null);
+
     useEffect(() => {
+      
       const fetchUsers = async () => {
         try {
           setError(null);
           setUsers(null);
           setLoading(true);
+          console.log(accessToken);
           const response = await axios.get(
-            'https://myplanit.link/plans'
+            'https://myplanit.link/myplans/registered',
+            {
+            
+              withCredentials:true,
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${accessToken}`
+                  },
+          
+            }
           );
+          console.log(response.data);
           setUsers(response.data); 
         } catch (e) {
           setError(e);
@@ -163,62 +184,100 @@ function UseTemplate() {
       <div style={{height: '10px'}}></div>
    
       
-      {users.Routine.map(Routine=>(
-    
-           
+      {users.register_plans.map(register_plans=>(
 
-    <li key={users.Routine.id}>
-       <NavLink to={"../main/viewtemplate/"+Routine.id} className="template-overall" style={{justifyContent:'center',color:'black'}}>
+<li key={users.register_plans.id}>
+<button style={{textAlign:'start',color:'black',backgroundColor:"transparent", borderColor:"transparent"}} onClick={function(event){setOpen(true); setPlanId(register_plans.plan.id);setPlanName(register_plans.plan.name);setPlanWriter(register_plans.plan.writer_name);setPlanAll(register_plans.plan)}}>
 
 <React.Fragment key={uuidv4()}>
-      <div style={{display:'flex',flexDirection:'column', boxShadow: '0px 0px 2px 0.5px #Dedede', justifyContent: 
-  "center"}} className="template-all">
-     <div style={{height: "5px"}}></div>
-     <div style={{width: '350px', marginRight:'auto',marginLeft:'auto',display: "flex", flexDirection: "row", justifyContent: 'space-between'}}>
-     <div style={{marginLeft:'0'}}className="template-title">{Routine.name}</div>
-     </div>
+  <div style={{display:'flex',flexDirection:'column', boxShadow: '0px 0px 2px 0.5px #Dedede', justifyContent: 
+"center"}} className="template-all">
+ <div style={{height: "5px"}}></div>
+ <div style={{width: '350px', marginRight:'auto',marginLeft:'auto',display: "flex", flexDirection: "row", justifyContent: 'space-between'}}>
+ <div style={{marginLeft:'0'}}className="template-title">{register_plans.plan.name}</div>
+ </div>
 
-     <div style={{height: "8px"}}></div>
-      <img className="template-photourl" src= {Routine.intro_img_url} style={{width: '350px', height: '130px'}}></img>
-      <div style={{display:'flex',flexDirection:'column', width:'350px', paddingLeft:'5px'}}>
+ <div style={{height: "8px"}}></div>
+  <img className="template-photourl" src= {register_plans.plan.intro_img_url} style={{width: '350px', height: '130px'}}></img>
+  <div style={{display:'flex',flexDirection:'column', width:'350px', paddingLeft:'5px'}}>
+    
+  <div style={{display: 'flex', flexDirection: 'row', justifyContent:'space-between'}}>
+  <div style={{display: 'flex', flexDirection: 'row', marginTop: '10px', width: '280px'}}>
+  <img className="template-writerphoto" src= {register_plans.plan.writer_img} style={{width: '40px', height: '40px',borderRadius:'20px'}}></img>
+  <div style={{display: 'flex', flexDirection: 'column',marginLeft: '10px'}}>
+  <div className="template-writerintro" style={{fontSize: '14px',color:'gray', height: '14px',marginBottom:"4px"}}>{register_plans.plan.writer_intro}</div>
+  <div style={{fontSize:'14px'}}>{register_plans.plan.writer_name}</div>
+  </div>
+  </div>
+  <div style={{marginTop:'auto',marginBottom:'auto', color: '#7965f4'}}>
+ {/* {Routine.checkHeart ? 
+ <FavoriteIcon />:
+ <FavoriteBorderIcon />} */}
+
+ </div>
+  </div>
+  <div className="template-content" style={{fontSize:'12px', width: '335px'}}>{register_plans.plan.desc}</div>
+  <div style={{height: '5px'}}></div>
+  <div style={{display:'flex', flexDirection:'row',justifyContent:'left'}}>
+    <div className="template-tag">
+    {register_plans.plan.tags[0]}
+    </div>
+    <div style={{width: '10px'}}>
+    </div>
+
+  </div>
+  <div style={{height: '5px'}}></div>
+  </div>
+  </div>
+  <div style={{height: "15px"}}></div>
+  </React.Fragment>
+  </button>
+ 
+
+</li>
+
+))}
+       <Sheet isOpen={isOpen} onClose={() => setOpen(false)} snapPoints={[300]}>
+        <Sheet.Container>
+          <Sheet.Header />
+          <Sheet.Content>
+            <div style={{marginLeft:'30px'}}className="template-title">{planName}</div>
+            <div style={{marginLeft:'30px', marginBottom:"20px"}}className="template-content">{planWriter}</div>
+            <button 
+          onClick={() => navigate("../main/viewtemplate/"+planId)}
+          style={{ backgroundColor: "transparent", border:"0", marginLeft:"24px",height:"60px"}}
+        >
+          <div className="see-content" style={{textAlign:"start"}}>상세 정보 보기</div>
+        </button><br/>
+        <div style={{marginLeft:"30px", marginRight: "30px",height:"1px", backgroundColor:"#d3d3d3", width:"370px"}}></div>
+        <button
+          onClick={()=>{
         
-      <div style={{display: 'flex', flexDirection: 'row', justifyContent:'space-between'}}>
-      <div style={{display: 'flex', flexDirection: 'row', marginTop: '10px', width: '280px'}}>
-      <img className="template-writerphoto" src= {Routine.writer_img} style={{width: '40px', height: '40px',borderRadius:'20px'}}></img>
-      <div style={{display: 'flex', flexDirection: 'column',marginLeft: '10px'}}>
-      <div className="template-writerintro" style={{fontSize: '14px',color:'gray', height: '14px',marginBottom:"4px"}}>{Routine.writer_intro}</div>
-      <div style={{fontSize:'14px'}}>{Routine.writer_name}</div>
-      </div>
-      </div>
-      <div style={{marginTop:'auto',marginBottom:'auto', color: '#7965f4'}}>
-     {Routine.checkHeart ? 
-     <FavoriteIcon />:
-     <FavoriteBorderIcon />}
-     </div>
-      </div>
-      <div className="template-content" style={{fontSize:'12px'}}>{Routine.desc}</div>
-      <div style={{height: '5px'}}></div>
-      <div style={{display:'flex', flexDirection:'row',justifyContent:'left'}}>
-        <div className="template-tag">
-        {Routine.tags[0]}
-        </div>
-        <div style={{width: '10px'}}>
-        </div>
-        <div className="template-tag">
-        {Routine.tags[1]}
-        </div>
-      </div>
-      <div style={{height: '5px'}}></div>
-      </div>
-      </div>
-      <div style={{height: "15px"}}></div>
-      </React.Fragment>
-    </NavLink>
-    </li>
- 
- 
-  ))}
-     
+            axios.post(
+            `https://myplanit.link/myplans/${planId}/delete`,
+            {
+              plan_id:planId
+            },
+            {
+              withCredentials:true,
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${accessToken}`
+                  },
+            }
+          ).then((response) => {
+
+            navigate("/main");
+          });}}
+          style={{ backgroundColor: "transparent", border:"0",  marginLeft:"24px",height:"60px"}}
+        >
+          <div className="delete-content" style={{textAlign:"start"}}>투두 리스트에서 제거하기</div>
+        </button>
+            </Sheet.Content>
+        </Sheet.Container>
+
+        <Sheet.Backdrop />
+      </Sheet>
       <div
         className="textbox"
       >

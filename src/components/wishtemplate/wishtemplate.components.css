@@ -23,3 +23,21 @@
     margin-left: auto;
     margin-right: auto;
 }
+.see-content{
+  font-size: 14px;
+  width: 355px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: PretendardRegular;
+  line-height: 18px;
+  color: black;
+}
+.delete-content{
+  font-size: 14px;
+  width: 355px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: PretendardRegular;
+  line-height: 18px;
+  color: red;
+}

@@ -49,6 +49,7 @@ function MainTemplateRoutine() {
           const response = await axios.get(
             'https://myplanit.link/plans'
           );
+          console.log(response.data);
           setUsers(response.data); 
         } catch (e) {
           setError(e);
@@ -73,6 +74,7 @@ function MainTemplateRoutine() {
            
           >
         <div style={{fontFamily: "PretendardMedium",fontSize: "20px", textAlign:"center", color: "black"}}>플랜</div>
+        
           </Typography>
           {/*
           <Link
@@ -111,14 +113,7 @@ function MainTemplateRoutine() {
           */}
         </Toolbar>
       </AppBar>
-      <Link
-        to='./'
-        className="search-button"
-    
-        style={{fontFamily: "PretendardRegular",fontSize: "16px", textAlign:"center",color:"#CECECE",border: '1px solid #Dedede'}}
-      >
-        <SearchIcon style={{size: "16px", color: "#000000", opacity: "8%"}}/> &nbsp;원하는 플랜을 검색해보세요
-      </Link>
+ 
       <span
         className="button-group"
         style={{ marginTop: "8px", fontSize: "16px", fontWeight:"bold"}}
@@ -188,7 +183,7 @@ function MainTemplateRoutine() {
              </div>
 
              <div style={{height: "8px"}}></div>
-              <img className="template-photourl" src= {Routine.intro_img_url} style={{width: '350px', height: '130px'}}></img>
+              <img className="template-photourl" src= {Routine.intro_img_url} style={{width: '350px', height: '130px', objectFit:"cover"}}></img>
               <div style={{display:'flex',flexDirection:'column', width:'350px', paddingLeft:'5px'}}>
                 
               <div style={{display: 'flex', flexDirection: 'row', justifyContent:'space-between'}}>
@@ -206,7 +201,7 @@ function MainTemplateRoutine() {
             
              </div>
               </div>
-              <div className="template-content" style={{fontSize:'12px'}}>{Routine.desc}</div>
+              <div className="template-content" style={{fontSize:'12px', width: '335px'}}>{Routine.desc}</div>
               <div style={{height: '5px'}}></div>
               <div style={{display:'flex', flexDirection:'row',justifyContent:'left'}}>
                 <div className="template-tag">
@@ -214,9 +209,7 @@ function MainTemplateRoutine() {
                 </div>
                 <div style={{width: '10px'}}>
                 </div>
-                <div className="template-tag">
-                {Routine.tags[1]}
-                </div>
+
               </div>
               <div style={{height: '5px'}}></div>
               </div>

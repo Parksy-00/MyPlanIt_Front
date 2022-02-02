@@ -144,21 +144,7 @@ function MainTemplateGrowth() {
           */}
         </Toolbar>
       </AppBar>
-      <Link
-        to="./"
-        className="search-button"
-        style={{
-          width: "88vw",
-          fontFamily: "PretendardRegular",
-          fontSize: "16px",
-          textAlign: "center",
-          color: "#CECECE",
-          border: "1px solid #Dedede",
-        }}
-      >
-        <SearchIcon style={{ size: "16px", color: "#000000", opacity: "8%" }} />{" "}
-        &nbsp;원하는 플랜을 검색해보세요
-      </Link>
+     
       <span
         className="button-group"
         style={{ marginTop: "8px", fontSize: "16px", fontWeight: "bold" }}
@@ -259,7 +245,7 @@ function MainTemplateGrowth() {
                   <img
                     className="template-photourl"
                     src={Growth.intro_img_url}
-                    style={{ width: "350px", height: "130px" }}
+                    style={{ width: "350px", height: "130px", objectFit:"cover" }}
                   ></img>
                   <div
                     style={{
@@ -326,6 +312,7 @@ function MainTemplateGrowth() {
                         {/*{Growth.checkHeart ? 
      <FavoriteIcon />:
      <FavoriteBorderIcon />}*/}
+
                       </div>
                     </div>
                     <div
@@ -344,7 +331,7 @@ function MainTemplateGrowth() {
                     >
                       <div className="template-tag">{Growth.tags[0]}</div>
                       <div style={{ width: "10px" }}></div>
-                      <div className="template-tag">{Growth.tags[1]}</div>
+                  
                     </div>
                     <div style={{ height: "5px" }}></div>
                   </div>
@@ -356,6 +343,7 @@ function MainTemplateGrowth() {
         ))}
         <div className="textbox"></div>
         <div style={{ height: "10px" }}></div>
+
       </ul>
       <BottomNavBarPlan />
       <div
