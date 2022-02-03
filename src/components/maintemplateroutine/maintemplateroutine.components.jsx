@@ -214,7 +214,7 @@ function MainTemplateRoutine() {
         }}
       >
         <div className="textbox"></div>
-        <div style={{ height: "10px" }}></div>
+        <div style={{ height: "2px" }}></div>
 
         {users.Routine.map((Routine) => (
           <li key={users.Routine.id}>
@@ -226,10 +226,13 @@ function MainTemplateRoutine() {
               <React.Fragment key={uuidv4()}>
                 <div
                   style={{
+                    backgroundColor: "white",
                     display: "flex",
                     flexDirection: "column",
-                    boxShadow: "0px 0px 2px 0.5px #Dedede",
+                    boxShadow: "0px 0px 1.5px 0.5px #Dedede",
                     justifyContent: "center",
+                    marginLeft: 1,
+                    marginRight: 1,
                   }}
                   className="template-all"
                 >
@@ -244,7 +247,15 @@ function MainTemplateRoutine() {
                       justifyContent: "space-between",
                     }}
                   >
-                    <div style={{ marginLeft: "0" }} className="template-title">
+                    <div
+                      style={{
+                        marginLeft: 5,
+                        marginTop: 7,
+                        marginBottom: 7,
+                        fontFamily: "PretendardMedium",
+                      }}
+                      className="template-title"
+                    >
                       {Routine.name}
                     </div>
                   </div>
@@ -254,7 +265,7 @@ function MainTemplateRoutine() {
                     className="template-photourl"
                     src={Routine.intro_img_url}
                     style={{
-                      width: "350px",
+                      width: "345px",
                       height: "130px",
                       objectFit: "cover",
                     }}
@@ -289,6 +300,9 @@ function MainTemplateRoutine() {
                             width: "40px",
                             height: "40px",
                             borderRadius: "20px",
+                            marginBottom: "5px",
+                            marginLeft: "6px",
+                            marginRight: "3px",
                           }}
                         ></img>
                         <div
@@ -301,15 +315,21 @@ function MainTemplateRoutine() {
                           <div
                             className="template-writerintro"
                             style={{
-                              fontSize: "14px",
-                              color: "gray",
+                              fontSize: "13px",
+                              color: "#929292",
                               height: "14px",
                               marginBottom: "4px",
+                              fontFamily: "PretendardMedium",
                             }}
                           >
                             {Routine.writer_intro}
                           </div>
-                          <div style={{ fontSize: "14px" }}>
+                          <div
+                            style={{
+                              fontSize: "13px",
+                              fontFamily: "PretendardMedium",
+                            }}
+                          >
                             {Routine.writer_name}
                           </div>
                         </div>
@@ -328,7 +348,12 @@ function MainTemplateRoutine() {
                     </div>
                     <div
                       className="template-content"
-                      style={{ fontSize: "12px", width: "335px" }}
+                      style={{
+                        fontSize: "12px",
+                        width: "340px",
+                        marginTop: 7,
+                        marginLeft: 7,
+                      }}
                     >
                       {Routine.desc}
                     </div>
@@ -338,6 +363,7 @@ function MainTemplateRoutine() {
                         display: "flex",
                         flexDirection: "row",
                         justifyContent: "left",
+                        marginLeft: 7,
                       }}
                     >
                       <div className="template-tag">{Routine.tags[0]}</div>
