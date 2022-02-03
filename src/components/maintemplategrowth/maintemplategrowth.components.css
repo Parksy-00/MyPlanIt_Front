@@ -29,7 +29,9 @@
   color: black;
   border-bottom: solid #7965f4;
 }
-
+.MuiAppBar-colorPrimary {
+  background-color: #fbfbfb !important;
+}
 .search-button {
   display: flex;
   justify-content: start;
