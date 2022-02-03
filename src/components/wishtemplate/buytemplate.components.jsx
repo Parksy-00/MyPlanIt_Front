@@ -24,14 +24,7 @@ import BottomNavBarTodo from "../globalcomponents/bottomnavbartodo.components";
 
 function BuyTemplate() {
   const accessToken = localStorage.getItem("token");
-  console.log(accessToken);
-  console.log(localStorage.getItem("token"));
-  let navigate = useNavigate();
-  let { plan_id } = useParams();
-  const categories = [{ title: "일주일을 알차게" }, { title: "건강한 몸" }];
-  const renderCategories = categories.map((categories) => {
-    return <MoreTemplate categories={categories} />;
-  });
+
   const [users, setUsers] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -42,7 +35,7 @@ function BuyTemplate() {
         setError(null);
         setUsers(null);
         setLoading(true);
-        console.log(accessToken);
+
         const response = await axios.get("https://myplanit.link/myplans/buy", {
           withCredentials: true,
           headers: {
@@ -50,7 +43,7 @@ function BuyTemplate() {
             Authorization: `Bearer ${accessToken}`,
           },
         });
-        console.log(response.data);
+
         setUsers(response.data);
       } catch (e) {
         setError(e);
@@ -63,7 +56,7 @@ function BuyTemplate() {
 
   if (loading)
     return (
-      <div>
+      <div style={{ position: "fixed" }}>
         <AppBar
           position="static"
           elevation={0}
@@ -216,174 +209,172 @@ function BuyTemplate() {
         <div className="textbox"></div>
         <div style={{ height: "10px" }}></div>
 
-        {users.buy_plans
-          ? users.buy_plans.map((buy_plans) => (
-              <li key={users.buy_plans.id}>
-                <NavLink
-                  to={"../main/buytemplate/"}
-                  className="template-overall"
-                  style={{ justifyContent: "center", color: "black" }}
+        {users.buy_plans?.map((buy_plans) => (
+          <li key={users.buy_plans.id}>
+            <NavLink
+              to={"../main/buytemplate/"}
+              className="template-overall"
+              style={{ justifyContent: "center", color: "black" }}
+            >
+              <React.Fragment key={uuidv4()}>
+                <div
+                  style={{
+                    backgroundColor: "white",
+                    display: "flex",
+                    flexDirection: "column",
+                    boxShadow: "0px 0px 1.5px 0.5px #Dedede",
+                    justifyContent: "center",
+                    marginLeft: 1,
+                    marginRight: 1,
+                  }}
+                  className="template-all"
                 >
-                  <React.Fragment key={uuidv4()}>
+                  <div style={{ height: "5px" }}></div>
+                  <div
+                    style={{
+                      width: "350px",
+                      marginRight: "auto",
+                      marginLeft: "auto",
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "space-between",
+                    }}
+                  >
                     <div
                       style={{
-                        backgroundColor: "white",
-                        display: "flex",
-                        flexDirection: "column",
-                        boxShadow: "0px 0px 1.5px 0.5px #Dedede",
-                        justifyContent: "center",
-                        marginLeft: 1,
-                        marginRight: 1,
+                        marginLeft: "3%",
+                        marginTop: 7,
+                        marginBottom: 7,
+                        fontFamily: "PretendardMedium",
                       }}
-                      className="template-all"
+                      className="template-title"
                     >
-                      <div style={{ height: "5px" }}></div>
+                      {buy_plans.plan.name}
+                    </div>
+                  </div>
+
+                  <div style={{ height: "8px" }}></div>
+                  <img
+                    className="template-photourl"
+                    src={buy_plans.plan.intro_img_url}
+                    style={{
+                      width: "80vw",
+                      height: "130px",
+                      objectFit: "cover",
+                    }}
+                  ></img>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      width: "350px",
+                      paddingLeft: "5px",
+                    }}
+                  >
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        justifyContent: "space-between",
+                      }}
+                    >
                       <div
                         style={{
-                          width: "350px",
-                          marginRight: "auto",
-                          marginLeft: "auto",
                           display: "flex",
                           flexDirection: "row",
-                          justifyContent: "space-between",
+                          marginTop: "10px",
+                          width: "280px",
                         }}
                       >
+                        <img
+                          className="template-writerphoto"
+                          src={buy_plans.plan.writer_img}
+                          style={{
+                            width: "40px",
+                            height: "40px",
+                            borderRadius: "20px",
+                            marginBottom: "5px",
+                            marginLeft: "6px",
+                            marginRight: "3px",
+                          }}
+                        ></img>
                         <div
                           style={{
-                            marginLeft: "3%",
-                            marginTop: 7,
-                            marginBottom: 7,
-                            fontFamily: "PretendardMedium",
+                            display: "flex",
+                            flexDirection: "column",
+                            marginLeft: "10px",
                           }}
-                          className="template-title"
                         >
-                          {buy_plans.plan.name}
+                          <div
+                            className="template-writerintro"
+                            style={{
+                              fontSize: "13px",
+
+                              height: "14px",
+                              marginBottom: "4px",
+                              fontFamily: "PretendardMedium",
+                            }}
+                          >
+                            {buy_plans.plan.writer_intro}
+                          </div>
+                          <div
+                            style={{
+                              fontSize: "13px",
+                              fontFamily: "PretendardMedium",
+                            }}
+                          >
+                            {buy_plans.plan.writer_name}
+                          </div>
                         </div>
                       </div>
-
-                      <div style={{ height: "8px" }}></div>
-                      <img
-                        className="template-photourl"
-                        src={buy_plans.plan.intro_img_url}
-                        style={{
-                          width: "80vw",
-                          height: "130px",
-                          objectFit: "cover",
-                        }}
-                      ></img>
                       <div
                         style={{
-                          display: "flex",
-                          flexDirection: "column",
-                          width: "350px",
-                          paddingLeft: "5px",
+                          marginTop: "auto",
+                          marginBottom: "auto",
+                          color: "#7965f4",
                         }}
                       >
-                        <div
-                          style={{
-                            display: "flex",
-                            flexDirection: "row",
-                            justifyContent: "space-between",
-                          }}
-                        >
-                          <div
-                            style={{
-                              display: "flex",
-                              flexDirection: "row",
-                              marginTop: "10px",
-                              width: "280px",
-                            }}
-                          >
-                            <img
-                              className="template-writerphoto"
-                              src={buy_plans.plan.writer_img}
-                              style={{
-                                width: "40px",
-                                height: "40px",
-                                borderRadius: "20px",
-                                marginBottom: "5px",
-                                marginLeft: "6px",
-                                marginRight: "3px",
-                              }}
-                            ></img>
-                            <div
-                              style={{
-                                display: "flex",
-                                flexDirection: "column",
-                                marginLeft: "10px",
-                              }}
-                            >
-                              <div
-                                className="template-writerintro"
-                                style={{
-                                  fontSize: "13px",
-
-                                  height: "14px",
-                                  marginBottom: "4px",
-                                  fontFamily: "PretendardMedium",
-                                }}
-                              >
-                                {buy_plans.plan.writer_intro}
-                              </div>
-                              <div
-                                style={{
-                                  fontSize: "13px",
-                                  fontFamily: "PretendardMedium",
-                                }}
-                              >
-                                {buy_plans.plan.writer_name}
-                              </div>
-                            </div>
-                          </div>
-                          <div
-                            style={{
-                              marginTop: "auto",
-                              marginBottom: "auto",
-                              color: "#7965f4",
-                            }}
-                          >
-                            {/* {Routine.checkHeart ? 
+                        {/* {Routine.checkHeart ? 
      <FavoriteIcon />:
      <FavoriteBorderIcon />} */}
-                          </div>
-                        </div>
-                        <div
-                          className="template-content"
-                          style={{
-                            fontSize: "12px",
-                            marginLeft: "8px",
-                            marginTop: "5px",
-                            fontFamily: "PretendardMedium",
-                          }}
-                        >
-                          {buy_plans.plan.desc}
-                        </div>
-                        <div style={{ height: "5px" }}></div>
-                        <div
-                          style={{
-                            display: "flex",
-                            flexDirection: "row",
-                            justifyContent: "left",
-                            marginLeft: 7,
-                          }}
-                        >
-                          <div className="template-tag">
-                            {buy_plans.plan.tags[0]}
-                          </div>
-                          <div style={{ width: "10px" }}></div>
-                        </div>
-                        <div style={{ height: "5px" }}></div>
                       </div>
                     </div>
-                    <div style={{ height: "15px" }}></div>
-                  </React.Fragment>
-                </NavLink>
-              </li>
-            ))
-          : null}
+                    <div
+                      className="template-content"
+                      style={{
+                        fontSize: "12px",
+                        marginLeft: "8px",
+                        marginTop: "5px",
+                        fontFamily: "PretendardMedium",
+                      }}
+                    >
+                      {buy_plans.plan.desc}
+                    </div>
+                    <div style={{ height: "5px" }}></div>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        justifyContent: "left",
+                        marginLeft: 7,
+                      }}
+                    >
+                      <div className="template-tag">
+                        {buy_plans.plan.tags[0]}
+                      </div>
+                      <div style={{ width: "10px" }}></div>
+                    </div>
+                    <div style={{ height: "5px" }}></div>
+                  </div>
+                </div>
+                <div style={{ height: "15px" }}></div>
+              </React.Fragment>
+            </NavLink>
+          </li>
+        ))}
 
         <div className="textbox"></div>
-        <div style={{ height: "10px" }}></div>
+        <div style={{ height: "200px" }}></div>
       </ul>
       <BottomNavBarTodo />
       <div

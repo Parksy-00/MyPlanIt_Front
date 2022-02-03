@@ -38,7 +38,6 @@ function MainTemplateRoutine() {
         setUsers(null);
         setLoading(true);
         const response = await axios.get("https://myplanit.link/plans");
-        console.log(response.data);
         setUsers(response.data);
       } catch (e) {
         setError(e);
@@ -370,7 +369,9 @@ function MainTemplateRoutine() {
                       >
                         <div
                           className="template-tag"
-                          style={{ fontFamily: "PretendardMedium" }}
+                          style={{
+                            fontFamily: "PretendardMedium",
+                          }}
                         >
                           {Routine.tags[0]}
                         </div>

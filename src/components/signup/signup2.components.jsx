@@ -8,26 +8,10 @@ import { Input, Switch } from "antd";
 import { List, Typography, Divider } from "antd";
 import { useNavigate } from "react-router-dom";
 
-function Signup2({
-  email,
-  password,
-  realname,
-
-  emailAgree,
-  snsAgree,
-}) {
+function Signup2({ email, password, realname, emailAgree, snsAgree }) {
   const [username, setUsername] = useState("");
 
   function attemptSignup() {
-    console.log({
-      email: email,
-      password: password,
-      realname: realname,
-
-      username: username,
-      email_agree: emailAgree,
-      sns_agree: snsAgree,
-    });
     axios
       .post(
         `https://myplanit.link/signup`,
@@ -45,6 +29,7 @@ function Signup2({
       )
       .then(function (response) {
         if (response.status === 201) {
+          localStorage.setItem("username", username);
           navigate("/onboard1");
         } else if (response.status === 200) {
           alert("이미 존재하는 이메일입니다");
@@ -122,7 +107,7 @@ function Signup2({
           }}
           style={{
             width: "327px",
-            marginBottom: "430px",
+            marginBottom: "200px",
             borderRadius: "5px",
             borderColor: "#EDEDED",
           }}
