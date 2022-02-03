@@ -196,7 +196,7 @@ function TodoPlan() {
                   justifyContent: "center",
                   alignItem: "center",
                   textAlign: "right",
-                  marginTop: 9,
+                  marginTop: 0,
                   marginBottom: 0,
                   fontSize: "12px",
                   color: "#929292",
