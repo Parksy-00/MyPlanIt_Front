@@ -32,8 +32,8 @@ const BottomNavBarPlan = () => {
         icon={
           <img
             src="https://firebasestorage.googleapis.com/v0/b/single-life-manager.appspot.com/o/ceos%20test%2Ftodod.png?alt=media&token=55c5a1c6-a771-4619-ae0e-fa6a674683e3"
-            width={44}
-            height={44}
+            width={36}
+            height={36}
           />
         }
         component={Link}
