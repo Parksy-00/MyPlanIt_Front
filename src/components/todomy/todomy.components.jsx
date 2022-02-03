@@ -176,7 +176,7 @@ function TodoMy() {
             to="../main/todomy"
             className="main-growth-button"
             style={{
-              width: 42,
+              width: 25,
               height: "20px",
               display: "flex",
               justifyContent: "center",
@@ -187,8 +187,9 @@ function TodoMy() {
               borderRadius: "0",
               color: "black",
               borderBottom: "2px solid #7965f4",
-              marginRight: 30,
+              marginRight: 38,
               paddingBottom: 2,
+              marginLeft: 7,
             }}
           >
             MY
@@ -204,6 +205,7 @@ function TodoMy() {
                   marginBottom: 0,
                   fontSize: "12px",
                   color: "#929292",
+                  fontFamily: "Pretendard-Medium",
                 }}
                 onClick={() => {
                   setEdit(!edit);
@@ -221,6 +223,7 @@ function TodoMy() {
                   marginBottom: 0,
                   fontSize: "12px",
                   color: "#8977F7",
+                  fontFamily: "Pretendard-Medium",
                 }}
                 onClick={() => {
                   setEdit(!edit);
@@ -409,7 +412,9 @@ function TodoMy() {
                 setTodo(e.target.value);
               }}
               style={{
-                marginLeft: "39px",
+                display: "block",
+                marginLeft: "auto",
+                marginRight: "auto",
                 width: "350px",
                 fontFamily: "PretendardRegular",
                 fontSize: "16px",
@@ -440,7 +445,11 @@ function TodoMy() {
                   });
               }}
               className="todo-add-button"
-              style={{ marginLeft: "64px" }}
+              style={{
+                display: "block",
+                marginLeft: "auto",
+                marginRight: "auto",
+              }}
             >
               추가하기
             </button>
