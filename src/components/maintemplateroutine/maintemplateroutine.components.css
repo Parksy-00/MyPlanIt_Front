@@ -66,7 +66,7 @@
 }
 .template-overall {
   width: 91vw;
-  height: 700px;
+
   justify-content: center;
 }
 .template-photourl {
@@ -89,13 +89,9 @@
   font-family: "PretendardMedium";
 }
 .template-content {
-  font-size: 14px;
-  max-lines: 3;
-  width: 350px;
   margin-left: auto;
   margin-right: auto;
   font-family: PretendardMedium;
-  line-height: 16px;
   color: #929292;
 }
 .template-all {
@@ -113,10 +109,13 @@
 }
 .template-tag {
   border: #e6e6e6 0.5px solid;
+  margin-top: 5px;
   width: 45px;
-  height: 22px;
+  height: 25px;
   text-align: center;
-  font-size: 11px;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px;
   color: #7965f4;
   border-radius: 4px;
 }
