@@ -87,6 +87,7 @@ function UseTemplate() {
               }}
             >
               <div
+                className="title-title"
                 style={{
                   fontFamily: "PretendardMedium",
                   fontSize: "20px",
@@ -165,18 +166,19 @@ function UseTemplate() {
         <Link
           style={{ border: "1px solid #D3d3d3" }}
           to="../main/buytemplate"
-          className="main-growth-button"
+          className="main-growth"
           style={{
             width: "70px",
             height: "35px",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            marginTop: "10px",
+            marginTop: "0px",
             border: "5px",
             background: "transparent",
             borderRadius: "0",
             color: "gray",
+            fontFamily: "Pretendard-SemiBold",
           }}
         >
           구매 플랜
@@ -185,19 +187,20 @@ function UseTemplate() {
         <Link
           style={{ border: "1px solid #D3d3d3" }}
           to="../main/usetemplate"
-          className="main-growth-button"
+          className="main-growth"
           style={{
             width: "70px",
             height: "35px",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            marginTop: "10px",
+            marginTop: "2px",
             border: "5px",
             background: "transparent",
             borderRadius: "0",
             color: "black",
             borderBottom: "solid #7965f4",
+            fontFamily: "Pretendard-SemiBold",
           }}
         >
           이용 중
