@@ -131,6 +131,7 @@ function TodoPlan() {
                 width: 73,
                 fontSize: 9,
                 marginTop: 10,
+                fontFamily: "SFProDisplay",
               }}
             >
               MY PLAN
@@ -161,6 +162,7 @@ function TodoPlan() {
               color: "black",
               borderBottom: " 2px solid #7965f4",
               paddingBottom: 2,
+              fontFamily: "SFProDisplay",
             }}
           >
             PLAN
@@ -182,6 +184,7 @@ function TodoPlan() {
               borderRadius: "0",
               color: "gray",
               marginRight: 27,
+              fontFamily: "SFProDisplay",
             }}
           >
             MY

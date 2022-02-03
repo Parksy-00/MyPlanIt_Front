@@ -19,7 +19,9 @@
   background: #fbfbfb;
   font-family: "SF Pro Display" !important;
 }
-
+.main-growth-button {
+  font-family: "SFProDisplay" !important;
+}
 .date {
   font-family: "Pretendard-SemiBold";
 }
