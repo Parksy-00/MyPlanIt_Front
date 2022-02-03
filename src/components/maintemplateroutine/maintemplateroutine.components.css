@@ -32,7 +32,12 @@
   box-shadow: 0;
   border-color: #d3d3d3;
 }
-
+.routine-button {
+  margin-top: 0px !important;
+}
+.growth-button {
+  margin-top: 0px !important;
+}
 .search-button {
   display: flex;
   justify-content: start;
@@ -50,6 +55,7 @@
 }
 .button-group {
   display: flex;
+  margin-top: 0;
 }
 .textbox {
   width: 90vw;

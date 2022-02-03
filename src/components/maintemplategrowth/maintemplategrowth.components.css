@@ -32,6 +32,12 @@
 .MuiAppBar-colorPrimary {
   background-color: #fbfbfb !important;
 }
+.main-routine-button {
+  margin-top: 0px !important;
+}
+.main-growth-button {
+  margin-top: 0px !important;
+}
 .search-button {
   display: flex;
   justify-content: start;

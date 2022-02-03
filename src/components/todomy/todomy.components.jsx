@@ -138,6 +138,7 @@ function TodoMy() {
                 width: 73,
                 fontSize: 9,
                 marginTop: 10,
+                fontFamily: "SFProDisplay",
               }}
             >
               MY PLAN
@@ -166,6 +167,7 @@ function TodoMy() {
               background: "#fbfbfb",
               borderRadius: "0",
               color: "gray",
+              fontFamily: "SFProDisplay",
             }}
           >
             PLAN
@@ -190,6 +192,7 @@ function TodoMy() {
               marginRight: 38,
               paddingBottom: 2,
               marginLeft: 7,
+              fontFamily: "SFProDisplay",
             }}
           >
             MY
