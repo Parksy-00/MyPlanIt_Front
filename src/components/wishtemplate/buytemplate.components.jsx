@@ -225,10 +225,13 @@ function BuyTemplate() {
                   <React.Fragment key={uuidv4()}>
                     <div
                       style={{
+                        backgroundColor: "white",
                         display: "flex",
                         flexDirection: "column",
-                        boxShadow: "0px 0px 2px 0.5px #Dedede",
+                        boxShadow: "0px 0px 1.5px 0.5px #Dedede",
                         justifyContent: "center",
+                        marginLeft: 1,
+                        marginRight: 1,
                       }}
                       className="template-all"
                     >
@@ -244,7 +247,12 @@ function BuyTemplate() {
                         }}
                       >
                         <div
-                          style={{ marginLeft: "0" }}
+                          style={{
+                            marginLeft: "3%",
+                            marginTop: 7,
+                            marginBottom: 7,
+                            fontFamily: "PretendardMedium",
+                          }}
                           className="template-title"
                         >
                           {buy_plans.plan.name}
@@ -255,7 +263,11 @@ function BuyTemplate() {
                       <img
                         className="template-photourl"
                         src={buy_plans.plan.intro_img_url}
-                        style={{ width: "350px", height: "130px" }}
+                        style={{
+                          width: "80vw",
+                          height: "130px",
+                          objectFit: "cover",
+                        }}
                       ></img>
                       <div
                         style={{
@@ -287,6 +299,9 @@ function BuyTemplate() {
                                 width: "40px",
                                 height: "40px",
                                 borderRadius: "20px",
+                                marginBottom: "5px",
+                                marginLeft: "6px",
+                                marginRight: "3px",
                               }}
                             ></img>
                             <div
@@ -299,15 +314,21 @@ function BuyTemplate() {
                               <div
                                 className="template-writerintro"
                                 style={{
-                                  fontSize: "14px",
-                                  color: "gray",
+                                  fontSize: "13px",
+
                                   height: "14px",
                                   marginBottom: "4px",
+                                  fontFamily: "PretendardMedium",
                                 }}
                               >
                                 {buy_plans.plan.writer_intro}
                               </div>
-                              <div style={{ fontSize: "14px" }}>
+                              <div
+                                style={{
+                                  fontSize: "13px",
+                                  fontFamily: "PretendardMedium",
+                                }}
+                              >
                                 {buy_plans.plan.writer_name}
                               </div>
                             </div>
@@ -326,7 +347,12 @@ function BuyTemplate() {
                         </div>
                         <div
                           className="template-content"
-                          style={{ fontSize: "12px", width: "335px" }}
+                          style={{
+                            fontSize: "12px",
+                            marginLeft: "8px",
+                            marginTop: "5px",
+                            fontFamily: "PretendardMedium",
+                          }}
                         >
                           {buy_plans.plan.desc}
                         </div>
@@ -336,6 +362,7 @@ function BuyTemplate() {
                             display: "flex",
                             flexDirection: "row",
                             justifyContent: "left",
+                            marginLeft: 7,
                           }}
                         >
                           <div className="template-tag">
