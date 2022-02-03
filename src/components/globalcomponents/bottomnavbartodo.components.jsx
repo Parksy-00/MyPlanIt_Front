@@ -20,8 +20,8 @@ const BottomNavBarTodo = () => {
         icon={
           <img
             src="https://firebasestorage.googleapis.com/v0/b/single-life-manager.appspot.com/o/ceos%20test%2Ftodo3.png?alt=media&token=31e75be2-ab09-424c-9a43-745d4316beff"
-            width={44}
-            height={44}
+            width={36}
+            height={36}
           />
         }
         component={Link}
