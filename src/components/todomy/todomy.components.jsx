@@ -57,10 +57,9 @@ function TodoMy() {
             },
           }
         );
-        console.log(response);
-        setData(Object.entries(response.data));
-        setUsers(response.data);
-        console.log(response.data);
+        setData(response.data.personal_todos);
+        setUsers(response.data.personal_todos);
+        console.log(response.data.personal_todos);
       } catch (e) {
         setError(e);
       }
@@ -239,9 +238,9 @@ function TodoMy() {
       </div>
       <div style={{ height: "20px" }}></div>
       <div style={{ position: "fixed", top: "100px" }}>
-        {users.personal_todos ? (
+        {data?.length ? (
           !edit ? (
-            users.personal_todos.map((item, i) => {
+            data.map((item, i) => {
               return (
                 <Card
                   style={{
@@ -292,7 +291,9 @@ function TodoMy() {
                       }
                     }}
                   >
-                    <span style={{ marginLeft: 5, fontWeight: "bold" }}>
+                    <span
+                      style={{ marginLeft: 5, fontFamily: "Pretendard-Medium" }}
+                    >
                       {item.todo_name}
                     </span>
                   </Checkbox>
@@ -300,7 +301,7 @@ function TodoMy() {
               );
             })
           ) : (
-            users.personal_todos.map((item, i) => {
+            data.map((item, i) => {
               return !item["finish_flag"] ? (
                 <Card
                   style={{
@@ -321,15 +322,15 @@ function TodoMy() {
                         let temp = [...delay];
                         temp = temp.filter((i) => i !== item["id"]);
                         setDelay(temp);
-                        console.log(temp);
                       } else {
                         let temp = [...delay, item["id"]];
                         setDelay(temp);
-                        console.log(temp);
                       }
                     }}
                   >
-                    <span style={{ marginLeft: 5, fontWeight: "bold" }}>
+                    <span
+                      style={{ marginLeft: 5, fontFamily: "Pretendard-Medium" }}
+                    >
                       {item.todo_name}
                     </span>
                   </Checkbox>
@@ -357,15 +358,15 @@ function TodoMy() {
                         let temp = [...delay];
                         temp = temp.filter((i) => i !== item["id"]);
                         setDelay(temp);
-                        console.log(temp);
                       } else {
                         let temp = [...delay, item["id"]];
                         setDelay(temp);
-                        console.log(temp);
                       }
                     }}
                   >
-                    <span style={{ marginLeft: 5, fontWeight: "bold" }}>
+                    <span
+                      style={{ marginLeft: 5, fontFamily: "Pretendard-Medium" }}
+                    >
                       {item.todo_name}
                     </span>
                   </Checkbox>
@@ -374,9 +375,13 @@ function TodoMy() {
             })
           )
         ) : (
-          <div>nothing</div>
+          <img
+            src="/images/my.png"
+            style={{ width: "60vw", marginTop: "200px" }}
+          />
         )}
       </div>
+
       <Button
         style={{
           backgroundColor: "#7965f4",
@@ -430,7 +435,6 @@ function TodoMy() {
                     }
                   )
                   .then((response) => {
-                    console.log(response);
                     setRerender(!rerender);
                     setOpen(false);
                   });

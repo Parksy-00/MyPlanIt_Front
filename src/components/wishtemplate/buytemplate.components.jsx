@@ -210,139 +210,144 @@ function BuyTemplate() {
         <div className="textbox"></div>
         <div style={{ height: "10px" }}></div>
 
-        {users.buy_plans.map((buy_plans) => (
-          <li key={users.buy_plans.id}>
-            <NavLink
-              to={"../main/buytemplate/"}
-              className="template-overall"
-              style={{ justifyContent: "center", color: "black" }}
-            >
-              <React.Fragment key={uuidv4()}>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    boxShadow: "0px 0px 2px 0.5px #Dedede",
-                    justifyContent: "center",
-                  }}
-                  className="template-all"
+        {users.buy_plans
+          ? users.buy_plans.map((buy_plans) => (
+              <li key={users.buy_plans.id}>
+                <NavLink
+                  to={"../main/buytemplate/"}
+                  className="template-overall"
+                  style={{ justifyContent: "center", color: "black" }}
                 >
-                  <div style={{ height: "5px" }}></div>
-                  <div
-                    style={{
-                      width: "350px",
-                      marginRight: "auto",
-                      marginLeft: "auto",
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    <div style={{ marginLeft: "0" }} className="template-title">
-                      {buy_plans.plan.name}
-                    </div>
-                  </div>
-
-                  <div style={{ height: "8px" }}></div>
-                  <img
-                    className="template-photourl"
-                    src={buy_plans.plan.intro_img_url}
-                    style={{ width: "350px", height: "130px" }}
-                  ></img>
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      width: "350px",
-                      paddingLeft: "5px",
-                    }}
-                  >
+                  <React.Fragment key={uuidv4()}>
                     <div
                       style={{
                         display: "flex",
-                        flexDirection: "row",
-                        justifyContent: "space-between",
+                        flexDirection: "column",
+                        boxShadow: "0px 0px 2px 0.5px #Dedede",
+                        justifyContent: "center",
                       }}
+                      className="template-all"
                     >
+                      <div style={{ height: "5px" }}></div>
+                      <div
+                        style={{
+                          width: "350px",
+                          marginRight: "auto",
+                          marginLeft: "auto",
+                          display: "flex",
+                          flexDirection: "row",
+                          justifyContent: "space-between",
+                        }}
+                      >
+                        <div
+                          style={{ marginLeft: "0" }}
+                          className="template-title"
+                        >
+                          {buy_plans.plan.name}
+                        </div>
+                      </div>
+
+                      <div style={{ height: "8px" }}></div>
+                      <img
+                        className="template-photourl"
+                        src={buy_plans.plan.intro_img_url}
+                        style={{ width: "350px", height: "130px" }}
+                      ></img>
                       <div
                         style={{
                           display: "flex",
-                          flexDirection: "row",
-                          marginTop: "10px",
-                          width: "280px",
+                          flexDirection: "column",
+                          width: "350px",
+                          paddingLeft: "5px",
                         }}
                       >
-                        <img
-                          className="template-writerphoto"
-                          src={buy_plans.plan.writer_img}
-                          style={{
-                            width: "40px",
-                            height: "40px",
-                            borderRadius: "20px",
-                          }}
-                        ></img>
                         <div
                           style={{
                             display: "flex",
-                            flexDirection: "column",
-                            marginLeft: "10px",
+                            flexDirection: "row",
+                            justifyContent: "space-between",
                           }}
                         >
                           <div
-                            className="template-writerintro"
                             style={{
-                              fontSize: "14px",
-                              color: "gray",
-                              height: "14px",
-                              marginBottom: "4px",
+                              display: "flex",
+                              flexDirection: "row",
+                              marginTop: "10px",
+                              width: "280px",
                             }}
                           >
-                            {buy_plans.plan.writer_intro}
+                            <img
+                              className="template-writerphoto"
+                              src={buy_plans.plan.writer_img}
+                              style={{
+                                width: "40px",
+                                height: "40px",
+                                borderRadius: "20px",
+                              }}
+                            ></img>
+                            <div
+                              style={{
+                                display: "flex",
+                                flexDirection: "column",
+                                marginLeft: "10px",
+                              }}
+                            >
+                              <div
+                                className="template-writerintro"
+                                style={{
+                                  fontSize: "14px",
+                                  color: "gray",
+                                  height: "14px",
+                                  marginBottom: "4px",
+                                }}
+                              >
+                                {buy_plans.plan.writer_intro}
+                              </div>
+                              <div style={{ fontSize: "14px" }}>
+                                {buy_plans.plan.writer_name}
+                              </div>
+                            </div>
                           </div>
-                          <div style={{ fontSize: "14px" }}>
-                            {buy_plans.plan.writer_name}
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        style={{
-                          marginTop: "auto",
-                          marginBottom: "auto",
-                          color: "#7965f4",
-                        }}
-                      >
-                        {/* {Routine.checkHeart ? 
+                          <div
+                            style={{
+                              marginTop: "auto",
+                              marginBottom: "auto",
+                              color: "#7965f4",
+                            }}
+                          >
+                            {/* {Routine.checkHeart ? 
      <FavoriteIcon />:
      <FavoriteBorderIcon />} */}
+                          </div>
+                        </div>
+                        <div
+                          className="template-content"
+                          style={{ fontSize: "12px", width: "335px" }}
+                        >
+                          {buy_plans.plan.desc}
+                        </div>
+                        <div style={{ height: "5px" }}></div>
+                        <div
+                          style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            justifyContent: "left",
+                          }}
+                        >
+                          <div className="template-tag">
+                            {buy_plans.plan.tags[0]}
+                          </div>
+                          <div style={{ width: "10px" }}></div>
+                        </div>
+                        <div style={{ height: "5px" }}></div>
                       </div>
                     </div>
-                    <div
-                      className="template-content"
-                      style={{ fontSize: "12px", width: "335px" }}
-                    >
-                      {buy_plans.plan.desc}
-                    </div>
-                    <div style={{ height: "5px" }}></div>
-                    <div
-                      style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        justifyContent: "left",
-                      }}
-                    >
-                      <div className="template-tag">
-                        {buy_plans.plan.tags[0]}
-                      </div>
-                      <div style={{ width: "10px" }}></div>
-                    </div>
-                    <div style={{ height: "5px" }}></div>
-                  </div>
-                </div>
-                <div style={{ height: "15px" }}></div>
-              </React.Fragment>
-            </NavLink>
-          </li>
-        ))}
+                    <div style={{ height: "15px" }}></div>
+                  </React.Fragment>
+                </NavLink>
+              </li>
+            ))
+          : null}
 
         <div className="textbox"></div>
         <div style={{ height: "10px" }}></div>

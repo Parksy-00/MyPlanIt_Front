@@ -218,149 +218,154 @@ function UseTemplate() {
         <div className="textbox"></div>
         <div style={{ height: "10px" }}></div>
 
-        {users.register_plans.map((register_plans) => (
-          <li key={users.register_plans.id}>
-            <button
-              style={{
-                textAlign: "start",
-                color: "black",
-                backgroundColor: "transparent",
-                borderColor: "transparent",
-              }}
-              onClick={function (event) {
-                setOpen(true);
-                setPlanId(register_plans.plan.id);
-                setPlanName(register_plans.plan.name);
-                setPlanWriter(register_plans.plan.writer_name);
-                setPlanAll(register_plans.plan);
-              }}
-            >
-              <React.Fragment key={uuidv4()}>
-                <div
+        {users.register_plans
+          ? users.register_plans.map((register_plans) => (
+              <li key={users.register_plans.id}>
+                <button
                   style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    boxShadow: "0px 0px 2px 0.5px #Dedede",
-                    justifyContent: "center",
+                    textAlign: "start",
+                    color: "black",
+                    backgroundColor: "transparent",
+                    borderColor: "transparent",
                   }}
-                  className="template-all"
+                  onClick={function (event) {
+                    setOpen(true);
+                    setPlanId(register_plans.plan.id);
+                    setPlanName(register_plans.plan.name);
+                    setPlanWriter(register_plans.plan.writer_name);
+                    setPlanAll(register_plans.plan);
+                  }}
                 >
-                  <div style={{ height: "5px" }}></div>
-                  <div
-                    style={{
-                      width: "350px",
-                      marginRight: "auto",
-                      marginLeft: "auto",
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    <div style={{ marginLeft: "0" }} className="template-title">
-                      {register_plans.plan.name}
-                    </div>
-                  </div>
-
-                  <div style={{ height: "8px" }}></div>
-                  <img
-                    className="template-photourl"
-                    src={register_plans.plan.intro_img_url}
-                    style={{ width: "350px", height: "130px" }}
-                  ></img>
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      width: "350px",
-                      paddingLeft: "5px",
-                    }}
-                  >
+                  <React.Fragment key={uuidv4()}>
                     <div
                       style={{
                         display: "flex",
-                        flexDirection: "row",
-                        justifyContent: "space-between",
+                        flexDirection: "column",
+                        boxShadow: "0px 0px 2px 0.5px #Dedede",
+                        justifyContent: "center",
                       }}
+                      className="template-all"
                     >
+                      <div style={{ height: "5px" }}></div>
+                      <div
+                        style={{
+                          width: "350px",
+                          marginRight: "auto",
+                          marginLeft: "auto",
+                          display: "flex",
+                          flexDirection: "row",
+                          justifyContent: "space-between",
+                        }}
+                      >
+                        <div
+                          style={{ marginLeft: "0" }}
+                          className="template-title"
+                        >
+                          {register_plans.plan.name}
+                        </div>
+                      </div>
+
+                      <div style={{ height: "8px" }}></div>
+                      <img
+                        className="template-photourl"
+                        src={register_plans.plan.intro_img_url}
+                        style={{ width: "350px", height: "130px" }}
+                      ></img>
                       <div
                         style={{
                           display: "flex",
-                          flexDirection: "row",
-                          marginTop: "10px",
-                          width: "280px",
+                          flexDirection: "column",
+                          width: "350px",
+                          paddingLeft: "5px",
                         }}
                       >
-                        <img
-                          className="template-writerphoto"
-                          src={register_plans.plan.writer_img}
-                          style={{
-                            width: "40px",
-                            height: "40px",
-                            borderRadius: "20px",
-                          }}
-                        ></img>
                         <div
                           style={{
                             display: "flex",
-                            flexDirection: "column",
-                            marginLeft: "10px",
+                            flexDirection: "row",
+                            justifyContent: "space-between",
                           }}
                         >
                           <div
-                            className="template-writerintro"
                             style={{
-                              fontSize: "14px",
-                              color: "gray",
-                              height: "14px",
-                              marginBottom: "4px",
+                              display: "flex",
+                              flexDirection: "row",
+                              marginTop: "10px",
+                              width: "280px",
                             }}
                           >
-                            {register_plans.plan.writer_intro}
+                            <img
+                              className="template-writerphoto"
+                              src={register_plans.plan.writer_img}
+                              style={{
+                                width: "40px",
+                                height: "40px",
+                                borderRadius: "20px",
+                              }}
+                            ></img>
+                            <div
+                              style={{
+                                display: "flex",
+                                flexDirection: "column",
+                                marginLeft: "10px",
+                              }}
+                            >
+                              <div
+                                className="template-writerintro"
+                                style={{
+                                  fontSize: "14px",
+                                  color: "gray",
+                                  height: "14px",
+                                  marginBottom: "4px",
+                                }}
+                              >
+                                {register_plans.plan.writer_intro}
+                              </div>
+                              <div style={{ fontSize: "14px" }}>
+                                {register_plans.plan.writer_name}
+                              </div>
+                            </div>
                           </div>
-                          <div style={{ fontSize: "14px" }}>
-                            {register_plans.plan.writer_name}
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        style={{
-                          marginTop: "auto",
-                          marginBottom: "auto",
-                          color: "#7965f4",
-                        }}
-                      >
-                        {/* {Routine.checkHeart ? 
+                          <div
+                            style={{
+                              marginTop: "auto",
+                              marginBottom: "auto",
+                              color: "#7965f4",
+                            }}
+                          >
+                            {/* {Routine.checkHeart ? 
  <FavoriteIcon />:
  <FavoriteBorderIcon />} */}
+                          </div>
+                        </div>
+                        <div
+                          className="template-content"
+                          style={{ fontSize: "12px", width: "335px" }}
+                        >
+                          {register_plans.plan.desc}
+                        </div>
+                        <div style={{ height: "5px" }}></div>
+                        <div
+                          style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            justifyContent: "left",
+                          }}
+                        >
+                          <div className="template-tag">
+                            {register_plans.plan.tags[0]}
+                          </div>
+                          <div style={{ width: "10px" }}></div>
+                        </div>
+                        <div style={{ height: "5px" }}></div>
                       </div>
                     </div>
-                    <div
-                      className="template-content"
-                      style={{ fontSize: "12px", width: "335px" }}
-                    >
-                      {register_plans.plan.desc}
-                    </div>
-                    <div style={{ height: "5px" }}></div>
-                    <div
-                      style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        justifyContent: "left",
-                      }}
-                    >
-                      <div className="template-tag">
-                        {register_plans.plan.tags[0]}
-                      </div>
-                      <div style={{ width: "10px" }}></div>
-                    </div>
-                    <div style={{ height: "5px" }}></div>
-                  </div>
-                </div>
-                <div style={{ height: "15px" }}></div>
-              </React.Fragment>
-            </button>
-          </li>
-        ))}
+                    <div style={{ height: "15px" }}></div>
+                  </React.Fragment>
+                </button>
+              </li>
+            ))
+          : null}
         <Sheet
           isOpen={isOpen}
           onClose={() => setOpen(false)}
