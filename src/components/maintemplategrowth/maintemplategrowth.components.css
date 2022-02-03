@@ -82,7 +82,7 @@
   max-lines: 1;
   overflow: hidden;
   text-overflow: ellipsis;
-  width: 300px;
+  width: 80vw;
   white-space: nowrap;
   margin-left: auto;
   margin-right: auto;
@@ -90,7 +90,7 @@
 .template-content {
   font-size: 14px;
   max-lines: 3;
-  width: 355px;
+  width: 80vw;
   margin-left: auto;
   margin-right: auto;
   font-family: PretendardMedium;
@@ -108,15 +108,4 @@
 }
 .template-writerintro {
   width: 300px;
-}
-.template-tag {
-  border: #e6e6e6 0.5px solid;
-  width: 45px;
-  height: 22px;
-  text-align: center;
-  font-size: 11px;
-  color: #7965f4;
-  border-radius: 4px;
-  margin-top: 5px;
-  margin-bottom: 5px;
 }
