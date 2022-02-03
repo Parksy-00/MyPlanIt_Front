@@ -380,7 +380,7 @@ function TodoMy() {
         ) : (
           <img
             src="/images/my.png"
-            style={{ width: "60vw", marginTop: "200px" }}
+            style={{ width: "60vw", marginTop: "20vh" }}
           />
         )}
       </div>
