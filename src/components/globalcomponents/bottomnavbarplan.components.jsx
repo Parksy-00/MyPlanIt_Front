@@ -37,7 +37,7 @@ const BottomNavBarPlan = () => {
           />
         }
         component={Link}
-        to="/main/maintemplateroutine"
+        to="/main/maintemplategrowth"
       />
     </BottomNavigation>
   );
