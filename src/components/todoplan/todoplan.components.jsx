@@ -181,7 +181,7 @@ function TodoPlan() {
               background: "#fbfbfb",
               borderRadius: "0",
               color: "gray",
-              marginRight: 30,
+              marginRight: 27,
             }}
           >
             MY
@@ -197,6 +197,7 @@ function TodoPlan() {
                   marginBottom: 0,
                   fontSize: "12px",
                   color: "#929292",
+                  fontFamily: "Pretendard-Medium",
                 }}
                 onClick={() => {
                   setEdit(!edit);
@@ -214,6 +215,7 @@ function TodoPlan() {
                   marginBottom: 0,
                   fontSize: "12px",
                   color: "#8977F7",
+                  fontFamily: "Pretendard-Medium",
                 }}
                 onClick={() => {
                   setEdit(!edit);
