@@ -66,7 +66,6 @@
 }
 .template-overall {
   width: 91vw;
-
   justify-content: center;
 }
 .template-photourl {
@@ -89,10 +88,14 @@
   font-family: "PretendardMedium";
 }
 .template-content {
+  font-size: 14px;
+  max-lines: 3;
+  width: 80vw;
   margin-left: auto;
   margin-right: auto;
   font-family: PretendardMedium;
   color: #929292;
+  line-height: 18px;
 }
 .template-all {
   padding: 5px 5px 5px 5px;

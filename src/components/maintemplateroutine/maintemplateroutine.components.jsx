@@ -211,7 +211,7 @@ function MainTemplateRoutine() {
       <div style={{ height: "10px" }}></div>
       <div
         style={{
-          marginTop: "45px",
+          marginTop: "50px",
           overflowY: "scroll",
           height: "calc(100vh - 200px)",
         }}
@@ -354,9 +354,9 @@ function MainTemplateRoutine() {
                         className="template-content"
                         style={{
                           fontSize: "12px",
-                          width: "78vw",
-                          marginTop: 7,
-                          marginLeft: 7,
+                          marginLeft: "8px",
+                          marginTop: "5px",
+                          fontFamily: "PretendardMedium",
                         }}
                       >
                         {Routine.desc}
@@ -370,7 +370,12 @@ function MainTemplateRoutine() {
                           marginLeft: 7,
                         }}
                       >
-                        <div className="template-tag">{Routine.tags[0]}</div>
+                        <div
+                          className="template-tag"
+                          style={{ fontFamily: "PretendardMedium" }}
+                        >
+                          {Routine.tags[0]}
+                        </div>
                         <div style={{ width: "10px" }}></div>
                       </div>
                       <div style={{ height: "5px" }}></div>

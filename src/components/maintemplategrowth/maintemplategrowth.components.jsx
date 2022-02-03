@@ -109,7 +109,7 @@ function MainTemplateGrowth() {
   if (error) return <div>에러가 발생했습니다</div>;
   if (!users) return null;
   return (
-    <div className="container">
+    <div className="container" style={{ top: 0, position: "fixed" }}>
       <AppBar
         position="static"
         elevation={0}
@@ -176,7 +176,7 @@ function MainTemplateGrowth() {
           to="../main/maintemplategrowth"
           className="growth-button"
           style={{
-            width: "7.5vh",
+            width: "60px",
             height: "35px",
             display: "flex",
             justifyContent: "center",
@@ -202,12 +202,12 @@ function MainTemplateGrowth() {
           overflowY: "scroll",
           width: "inherit",
           float: "left",
-          height: "680px",
+          height: "calc(100vh - 200px)",
           position: "relative",
         }}
       >
         <div className="textbox"></div>
-        <div style={{ height: "10px" }}></div>
+        <div style={{ height: "2px" }}></div>
         {users.Growth.map((Growth) => (
           <li key={users.Growth.id}>
             <NavLink
@@ -218,9 +218,10 @@ function MainTemplateGrowth() {
               <React.Fragment key={uuidv4()}>
                 <div
                   style={{
+                    backgroundColor: "white",
                     display: "flex",
                     flexDirection: "column",
-                    boxShadow: "0px 0px 2px 0.5px #Dedede",
+                    boxShadow: "0px 0px 1.5px 0.5px #Dedede",
                     justifyContent: "center",
                   }}
                   className="template-all"
@@ -236,7 +237,15 @@ function MainTemplateGrowth() {
                       justifyContent: "space-between",
                     }}
                   >
-                    <div style={{ marginLeft: "0" }} className="template-title">
+                    <div
+                      style={{
+                        marginLeft: "3%",
+                        marginTop: 7,
+                        marginBottom: 7,
+                        fontFamily: "PretendardMedium",
+                      }}
+                      className="template-title"
+                    >
                       {Growth.name}
                     </div>
                   </div>
@@ -246,7 +255,7 @@ function MainTemplateGrowth() {
                     className="template-photourl"
                     src={Growth.intro_img_url}
                     style={{
-                      width: "350px",
+                      width: "80vw",
                       height: "130px",
                       objectFit: "cover",
                     }}
@@ -281,6 +290,9 @@ function MainTemplateGrowth() {
                             width: "40px",
                             height: "40px",
                             borderRadius: "20px",
+                            marginBottom: "5px",
+                            marginLeft: "6px",
+                            marginRight: "3px",
                           }}
                         ></img>
                         <div
@@ -293,15 +305,21 @@ function MainTemplateGrowth() {
                           <div
                             className="template-writerintro"
                             style={{
-                              fontSize: "14px",
-                              color: "gray",
+                              fontSize: "13px",
+
                               height: "14px",
                               marginBottom: "4px",
+                              fontFamily: "PretendardMedium",
                             }}
                           >
                             {Growth.writer_intro}
                           </div>
-                          <div style={{ fontSize: "14px" }}>
+                          <div
+                            style={{
+                              fontSize: "13px",
+                              fontFamily: "PretendardMedium",
+                            }}
+                          >
                             {Growth.writer_name}
                           </div>
                         </div>
@@ -320,7 +338,11 @@ function MainTemplateGrowth() {
                     </div>
                     <div
                       className="template-content"
-                      style={{ fontSize: "12px" }}
+                      style={{
+                        fontSize: "12px",
+                        marginLeft: "8px",
+                        marginTop: "5px",
+                      }}
                     >
                       {Growth.desc}
                     </div>
@@ -330,6 +352,7 @@ function MainTemplateGrowth() {
                         display: "flex",
                         flexDirection: "row",
                         justifyContent: "left",
+                        marginLeft: 7,
                       }}
                     >
                       <div className="template-tag">{Growth.tags[0]}</div>
@@ -343,8 +366,6 @@ function MainTemplateGrowth() {
             </NavLink>
           </li>
         ))}
-        <div className="textbox"></div>
-        <div style={{ height: "10px" }}></div>
       </ul>
       <BottomNavBarPlan />
       <div
@@ -356,6 +377,7 @@ function MainTemplateGrowth() {
           bottom: "0px",
         }}
       ></div>
+      <div style={{ height: "20px" }}></div>
     </div>
   );
 }

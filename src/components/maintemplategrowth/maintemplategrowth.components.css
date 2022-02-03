@@ -87,25 +87,3 @@
   margin-left: auto;
   margin-right: auto;
 }
-.template-content {
-  font-size: 14px;
-  max-lines: 3;
-  width: 80vw;
-  margin-left: auto;
-  margin-right: auto;
-  font-family: PretendardMedium;
-  line-height: 18px;
-  color: #929292;
-}
-.template-all {
-  padding: 5px 5px 5px 5px;
-  border: 1;
-  border-radius: 4px;
-  justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
-  width: 88vw;
-}
-.template-writerintro {
-  width: 300px;
-}
