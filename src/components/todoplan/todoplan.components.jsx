@@ -237,221 +237,232 @@ function TodoPlan() {
           fontFamily: "Pretendard-SemiBold",
         }}
       >
-        {data.map((plan, i) => {
-          let title = plan[0];
-          if (title.length > 15) {
-            title = plan[0].slice(0, 14) + "...";
-          }
-          let percent = plan[1][0]["달성률"];
-          let todos = plan[1].slice(1);
-          let count = 65 + parseInt(todos.length) * 38;
-          return (
-            <Card
-              key={i}
-              style={{
-                borderRadius: 5,
-                width: 327,
-                height: `${count}px`,
-                marginTop: 9,
-              }}
-            >
-              <span style={{ display: "flex" }}>
-                <span
-                  style={{
-                    display: "flex",
-                    marginTop: "12px",
-                    fontSize: "16px",
-                    marginBottom: "12px",
-                    width: "300px",
-                  }}
-                >
-                  <span style={{ font: "p", marginRight: "auto" }}>
-                    {title}
-                  </span>
+        {data.length > 0 ? (
+          data.map((plan, i) => {
+            let title = plan[0];
+            if (title.length > 15) {
+              title = plan[0].slice(0, 14) + "...";
+            }
+            let percent = plan[1][0]["달성률"];
+            let todos = plan[1].slice(1);
+            let count = 65 + parseInt(todos.length) * 38;
+            return (
+              <Card
+                key={i}
+                style={{
+                  borderRadius: 5,
+                  width: 327,
+                  height: `${count}px`,
+                  marginTop: 9,
+                }}
+              >
+                <span style={{ display: "flex" }}>
                   <span
                     style={{
-                      marginLeft: "auto",
-                      color: "#8977F7",
+                      display: "flex",
+                      marginTop: "12px",
+                      fontSize: "16px",
+                      marginBottom: "12px",
+                      width: "300px",
                     }}
                   >
-                    {percent}%
-                  </span>{" "}
-                  <span
-                    style={{
-                      fontFamily: "Pretendard-Medium",
-                      marginLeft: 5,
-                    }}
-                  >
-                    달성
+                    <span style={{ font: "p", marginRight: "auto" }}>
+                      {title}
+                    </span>
+                    <span
+                      style={{
+                        marginLeft: "auto",
+                        color: "#8977F7",
+                      }}
+                    >
+                      {percent}%
+                    </span>{" "}
+                    <span
+                      style={{
+                        fontFamily: "Pretendard-Medium",
+                        marginLeft: 5,
+                      }}
+                    >
+                      달성
+                    </span>
                   </span>
                 </span>
-              </span>
-              <hr style={{ opacity: 0.2, margin: 0 }} />
-              <div style={{ display: "flex", flexDirection: "column" }}>
-                {!edit
-                  ? todos.map((item, i) => {
-                      return (
-                        <Checkbox
-                          key={i}
-                          style={{
-                            marginLeft: 0,
-                            marginTop: 14,
-                          }}
-                          checked={item["finish_flag"]}
-                          onChange={async (e) => {
-                            if (e.target.checked) {
-                              axios
-                                .post(
-                                  `https://myplanit.link/todos/plan/${item["plan_id"]}/${item["id"]}/check`,
-                                  { token: `Bearer ${accessToken}` },
-                                  {
-                                    headers: {
-                                      "Content-Type": "application/json",
-                                      Authorization: `Bearer ${accessToken}`,
-                                    },
-                                  }
-                                )
-                                .then((response) => {
-                                  if (response.data.message == "success") {
-                                    setRerender(!rerender);
-                                  }
-                                });
-                            } else {
-                              axios
-                                .post(
-                                  `https://myplanit.link/todos/plan/${item["plan_id"]}/${item["id"]}/check`,
-                                  { token: `Bearer ${accessToken}` },
-                                  {
-                                    headers: {
-                                      "Content-Type": "application/json",
-                                      Authorization: `Bearer ${accessToken}`,
-                                    },
-                                  }
-                                )
-                                .then((response) => {
-                                  if (response.data.message == "success") {
-                                    setRerender(!rerender);
-                                  }
-                                });
-                            }
-                          }}
-                        >
-                          <span
+                <hr style={{ opacity: 0.2, margin: 0 }} />
+                <div style={{ display: "flex", flexDirection: "column" }}>
+                  {!edit
+                    ? todos.map((item, i) => {
+                        return (
+                          <Checkbox
+                            key={i}
                             style={{
-                              display: "flex",
-                              width: "255px",
+                              marginLeft: 0,
+                              marginTop: 14,
+                            }}
+                            checked={item["finish_flag"]}
+                            onChange={async (e) => {
+                              if (e.target.checked) {
+                                axios
+                                  .post(
+                                    `https://myplanit.link/todos/plan/${item["plan_id"]}/${item["id"]}/check`,
+                                    { token: `Bearer ${accessToken}` },
+                                    {
+                                      headers: {
+                                        "Content-Type": "application/json",
+                                        Authorization: `Bearer ${accessToken}`,
+                                      },
+                                    }
+                                  )
+                                  .then((response) => {
+                                    if (response.data.message == "success") {
+                                      setRerender(!rerender);
+                                    }
+                                  });
+                              } else {
+                                axios
+                                  .post(
+                                    `https://myplanit.link/todos/plan/${item["plan_id"]}/${item["id"]}/check`,
+                                    { token: `Bearer ${accessToken}` },
+                                    {
+                                      headers: {
+                                        "Content-Type": "application/json",
+                                        Authorization: `Bearer ${accessToken}`,
+                                      },
+                                    }
+                                  )
+                                  .then((response) => {
+                                    if (response.data.message == "success") {
+                                      setRerender(!rerender);
+                                    }
+                                  });
+                              }
                             }}
                           >
-                            <span style={{ fontFamily: "Pretendard-Medium" }}>
-                              {item["plan_todo"]}
-                            </span>
                             <span
-                              onClick={() => {
-                                navigate(`/todo/detail/${item["todo_id"]}`);
-                              }}
                               style={{
-                                flexDirection: "row",
-                                marginLeft: "auto",
+                                display: "flex",
+                                width: "255px",
                               }}
                             >
-                              <img
-                                src="images/detail.png"
+                              <span style={{ fontFamily: "Pretendard-Medium" }}>
+                                {item["plan_todo"]}
+                              </span>
+                              <span
+                                onClick={() => {
+                                  navigate(`/todo/detail/${item["todo_id"]}`);
+                                }}
                                 style={{
-                                  width: 6,
+                                  flexDirection: "row",
                                   marginLeft: "auto",
-                                  alignItems: "center",
-                                  justifyContent: "center",
                                 }}
-                              />
+                              >
+                                <img
+                                  src="images/detail.png"
+                                  style={{
+                                    width: 6,
+                                    marginLeft: "auto",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                  }}
+                                />
+                              </span>
                             </span>
-                          </span>
-                        </Checkbox>
-                      );
-                    })
-                  : todos.map((item, i) => {
-                      return !item["finish_flag"] ? (
-                        <Checkbox
-                          key={i}
-                          style={{ marginLeft: 0, marginTop: 14 }}
-                          onChange={() => {
-                            if (delay.includes(item["id"])) {
-                              let temp = [...delay];
-                              temp = temp.filter((i) => i !== item["id"]);
-                              setDelay(temp);
-                            } else {
-                              let temp = [...delay, item["id"]];
-                              setDelay(temp);
-                            }
-                          }}
-                        >
-                          <span style={{ display: "flex", width: "255px" }}>
-                            <span style={{ fontFamily: "Pretendard-Medium" }}>
-                              {item["plan_todo"]}
-                            </span>
-                            <span
-                              onClick={() => {
-                                navigate(`/todo/detail/${item["todo_id"]}`);
-                              }}
-                              style={{
-                                flexDirection: "row",
-                                marginLeft: "auto",
-                              }}
-                            >
-                              <img
-                                src="images/detail.png"
+                          </Checkbox>
+                        );
+                      })
+                    : todos.map((item, i) => {
+                        return !item["finish_flag"] ? (
+                          <Checkbox
+                            key={i}
+                            style={{ marginLeft: 0, marginTop: 14 }}
+                            onChange={() => {
+                              if (delay.includes(item["id"])) {
+                                let temp = [...delay];
+                                temp = temp.filter((i) => i !== item["id"]);
+                                setDelay(temp);
+                              } else {
+                                let temp = [...delay, item["id"]];
+                                setDelay(temp);
+                              }
+                            }}
+                          >
+                            <span style={{ display: "flex", width: "255px" }}>
+                              <span style={{ fontFamily: "Pretendard-Medium" }}>
+                                {item["plan_todo"]}
+                              </span>
+                              <span
+                                onClick={() => {
+                                  navigate(`/todo/detail/${item["todo_id"]}`);
+                                }}
                                 style={{
-                                  width: 6,
+                                  flexDirection: "row",
+                                  marginLeft: "auto",
                                 }}
-                              />
+                              >
+                                <img
+                                  src="images/detail.png"
+                                  style={{
+                                    width: 6,
+                                  }}
+                                />
+                              </span>
                             </span>
-                          </span>
-                        </Checkbox>
-                      ) : (
-                        <Checkbox
-                          key={i}
-                          style={{ marginLeft: 0, marginTop: 14 }}
-                          checked={false}
-                          disabled
-                          onChange={() => {
-                            if (delay.includes(item["id"])) {
-                              let temp = [...delay];
-                              temp = temp.filter((i) => i !== item["id"]);
-                              setDelay(temp);
-                            } else {
-                              let temp = [...delay, item["id"]];
-                              setDelay(temp);
-                            }
-                          }}
-                        >
-                          <span style={{ display: "flex", width: "255px" }}>
-                            <span style={{ fontFamily: "Pretendard-Medium" }}>
-                              {item["plan_todo"]}
-                            </span>
-                            <span
-                              onClick={() => {
-                                navigate(`/todo/detail/${item["todo_id"]}`);
-                              }}
-                              style={{
-                                flexDirection: "row",
-                                marginLeft: "auto",
-                              }}
-                            >
-                              <img
-                                src="images/detail.png"
+                          </Checkbox>
+                        ) : (
+                          <Checkbox
+                            key={i}
+                            style={{ marginLeft: 0, marginTop: 14 }}
+                            checked={false}
+                            disabled
+                            onChange={() => {
+                              if (delay.includes(item["id"])) {
+                                let temp = [...delay];
+                                temp = temp.filter((i) => i !== item["id"]);
+                                setDelay(temp);
+                              } else {
+                                let temp = [...delay, item["id"]];
+                                setDelay(temp);
+                              }
+                            }}
+                          >
+                            <span style={{ display: "flex", width: "255px" }}>
+                              <span style={{ fontFamily: "Pretendard-Medium" }}>
+                                {item["plan_todo"]}
+                              </span>
+                              <span
+                                onClick={() => {
+                                  navigate(`/todo/detail/${item["todo_id"]}`);
+                                }}
                                 style={{
-                                  width: 6,
+                                  flexDirection: "row",
+                                  marginLeft: "auto",
                                 }}
-                              />
+                              >
+                                <img
+                                  src="images/detail.png"
+                                  style={{
+                                    width: 6,
+                                  }}
+                                />
+                              </span>
                             </span>
-                          </span>
-                        </Checkbox>
-                      );
-                    })}
-              </div>
-            </Card>
-          );
-        })}
+                          </Checkbox>
+                        );
+                      })}
+                </div>
+              </Card>
+            );
+          })
+        ) : (
+          <img
+            style={{ width: "60vw", marginTop: "50px" }}
+            src="/images/plan.png"
+            onClick={() => {
+              navigate("/main/maintemplategrowth");
+            }}
+          />
+        )}
       </div>
+
       <br />
       <br />
       <br />
