@@ -133,7 +133,7 @@ function ViewTemplate(props) {
           style={{
             position: "relative",
             bottom: "100px",
-            zIndex: "100",
+            zIndex: 0,
             marginRight: "auto",
             marginLeft: "auto",
           }}
