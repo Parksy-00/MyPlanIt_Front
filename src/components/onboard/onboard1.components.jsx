@@ -5,7 +5,7 @@ import { Progress } from "antd";
 
 function Onboard1() {
   let navigate = useNavigate();
-
+  const username = localStorage.getItem("username");
   const [check, setCheck] = useState(false);
 
   return (
@@ -23,12 +23,12 @@ function Onboard1() {
           color: "black",
         }}
       >
-        플랜잇님, 가입을 축하드려요!
+        {username}님, 가입을 축하드려요!
       </p>
-      <p
+      {/* <p
         className="txt2"
         style={{
-          marginBottom: "310px",
+          marginBottom: "210px",
           fontFamily: "PretendardRegular",
           fontSize: "16px",
           textAlign: "center",
@@ -36,8 +36,8 @@ function Onboard1() {
         }}
       >
         간단한 응답으로 딱 맞는 플랜을 추천 받을 수 있어요
-      </p>
-      <div className="check">
+      </p> */}
+      {/* <div className="check">
         {!check ? (
           <img
             src="/images/check1.png"
@@ -76,22 +76,22 @@ function Onboard1() {
         >
           다음에 할래요
         </p>
-      </div>
-      <Progress
+      </div> */}
+      {/* <Progress
         percent={33}
         strokeColor="black"
         showInfo={false}
         size="small"
         height="1px"
         style={{ width: "325px", marginTop: "25px", marginBottom: "30px" }}
-      />
+      /> */}
       <button
         onClick={() => {
-          navigate("/onboard2");
+          navigate("/");
         }}
         className="login-button"
         style={{
-          marginTop: 0,
+          marginTop: 140,
           fontFamily: "PretendardMedium",
           fontSize: "20px",
           textAlign: "center",
@@ -100,6 +100,9 @@ function Onboard1() {
       >
         다음
       </button>
+      <br />
+      <br />
+      <br />
     </>
   );
 }

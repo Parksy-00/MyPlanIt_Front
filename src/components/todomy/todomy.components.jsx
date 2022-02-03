@@ -59,7 +59,6 @@ function TodoMy() {
         );
         setData(response.data.personal_todos);
         setUsers(response.data.personal_todos);
-        console.log(response.data.personal_todos);
       } catch (e) {
         setError(e);
       }

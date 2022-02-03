@@ -30,7 +30,6 @@ function ViewTemplate(props) {
     setOpen(true);
   };
   const accessToken = localStorage.getItem("accessToken");
-  console.log(accessToken);
   const handleClose = (event, reason) => {
     if (reason && reason == "backdropClick") return;
     axios
@@ -57,7 +56,6 @@ function ViewTemplate(props) {
         ),
       ])
       .then((response) => {
-        console.log(response);
         navigate("/main");
       });
     setOpen(false);

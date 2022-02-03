@@ -353,7 +353,14 @@ function MainTemplateGrowth() {
                         marginLeft: 7,
                       }}
                     >
-                      <div className="template-tag">{Growth.tags[0]}</div>
+                      <div
+                        className="template-tag"
+                        style={{
+                          fontFamily: "PretendardMedium",
+                        }}
+                      >
+                        {Growth.tags[0]}
+                      </div>
                       <div style={{ width: "10px" }}></div>
                     </div>
                     <div style={{ height: "5px" }}></div>
