@@ -167,7 +167,7 @@ function UseTemplate() {
           to="../main/buytemplate"
           className="main-growth-button"
           style={{
-            width: "7.5vh",
+            width: "70px",
             height: "35px",
             display: "flex",
             justifyContent: "center",
@@ -187,7 +187,7 @@ function UseTemplate() {
           to="../main/usetemplate"
           className="main-growth-button"
           style={{
-            width: "7.5vh",
+            width: "70px",
             height: "35px",
             display: "flex",
             justifyContent: "center",

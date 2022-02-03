@@ -152,14 +152,18 @@ function BuyTemplate() {
       </AppBar>
       <span
         className="button-group"
-        style={{ marginTop: "8px", fontSize: "16px", fontWeight: "bold" }}
+        style={{
+          marginTop: "8px",
+          fontSize: "16px",
+          fontWeight: "bold",
+          marginLeft: 10,
+        }}
       >
         <Link
-          style={{ border: "1px solid #D3d3d3" }}
           to="../main/buytemplate"
           className="main-growth-button"
           style={{
-            width: "7.5vh",
+            width: "70px",
             height: "35px",
             display: "flex",
             justifyContent: "center",
@@ -180,7 +184,7 @@ function BuyTemplate() {
           to="../main/usetemplate"
           className="main-growth-button"
           style={{
-            width: "7.5vh",
+            width: "70px",
             height: "35px",
             display: "flex",
             justifyContent: "center",
