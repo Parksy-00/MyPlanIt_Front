@@ -23,13 +23,14 @@ import { Oval } from "react-loader-spinner";
 import BottomNavBarTodo from "../globalcomponents/bottomnavbartodo.components";
 
 function BuyTemplate() {
-  const accessToken = sessionStorage.getItem("token");
+  let accessToken = sessionStorage.getItem("token");
 
   const [users, setUsers] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    accessToken = sessionStorage.getItem("token");
     const fetchUsers = async () => {
       try {
         setError(null);

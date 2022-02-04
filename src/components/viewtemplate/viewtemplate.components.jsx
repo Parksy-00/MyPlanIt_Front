@@ -26,7 +26,7 @@ function ViewTemplate(props) {
   const handleClickOpen = () => {
     setOpen(true);
   };
-  const accessToken = sessionStorage.getItem("token");
+  let accessToken = sessionStorage.getItem("token");
   const handleClose = (event, reason) => {
     if (reason && reason == "backdropClick") return;
     axios
@@ -63,6 +63,7 @@ function ViewTemplate(props) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    accessToken = sessionStorage.getItem("token");
     const fetchUsers = async () => {
       try {
         setError(null);

@@ -7,13 +7,14 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 function Detail() {
-  const accessToken = sessionStorage.getItem("token");
+  let accessToken = sessionStorage.getItem("token");
   const [title, setTitle] = useState("");
   const { id } = useParams();
   const [route, setRoute] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   useEffect(() => {
+    accessToken = sessionStorage.getItem("token");
     const fetchData = async () => {
       try {
         setError(null);

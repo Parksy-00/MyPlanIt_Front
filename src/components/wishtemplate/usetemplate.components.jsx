@@ -24,7 +24,6 @@ import Sheet from "react-modal-sheet";
 import { useNavigate } from "react-router-dom";
 import { sortAndDeduplicateDiagnostics } from "typescript";
 
-const accessToken = localStorage.getItem("token");
 function UseTemplate() {
   let navigate = useNavigate();
 
@@ -37,8 +36,10 @@ function UseTemplate() {
   const [planName, setPlanName] = React.useState(null);
   const [planWriter, setPlanWriter] = React.useState(null);
 
+  let accessToken = sessionStorage.getItem("token");
+
   useEffect(() => {
-    const accessToken = sessionStorage.getItem("token");
+    accessToken = sessionStorage.getItem("token");
     const fetchUsers = async () => {
       try {
         setError(null);
