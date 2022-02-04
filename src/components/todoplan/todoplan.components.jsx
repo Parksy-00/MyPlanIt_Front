@@ -13,7 +13,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Oval } from "react-loader-spinner";
 
 function TodoPlan() {
-  const accessToken = localStorage.getItem("token");
+  const accessToken = sessionStorage.getItem("token");
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [data, setData] = useState();
   const [loading, setLoading] = useState(false);

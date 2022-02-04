@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 function Detail() {
-  const accessToken = localStorage.getItem("token");
+  const accessToken = sessionStorage.getItem("token");
   const [title, setTitle] = useState("");
   const { id } = useParams();
   const [route, setRoute] = useState("");

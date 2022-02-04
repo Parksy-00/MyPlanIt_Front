@@ -20,15 +20,11 @@ import { useParams } from "react-router-dom";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import axios from "axios";
 import Cookies from "js-cookie";
-
-const refreshToken = localStorage.getItem("refreshToken");
-const accessToken = localStorage.getItem("accessToken");
-
 function WishTemplate() {
   let navigate = useNavigate();
   let { plan_id } = useParams();
   const categories = [{ title: "일주일을 알차게" }, { title: "건강한 몸" }];
-
+  const accessToken = sessionStorage.getItem("token");
   const renderCategories = categories.map((categories) => {
     return <MoreTemplate categories={categories} />;
   });

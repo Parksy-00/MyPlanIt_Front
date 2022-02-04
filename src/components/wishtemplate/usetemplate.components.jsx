@@ -38,6 +38,7 @@ function UseTemplate() {
   const [planWriter, setPlanWriter] = React.useState(null);
 
   useEffect(() => {
+    const accessToken = sessionStorage.getItem("token");
     const fetchUsers = async () => {
       try {
         setError(null);
@@ -53,7 +54,12 @@ function UseTemplate() {
             },
           }
         );
-        setUsers(response.data);
+        console.log(accessToken);
+        if (response.data.message == "이용 중인 플랜이 없습니다.") {
+          setUsers([]);
+        } else {
+          setUsers(response.data);
+        }
       } catch (e) {
         setError(e);
       }

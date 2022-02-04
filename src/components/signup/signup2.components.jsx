@@ -29,7 +29,7 @@ function Signup2({ email, password, realname, emailAgree, snsAgree }) {
       )
       .then(function (response) {
         if (response.status === 201) {
-          localStorage.setItem("username", username);
+          sessionStorage.setItem("username", username);
           navigate("/onboard1");
         } else if (response.status === 200) {
           alert("이미 존재하는 이메일입니다");

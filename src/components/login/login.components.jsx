@@ -10,9 +10,6 @@ function Login() {
   let navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const access_token =
-    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQyNDQ5MDUyLCJpYXQiOjE2NDIzNjI2NTIsImp0aSI6ImZmNWVkMzQzNTJkNzQxZDI5YTk3ZTg0ZTFjNTkwNmUwIiwidXNlcl9pZCI6Mzd9.LhzBMGI7ibYwUqPtmbvANRLsMBL_abdxruDNwQhY2D0";
-  const apiUrl = "https://myplanit.link/login";
 
   function attemptLogin() {
     axios
@@ -29,9 +26,9 @@ function Login() {
         }
       )
       .then((response) => {
-        localStorage.setItem("token", response.data.token);
-        localStorage.setItem("email", response.data.email);
-        localStorage.setItem("password", response.data.password);
+        sessionStorage.setItem("token", response.data.token);
+        sessionStorage.setItem("email", response.data.email);
+        sessionStorage.setItem("password", response.data.password);
         navigate("/main");
       })
       .catch((error) => {
