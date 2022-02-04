@@ -26,6 +26,7 @@ function Login() {
         }
       )
       .then((response) => {
+        sessionStorage.removeItem("token");
         sessionStorage.setItem("token", response.data.token);
         sessionStorage.setItem("email", response.data.email);
         sessionStorage.setItem("password", response.data.password);
