@@ -5,7 +5,7 @@ import { Progress } from "antd";
 
 function Onboard1() {
   let navigate = useNavigate();
-  const username = localStorage.getItem("username");
+  const username = sessionStorage.getItem("username");
   const [check, setCheck] = useState(false);
 
   return (

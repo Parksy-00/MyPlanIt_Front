@@ -34,9 +34,9 @@ function TodoMy() {
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
-  const accessToken = localStorage.getItem("token");
+  let accessToken = sessionStorage.getItem("token");
   useEffect(() => {
-    const accessToken = localStorage.getItem("token");
+    accessToken = sessionStorage.getItem("token");
     const fetchData = async () => {
       try {
         setError(null);

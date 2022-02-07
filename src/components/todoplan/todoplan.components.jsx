@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import BottomNavBar from "../globalcomponents/bottomnavbartodo.components";
 import { useNavigate } from "react-router-dom";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect } from "react";
 import BottomNavBarTodo from "../globalcomponents/bottomnavbartodo.components";
 import DateFnsUtils from "@date-io/date-fns";
 import { MuiPickersUtilsProvider, DatePicker } from "@material-ui/pickers";
@@ -13,43 +13,44 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Oval } from "react-loader-spinner";
 
 function TodoPlan() {
-  const accessToken = localStorage.getItem("token");
+  let accessToken = sessionStorage.getItem("token");
+  const [update, setUpdate] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [data, setData] = useState();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [rerender, setRerender] = useState(false);
   const [edit, setEdit] = useState(false);
   const [delay, setDelay] = useState([]);
+  accessToken = sessionStorage.getItem("token");
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(
+        `https://myplanit.link/todos/plan/${selectedDate.getFullYear()}-${(
+          "0" +
+          (selectedDate.getMonth() + 1)
+        ).slice(-2)}-${("0" + selectedDate.getDate()).slice(-2)}`,
+        {
+          Authorization: `Bearer ${accessToken}`,
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      );
+      setData(Object.entries(response.data));
+    } catch (e) {
+      setError(e);
+    }
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setError(null);
-        setData(null);
-        const response = await axios.get(
-          `https://myplanit.link/todos/plan/${selectedDate.getFullYear()}-${(
-            "0" +
-            (selectedDate.getMonth() + 1)
-          ).slice(-2)}-${("0" + selectedDate.getDate()).slice(-2)}`,
-          {
-            Authorization: `Bearer ${accessToken}`,
-            withCredentials: true,
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${accessToken}`,
-            },
-          }
-        );
-        setData(Object.entries(response.data));
-      } catch (e) {
-        setError(e);
-      }
-    };
     fetchData();
     setEdit(false);
     setDelay([]);
-  }, [selectedDate, rerender]);
+  }, [selectedDate, update]);
+
   let navigate = useNavigate();
 
   const handleDateChange = (date) => {
@@ -57,7 +58,14 @@ function TodoPlan() {
   };
   if (loading)
     return (
-      <div style={{ marginTop: "50vh", marginBottom: "auto" }}>
+      <div
+        style={{
+          width: "100vw",
+          height: "100vh",
+          backgroundColor: "gray",
+          zIndex: 100000,
+        }}
+      >
         <Oval color="#7965f4" height="40px" width="40px" />
         <BottomNavBarTodo />
       </div>
@@ -306,40 +314,29 @@ function TodoPlan() {
                             checked={item["finish_flag"]}
                             onChange={async (e) => {
                               if (e.target.checked) {
-                                axios
-                                  .post(
-                                    `https://myplanit.link/todos/plan/${item["plan_id"]}/${item["id"]}/check`,
-                                    { token: `Bearer ${accessToken}` },
-                                    {
-                                      headers: {
-                                        "Content-Type": "application/json",
-                                        Authorization: `Bearer ${accessToken}`,
-                                      },
-                                    }
-                                  )
-                                  .then((response) => {
-                                    if (response.data.message == "success") {
-                                      setRerender(!rerender);
-                                    }
-                                  });
+                                axios.post(
+                                  `https://myplanit.link/todos/plan/${item["plan_id"]}/${item["id"]}/check`,
+                                  { token: `Bearer ${accessToken}` },
+                                  {
+                                    headers: {
+                                      "Content-Type": "application/json",
+                                      Authorization: `Bearer ${accessToken}`,
+                                    },
+                                  }
+                                );
                               } else {
-                                axios
-                                  .post(
-                                    `https://myplanit.link/todos/plan/${item["plan_id"]}/${item["id"]}/check`,
-                                    { token: `Bearer ${accessToken}` },
-                                    {
-                                      headers: {
-                                        "Content-Type": "application/json",
-                                        Authorization: `Bearer ${accessToken}`,
-                                      },
-                                    }
-                                  )
-                                  .then((response) => {
-                                    if (response.data.message == "success") {
-                                      setRerender(!rerender);
-                                    }
-                                  });
+                                axios.post(
+                                  `https://myplanit.link/todos/plan/${item["plan_id"]}/${item["id"]}/check`,
+                                  { token: `Bearer ${accessToken}` },
+                                  {
+                                    headers: {
+                                      "Content-Type": "application/json",
+                                      Authorization: `Bearer ${accessToken}`,
+                                    },
+                                  }
+                                );
                               }
+                              setUpdate(!update);
                             }}
                           >
                             <span
@@ -502,23 +499,16 @@ function TodoPlan() {
           onClick={() => {
             let response = "";
             for (let i = 0; i < delay.length; i++) {
-              axios
-                .post(
-                  `https://myplanit.link/todos/plan/${delay[i]}/delay`,
-                  { token: `Bearer ${accessToken}` },
-                  {
-                    headers: {
-                      "Content-Type": "application/json",
-                      Authorization: `Bearer ${accessToken}`,
-                    },
-                  }
-                )
-                .then((res) => {
-                  response = res.data.message;
-                  if (response == "success") {
-                    setRerender(!rerender);
-                  }
-                });
+              axios.post(
+                `https://myplanit.link/todos/plan/${delay[i]}/delay`,
+                { token: `Bearer ${accessToken}` },
+                {
+                  headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${accessToken}`,
+                  },
+                }
+              );
             }
           }}
         >

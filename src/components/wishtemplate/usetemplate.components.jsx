@@ -24,7 +24,6 @@ import Sheet from "react-modal-sheet";
 import { useNavigate } from "react-router-dom";
 import { sortAndDeduplicateDiagnostics } from "typescript";
 
-const accessToken = localStorage.getItem("token");
 function UseTemplate() {
   let navigate = useNavigate();
 
@@ -37,7 +36,10 @@ function UseTemplate() {
   const [planName, setPlanName] = React.useState(null);
   const [planWriter, setPlanWriter] = React.useState(null);
 
+  let accessToken = sessionStorage.getItem("token");
+
   useEffect(() => {
+    accessToken = sessionStorage.getItem("token");
     const fetchUsers = async () => {
       try {
         setError(null);
@@ -53,7 +55,12 @@ function UseTemplate() {
             },
           }
         );
-        setUsers(response.data);
+        console.log(accessToken);
+        if (response.data.message == "이용 중인 플랜이 없습니다.") {
+          setUsers([]);
+        } else {
+          setUsers(response.data);
+        }
       } catch (e) {
         setError(e);
       }

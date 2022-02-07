@@ -18,10 +18,7 @@ import { render } from "@testing-library/react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { Oval } from "react-loader-spinner";
-const refreshToken = localStorage.getItem("refreshToken");
-const token = localStorage.getItem("token");
-const email = localStorage.getItem("email");
-const password = localStorage.getItem("password");
+
 function ViewTemplate(props) {
   const { id } = useParams();
   const [open, setOpen] = React.useState(false);
@@ -29,28 +26,28 @@ function ViewTemplate(props) {
   const handleClickOpen = () => {
     setOpen(true);
   };
-  const accessToken = localStorage.getItem("accessToken");
+  let accessToken = sessionStorage.getItem("token");
   const handleClose = (event, reason) => {
     if (reason && reason == "backdropClick") return;
     axios
       .all([
         axios.post(
           "https://myplanit.link/plans/" + id + "/buy",
-          { token: `Bearer ${token}` },
+          { token: `Bearer ${accessToken}` },
           {
             headers: {
               "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
+              Authorization: `Bearer ${accessToken}`,
             },
           }
         ),
         axios.post(
           "https://myplanit.link/myplans/" + id + "/register",
-          { token: `Bearer ${token}` },
+          { token: `Bearer ${accessToken}` },
           {
             headers: {
               "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
+              Authorization: `Bearer ${accessToken}`,
             },
           }
         ),
@@ -66,6 +63,7 @@ function ViewTemplate(props) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    accessToken = sessionStorage.getItem("token");
     const fetchUsers = async () => {
       try {
         setError(null);
