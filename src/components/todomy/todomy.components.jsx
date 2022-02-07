@@ -414,25 +414,23 @@ function TodoMy() {
             />
             <button
               onClick={() => {
-                axios
-                  .post(
-                    `https://myplanit.link/todos/my/${selectedDate.getFullYear()}-${(
-                      "0" +
-                      (selectedDate.getMonth() + 1)
-                    ).slice(-2)}-${("0" + selectedDate.getDate()).slice(-2)}`,
-                    {
-                      todo_name: todo,
+                axios.post(
+                  `https://myplanit.link/todos/my/${selectedDate.getFullYear()}-${(
+                    "0" +
+                    (selectedDate.getMonth() + 1)
+                  ).slice(-2)}-${("0" + selectedDate.getDate()).slice(-2)}`,
+                  {
+                    todo_name: todo,
+                  },
+                  {
+                    headers: {
+                      "Content-Type": "application/json",
+                      Authorization: `Bearer ${accessToken}`,
                     },
-                    {
-                      headers: {
-                        "Content-Type": "application/json",
-                        Authorization: `Bearer ${accessToken}`,
-                      },
-                    }
-                  )
-                  .then((response) => {
-                    setOpen(false);
-                  });
+                  }
+                );
+                setUpdate(!update);
+                setOpen(false);
               }}
               className="todo-add-button"
               style={{
