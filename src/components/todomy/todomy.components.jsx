@@ -21,6 +21,7 @@ import { PlusOutlined } from "@ant-design/icons";
 
 function TodoMy() {
   let navigate = useNavigate();
+  const [update, setUpdate] = useState(false);
   const [users, setUsers] = useState([]);
   const [todo, setTodo] = useState([]);
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -28,46 +29,41 @@ function TodoMy() {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState();
   const [error, setError] = useState(null);
-  const [rerender, setRerender] = useState(false);
   const [edit, setEdit] = useState(false);
   const [delay, setDelay] = useState([]);
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
   let accessToken = sessionStorage.getItem("token");
-  useEffect(() => {
-    accessToken = sessionStorage.getItem("token");
-    const fetchData = async () => {
-      try {
-        setError(null);
-        setData(null);
-        setUsers(null);
-        setLoading(true);
-        const response = await axios.get(
-          `https://myplanit.link/todos/my/${selectedDate.getFullYear()}-${(
-            "0" +
-            (selectedDate.getMonth() + 1)
-          ).slice(-2)}-${("0" + selectedDate.getDate()).slice(-2)}`,
-          {
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(
+        `https://myplanit.link/todos/my/${selectedDate.getFullYear()}-${(
+          "0" +
+          (selectedDate.getMonth() + 1)
+        ).slice(-2)}-${("0" + selectedDate.getDate()).slice(-2)}`,
+        {
+          Authorization: `Bearer ${accessToken}`,
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/json",
             Authorization: `Bearer ${accessToken}`,
-            withCredentials: true,
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${accessToken}`,
-            },
-          }
-        );
-        setData(response.data.personal_todos);
-        setUsers(response.data.personal_todos);
-      } catch (e) {
-        setError(e);
-      }
-      setLoading(false);
-    };
+          },
+        }
+      );
+      setData(response.data.personal_todos);
+      setUsers(response.data.personal_todos);
+    } catch (e) {
+      setError(e);
+    }
+  };
+
+  useEffect(() => {
     fetchData();
     setEdit(false);
     setDelay([]);
-  }, [selectedDate, rerender]);
+  }, [selectedDate, update]);
   if (loading) return <div></div>;
   if (error) return <div>에러가 발생했습니다</div>;
   return (
@@ -264,36 +260,29 @@ function TodoMy() {
                     checked={item["finish_flag"]}
                     onChange={async (e) => {
                       if (e.target.checked) {
-                        axios
-                          .post(
-                            `https://myplanit.link/todos/my/${item["id"]}/check`,
-                            { token: `Bearer ${accessToken}` },
-                            {
-                              headers: {
-                                "Content-Type": "application/json",
-                                Authorization: `Bearer ${accessToken}`,
-                              },
-                            }
-                          )
-                          .then((response) => {
-                            setRerender(!rerender);
-                          });
+                        axios.post(
+                          `https://myplanit.link/todos/my/${item["id"]}/check`,
+                          { token: `Bearer ${accessToken}` },
+                          {
+                            headers: {
+                              "Content-Type": "application/json",
+                              Authorization: `Bearer ${accessToken}`,
+                            },
+                          }
+                        );
                       } else {
-                        axios
-                          .post(
-                            `https://myplanit.link/todos/my/${item["id"]}/check`,
-                            { token: `Bearer ${accessToken}` },
-                            {
-                              headers: {
-                                "Content-Type": "application/json",
-                                Authorization: `Bearer ${accessToken}`,
-                              },
-                            }
-                          )
-                          .then((response) => {
-                            setRerender(!rerender);
-                          });
+                        axios.post(
+                          `https://myplanit.link/todos/my/${item["id"]}/check`,
+                          { token: `Bearer ${accessToken}` },
+                          {
+                            headers: {
+                              "Content-Type": "application/json",
+                              Authorization: `Bearer ${accessToken}`,
+                            },
+                          }
+                        );
                       }
+                      setUpdate(!update);
                     }}
                   >
                     <span
@@ -442,7 +431,6 @@ function TodoMy() {
                     }
                   )
                   .then((response) => {
-                    setRerender(!rerender);
                     setOpen(false);
                   });
               }}
@@ -491,23 +479,16 @@ function TodoMy() {
             onClick={() => {
               let response = "";
               for (let i = 0; i < delay.length; i++) {
-                axios
-                  .post(
-                    `https://myplanit.link/todos/my/${delay[i]}/delay`,
-                    { token: `Bearer ${accessToken}` },
-                    {
-                      headers: {
-                        "Content-Type": "application/json",
-                        Authorization: `Bearer ${accessToken}`,
-                      },
-                    }
-                  )
-                  .then((res) => {
-                    response = res.data.message;
-                    if (response == "투두를 내일로 미뤘습니다.") {
-                      setRerender(!rerender);
-                    }
-                  });
+                axios.post(
+                  `https://myplanit.link/todos/my/${delay[i]}/delay`,
+                  { token: `Bearer ${accessToken}` },
+                  {
+                    headers: {
+                      "Content-Type": "application/json",
+                      Authorization: `Bearer ${accessToken}`,
+                    },
+                  }
+                );
               }
             }}
           >
@@ -520,19 +501,15 @@ function TodoMy() {
             onClick={() => {
               let response = "";
               for (let i = 0; i < delay.length; i++) {
-                axios
-                  .delete(`https://myplanit.link/todos/my/${delay[i]}/delete`, {
+                axios.delete(
+                  `https://myplanit.link/todos/my/${delay[i]}/delete`,
+                  {
                     headers: {
                       "Content-Type": "application/json",
                       Authorization: `Bearer ${accessToken}`,
                     },
-                  })
-                  .then((res) => {
-                    response = res.data.message;
-                    if (response == "투두를 삭제하였습니다.") {
-                      setRerender(!rerender);
-                    }
-                  });
+                  }
+                );
               }
             }}
           >
