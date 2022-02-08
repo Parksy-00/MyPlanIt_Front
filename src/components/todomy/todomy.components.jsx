@@ -504,16 +504,20 @@ function TodoMy() {
             onClick={() => {
               let response = "";
               for (let i = 0; i < delay.length; i++) {
-                axios.post(
-                  `https://myplanit.link/todos/my/${delay[i]}/delay`,
-                  { token: `Bearer ${accessToken}` },
-                  {
-                    headers: {
-                      "Content-Type": "application/json",
-                      Authorization: `Bearer ${accessToken}`,
-                    },
-                  }
-                );
+                axios
+                  .post(
+                    `https://myplanit.link/todos/my/${delay[i]}/delay`,
+                    { token: `Bearer ${accessToken}` },
+                    {
+                      headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${accessToken}`,
+                      },
+                    }
+                  )
+                  .then(() => {
+                    setUpdate(!update);
+                  });
               }
             }}
           >
@@ -526,15 +530,16 @@ function TodoMy() {
             onClick={() => {
               let response = "";
               for (let i = 0; i < delay.length; i++) {
-                axios.delete(
-                  `https://myplanit.link/todos/my/${delay[i]}/delete`,
-                  {
+                axios
+                  .delete(`https://myplanit.link/todos/my/${delay[i]}/delete`, {
                     headers: {
                       "Content-Type": "application/json",
                       Authorization: `Bearer ${accessToken}`,
                     },
-                  }
-                );
+                  })
+                  .then(() => {
+                    setUpdate(!update);
+                  });
               }
             }}
           >
