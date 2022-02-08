@@ -511,16 +511,20 @@ function TodoPlan() {
           onClick={() => {
             let response = "";
             for (let i = 0; i < delay.length; i++) {
-              axios.post(
-                `https://myplanit.link/todos/plan/${delay[i]}/delay`,
-                { token: `Bearer ${accessToken}` },
-                {
-                  headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${accessToken}`,
-                  },
-                }
-              );
+              axios
+                .post(
+                  `https://myplanit.link/todos/plan/${delay[i]}/delay`,
+                  { token: `Bearer ${accessToken}` },
+                  {
+                    headers: {
+                      "Content-Type": "application/json",
+                      Authorization: `Bearer ${accessToken}`,
+                    },
+                  }
+                )
+                .then(() => {
+                  setUpdate(!update);
+                });
             }
           }}
         >
