@@ -1,24 +1,13 @@
 import "./wishtemplate.components.css";
 import { Link } from "react-router-dom";
-import BottomNavBar from "../globalcomponents/bottomnavbartodo.components";
 import { AppBar, Tabs, Tab } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import Toolbar from "@material-ui/core/Toolbar";
-import SearchIcon from "@mui/icons-material/Search";
-import dummydata from "../../dummydata/dummydata.json";
-import MoreTemplate from "../moretemplate/moretemplate.components";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import React, { useState, useEffect, Component } from "react";
-import { NavLink, Route } from "react-router-dom";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
-import BottomNavBarPlan from "../globalcomponents/bottomnavbarplan.components";
-import { Switch } from "@mui/material";
-import ViewTemplate from "../viewtemplate/viewtemplate.components";
-import { useParams } from "react-router-dom";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-import { Oval } from "react-loader-spinner";
+import { Loading } from "@nextui-org/react";
 import BottomNavBarTodo from "../globalcomponents/bottomnavbartodo.components";
 import Sheet from "react-modal-sheet";
 import { useNavigate } from "react-router-dom";
@@ -78,8 +67,10 @@ function UseTemplate() {
           elevation={0}
           style={{ background: "white", width: "100vw" }}
         >
-          <Toolbar style={{ justifyContent: "center" }}>
-            {/*  <div style={{width: '40px'}}></div>*/}
+          <Toolbar style={{ justifyContent: "space-between" }}>
+            <Link to="../main">
+              <ArrowBackIosIcon style={{ color: "black" }} />
+            </Link>
             <Typography
               edge="end"
               variant="h6"
@@ -87,25 +78,9 @@ function UseTemplate() {
                 marginLeft: "0",
               }}
             >
-              <div
-                className="title-title"
-                style={{
-                  fontFamily: "PretendardMedium",
-                  fontSize: "20px",
-                  textAlign: "center",
-                  color: "black",
-                }}
-              >
-                MY PLAN
-              </div>
+              <div style={{ color: "black" }}>MY PLAN</div>
             </Typography>
-            {/*
-       <Link
-        to='../main/buytemplate'
-       >
-         <FavoriteBorderIcon style={{color:"grey"}}/>
-       </Link>
-       */}
+            <div style={{ width: "40px" }}></div>
           </Toolbar>
         </AppBar>
         <div
@@ -116,12 +91,7 @@ function UseTemplate() {
             marginRight: "auto",
           }}
         >
-          <Oval
-            color="#7965f4"
-            height="40px"
-            width="40px"
-            justifyContent="true"
-          />
+          <Loading />
         </div>
         <BottomNavBarTodo />
         <div
@@ -165,10 +135,10 @@ function UseTemplate() {
         style={{ marginTop: "8px", fontSize: "16px", fontWeight: "bold" }}
       >
         <Link
-          style={{ border: "1px solid #D3d3d3" }}
           to="../main/buytemplate"
           className="main-growth"
           style={{
+            border: "1px solid #D3d3d3",
             width: "70px",
             height: "35px",
             display: "flex",
@@ -186,10 +156,10 @@ function UseTemplate() {
         </Link>
         <div style={{ width: "3vw" }}></div>
         <Link
-          style={{ border: "1px solid #D3d3d3" }}
           to="../main/usetemplate"
           className="main-growth"
           style={{
+            border: "1px solid #D3d3d3",
             width: "70px",
             height: "35px",
             display: "flex",
