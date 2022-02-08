@@ -88,7 +88,6 @@ function TodoMy() {
           top: 0,
           zIndex: 2,
           backgroundColor: "#fbfbfb",
-          width: "100vw",
           height: "100px",
         }}
       >
