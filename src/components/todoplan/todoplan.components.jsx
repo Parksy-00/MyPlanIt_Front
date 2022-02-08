@@ -84,9 +84,8 @@ function TodoPlan() {
         style={{
           position: "fixed",
           top: 0,
-          zIndex: 2,
+          zIndex: 999,
           backgroundColor: "#fbfbfb",
-          width: "100vw",
           height: "110px",
         }}
       >
