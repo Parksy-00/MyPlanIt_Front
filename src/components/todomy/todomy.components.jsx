@@ -1,30 +1,28 @@
 import { Link } from "react-router-dom";
-import BottomNavBar from "../globalcomponents/bottomnavbartodo.components";
 import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-import { v4 as uuidv4 } from "uuid";
 import BottomNavBarTodo from "../globalcomponents/bottomnavbartodo.components";
 import DateFnsUtils from "@date-io/date-fns";
 import { MuiPickersUtilsProvider, DatePicker } from "@material-ui/pickers";
 import { ko } from "date-fns/locale";
 import { Checkbox, Card, Button } from "antd";
 import axios from "axios";
-import { Cookies } from "react-cookies";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import Fab from "@mui/material/Fab";
-import AddIcon from "@mui/icons-material/Add";
 import Sheet from "react-modal-sheet";
 import { Input, Switch } from "antd";
 import "./todomy.components.css";
-import { NavLink, Route } from "react-router-dom";
+import { Oval } from "react-loader-spinner";
 import { PlusOutlined } from "@ant-design/icons";
 
 function TodoMy() {
   let navigate = useNavigate();
   const [update, setUpdate] = useState(false);
-  const [users, setUsers] = useState([]);
   const [todo, setTodo] = useState([]);
-  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(
+    sessionStorage.getItem("date")
+      ? new Date(sessionStorage.getItem("date"))
+      : new Date()
+  );
   const [isOpen, setOpen] = React.useState(false);
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState();
@@ -32,7 +30,10 @@ function TodoMy() {
   const [edit, setEdit] = useState(false);
   const [delay, setDelay] = useState([]);
   const handleDateChange = (date) => {
-    setSelectedDate(date);
+    sessionStorage.setItem("date", date);
+    setSelectedDate(new Date(sessionStorage.getItem("date")));
+    console.log(date);
+    console.log(new Date(sessionStorage.getItem("date")));
   };
   let accessToken = sessionStorage.getItem("token");
 
@@ -53,7 +54,6 @@ function TodoMy() {
         }
       );
       setData(response.data.personal_todos);
-      setUsers(response.data.personal_todos);
     } catch (e) {
       setError(e);
     }
@@ -64,7 +64,20 @@ function TodoMy() {
     setEdit(false);
     setDelay([]);
   }, [selectedDate, update]);
-  if (loading) return <div></div>;
+  if (loading)
+    return (
+      <div
+        style={{
+          width: "100vw",
+          height: "100vh",
+          backgroundColor: "gray",
+          zIndex: 100000,
+        }}
+      >
+        <Oval color="#7965f4" height="40px" width="40px" />
+        <BottomNavBarTodo />
+      </div>
+    );
   if (error) return <div>에러가 발생했습니다</div>;
   return (
     <div className="container">
@@ -169,10 +182,10 @@ function TodoMy() {
           </Link>
           <div style={{ width: 15 }}></div>
           <Link
-            style={{ border: "1px solid #D3d3d3" }}
             to="../main/todomy"
             className="main-growth-button"
             style={{
+              border: "1px solid #D3d3d3",
               width: 25,
               height: "20px",
               display: "flex",
@@ -260,29 +273,36 @@ function TodoMy() {
                     checked={item["finish_flag"]}
                     onChange={async (e) => {
                       if (e.target.checked) {
-                        axios.post(
-                          `https://myplanit.link/todos/my/${item["id"]}/check`,
-                          { token: `Bearer ${accessToken}` },
-                          {
-                            headers: {
-                              "Content-Type": "application/json",
-                              Authorization: `Bearer ${accessToken}`,
-                            },
-                          }
-                        );
+                        axios
+                          .post(
+                            `https://myplanit.link/todos/my/${item["id"]}/check`,
+                            { token: `Bearer ${accessToken}` },
+                            {
+                              headers: {
+                                "Content-Type": "application/json",
+                                Authorization: `Bearer ${accessToken}`,
+                              },
+                            }
+                          )
+                          .then(() => {
+                            setUpdate(!update);
+                          });
                       } else {
-                        axios.post(
-                          `https://myplanit.link/todos/my/${item["id"]}/check`,
-                          { token: `Bearer ${accessToken}` },
-                          {
-                            headers: {
-                              "Content-Type": "application/json",
-                              Authorization: `Bearer ${accessToken}`,
-                            },
-                          }
-                        );
+                        axios
+                          .post(
+                            `https://myplanit.link/todos/my/${item["id"]}/check`,
+                            { token: `Bearer ${accessToken}` },
+                            {
+                              headers: {
+                                "Content-Type": "application/json",
+                                Authorization: `Bearer ${accessToken}`,
+                              },
+                            }
+                          )
+                          .then(() => {
+                            setUpdate(!update);
+                          });
                       }
-                      setUpdate(!update);
                     }}
                   >
                     <span
@@ -346,7 +366,6 @@ function TodoMy() {
                       marginLeft: 0,
                       marginTop: 14,
                     }}
-                    checked={false}
                     onChange={() => {
                       if (delay.includes(item["id"])) {
                         let temp = [...delay];

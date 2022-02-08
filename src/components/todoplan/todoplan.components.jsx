@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import BottomNavBar from "../globalcomponents/bottomnavbartodo.components";
 import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect, useLayoutEffect } from "react";
 import BottomNavBarTodo from "../globalcomponents/bottomnavbartodo.components";
@@ -10,18 +9,20 @@ import { Checkbox, Card, Button } from "antd";
 import "./todoplan.components.css";
 import axios from "axios";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { Oval } from "react-loader-spinner";
 
 function TodoPlan() {
   let accessToken = sessionStorage.getItem("token");
   const [update, setUpdate] = useState(false);
-  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(
+    sessionStorage.getItem("date")
+      ? new Date(sessionStorage.getItem("date"))
+      : new Date()
+  );
   const [data, setData] = useState();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [edit, setEdit] = useState(false);
   const [delay, setDelay] = useState([]);
-  accessToken = sessionStorage.getItem("token");
 
   const fetchData = async () => {
     try {
@@ -41,6 +42,7 @@ function TodoPlan() {
       );
       setData(Object.entries(response.data));
     } catch (e) {
+      console.log(e);
       setError(e);
     }
   };
@@ -54,22 +56,12 @@ function TodoPlan() {
   let navigate = useNavigate();
 
   const handleDateChange = (date) => {
-    setSelectedDate(date);
+    sessionStorage.setItem("date", date);
+    setSelectedDate(new Date(sessionStorage.getItem("date")));
+    console.log(date);
+    console.log(new Date(sessionStorage.getItem("date")));
   };
-  if (loading)
-    return (
-      <div
-        style={{
-          width: "100vw",
-          height: "100vh",
-          backgroundColor: "gray",
-          zIndex: 100000,
-        }}
-      >
-        <Oval color="#7965f4" height="40px" width="40px" />
-        <BottomNavBarTodo />
-      </div>
-    );
+
   if (error) return <div>에러가 발생했습니다</div>;
   if (!data) return null;
   return (
@@ -177,10 +169,10 @@ function TodoPlan() {
           </Link>
           <div style={{ width: 15 }}></div>
           <Link
-            style={{ border: "1px solid #D3d3d3" }}
             to="../main/todomy"
             className="main-growth-button"
             style={{
+              border: "1px solid #D3d3d3",
               width: 42,
               height: "17px",
               display: "flex",
@@ -314,29 +306,36 @@ function TodoPlan() {
                             checked={item["finish_flag"]}
                             onChange={async (e) => {
                               if (e.target.checked) {
-                                axios.post(
-                                  `https://myplanit.link/todos/plan/${item["plan_id"]}/${item["id"]}/check`,
-                                  { token: `Bearer ${accessToken}` },
-                                  {
-                                    headers: {
-                                      "Content-Type": "application/json",
-                                      Authorization: `Bearer ${accessToken}`,
-                                    },
-                                  }
-                                );
+                                axios
+                                  .post(
+                                    `https://myplanit.link/todos/plan/${item["plan_id"]}/${item["id"]}/check`,
+                                    { token: `Bearer ${accessToken}` },
+                                    {
+                                      headers: {
+                                        "Content-Type": "application/json",
+                                        Authorization: `Bearer ${accessToken}`,
+                                      },
+                                    }
+                                  )
+                                  .then(() => {
+                                    setUpdate(!update);
+                                  });
                               } else {
-                                axios.post(
-                                  `https://myplanit.link/todos/plan/${item["plan_id"]}/${item["id"]}/check`,
-                                  { token: `Bearer ${accessToken}` },
-                                  {
-                                    headers: {
-                                      "Content-Type": "application/json",
-                                      Authorization: `Bearer ${accessToken}`,
-                                    },
-                                  }
-                                );
+                                axios
+                                  .post(
+                                    `https://myplanit.link/todos/plan/${item["plan_id"]}/${item["id"]}/check`,
+                                    { token: `Bearer ${accessToken}` },
+                                    {
+                                      headers: {
+                                        "Content-Type": "application/json",
+                                        Authorization: `Bearer ${accessToken}`,
+                                      },
+                                    }
+                                  )
+                                  .then(() => {
+                                    setUpdate(!update);
+                                  });
                               }
-                              setUpdate(!update);
                             }}
                           >
                             <span
