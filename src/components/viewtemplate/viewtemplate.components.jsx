@@ -4,7 +4,6 @@ import BottomNavBar from "../globalcomponents/bottomnavbartodo.components";
 import { AppBar, Tabs, Tab } from "@material-ui/core";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import dummydata from "../../dummydata/dummydata.json";
 import React, { useState, useEffect, Component } from "react";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";

@@ -9,6 +9,7 @@ import { Checkbox, Card, Button } from "antd";
 import "./todoplan.components.css";
 import axios from "axios";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { Oval } from "react-loader-spinner";
 
 function TodoPlan() {
   let accessToken = sessionStorage.getItem("token");
@@ -26,24 +27,27 @@ function TodoPlan() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(
-        `https://myplanit.link/todos/plan/${selectedDate.getFullYear()}-${(
-          "0" +
-          (selectedDate.getMonth() + 1)
-        ).slice(-2)}-${("0" + selectedDate.getDate()).slice(-2)}`,
-        {
-          Authorization: `Bearer ${accessToken}`,
-          withCredentials: true,
-          headers: {
-            "Content-Type": "application/json",
+      await axios
+        .get(
+          `https://myplanit.link/todos/plan/${selectedDate.getFullYear()}-${(
+            "0" +
+            (selectedDate.getMonth() + 1)
+          ).slice(-2)}-${("0" + selectedDate.getDate()).slice(-2)}`,
+          {
             Authorization: `Bearer ${accessToken}`,
-          },
-        }
-      );
-      setData(Object.entries(response.data));
+            withCredentials: true,
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${accessToken}`,
+            },
+          }
+        )
+        .then((response) => {
+          setData(Object.entries(response.data));
+        });
     } catch (e) {
-      console.log(e);
       setError(e);
+      console.log(e);
     }
   };
 
@@ -58,12 +62,22 @@ function TodoPlan() {
   const handleDateChange = (date) => {
     sessionStorage.setItem("date", date);
     setSelectedDate(new Date(sessionStorage.getItem("date")));
-    console.log(date);
-    console.log(new Date(sessionStorage.getItem("date")));
   };
-
+  if (loading)
+    return (
+      <div
+        style={{
+          width: "100vw",
+          height: "100vh",
+          backgroundColor: "gray",
+          zIndex: 100000,
+        }}
+      >
+        <Oval color="#7965f4" height="40px" width="40px" />
+        <BottomNavBarTodo />
+      </div>
+    );
   if (error) return <div>에러가 발생했습니다</div>;
-  if (!data) return null;
   return (
     <div className="container">
       <div
@@ -147,7 +161,7 @@ function TodoPlan() {
           }}
         >
           <Link
-            to="../main"
+            to="../main/todoplan"
             className="main-routine-button"
             style={{
               width: 42,
@@ -242,7 +256,7 @@ function TodoPlan() {
           fontFamily: "Pretendard-SemiBold",
         }}
       >
-        {data.length > 0 ? (
+        {data?.length ? (
           data.map((plan, i) => {
             let title = plan[0];
             if (title.length > 15) {
@@ -357,7 +371,7 @@ function TodoPlan() {
                                 }}
                               >
                                 <img
-                                  src="images/detail.png"
+                                  src="/images/detail.png"
                                   style={{
                                     width: 6,
                                     marginLeft: "auto",
@@ -400,7 +414,7 @@ function TodoPlan() {
                                 }}
                               >
                                 <img
-                                  src="images/detail.png"
+                                  src="/images/detail.png"
                                   style={{
                                     width: 6,
                                   }}
@@ -439,7 +453,7 @@ function TodoPlan() {
                                 }}
                               >
                                 <img
-                                  src="images/detail.png"
+                                  src="/images/detail.png"
                                   style={{
                                     width: 6,
                                   }}

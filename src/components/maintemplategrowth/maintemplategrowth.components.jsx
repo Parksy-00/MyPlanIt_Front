@@ -6,8 +6,6 @@ import { AppBar, Tabs, Tab } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import Toolbar from "@material-ui/core/Toolbar";
 import SearchIcon from "@mui/icons-material/Search";
-import dummydata from "../../dummydata/dummydata.json";
-import MoreTemplate from "../moretemplate/moretemplate.components";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import React, { useState, useEffect, Component } from "react";
@@ -22,10 +20,6 @@ import { Oval } from "react-loader-spinner";
 
 function MainTemplateGrowth() {
   let navigate = useNavigate();
-  const categories = [{ title: "일주일을 알차게" }, { title: "건강한 몸" }];
-  const renderCategories = categories.map((categories) => {
-    return <MoreTemplate categories={categories} />;
-  });
   const [users, setUsers] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -171,10 +165,10 @@ function MainTemplateGrowth() {
         </Link>
         <div style={{ width: "5vw" }}></div>
         <Link
-          style={{ border: "1px solid #Dedede" }}
           to="../main/maintemplategrowth"
           className="growth-button"
           style={{
+            border: "1px solid #Dedede",
             width: "60px",
             height: "35px",
             display: "flex",
