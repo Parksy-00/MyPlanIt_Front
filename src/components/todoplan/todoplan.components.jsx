@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import BottomNavBar from "../globalcomponents/bottomnavbartodo.components";
 import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect, useLayoutEffect } from "react";
 import BottomNavBarTodo from "../globalcomponents/bottomnavbartodo.components";
@@ -15,33 +14,40 @@ import { Oval } from "react-loader-spinner";
 function TodoPlan() {
   let accessToken = sessionStorage.getItem("token");
   const [update, setUpdate] = useState(false);
-  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(
+    sessionStorage.getItem("date")
+      ? new Date(sessionStorage.getItem("date"))
+      : new Date()
+  );
   const [data, setData] = useState();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [edit, setEdit] = useState(false);
   const [delay, setDelay] = useState([]);
-  accessToken = sessionStorage.getItem("token");
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(
-        `https://myplanit.link/todos/plan/${selectedDate.getFullYear()}-${(
-          "0" +
-          (selectedDate.getMonth() + 1)
-        ).slice(-2)}-${("0" + selectedDate.getDate()).slice(-2)}`,
-        {
-          Authorization: `Bearer ${accessToken}`,
-          withCredentials: true,
-          headers: {
-            "Content-Type": "application/json",
+      await axios
+        .get(
+          `https://myplanit.link/todos/plan/${selectedDate.getFullYear()}-${(
+            "0" +
+            (selectedDate.getMonth() + 1)
+          ).slice(-2)}-${("0" + selectedDate.getDate()).slice(-2)}`,
+          {
             Authorization: `Bearer ${accessToken}`,
-          },
-        }
-      );
-      setData(Object.entries(response.data));
+            withCredentials: true,
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${accessToken}`,
+            },
+          }
+        )
+        .then((response) => {
+          setData(Object.entries(response.data));
+        });
     } catch (e) {
       setError(e);
+      console.log(e);
     }
   };
 
@@ -54,7 +60,8 @@ function TodoPlan() {
   let navigate = useNavigate();
 
   const handleDateChange = (date) => {
-    setSelectedDate(date);
+    sessionStorage.setItem("date", date);
+    setSelectedDate(new Date(sessionStorage.getItem("date")));
   };
   if (loading)
     return (
@@ -71,16 +78,14 @@ function TodoPlan() {
       </div>
     );
   if (error) return <div>에러가 발생했습니다</div>;
-  if (!data) return null;
   return (
     <div className="container">
       <div
         style={{
           position: "fixed",
           top: 0,
-          zIndex: 2,
+          zIndex: 999,
           backgroundColor: "#fbfbfb",
-          width: "100vw",
           height: "110px",
         }}
       >
@@ -155,7 +160,7 @@ function TodoPlan() {
           }}
         >
           <Link
-            to="../main"
+            to="../main/todoplan"
             className="main-routine-button"
             style={{
               width: 42,
@@ -177,10 +182,10 @@ function TodoPlan() {
           </Link>
           <div style={{ width: 15 }}></div>
           <Link
-            style={{ border: "1px solid #D3d3d3" }}
             to="../main/todomy"
             className="main-growth-button"
             style={{
+              border: "1px solid #D3d3d3",
               width: 42,
               height: "17px",
               display: "flex",
@@ -250,7 +255,7 @@ function TodoPlan() {
           fontFamily: "Pretendard-SemiBold",
         }}
       >
-        {data.length > 0 ? (
+        {data?.length ? (
           data.map((plan, i) => {
             let title = plan[0];
             if (title.length > 15) {
@@ -314,29 +319,36 @@ function TodoPlan() {
                             checked={item["finish_flag"]}
                             onChange={async (e) => {
                               if (e.target.checked) {
-                                axios.post(
-                                  `https://myplanit.link/todos/plan/${item["plan_id"]}/${item["id"]}/check`,
-                                  { token: `Bearer ${accessToken}` },
-                                  {
-                                    headers: {
-                                      "Content-Type": "application/json",
-                                      Authorization: `Bearer ${accessToken}`,
-                                    },
-                                  }
-                                );
+                                axios
+                                  .post(
+                                    `https://myplanit.link/todos/plan/${item["plan_id"]}/${item["id"]}/check`,
+                                    { token: `Bearer ${accessToken}` },
+                                    {
+                                      headers: {
+                                        "Content-Type": "application/json",
+                                        Authorization: `Bearer ${accessToken}`,
+                                      },
+                                    }
+                                  )
+                                  .then(() => {
+                                    setUpdate(!update);
+                                  });
                               } else {
-                                axios.post(
-                                  `https://myplanit.link/todos/plan/${item["plan_id"]}/${item["id"]}/check`,
-                                  { token: `Bearer ${accessToken}` },
-                                  {
-                                    headers: {
-                                      "Content-Type": "application/json",
-                                      Authorization: `Bearer ${accessToken}`,
-                                    },
-                                  }
-                                );
+                                axios
+                                  .post(
+                                    `https://myplanit.link/todos/plan/${item["plan_id"]}/${item["id"]}/check`,
+                                    { token: `Bearer ${accessToken}` },
+                                    {
+                                      headers: {
+                                        "Content-Type": "application/json",
+                                        Authorization: `Bearer ${accessToken}`,
+                                      },
+                                    }
+                                  )
+                                  .then(() => {
+                                    setUpdate(!update);
+                                  });
                               }
-                              setUpdate(!update);
                             }}
                           >
                             <span
@@ -358,7 +370,7 @@ function TodoPlan() {
                                 }}
                               >
                                 <img
-                                  src="images/detail.png"
+                                  src="/images/detail.png"
                                   style={{
                                     width: 6,
                                     marginLeft: "auto",
@@ -401,7 +413,7 @@ function TodoPlan() {
                                 }}
                               >
                                 <img
-                                  src="images/detail.png"
+                                  src="/images/detail.png"
                                   style={{
                                     width: 6,
                                   }}
@@ -440,7 +452,7 @@ function TodoPlan() {
                                 }}
                               >
                                 <img
-                                  src="images/detail.png"
+                                  src="/images/detail.png"
                                   style={{
                                     width: 6,
                                   }}

@@ -13,7 +13,6 @@ import WishTemplate from "./components/wishtemplate/wishtemplate.components";
 import MainTemplateRoutine from "./components/maintemplateroutine/maintemplateroutine.components";
 import ViewTemplate from "./components/viewtemplate/viewtemplate.components";
 import MainTemplateGrowth from "./components/maintemplategrowth/maintemplategrowth.components";
-import MoreTemplate from "./components/moretemplate/moretemplate.components";
 import SearchTemplate from "./components/searchtemplate/searchtemplate.components";
 import TodoPlan from "./components/todoplan/todoplan.components";
 import TodoMy from "./components/todomy/todomy.components";
@@ -122,7 +121,6 @@ function App() {
           <Route path="/onboard1" element={<Onboard1 />} />
           <Route path="/onboard2" element={<Onboard2 />} />
           <Route path="/onboard3" element={<Onboard3 />} />
-          <Route path="/main" element={<TodoPlan />} />
           <Route path="/main/todoplan" element={<TodoPlan />} />
           <Route
             path="/main/maintemplateroutine"
@@ -134,11 +132,6 @@ function App() {
           />
           <Route path="/main/wishtemplate" element={<WishTemplate />} />
           <Route path="/main/viewtemplate/:id" element={<ViewTemplate />} />
-          <Route
-            path="/main/maintemplateroutine/moretemplate"
-            element={<MoreTemplate />}
-          />
-          <Route path="/main/moretemplate" element={<MoreTemplate />} />
           <Route path="/main/searchtemplate" element={<SearchTemplate />} />
           <Route path="/main/todomy" element={<TodoMy />} />
 
