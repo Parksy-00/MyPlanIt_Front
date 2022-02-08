@@ -32,28 +32,29 @@ function TodoMy() {
   const handleDateChange = (date) => {
     sessionStorage.setItem("date", date);
     setSelectedDate(new Date(sessionStorage.getItem("date")));
-    console.log(date);
-    console.log(new Date(sessionStorage.getItem("date")));
   };
   let accessToken = sessionStorage.getItem("token");
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(
-        `https://myplanit.link/todos/my/${selectedDate.getFullYear()}-${(
-          "0" +
-          (selectedDate.getMonth() + 1)
-        ).slice(-2)}-${("0" + selectedDate.getDate()).slice(-2)}`,
-        {
-          Authorization: `Bearer ${accessToken}`,
-          withCredentials: true,
-          headers: {
-            "Content-Type": "application/json",
+      await axios
+        .get(
+          `https://myplanit.link/todos/my/${selectedDate.getFullYear()}-${(
+            "0" +
+            (selectedDate.getMonth() + 1)
+          ).slice(-2)}-${("0" + selectedDate.getDate()).slice(-2)}`,
+          {
             Authorization: `Bearer ${accessToken}`,
-          },
-        }
-      );
-      setData(response.data.personal_todos);
+            withCredentials: true,
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${accessToken}`,
+            },
+          }
+        )
+        .then((response) => {
+          setData(response.data.personal_todos);
+        });
     } catch (e) {
       setError(e);
     }
@@ -162,7 +163,7 @@ function TodoMy() {
           }}
         >
           <Link
-            to="../main"
+            to="../main/todoplan"
             className="main-routine-button"
             style={{
               width: 42,
@@ -251,7 +252,14 @@ function TodoMy() {
         </span>
       </div>
       <div style={{ height: "20px" }}></div>
-      <div style={{ position: "fixed", top: "100px" }}>
+      <div
+        style={{
+          position: "fixed",
+          top: "100px",
+          overflowY: "scroll",
+          height: "calc(100vh - 200px)",
+        }}
+      >
         {data?.length ? (
           !edit ? (
             data.map((item, i) => {
@@ -450,6 +458,7 @@ function TodoMy() {
                 );
                 setUpdate(!update);
                 setOpen(false);
+                setTodo("");
               }}
               className="todo-add-button"
               style={{

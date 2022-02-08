@@ -30,7 +30,7 @@ function Login() {
         sessionStorage.setItem("token", response.data.token);
         sessionStorage.setItem("email", response.data.email);
         sessionStorage.setItem("password", response.data.password);
-        navigate("/main");
+        navigate("/main/todoplan");
       })
       .catch((error) => {
         if (error.response.status === 400) {
