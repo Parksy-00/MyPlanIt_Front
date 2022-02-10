@@ -52,7 +52,7 @@ function ViewTemplate(props) {
         ),
       ])
       .then((response) => {
-        navigate("/main");
+        navigate("/main/todoplan");
       });
     setOpen(false);
   };

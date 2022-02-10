@@ -417,7 +417,7 @@ function UseTemplate() {
                       }
                     )
                     .then((response) => {
-                      navigate("/main");
+                      navigate("/main/todoplan");
                     });
                 }}
                 style={{
