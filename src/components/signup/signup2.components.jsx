@@ -1,15 +1,12 @@
 import { useState } from "react";
 import axios from "axios";
 import "./signup2.components.css";
-import { Button } from "@nextui-org/react";
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-import CheckIcon from "@mui/icons-material/Check";
-import { Input, Switch } from "antd";
-import { List, Typography, Divider } from "antd";
+import { Input } from "antd";
 import { useNavigate } from "react-router-dom";
 
-function Signup2({ email, password, realname, emailAgree, snsAgree }) {
+function Signup2({ email, password, name, emailAgree, snsAgree }) {
   const [username, setUsername] = useState("");
+  const navigate = useNavigate();
 
   function attemptSignup() {
     axios
@@ -18,7 +15,7 @@ function Signup2({ email, password, realname, emailAgree, snsAgree }) {
         {
           email: email,
           password: password,
-          realname: realname,
+          realname: name,
           username: username,
           email_agree: emailAgree,
           sns_agree: snsAgree,
@@ -28,6 +25,14 @@ function Signup2({ email, password, realname, emailAgree, snsAgree }) {
         }
       )
       .then(function (response) {
+        console.log({
+          email: email,
+          password: password,
+          realname: name,
+          username: username,
+          email_agree: emailAgree,
+          sns_agree: snsAgree,
+        })
         if (response.status === 201) {
           sessionStorage.setItem("username", username);
           navigate("/onboard1");
@@ -43,27 +48,8 @@ function Signup2({ email, password, realname, emailAgree, snsAgree }) {
       });
   }
 
-  let navigate = useNavigate();
   return (
     <>
-      <div className="header">
-        <ArrowBackIosIcon
-          className="back-arrow"
-          onClick={() => {
-            navigate("/signup1");
-          }}
-        />
-        <span
-          className="title"
-          style={{
-            fontFamily: "PretendardMedium",
-            fontSize: "18px",
-            color: "black",
-          }}
-        >
-          회원가입 (2/2)
-        </span>
-      </div>
       <p
         className="text1"
         style={{
@@ -99,17 +85,14 @@ function Signup2({ email, password, realname, emailAgree, snsAgree }) {
         </p>
         <Input
           id="inputID"
-          className="nickname-input"
+          className="nickname-input inputText"
           size="large"
           placeholder="plan-it"
           onChange={(e) => {
             setUsername(e.target.value);
           }}
           style={{
-            width: "327px",
             marginBottom: "200px",
-            borderRadius: "5px",
-            borderColor: "#EDEDED",
           }}
         />
       </div>

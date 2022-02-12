@@ -20,32 +20,35 @@ import TodoMy from "./components/todomy/todomy.components";
 import Detail from "./components/todotest/detail.todotest.components";
 import BuyTemplate from "./components/wishtemplate/buytemplate.components";
 import UseTemplate from "./components/wishtemplate/usetemplate.components";
+import SignUp from "./components/signup/signUp.components";
 
 function App() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [realname, setRealname] = useState("");
-  const [emailAgree, setEmailAgree] = useState(0);
-  const [snsAgree, setSnsAgree] = useState(0);
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [realname, setRealname] = useState("");
+  // const [emailAgree, setEmailAgree] = useState(0);
+  // const [snsAgree, setSnsAgree] = useState(0);
 
-  const [service1, setService1] = useState(false);
-  const [service2, setService2] = useState(false);
-  const [service3, setService3] = useState(false);
-  const [service4, setService4] = useState(false);
-  const [service5, setService5] = useState(false);
+  // const [service1, setService1] = useState(false);
+  // const [service2, setService2] = useState(false);
+  // const [service3, setService3] = useState(false);
+  // const [service4, setService4] = useState(false);
+  // const [service5, setService5] = useState(false);
 
-  const [iconStyle1, setIconStyle1] = useState("disabled");
-  const [iconStyle2, setIconStyle2] = useState("disabled");
-  const [iconStyle3, setIconStyle3] = useState("disabled");
-  const [iconStyle4, setIconStyle4] = useState("disabled");
-  const [iconStyle5, setIconStyle5] = useState("disabled");
+  // const [iconStyle1, setIconStyle1] = useState("disabled");
+  // const [iconStyle2, setIconStyle2] = useState("disabled");
+  // const [iconStyle3, setIconStyle3] = useState("disabled");
+  // const [iconStyle4, setIconStyle4] = useState("disabled");
+  // const [iconStyle5, setIconStyle5] = useState("disabled");
 
   return (
     <div id="main-container">
       <div className="App">
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route
+          <Route path="/signup" element={<SignUp />} />
+
+          {/* <Route
             path="/signup1"
             element={
               <Signup1
@@ -117,7 +120,7 @@ function App() {
                 snsAgree={snsAgree}
               />
             }
-          />
+          /> */}
           <Route path="/onboard1" element={<Onboard1 />} />
           <Route path="/onboard2" element={<Onboard2 />} />
           <Route path="/onboard3" element={<Onboard3 />} />
@@ -138,6 +141,7 @@ function App() {
           <Route path="todo/detail/:id" element={<Detail />} />
           <Route path="/main/buytemplate" element={<BuyTemplate />} />
           <Route path="/main/usetemplate" element={<UseTemplate />} />
+
         </Routes>
       </div>
     </div>

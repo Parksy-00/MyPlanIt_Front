@@ -3,3 +3,26 @@
   padding-top: 10px !important;
   padding-left: 20px !important;
 }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "KoreanDefault";
+  background-color: #fbfbfb;
+  position:relative;
+}
+
+.serviceDetail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  background-color: white;
+  width: 100%;
+  height:100%;
+  left: 0;
+}

@@ -21,6 +21,7 @@
 .disabled {
   margin-right: 10px;
   opacity: 0.5;
+  color: #CECECE;
 }
 #inputID::placeholder{
   font-size: 14px;
@@ -29,4 +30,31 @@
 #inputID{
   border-color: #EDEDED;
   border-width: 1px;
+}
+
+.listItem {
+  display: "flex";
+  justify-content: "flex-start";
+  margin-bottom: 0;
+}
+
+.listItem:last-child, .listItem:first-child {
+  margin-bottom: 10px;
+}
+
+.inputLabel {
+  margin-bottom: 8px;
+  margin-left: 10px;
+  font-family: "PretendardMedium";
+  font-size: 14px;
+}
+
+.inputText {
+  width: 327px;
+  height: 44px;
+  margin-bottom: 5px;
+  border-radius: 4px;
+  border-color: #EDEDED;
+  font-family: "PretendardRegular";
+  font-size: 14px;
 }
