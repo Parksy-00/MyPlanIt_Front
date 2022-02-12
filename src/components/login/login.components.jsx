@@ -126,7 +126,7 @@ function Login() {
               fontSize: "12px",
               color: "#000000",
             }}
-            to="/signup1"
+            to="/signup"
           >
             회원가입하기
           </Link>
