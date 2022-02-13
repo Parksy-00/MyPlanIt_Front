@@ -10,6 +10,7 @@ function Login() {
   let navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [autoLogin, setAutoLogin] = useState(false);
 
   function attemptLogin() {
     axios
@@ -81,14 +82,19 @@ function Login() {
         }}
       />
       <span className="switch">
-        <Switch />
+        <Switch 
+          size="small" 
+          checked={ autoLogin } 
+          onClick={() => setAutoLogin(!autoLogin)}
+        />
         <p
           style={{
             marginTop: "0px",
             marginBottom: "0px",
             marginLeft: "10px",
-            color: "#C4C4C4",
+            color: autoLogin? "#8977f7": "#C4C4C4",
             fontSize: "14.5px",
+            fontFamily: "PretendardRegular"
           }}
         >
           자동 로그인
