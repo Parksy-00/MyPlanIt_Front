@@ -22,7 +22,7 @@ function ServiceDetail({
           onClick={() => {
             setShowDetail(false);
           }}
-          style={{ marginRight: "120px", marginBottom: "10px" }}
+          style={{ marginBottom: "10px" }}
         />
         <span className="title" style={{ marginRight: "20px" }}>
           약관 동의
@@ -30,7 +30,7 @@ function ServiceDetail({
       </div>
 
       <Card style={{ width: 327, height: 48 }}>
-        <span style={{ display: "flex" }}>
+        <span style={{ display: "flex", marginTop: "10px" }}>
           <CheckIcon
             className={iconStyle(service[1])}
             onClick={() => {
@@ -42,7 +42,7 @@ function ServiceDetail({
       </Card>
 
       <Card style={{ width: 327, height: 170, marginTop: 9 }}>
-        <span style={{ display: "flex" }}>
+        <span style={{ display: "flex", marginTop:"8px" }}>
           <CheckIcon
             className={iconStyle(service[2])}
             onClick={() => {
@@ -64,8 +64,8 @@ function ServiceDetail({
         </span>
       </Card>
 
-      <Card style={{ width: 327, height: 170, marginTop: 9 }}>
-        <span style={{ display: "flex" }}>
+      <Card style={{ width: 327, height: 180, marginTop: 9 }}>
+        <span style={{ display: "flex", marginTop:"8px" }}>
           <CheckIcon
             className={iconStyle(service[3])}
             onClick={() => {
@@ -91,7 +91,7 @@ function ServiceDetail({
       </Card>
 
       <Card style={{ width: 327, height: 96, marginTop: 9 }}>
-        <span style={{ display: "flex" }}>
+        <span style={{ display: "flex", marginTop:"8px" }}>
           <CheckIcon
             className={iconStyle(service[4])}
             onClick={() => {
@@ -125,7 +125,7 @@ function ServiceDetail({
                 }}
               />
 
-              <p style={{ marginTop: 0, marginBottom: 0, color: "#C4C4C4" }}>
+              <p style={{ marginTop: 0, marginBottom: 0, color: "#C4C4C4", fontSize:"12px" }}>
                 이메일 수신 동의
               </p>
             </div>
@@ -145,7 +145,7 @@ function ServiceDetail({
                     }}
                     />
 
-                    <p style={{ marginTop: 0, marginBottom: 0, color: "#C4C4C4" }}>
+                    <p style={{ marginTop: 0, marginBottom: 0, color: "#C4C4C4", fontSize:"12px" }}>
                     SNS 수신 동의
                     </p>
             </div>
