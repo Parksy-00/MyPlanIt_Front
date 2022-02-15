@@ -57,7 +57,7 @@ function Detail() {
           zIndex: "20",
         }}
       >
-        <Link to="../main/todo">
+        <Link to="../main/todoplan">
           <ArrowBackIosIcon style={{ color: "#7965f4" }} />
         </Link>
       </div>

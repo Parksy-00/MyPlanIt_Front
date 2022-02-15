@@ -21,7 +21,6 @@ import Detail from "./components/todotest/detail.todotest.components";
 import BuyTemplate from "./components/wishtemplate/buytemplate.components";
 import UseTemplate from "./components/wishtemplate/usetemplate.components";
 import SignUp from "./components/signup/signUp.components";
-import Todo from "./components/todo/Todo.components";
 
 function App() {
   // const [email, setEmail] = useState("");
@@ -48,7 +47,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/main/todo" element={<Todo />} />
+
           {/* <Route
             path="/signup1"
             element={
