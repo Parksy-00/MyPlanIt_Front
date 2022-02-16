@@ -68,7 +68,7 @@ function UseTemplate() {
           style={{ background: "white", width: "100vw" }}
         >
           <Toolbar style={{ justifyContent: "space-between" }}>
-            <Link to="../main/todo">
+            <Link to="../main/todoplan">
               <ArrowBackIosIcon style={{ color: "black" }} />
             </Link>
             <Typography
@@ -115,7 +115,7 @@ function UseTemplate() {
         style={{ background: "white", width: "100vw" }}
       >
         <Toolbar style={{ justifyContent: "space-between" }}>
-          <Link to="../main/todo">
+          <Link to="../main/todoplan">
             <ArrowBackIosIcon style={{ color: "black" }} />
           </Link>
           <Typography
