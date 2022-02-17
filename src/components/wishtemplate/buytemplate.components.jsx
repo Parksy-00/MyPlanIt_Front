@@ -172,8 +172,8 @@ function BuyTemplate() {
         className="template-content"
         style={{
           overflowY: "scroll",
-          width: "inherit",
-          float: "left",
+          // width: "inherit",
+          // float: "left",
           height: "680px",
           position: "relative",
         }}
