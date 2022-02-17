@@ -13,6 +13,7 @@ import MainTemplateGrowth from "./components/maintemplategrowth/maintemplategrow
 import SearchTemplate from "./components/searchtemplate/searchtemplate.components";
 import TodoPlan from "./components/todoplan/todoplan.components";
 import TodoMy from "./components/todomy/todomy.components";
+import Todo from './components/todo/Todo.components';
 
 import Detail from "./components/todotest/detail.todotest.components";
 import BuyTemplate from "./components/wishtemplate/buytemplate.components";
@@ -31,6 +32,7 @@ function App() {
           <Route path="/onboard1" element={<Onboard1 />} />
           <Route path="/onboard2" element={<Onboard2 />} />
           <Route path="/onboard3" element={<Onboard3 />} />
+          <Route path="/main/todo" element={<Todo/>} />
           <Route path="/main/todoplan" element={<TodoPlan />} />
           <Route
             path="/main/maintemplateroutine"
