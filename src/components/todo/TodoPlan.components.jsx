@@ -16,7 +16,6 @@ function TodoPlan({
   const contentsStyle = {
     display:"flex",
     flexDirection: "column",
-    justifyContent: "center",
     alignItems: "center",
     marginTop: "110px",
     marginBottom: "90px",
