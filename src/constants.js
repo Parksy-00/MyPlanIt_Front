@@ -1,12 +1,12 @@
 const constants = {
   TODO_COLORED:
-    "https://firebasestorage.googleapis.com/v0/b/single-life-manager.appspot.com/o/ceos%20test%2Ftodo3.png?alt=media&token=31e75be2-ab09-424c-9a43-745d4316beff",
+    "/images/todo_on@2x.png",
   TODO_UNCOLORED:
-    "https://firebasestorage.googleapis.com/v0/b/single-life-manager.appspot.com/o/ceos%20test%2Ftodoc.png?alt=media&token=3f20e0e8-1b61-4c72-a99b-a2d3fe24949e",
+    "/images/todo_off@2x.png",
   PLAN_COLORED:
-    "https://firebasestorage.googleapis.com/v0/b/single-life-manager.appspot.com/o/ceos%20test%2Ftodod.png?alt=media&token=55c5a1c6-a771-4619-ae0e-fa6a674683e3",
+    "/images/planmarket_on@2x.png",
   PLAN_UNCOLORED:
-    "https://firebasestorage.googleapis.com/v0/b/single-life-manager.appspot.com/o/ceos%20test%2Ftodof.png?alt=media&token=52344e83-350a-490d-83dc-144dd547bb52",
+    "/images/planmarket_off@2x.png",
   NO_PLAN_IMG: "/images/plan.png",
   NO_TODO_IMG: "/images/my.png",
   DO_TOMORROW: "/images/next.png",

@@ -1,17 +1,13 @@
-.ant-card-body {
-  height: 50px;
-  padding-top: 10px !important;
-  padding-left: 20px !important;
-}
 
 .container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   font-family: "KoreanDefault";
   background-color: #fbfbfb;
   position:relative;
+  height: 100vh;
 }
 
 .serviceDetail {

@@ -142,7 +142,7 @@ function ViewTemplate(props) {
           aria-describedby="alert-dialog-description"
         >
           <img
-            src="https://firebasestorage.googleapis.com/v0/b/single-life-manager.appspot.com/o/ceos%20test%2Fceos_test_2.png?alt=media&token=cf050315-06f1-4ae8-8d01-a8d13a771395"
+            src="/images/celebrate.png"
             style={{
               height: "60px",
               width: "60px",
