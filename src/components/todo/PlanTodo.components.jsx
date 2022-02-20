@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { Checkbox } from "antd";
 import axios from "axios";
 import constants from "../../constants";
+import styled from 'styled-components';
 
 function PlanTodo({
   item,
@@ -41,26 +42,12 @@ function PlanTodo({
     }
   };
 
-  const detailIcon = (
-    <img
-      src={constants.DETAIL_ICON}
-      style={{
-        width: 6,
-        marginLeft: "auto",
-      }}
-    />
-  );
-
   return (
-    <Checkbox
+    <StyledCheckbox
       disabled={isChecked && edit}
       checked={edit? selected || isChecked: isChecked}
       onChange={() => (edit ? selectTodo(item) : checkTodo(item))}
-      style={{
-        marginLeft: 0,
-        marginTop: 14,
-      }}
-    >
+      >
       <span
         style={{
           display: "flex",
@@ -72,11 +59,44 @@ function PlanTodo({
           onClick={() => navigate(`/todo/detail/${item["todo_id"]}`)}
           style={{ marginLeft: "auto" }}
         >
-          {detailIcon}
+          <DetailIcon src={constants.DETAIL_ICON} />
         </span>
       </span>
-    </Checkbox>
+    </StyledCheckbox>
   );
 }
 
 export default PlanTodo;
+
+const StyledCheckbox = styled(Checkbox)`
+  width: 300px;
+  margin-top: 14px;
+  margin-left: 0 !important;
+
+  .ant-checkbox-checked .ant-checkbox-inner {
+    background-color: ${props => props.checked? "#8977f7": "#FFFFFF"};
+    border-color: #8977F7;
+  }
+
+  .ant-checkbox-checked::after {
+    border-color: #8977F7;
+  }
+
+  .ant-checkbox-wrapper:hover .ant-checkbox-inner, .ant-checkbox:hover, .ant-checkbox-input:focus + .ant-checkbox-inner {
+    border-color: #8977F7;
+  }
+
+  .ant-checkbox-disabled .ant-checkbox-inner {
+    background-color: #E1DCFE;
+    border-color: #E1DCFE !important;
+  }
+
+  .ant-checkbox-disabled.ant-checkbox-checked .ant-checkbox-inner::after {
+    border-color: #FFFFFF;
+  }
+`
+
+const DetailIcon = styled.img`
+  height: 12px;
+  margin-left: auto;
+`

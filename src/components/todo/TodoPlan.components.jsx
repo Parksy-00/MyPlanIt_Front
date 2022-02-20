@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import constants from "../../constants";
 import Plan from "./Plan.components";
+import styled from "styled-components";
 
 function TodoPlan({
   planData,
@@ -13,15 +14,6 @@ function TodoPlan({
   setDelay,
 }) {
   const navigate = useNavigate();
-  const contentsStyle = {
-    display:"flex",
-    flexDirection: "column",
-    alignItems: "center",
-    marginTop: "110px",
-    marginBottom: "90px",
-    overflowY: "scroll",
-    fontFamily: "Pretendard-SemiBold",
-  };
   const planExist = planData?.length;
   const noPlanImg = (
     <img
@@ -34,7 +26,7 @@ function TodoPlan({
   );
 
   return (
-    <div style={contentsStyle}>
+    <Container>
       {planExist
         ? planData.map((plan, i) => (
             <Plan
@@ -50,8 +42,19 @@ function TodoPlan({
             />
           ))
         : noPlanImg}
-    </div>
+    </Container>
   );
 }
 
 export default TodoPlan;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 110px;
+  margin-bottom: 90px;
+  width: 327px;
+  overflow-Y: scroll;
+  font-family: "Pretendard-SemiBold";
+`

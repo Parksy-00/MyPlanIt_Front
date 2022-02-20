@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Card, Checkbox } from "antd";
+import styled from 'styled-components';
 
 function MyTodo({
   todo,
@@ -41,19 +42,8 @@ function MyTodo({
     }
   };
   return (
-    <Card
-      style={{
-        borderRadius: 5,
-        width: 327,
-        marginTop: 9,
-        height: 52,
-      }}
-    >
-      <Checkbox
-        style={{
-          marginLeft: 0,
-          marginTop: 14,
-        }}
+    <TodoCard>
+      <StyledCheckbox
         disabled={isChecked && edit}
         checked={edit? selected || isChecked: isChecked}
         onChange={() => (edit? selectTodo(todo): checkMyTodo(todo))}
@@ -61,9 +51,50 @@ function MyTodo({
         <span style={{ marginLeft: 5, fontFamily: "Pretendard-Medium" }}>
           {todo.todo_name}
         </span>
-      </Checkbox>
-    </Card>
+      </StyledCheckbox>
+    </TodoCard>
   );
 }
 
 export default MyTodo;
+
+const TodoCard = styled.div`
+  box-sizing: border-box;
+  border: 1px solid #f0f0f0;
+  margin: 0;
+  padding: 10px 20px;
+  position: relative;
+  border-radius: 5px;
+  width: 327px;
+  height: 52px;
+  margin-top: 9px;
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+`
+
+const StyledCheckbox = styled(Checkbox)`
+  width: 300px;
+  
+  .ant-checkbox-checked .ant-checkbox-inner {
+    background-color: ${props => props.checked? "#8977f7": "#FFFFFF"};
+    border-color: #8977F7;
+  }
+
+  .ant-checkbox-checked::after {
+    border-color: #8977F7;
+  }
+
+  .ant-checkbox-wrapper:hover .ant-checkbox-inner, .ant-checkbox:hover, .ant-checkbox-input:focus + .ant-checkbox-inner {
+    border-color: #8977F7;
+  }
+
+  .ant-checkbox-disabled .ant-checkbox-inner {
+    background-color: #E1DCFE;
+    border-color: #E1DCFE !important;
+  }
+
+  .ant-checkbox-disabled.ant-checkbox-checked .ant-checkbox-inner::after {
+    border-color: #FFFFFF;
+  }
+`
