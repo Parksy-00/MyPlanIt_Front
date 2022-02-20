@@ -19,6 +19,7 @@ import Detail from "./components/todotest/detail.todotest.components";
 import BuyTemplate from "./components/wishtemplate/buytemplate.components";
 import UseTemplate from "./components/wishtemplate/usetemplate.components";
 import SignUp from "./components/signup/signUp.components";
+import SocialLogin from './components/login/SocialLogin.components';
 
 function App() {
 
@@ -27,12 +28,13 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<Login />} />
+          <Route path="/login" element={<SocialLogin/>} />
           <Route path="/signup" element={<SignUp />} />
 
           <Route path="/onboard1" element={<Onboard1 />} />
           <Route path="/onboard2" element={<Onboard2 />} />
           <Route path="/onboard3" element={<Onboard3 />} />
-          <Route path="/main/todo" element={<Todo/>} />
+          <Route path="/todo" element={<Todo/>} />
           <Route path="/main/todoplan" element={<TodoPlan />} />
           <Route
             path="/main/maintemplateroutine"
