@@ -8,7 +8,7 @@ import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import { Loading } from "@nextui-org/react";
-import BottomNavBarTodo from "../globalcomponents/bottomnavbartodo.components";
+import BottomNavBar from "../globalcomponents/BottomNavBar.components";
 import Sheet from "react-modal-sheet";
 import { useNavigate } from "react-router-dom";
 import { sortAndDeduplicateDiagnostics } from "typescript";
@@ -93,16 +93,7 @@ function UseTemplate() {
         >
           <Loading />
         </div>
-        <BottomNavBarTodo />
-        <div
-          style={{
-            height: "33px",
-            backgroundColor: "white",
-            width: "100vw",
-            position: "fixed",
-            bottom: "0px",
-          }}
-        ></div>
+        <BottomNavBar />
       </div>
     );
   if (error) return <div>에러가 발생했습니다</div>;
@@ -115,7 +106,7 @@ function UseTemplate() {
         style={{ background: "white", width: "100vw" }}
       >
         <Toolbar style={{ justifyContent: "space-between" }}>
-          <Link to="../main/todoplan">
+          <Link to="../todo">
             <ArrowBackIosIcon style={{ color: "black" }} />
           </Link>
           <Typography
@@ -437,16 +428,7 @@ function UseTemplate() {
         <div className="textbox"></div>
         <div style={{ height: "200px" }}></div>
       </ul>
-      <BottomNavBarTodo />
-      <div
-        style={{
-          height: "33px",
-          backgroundColor: "white",
-          width: "100vw",
-          position: "fixed",
-          bottom: "0px",
-        }}
-      ></div>
+      <BottomNavBar current="TODO" />
     </div>
   );
 }

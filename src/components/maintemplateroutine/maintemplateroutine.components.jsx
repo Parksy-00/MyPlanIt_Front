@@ -8,7 +8,7 @@ import React, { useState, useEffect, Component } from "react";
 import { NavLink, Route } from "react-router-dom";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
-import BottomNavBarPlan from "../globalcomponents/bottomnavbarplan.components";
+import BottomNavBar from "../globalcomponents/BottomNavBar.components";
 
 import { useParams } from "react-router-dom";
 import { Oval } from "react-loader-spinner";
@@ -90,16 +90,7 @@ function MainTemplateRoutine() {
             justifyContent="true"
           />
         </div>
-        <BottomNavBarPlan />
-        <div
-          style={{
-            height: "33px",
-            backgroundColor: "white",
-            width: "100vw",
-            position: "fixed",
-            bottom: "0px",
-          }}
-        ></div>
+        <BottomNavBar />
       </div>
     );
   if (error) return <div>에러가 발생했습니다</div>;
@@ -377,17 +368,7 @@ function MainTemplateRoutine() {
           ))}
         </ul>
       </div>
-      <BottomNavBarPlan />
-      <div
-        style={{
-          height: "33px",
-          backgroundColor: "white",
-          width: "100vw",
-          position: "fixed",
-          bottom: "0px",
-        }}
-      ></div>
-      <div style={{ height: "20px" }}></div>
+      <BottomNavBar current="PLAN"/>
     </div>
   );
 }

@@ -4,16 +4,10 @@ import { Link } from "react-router-dom";
 import constants from "../../constants";
 import styled from 'styled-components';
 
-const BottomNavBar = () => {
-  const [value, setValue] = useState(0);
-  const current = ["TODO", "PLAN"];
+const BottomNavBar = ({ current }) => {
 
   return (
       <StyledBottomNavBar
-        value={value}
-        onChange={(e, newValue) => {
-          setValue(newValue);
-        }}
         showLabels
       >
         <BottomNavigationAction
@@ -22,13 +16,13 @@ const BottomNavBar = () => {
             <>
               <img
                 src={
-                  current[value] === "TODO"
+                  current === "TODO"
                     ? constants.TODO_COLORED
                     : constants.TODO_UNCOLORED
                 }
                 height={25}
               />
-              <NavText selected={current[value] === "TODO"}>To do</NavText>
+              <NavText selected={current === "TODO"}>To do</NavText>
             </>
           }
           component={Link}
@@ -41,13 +35,13 @@ const BottomNavBar = () => {
             <>
               <img
                 src={
-                  current[value] === "PLAN"
+                  current === "PLAN"
                     ? constants.PLAN_COLORED
                     : constants.PLAN_UNCOLORED
                 }
                 height={25}
               />
-              <NavText selected={current[value] === "PLAN"}>Plan</NavText>
+              <NavText selected={current === "PLAN"}>Plan</NavText>
             </>
           }
           component={Link}

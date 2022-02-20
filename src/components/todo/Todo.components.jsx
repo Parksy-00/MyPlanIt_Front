@@ -146,7 +146,7 @@ function Todo() {
       )}
 
       {!edit ? (
-        <BottomNavBar />
+        <BottomNavBar current="TODO" />
       ) : (
         <EditFooter
           current={current}
