@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { Checkbox } from "antd";
 import axios from "axios";
 import constants from "../../constants";
-import styled from 'styled-components';
+import styled from "styled-components";
 
 function PlanTodo({
   item,
@@ -33,7 +33,7 @@ function PlanTodo({
         setUpdate(!update);
       });
   };
-  
+
   const selectTodo = (item) => {
     if (selected) {
       setDelay(delay.filter((i) => i !== item["id"]));
@@ -43,60 +43,68 @@ function PlanTodo({
   };
 
   return (
-    <StyledCheckbox
-      disabled={isChecked && edit}
-      checked={edit? selected || isChecked: isChecked}
-      onChange={() => (edit ? selectTodo(item) : checkTodo(item))}
-      >
+    <Container>
+      <StyledCheckbox
+        disabled={isChecked && edit}
+        checked={edit ? selected || isChecked : isChecked}
+        onChange={() => (edit ? selectTodo(item) : checkTodo(item))}
+      />
       <span
         style={{
           display: "flex",
           width: "255px",
+          margin: "0px 8px",
+          fontSize: 14,
+          alignItems: "center"
         }}
+        onClick={() => navigate(`/todo/detail/${item["todo_id"]}`)}
       >
         <span style={{ fontFamily: "Pretendard-Medium" }}>{todoName}</span>
-        <span
-          onClick={() => navigate(`/todo/detail/${item["todo_id"]}`)}
-          style={{ marginLeft: "auto" }}
-        >
-          <DetailIcon src={constants.DETAIL_ICON} />
-        </span>
+        <DetailIcon src={constants.DETAIL_ICON} />
       </span>
-    </StyledCheckbox>
+    </Container>
   );
 }
 
 export default PlanTodo;
 
-const StyledCheckbox = styled(Checkbox)`
-  width: 300px;
-  margin-top: 14px;
-  margin-left: 0 !important;
+const Container = styled.div`
+width: 300px;
+margin-top: 14px;
+margin-left: 0 !important;
+display: flex;
+align-items: center;
 
+`
+
+const StyledCheckbox = styled(Checkbox)`
+  
   .ant-checkbox-checked .ant-checkbox-inner {
-    background-color: ${props => props.checked? "#8977f7": "#FFFFFF"};
-    border-color: #8977F7;
+    background-color: ${(props) => (props.checked ? "#8977f7" : "#FFFFFF")};
+    border-color: #8977f7;
   }
 
   .ant-checkbox-checked::after {
-    border-color: #8977F7;
+    border-color: #8977f7;
   }
 
-  .ant-checkbox-wrapper:hover .ant-checkbox-inner, .ant-checkbox:hover, .ant-checkbox-input:focus + .ant-checkbox-inner {
-    border-color: #8977F7;
+  .ant-checkbox-wrapper:hover .ant-checkbox-inner,
+  .ant-checkbox:hover,
+  .ant-checkbox-input:focus + .ant-checkbox-inner {
+    border-color: #8977f7;
   }
 
   .ant-checkbox-disabled .ant-checkbox-inner {
-    background-color: #E1DCFE;
-    border-color: #E1DCFE !important;
+    background-color: #e1dcfe;
+    border-color: #e1dcfe !important;
   }
 
   .ant-checkbox-disabled.ant-checkbox-checked .ant-checkbox-inner::after {
-    border-color: #FFFFFF;
+    border-color: #ffffff;
   }
-`
+`;
 
 const DetailIcon = styled.img`
   height: 12px;
   margin-left: auto;
-`
+`;
