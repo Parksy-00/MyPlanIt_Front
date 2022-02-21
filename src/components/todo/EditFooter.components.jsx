@@ -1,5 +1,6 @@
 import axios from "axios";
 import constants from "../../constants";
+import styled from 'styled-components';
 
 function EditFooter({
   current,
@@ -47,18 +48,7 @@ function EditFooter({
     }
   };
   return (
-    <div
-      style={{
-        right: 0,
-        left: 0,
-        height: "90px",
-        backgroundColor: "#7965f4",
-        position: "fixed",
-        bottom: 0,
-        display: "flex",
-        justifyContent: "space-evenly"
-      }}
-    >
+    <Footer>
       <img
         src={constants.DO_TOMORROW}
         style={{ width: 35, height: 36, margin: "15px 30px" }}
@@ -71,8 +61,19 @@ function EditFooter({
           onClick={deleteTodo}
         />
       )}
-    </div>
+    </Footer>
   );
 }
 
 export default EditFooter;
+
+const Footer = styled.div`
+  right: 0;
+  left: 0;
+  height: 90px;
+  background-color: #7965f4;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: space-evenly;
+`

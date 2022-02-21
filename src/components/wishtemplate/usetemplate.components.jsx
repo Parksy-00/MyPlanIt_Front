@@ -8,7 +8,7 @@ import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import { Loading } from "@nextui-org/react";
-import BottomNavBarTodo from "../globalcomponents/bottomnavbartodo.components";
+import BottomNavBar from "../globalcomponents/BottomNavBar.components";
 import Sheet from "react-modal-sheet";
 import { useNavigate } from "react-router-dom";
 import { sortAndDeduplicateDiagnostics } from "typescript";
@@ -93,16 +93,7 @@ function UseTemplate() {
         >
           <Loading />
         </div>
-        <BottomNavBarTodo />
-        <div
-          style={{
-            height: "33px",
-            backgroundColor: "white",
-            width: "100vw",
-            position: "fixed",
-            bottom: "0px",
-          }}
-        ></div>
+        <BottomNavBar />
       </div>
     );
   if (error) return <div>에러가 발생했습니다</div>;
@@ -115,7 +106,7 @@ function UseTemplate() {
         style={{ background: "white", width: "100vw" }}
       >
         <Toolbar style={{ justifyContent: "space-between" }}>
-          <Link to="../main/todoplan">
+          <Link to="../todo">
             <ArrowBackIosIcon style={{ color: "black" }} />
           </Link>
           <Typography
@@ -179,7 +170,7 @@ function UseTemplate() {
         <div style={{ width: "50vw" }}></div>
       </span>
       <div style={{ height: "10px" }}></div>
-      <ul
+      <div
         className="template-content"
         style={{
           overflowY: "scroll",
@@ -191,7 +182,7 @@ function UseTemplate() {
         <div style={{ height: "10px" }}></div>
 
         {users.register_plans?.map((register_plans) => (
-          <li
+          <div
             onClick={function (event) {
               setOpen(true);
               setPlanId(register_plans.plan.id);
@@ -217,7 +208,7 @@ function UseTemplate() {
                 <div style={{ height: "5px" }}></div>
                 <div
                   style={{
-                    width: "350px",
+                    width: "299px",
                     marginRight: "auto",
                     marginLeft: "auto",
                     display: "flex",
@@ -244,7 +235,7 @@ function UseTemplate() {
                   className="template-photourl"
                   src={register_plans.plan.intro_img_url}
                   style={{
-                    width: "80vw",
+                    width: "288px",
                     height: "130px",
                     objectFit: "cover",
                   }}
@@ -253,7 +244,7 @@ function UseTemplate() {
                   style={{
                     display: "flex",
                     flexDirection: "column",
-                    width: "350px",
+                    width: "299px",
                     paddingLeft: "5px",
                   }}
                 >
@@ -356,7 +347,7 @@ function UseTemplate() {
               </div>
               <div style={{ height: "15px" }}></div>
             </React.Fragment>
-          </li>
+          </div>
         ))}
         <Sheet
           isOpen={isOpen}
@@ -436,17 +427,8 @@ function UseTemplate() {
         </Sheet>
         <div className="textbox"></div>
         <div style={{ height: "200px" }}></div>
-      </ul>
-      <BottomNavBarTodo />
-      <div
-        style={{
-          height: "33px",
-          backgroundColor: "white",
-          width: "100vw",
-          position: "fixed",
-          bottom: "0px",
-        }}
-      ></div>
+      </div>
+      <BottomNavBar current="TODO" />
     </div>
   );
 }

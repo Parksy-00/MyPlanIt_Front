@@ -3,35 +3,29 @@ import { MuiPickersUtilsProvider, DatePicker } from "@material-ui/pickers";
 import { ko } from "date-fns/locale";
 import DateFnsUtils from "@date-io/date-fns";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import styled from "styled-components";
 
-function Calendar({selectedDate, setSelectedDate}) {
-  const dateStyle = {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    marginRight: 30,
-  };
-
+function Calendar({ selectedDate, setSelectedDate }) {
   const handleDateChange = (date) => {
     sessionStorage.setItem("date", date);
     setSelectedDate(new Date(sessionStorage.getItem("date")));
   };
 
   return (
-    <MuiPickersUtilsProvider
-      locale={ko}
-      utils={DateFnsUtils}
-      style={{ fontFamily: "Pretendard-SemiBold" }}
-    >
-      <div style={dateStyle}>
-        <DatePicker
-          style={{
-            width: "auto",
-            fontFamily: "Pretendard-SemiBold",
-          }}
+    <Container>
+      <MuiPickersUtilsProvider
+        locale={ko}
+        utils={DateFnsUtils}
+      >
+        <StyledDatePicker
           InputProps={{
             disableUnderline: true,
+            endAdornment: (
+              <ExpandMoreIcon
+                color="black"
+                fontSize="large"
+              />
+            ),
           }}
           disableToolbar
           format="M월 d일 eee요일"
@@ -40,18 +34,23 @@ function Calendar({selectedDate, setSelectedDate}) {
           className="date"
           onChange={handleDateChange}
         />
-        <ExpandMoreIcon
-          color="black"
-          fontSize="large"
-          style={{
-            padding: 0,
-            marginTop: 5,
-            marginRight: 10,
-          }}
-        />
-      </div>
-    </MuiPickersUtilsProvider>
+      </MuiPickersUtilsProvider>
+    </Container>
   );
 }
 
 export default Calendar;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+`;
+
+const StyledDatePicker = styled(DatePicker)`
+  width: auto;
+  font-family: "Pretendard-SemiBold"
+
+`

@@ -29,11 +29,12 @@
 .MuiInputBase-input {
   font-family: "Pretendard-Medium";
 }
-
+/* 
 .ant-checkbox-checked .ant-checkbox-inner {
   background-color: #7965f4;
   border-color: #7965f4;
-}
+} */
+
 .MuiInput-underline::before {
   border-bottom: none !important;
 }
@@ -42,10 +43,11 @@
   font-weight: bold !important;
   width: 150px !important;
 }
-.MuiIconButton-root {
+
+/* .MuiIconButton-root {
   padding-left: 0 !important;
   color: black !important;
-}
-.MuiButtonBase-root {
+} */
+/* .MuiButtonBase-root {
   padding: 12px !important;
-}
+} */
