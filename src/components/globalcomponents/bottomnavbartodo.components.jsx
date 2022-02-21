@@ -3,6 +3,7 @@ import { BottomNavigation, BottomNavigationAction } from "@mui/material";
 import PlaylistAddCheckIcon from "@mui/icons-material/PlaylistAddCheck";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import { Link } from "react-router-dom";
+import constants from "../../constants";
 
 const BottomNavBarTodo = () => {
   const [value, setValue] = React.useState(0);
@@ -18,23 +19,39 @@ const BottomNavBarTodo = () => {
     >
       <BottomNavigationAction
         icon={
-          <img
-            src="https://firebasestorage.googleapis.com/v0/b/single-life-manager.appspot.com/o/ceos%20test%2Ftodo3.png?alt=media&token=31e75be2-ab09-424c-9a43-745d4316beff"
-            width={36}
-            height={36}
-          />
+          <>
+            <img src={constants.TODO_COLORED} height={25} />
+            <span
+              style={{
+                fontFamily: "PretendardRegular",
+                fontSize: "12px",
+                color: "#8977f7",
+                marginTop: "2px",
+              }}
+            >
+              To do
+            </span>
+          </>
         }
         component={Link}
-        to="/main/todoplan"
+        to="todo"
       />
 
       <BottomNavigationAction
         icon={
-          <img
-            src="https://firebasestorage.googleapis.com/v0/b/single-life-manager.appspot.com/o/ceos%20test%2Ftodof.png?alt=media&token=52344e83-350a-490d-83dc-144dd547bb52"
-            width={36}
-            height={36}
-          />
+          <>
+            <img src={constants.PLAN_UNCOLORED} height={25} />
+            <span
+              style={{
+                fontFamily: "PretendardRegular",
+                fontSize: "12px",
+                color: "#c4c4c4",
+                marginTop: "2px",
+              }}
+            >
+              Plan
+            </span>
+          </>
         }
         component={Link}
         to="/main/maintemplategrowth"

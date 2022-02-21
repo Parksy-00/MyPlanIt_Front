@@ -55,3 +55,18 @@
   font-weight: 600;
   font-style: normal;
 }
+
+.MuiPickersDay-daySelected {
+  color: #000 !important;
+  background-color: #E1DCFE !important;
+}
+
+.MuiPickersDay-current {
+  color: #8977F7 !important;
+}
+
+.MuiTypography-body2, .MuiTypography-caption {
+  font-family: "PretendardRegular" !important;
+  font-size: 14px !important;
+}
+

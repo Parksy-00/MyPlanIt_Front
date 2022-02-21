@@ -44,3 +44,7 @@
 .button-group {
   display: flex;
 }
+
+.ant-switch-checked {
+  background-color: #8977f7;
+}

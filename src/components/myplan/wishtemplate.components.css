@@ -1,0 +1,43 @@
+
+.wish-template-overall{
+  width: 91vw;
+  justify-content: center;
+}
+.wish-template-all{
+  padding: 5px 5px 5px 5px;
+  border: 1;
+  border-radius: 4px;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.wish-template-title{
+  height: 14px;
+  font-size: 12px;
+}
+.wish-template-photourl{
+  width: 150px;
+    height: 120px;
+    border-radius: 8px;
+    object-fit: fill;
+    margin-left: auto;
+    margin-right: auto;
+}
+.see-content{
+  font-size: 14px;
+  width: 355px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: PretendardRegular;
+  line-height: 18px;
+  color: black;
+}
+.delete-content{
+  font-size: 14px;
+  width: 355px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: PretendardRegular;
+  line-height: 18px;
+  color: red;
+}

@@ -1,6 +1,6 @@
 import "./viewtemplate.components.css";
 import { Link } from "react-router-dom";
-import BottomNavBar from "../globalcomponents/bottomnavbartodo.components";
+import BottomNavBar from "../globalcomponents/BottomNavBar.components";
 import { AppBar, Tabs, Tab } from "@material-ui/core";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
@@ -11,7 +11,6 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import BottomNavBarPlan from "../globalcomponents/bottomnavbarplan.components";
 import axios from "axios";
 import { render } from "@testing-library/react";
 import { useParams } from "react-router-dom";
@@ -52,7 +51,7 @@ function ViewTemplate(props) {
         ),
       ])
       .then((response) => {
-        navigate("/main/todoplan");
+        navigate("/todo");
       });
     setOpen(false);
   };
@@ -142,7 +141,7 @@ function ViewTemplate(props) {
           aria-describedby="alert-dialog-description"
         >
           <img
-            src="https://firebasestorage.googleapis.com/v0/b/single-life-manager.appspot.com/o/ceos%20test%2Fceos_test_2.png?alt=media&token=cf050315-06f1-4ae8-8d01-a8d13a771395"
+            src="/images/celebrate.png"
             style={{
               height: "60px",
               width: "60px",
@@ -200,16 +199,7 @@ function ViewTemplate(props) {
         </Dialog>
       </div>
 
-      <BottomNavBarPlan />
-      <div
-        style={{
-          height: "33px",
-          backgroundColor: "white",
-          width: "100vw",
-          position: "fixed",
-          bottom: "0px",
-        }}
-      ></div>
+      <BottomNavBar current="PLAN" />
     </div>
   );
 }

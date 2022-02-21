@@ -10,6 +10,7 @@ function Login() {
   let navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [autoLogin, setAutoLogin] = useState(false);
 
   function attemptLogin() {
     axios
@@ -30,7 +31,7 @@ function Login() {
         sessionStorage.setItem("token", response.data.token);
         sessionStorage.setItem("email", response.data.email);
         sessionStorage.setItem("password", response.data.password);
-        navigate("/main/todoplan");
+        navigate("/todo");
       })
       .catch((error) => {
         if (error.response.status === 400) {
@@ -81,14 +82,19 @@ function Login() {
         }}
       />
       <span className="switch">
-        <Switch />
+        <Switch 
+          size="small" 
+          checked={ autoLogin } 
+          onClick={() => setAutoLogin(!autoLogin)}
+        />
         <p
           style={{
             marginTop: "0px",
             marginBottom: "0px",
             marginLeft: "10px",
-            color: "#C4C4C4",
+            color: autoLogin? "#8977f7": "#C4C4C4",
             fontSize: "14.5px",
+            fontFamily: "PretendardRegular"
           }}
         >
           자동 로그인
@@ -126,7 +132,7 @@ function Login() {
               fontSize: "12px",
               color: "#000000",
             }}
-            to="/signup1"
+            to="/signup"
           >
             회원가입하기
           </Link>
