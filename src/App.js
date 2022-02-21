@@ -20,6 +20,8 @@ import BuyTemplate from "./components/wishtemplate/buytemplate.components";
 import UseTemplate from "./components/wishtemplate/usetemplate.components";
 import SignUp from "./components/signup/signUp.components";
 import SocialLogin from './components/login/SocialLogin.components';
+import MyPlan from "./components/myplan/MyPlan.components";
+import TodoDetail from './components/todo/TodoDetail.components';
 
 function App() {
 
@@ -36,6 +38,7 @@ function App() {
           <Route path="/onboard3" element={<Onboard3 />} />
           <Route path="/todo" element={<Todo/>} />
           <Route path="/main/todoplan" element={<TodoPlan />} />
+          <Route path="/myplan" element={<MyPlan/>}/>
           <Route
             path="/main/maintemplateroutine"
             element={<MainTemplateRoutine />}
@@ -49,7 +52,7 @@ function App() {
           <Route path="/main/searchtemplate" element={<SearchTemplate />} />
           <Route path="/main/todomy" element={<TodoMy />} />
 
-          <Route path="todo/detail/:id" element={<Detail />} />
+          <Route path="todo/detail/:id" element={<TodoDetail />} />
           <Route path="/main/buytemplate" element={<BuyTemplate />} />
           <Route path="/main/usetemplate" element={<UseTemplate />} />
 
