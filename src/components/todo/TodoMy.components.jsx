@@ -2,6 +2,7 @@ import { useState } from "react";
 import MyTodo from "./MyTodo.components";
 import constants from "../../constants";
 import NewMyTodo from "./NewMyTodo.components";
+import styled from 'styled-components';
 
 function TodoMy({
   myTodoData,
@@ -13,15 +14,6 @@ function TodoMy({
   delay,
   setDelay
 }) {
-  const contentsStyle = {
-    display:"flex",
-    flexDirection: "column",
-    alignItems: "center",
-    marginTop: "110px",
-    marginBottom: "90px",
-    overflowY: "scroll",
-    fontFamily: "Pretendard-SemiBold",
-  };
   const todoExist = myTodoData?.length;
   const noTodoImg = (
     <img
@@ -31,7 +23,7 @@ function TodoMy({
   );
 
   return (
-    <div style={contentsStyle}>
+    <Container>
       {todoExist
         ? myTodoData.map((todo, i) => (
             <MyTodo
@@ -53,8 +45,19 @@ function TodoMy({
         updateMy={updateMy}
         setUpdateMy={setUpdateMy}
       />
-    </div>
+    </Container>
   );
 }
 
 export default TodoMy;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 110px;
+  margin-bottom: 95px;
+  width: 327px;
+  overflow-Y: scroll;
+  font-family: "Pretendard-SemiBold";
+`

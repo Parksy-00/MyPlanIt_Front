@@ -1,6 +1,6 @@
 import React from "react";
-import { Card } from "antd";
 import PlanTodo from "./PlanTodo.components";
+import styled from 'styled-components';
 
 function Plan({
   accessToken,
@@ -9,43 +9,21 @@ function Plan({
   setUpdate,
   delay,
   setDelay,
-  i,
   plan,
 }) {
   const title = plan[0].length > 15 ? plan[0].slice(0, 14) + "..." : plan[0];
   const percent = plan[1][0]["달성률"];
   const todos = plan[1].slice(1);
 
-  const cardStyle = {
-    borderRadius: 5,
-    width: 327,
-    marginTop: 9,
-  };
-
-  const achievement = (
-    <>
-      <span style={{ color: "#8977F7" }}>{percent}%</span>
-      <span
-        style={{
-          fontFamily: "Pretendard-Medium",
-          marginLeft: 5,
-        }}
-      >
-        달성
-      </span>
-    </>
-  );
-
   return (
-    <Card
-      key={i}
-      style={cardStyle}
-      title={title}
-      extra={achievement}
-      headStyle={{ border: "none", padding: "0 20px" }}
-      bodyStyle={{paddingBottom: "20px"}}
-    >
-      <hr style={{ opacity: 0.2, margin: 0 }} />
+    <PlanContainer>
+      <PlanHeader>
+        <Title>{title}</Title>
+        <Achievement>
+          <span style={{color: "#8977F7"}}>{percent}%</span>
+          <span style={{marginLeft: 5}}>달성</span>
+        </Achievement>
+      </PlanHeader>
       {todos.map((item, i) => {
         return (
           <PlanTodo
@@ -60,8 +38,37 @@ function Plan({
           />
         );
       })}
-    </Card>
+    </PlanContainer>
   );
 }
 
 export default Plan;
+
+const PlanContainer = styled.div`
+  box-sizing: border-box;
+  border-radius: 5px;
+  position: relative;
+  background-color: #fff;
+  width: 327px;
+  margin-top: 9px;
+  padding: 16px 24px;
+  border: 1px solid #f0f0f0
+`
+
+const PlanHeader = styled.div`
+  border-bottom: 1px solid #eaeaea;
+  padding: 0 0 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
+const Title = styled.span`
+  font-size: 16px;
+  font-family: "PretendardRegular";
+  font-weight: 600;
+`
+
+const Achievement = styled.span`
+  font-size: 14px;
+  font-weight: 400;
+`

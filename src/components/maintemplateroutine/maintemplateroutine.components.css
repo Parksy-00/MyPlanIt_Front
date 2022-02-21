@@ -106,16 +106,17 @@
   line-height: 18px;
 }
 .template-all {
+  box-sizing: border-box;
   padding: 5px 5px 5px 5px;
   border: 1;
   border-radius: 4px;
   justify-content: center;
   margin-left: auto;
   margin-right: auto;
-  width: 88vw;
+  width: 320px;
 }
 .template-writerintro {
-  width: 300px;
+  width: 250px;
   font-family: PretendardRegular;
 }
 .template-tag {

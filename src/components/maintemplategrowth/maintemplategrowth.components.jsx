@@ -1,6 +1,5 @@
 import "./maintemplategrowth.components.css";
 import { Link } from "react-router-dom";
-import BottomNavBar from "../globalcomponents/bottomnavbartodo.components";
 import { useNavigate } from "react-router-dom";
 import { AppBar, Tabs, Tab } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
@@ -12,7 +11,7 @@ import React, { useState, useEffect, Component } from "react";
 import { NavLink, Route } from "react-router-dom";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
-import BottomNavBarPlan from "../globalcomponents/bottomnavbarplan.components";
+import BottomNavBar from "../globalcomponents/BottomNavBar.components";
 import { Switch } from "@mui/material";
 import ViewTemplate from "../viewtemplate/viewtemplate.components";
 import { useParams } from "react-router-dom";
@@ -88,16 +87,7 @@ function MainTemplateGrowth() {
         >
           <Oval color="#7965f4" height="40px" width="40px" />
         </div>
-        <BottomNavBarPlan />
-        <div
-          style={{
-            height: "33px",
-            backgroundColor: "white",
-            width: "100vw",
-            position: "fixed",
-            bottom: "0px",
-          }}
-        ></div>
+        <BottomNavBar />
       </div>
     );
   if (error) return <div>에러가 발생했습니다</div>;
@@ -196,11 +186,11 @@ function MainTemplateGrowth() {
           position: "relative",
         }}
       >
-        <ul>
+        <div>
           <div className="textbox"></div>
           <div style={{ height: "2px" }}></div>
           {users.Growth.map((Growth) => (
-            <li key={users.Growth.id}>
+            <div key={users.Growth.id}>
               <NavLink
                 to={"../main/viewtemplate/" + Growth.id}
                 className="template-overall"
@@ -220,7 +210,7 @@ function MainTemplateGrowth() {
                     <div style={{ height: "5px" }}></div>
                     <div
                       style={{
-                        width: "350px",
+                        width: "299px",
                         marginRight: "auto",
                         marginLeft: "auto",
                         display: "flex",
@@ -246,7 +236,7 @@ function MainTemplateGrowth() {
                       className="template-photourl"
                       src={Growth.intro_img_url}
                       style={{
-                        width: "80vw",
+                        width: "288px",
                         height: "130px",
                         objectFit: "cover",
                       }}
@@ -255,7 +245,7 @@ function MainTemplateGrowth() {
                       style={{
                         display: "flex",
                         flexDirection: "column",
-                        width: "350px",
+                        width: "299px",
                         paddingLeft: "5px",
                       }}
                     >
@@ -362,21 +352,11 @@ function MainTemplateGrowth() {
                   <div style={{ height: "15px" }}></div>
                 </React.Fragment>
               </NavLink>
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
-      <BottomNavBarPlan />
-      <div
-        style={{
-          height: "33px",
-          backgroundColor: "white",
-          width: "100vw",
-          position: "fixed",
-          bottom: "0px",
-        }}
-      ></div>
-      <div style={{ height: "20px" }}></div>
+      <BottomNavBar current="PLAN" />
     </div>
   );
 }

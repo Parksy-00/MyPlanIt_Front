@@ -1,17 +1,18 @@
 import "./wishtemplate.components.css";
 import { Link } from "react-router-dom";
-import { AppBar, Tabs, Tab } from "@material-ui/core";
+import { AppBar } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import Toolbar from "@material-ui/core/Toolbar";
-import React, { useState, useEffect, Component } from "react";
-import { NavLink, Route } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import { Loading } from "@nextui-org/react";
 import BottomNavBar from "../globalcomponents/BottomNavBar.components";
+import MyPlanHeader from "./MyPlanHeader.components";
 
-function BuyTemplate() {
+function MyPlan() {
   let accessToken = sessionStorage.getItem("token");
 
   const [users, setUsers] = useState(null);
@@ -85,86 +86,12 @@ function BuyTemplate() {
   if (!users) return null;
   return (
     <div className="container">
-      <AppBar
-        position="static"
-        elevation={0}
-        style={{ background: "white", width: "100vw" }}
-      >
-        <Toolbar style={{ justifyContent: "space-between" }}>
-          <Link to="../todo">
-            <ArrowBackIosIcon style={{ color: "black" }} />
-          </Link>
-          <Typography
-            edge="end"
-            variant="h6"
-            style={{
-              marginLeft: "0",
-            }}
-          >
-            <div style={{ color: "black" }}>MY PLAN</div>
-          </Typography>
-          <div style={{ width: "40px" }}></div>
-        </Toolbar>
-      </AppBar>
-      <span
-        className="button-group"
-        style={{
-          marginTop: "8px",
-          fontSize: "16px",
-          fontWeight: "bold",
-          marginLeft: 10,
-        }}
-      >
-        <Link
-          to="../main/buytemplate"
-          className="main-growth"
-          style={{
-            width: "70px",
-            height: "35px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            marginTop: "2px",
-            border: "5px",
-            background: "transparent",
-            borderRadius: "0",
-            color: "black",
-            borderBottom: "solid #7965f4",
-            fontFamily: "Pretendard-SemiBold",
-          }}
-        >
-          구매 플랜
-        </Link>
-        <div style={{ width: "3vw" }}></div>
-        <Link
-          to="../main/usetemplate"
-          className="main-growth"
-          style={{
-            border: "1px solid #D3d3d3",
-            width: "70px",
-            height: "35px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            marginTop: "0px",
-            border: "5px",
-            background: "transparent",
-            borderRadius: "0",
-            color: "gray",
-            fontFamily: "Pretendard-SemiBold",
-          }}
-        >
-          이용 중
-        </Link>
-        <div style={{ width: "50vw" }}></div>
-      </span>
+      <MyPlanHeader/>
       <div style={{ height: "10px" }}></div>
-      <div
+      <ul
         className="template-content"
         style={{
           overflowY: "scroll",
-          // width: "inherit",
-          // float: "left",
           height: "680px",
           position: "relative",
         }}
@@ -173,7 +100,7 @@ function BuyTemplate() {
         <div style={{ height: "10px" }}></div>
 
         {users.buy_plans?.map((buy_plans) => (
-          <div key={users.buy_plans.id}>
+          <li key={users.buy_plans.id}>
             <NavLink
               to={"../main/buytemplate/"}
               className="template-overall"
@@ -195,7 +122,7 @@ function BuyTemplate() {
                   <div style={{ height: "5px" }}></div>
                   <div
                     style={{
-                      width: "299px",
+                      width: "350px",
                       marginRight: "auto",
                       marginLeft: "auto",
                       display: "flex",
@@ -221,7 +148,7 @@ function BuyTemplate() {
                     className="template-photourl"
                     src={buy_plans.plan.intro_img_url}
                     style={{
-                      width: "288px",
+                      width: "80vw",
                       height: "130px",
                       objectFit: "cover",
                     }}
@@ -230,7 +157,7 @@ function BuyTemplate() {
                     style={{
                       display: "flex",
                       flexDirection: "column",
-                      width: "299px",
+                      width: "350px",
                       paddingLeft: "5px",
                     }}
                   >
@@ -297,12 +224,9 @@ function BuyTemplate() {
                           color: "#7965f4",
                         }}
                       >
-                        {/* {Routine.checkHeart ? 
-     <FavoriteIcon />:
-     <FavoriteBorderIcon />} */}
                       </div>
                     </div>
-                    <div
+                    <p
                       className="template-content"
                       style={{
                         fontSize: "12px",
@@ -312,7 +236,7 @@ function BuyTemplate() {
                       }}
                     >
                       {buy_plans.plan.desc}
-                    </div>
+                    </p>
                     <div style={{ height: "5px" }}></div>
                     <div
                       style={{
@@ -333,15 +257,15 @@ function BuyTemplate() {
                 <div style={{ height: "15px" }}></div>
               </React.Fragment>
             </NavLink>
-          </div>
+          </li>
         ))}
 
         <div className="textbox"></div>
         <div style={{ height: "200px" }}></div>
-      </div>
+      </ul>
       <BottomNavBar current="TODO" />
     </div>
   );
 }
 
-export default BuyTemplate;
+export default MyPlan;

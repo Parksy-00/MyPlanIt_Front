@@ -34,7 +34,7 @@ const BottomNavBarTodo = () => {
           </>
         }
         component={Link}
-        to="/main/todoplan"
+        to="todo"
       />
 
       <BottomNavigationAction
