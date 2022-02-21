@@ -11,6 +11,23 @@ function Login() {
         style={{ marginTop: "200px", width: "173px", marginBottom: "101px" }}
       />
       <LogoText>어쩌구저쩌구, 마이플랜잇</LogoText>
+      <Buttons>
+        <Button
+          primary
+          onClick={() => {
+            alert("둘러보기");
+          }}
+        >
+          둘러보기
+        </Button>
+        <Button
+          onClick={() => {
+            navigate("/login");
+          }}
+        >
+          가입하기
+        </Button>
+      </Buttons>
     </div>
   );
 }
@@ -23,10 +40,33 @@ const LogoText = styled.span`
   font-family: Pretendard;
   font-style: normal;
   font-weight: normal;
-  font-size: 17px;
+  font-size: 17.5px;
   line-height: 20px;
   text-align: center;
   color: #929292;
+`;
+
+const Button = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  width: 327px;
+  height: 52px;
+  border: 1px solid transparent;
+  border-color: #d9d9d9;
+  border-radius: 4px;
+  background: ${(props) => (props.primary ? "#7965f4" : "white")};
+  color: ${(props) => (props.primary ? "white" : "#7965f4")};
+  font-family: PretendardMedium;
+  font-size: 16px;
+  filter: ${(props) =>
+    props.primary ? null : "drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.12))"};
+`;
+
+const Buttons = styled.span`
+  position: absolute;
+  bottom: 95px;
 `;
 
 export default Login;

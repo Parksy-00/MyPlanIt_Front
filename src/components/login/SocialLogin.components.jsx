@@ -63,14 +63,22 @@ function Login() {
         <img
           src="/images/google_login.png"
           alt="googleLogin"
-          style={{ marginTop: "15px" }}
+          style={{
+            marginTop: "15px",
+            border: "1px solid transparent",
+            borderColor: "#d9d9d9",
+            borderRadius: "4px",
+            filter: "drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.12))",
+          }}
           onClick={() => alert("구글 로그인")}
         />
 
         <img
           src="/images/kakao_login.png"
           alt="kakaoLogin"
-          style={{ marginTop: "15px" }}
+          style={{
+            marginTop: "15px",
+          }}
           onClick={() => alert("카카오 로그인")}
         />
       </LoginButtons>
