@@ -192,14 +192,16 @@ function MainTemplateRoutine() {
           marginTop: "50px",
           overflowY: "scroll",
           height: "calc(100vh - 200px)",
+          display:"flex",
+        
         }}
       >
-        <ul>
+        <div>
           <div className="textbox"></div>
           <div style={{ height: "2px" }}></div>
 
           {users.Routine.map((Routine) => (
-            <li key={users.Routine.id}>
+            <div key={users.Routine.id}>
               <NavLink
                 to={"../main/viewtemplate/" + Routine.id}
                 className="template-overall"
@@ -211,17 +213,16 @@ function MainTemplateRoutine() {
                       backgroundColor: "white",
                       display: "flex",
                       flexDirection: "column",
-                      boxShadow: "0px 0px 1.5px 0.5px #Dedede",
+                      // boxShadow: "0px 0px 1.5px 0.5px #Dedede",
+                      boxShadow: "0px 0px 4px rgba(0, 0, 0, 0.08)",
                       justifyContent: "center",
-                      marginLeft: 1,
-                      marginRight: 1,
                     }}
                     className="template-all"
                   >
                     <div style={{ height: "5px" }}></div>
                     <div
                       style={{
-                        width: "350px",
+                        width: "299px",
                         marginRight: "auto",
                         marginLeft: "auto",
                         display: "flex",
@@ -256,7 +257,7 @@ function MainTemplateRoutine() {
                       style={{
                         display: "flex",
                         flexDirection: "column",
-                        width: "350px",
+                        width: "299px",
                         paddingLeft: "5px",
                       }}
                     >
@@ -364,9 +365,9 @@ function MainTemplateRoutine() {
                   <div style={{ height: "15px" }}></div>
                 </React.Fragment>
               </NavLink>
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
       <BottomNavBar current="PLAN"/>
     </div>

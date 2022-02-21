@@ -159,7 +159,7 @@ function BuyTemplate() {
         <div style={{ width: "50vw" }}></div>
       </span>
       <div style={{ height: "10px" }}></div>
-      <ul
+      <div
         className="template-content"
         style={{
           overflowY: "scroll",
@@ -173,7 +173,7 @@ function BuyTemplate() {
         <div style={{ height: "10px" }}></div>
 
         {users.buy_plans?.map((buy_plans) => (
-          <li key={users.buy_plans.id}>
+          <div key={users.buy_plans.id}>
             <NavLink
               to={"../main/buytemplate/"}
               className="template-overall"
@@ -195,7 +195,7 @@ function BuyTemplate() {
                   <div style={{ height: "5px" }}></div>
                   <div
                     style={{
-                      width: "350px",
+                      width: "299px",
                       marginRight: "auto",
                       marginLeft: "auto",
                       display: "flex",
@@ -221,7 +221,7 @@ function BuyTemplate() {
                     className="template-photourl"
                     src={buy_plans.plan.intro_img_url}
                     style={{
-                      width: "80vw",
+                      width: "288px",
                       height: "130px",
                       objectFit: "cover",
                     }}
@@ -230,7 +230,7 @@ function BuyTemplate() {
                     style={{
                       display: "flex",
                       flexDirection: "column",
-                      width: "350px",
+                      width: "299px",
                       paddingLeft: "5px",
                     }}
                   >
@@ -333,12 +333,12 @@ function BuyTemplate() {
                 <div style={{ height: "15px" }}></div>
               </React.Fragment>
             </NavLink>
-          </li>
+          </div>
         ))}
 
         <div className="textbox"></div>
         <div style={{ height: "200px" }}></div>
-      </ul>
+      </div>
       <BottomNavBar current="TODO" />
     </div>
   );

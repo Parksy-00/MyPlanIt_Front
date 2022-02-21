@@ -170,7 +170,7 @@ function UseTemplate() {
         <div style={{ width: "50vw" }}></div>
       </span>
       <div style={{ height: "10px" }}></div>
-      <ul
+      <div
         className="template-content"
         style={{
           overflowY: "scroll",
@@ -182,7 +182,7 @@ function UseTemplate() {
         <div style={{ height: "10px" }}></div>
 
         {users.register_plans?.map((register_plans) => (
-          <li
+          <div
             onClick={function (event) {
               setOpen(true);
               setPlanId(register_plans.plan.id);
@@ -208,7 +208,7 @@ function UseTemplate() {
                 <div style={{ height: "5px" }}></div>
                 <div
                   style={{
-                    width: "350px",
+                    width: "299px",
                     marginRight: "auto",
                     marginLeft: "auto",
                     display: "flex",
@@ -235,7 +235,7 @@ function UseTemplate() {
                   className="template-photourl"
                   src={register_plans.plan.intro_img_url}
                   style={{
-                    width: "80vw",
+                    width: "288px",
                     height: "130px",
                     objectFit: "cover",
                   }}
@@ -244,7 +244,7 @@ function UseTemplate() {
                   style={{
                     display: "flex",
                     flexDirection: "column",
-                    width: "350px",
+                    width: "299px",
                     paddingLeft: "5px",
                   }}
                 >
@@ -347,7 +347,7 @@ function UseTemplate() {
               </div>
               <div style={{ height: "15px" }}></div>
             </React.Fragment>
-          </li>
+          </div>
         ))}
         <Sheet
           isOpen={isOpen}
@@ -427,7 +427,7 @@ function UseTemplate() {
         </Sheet>
         <div className="textbox"></div>
         <div style={{ height: "200px" }}></div>
-      </ul>
+      </div>
       <BottomNavBar current="TODO" />
     </div>
   );

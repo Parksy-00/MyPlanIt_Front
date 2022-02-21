@@ -186,11 +186,11 @@ function MainTemplateGrowth() {
           position: "relative",
         }}
       >
-        <ul>
+        <div>
           <div className="textbox"></div>
           <div style={{ height: "2px" }}></div>
           {users.Growth.map((Growth) => (
-            <li key={users.Growth.id}>
+            <div key={users.Growth.id}>
               <NavLink
                 to={"../main/viewtemplate/" + Growth.id}
                 className="template-overall"
@@ -210,7 +210,7 @@ function MainTemplateGrowth() {
                     <div style={{ height: "5px" }}></div>
                     <div
                       style={{
-                        width: "350px",
+                        width: "299px",
                         marginRight: "auto",
                         marginLeft: "auto",
                         display: "flex",
@@ -236,7 +236,7 @@ function MainTemplateGrowth() {
                       className="template-photourl"
                       src={Growth.intro_img_url}
                       style={{
-                        width: "80vw",
+                        width: "288px",
                         height: "130px",
                         objectFit: "cover",
                       }}
@@ -245,7 +245,7 @@ function MainTemplateGrowth() {
                       style={{
                         display: "flex",
                         flexDirection: "column",
-                        width: "350px",
+                        width: "299px",
                         paddingLeft: "5px",
                       }}
                     >
@@ -352,9 +352,9 @@ function MainTemplateGrowth() {
                   <div style={{ height: "15px" }}></div>
                 </React.Fragment>
               </NavLink>
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
       <BottomNavBar current="PLAN" />
     </div>
