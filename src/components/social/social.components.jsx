@@ -6,12 +6,16 @@ import styled from "styled-components";
 function Social() {
   useEffect(() => {
     const code = window.location.href.split("=")[1];
+    console.log(code);
     axios
-      .get("https://myplanit.link/login/kakao/callback/", {
+      .get("https://myplanit.link/login/kakao/", {
         code: code,
       })
       .then((response) => {
         console.log(response);
+      })
+      .catch((error) => {
+        console.log(error.message);
       });
   });
   return (
