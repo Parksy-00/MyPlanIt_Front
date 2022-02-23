@@ -27,7 +27,7 @@ function PlanCard({
             <ProfileText>{writer_intro}</ProfileText>
             <ProfileText isName>{writer_name}</ProfileText>
           </Profile>
-          <div style={{ flex: 1, display: "flex", justifyContent: "end" }}>
+          <div style={{ flex: 1, display: "flex", justifyContent: "flex-end" }}>
             <FavoriteIcon
               style={{
                 color: "#8977f7",
