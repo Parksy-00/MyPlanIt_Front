@@ -1,88 +1,80 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { AppBar } from "@material-ui/core";
-import Typography from "@material-ui/core/Typography";
-import Toolbar from "@material-ui/core/Toolbar";
+import { useNavigate } from "react-router-dom";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import styled from "styled-components";
 
-function MyPlanHeader() {
+function MyPlanHeader({ current, setCurrent, buyLength, registerLength }) {
+  const navigate = useNavigate();
   return (
     <>
-      <AppBar
-        position="static"
-        elevation={0}
-        style={{ background: "white", width: "100vw" }}
-      >
-        <Toolbar style={{ justifyContent: "space-between" }}>
-          <Link to="../todo">
-            <ArrowBackIosIcon style={{ color: "black" }} />
-          </Link>
-          <Typography
-            edge="end"
-            variant="h6"
-            style={{
-              marginLeft: "0",
-            }}
-          >
-            <div style={{ color: "black" }}>MY PLAN</div>
-          </Typography>
-          <div style={{ width: "40px" }}></div>
-        </Toolbar>
-      </AppBar>
-      <span
-        className="button-group"
-        style={{
-          marginTop: "8px",
-          fontSize: "16px",
-          fontWeight: "bold",
-          marginLeft: 10,
-        }}
-      >
-        <Link
-          to="../main/buytemplate"
-          className="main-growth"
-          style={{
-            width: "70px",
-            height: "35px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            marginTop: "2px",
-            border: "5px",
-            background: "transparent",
-            borderRadius: "0",
-            color: "black",
-            borderBottom: "solid #7965f4",
-            fontFamily: "Pretendard-SemiBold",
-          }}
+      <UpperHeader>
+        <ArrowBackIosIcon
+          style={{ height: 56, color: "black", position: "absolute", left: 0 }}
+          onClick={() => navigate("../todo")}
+        />
+        <Title>MY PLAN</Title>
+      </UpperHeader>
+      <LowerHeader>
+        <LinkButton
+          selected={current === "BUY"}
+          onClick={() => setCurrent("BUY")}
         >
-          구매 플랜
-        </Link>
-        <div style={{ width: "3vw" }}></div>
-        <Link
-          to="../main/usetemplate"
-          className="main-growth"
-          style={{
-            border: "1px solid #D3d3d3",
-            width: "70px",
-            height: "35px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            marginTop: "0px",
-            border: "5px",
-            background: "transparent",
-            borderRadius: "0",
-            color: "gray",
-            fontFamily: "Pretendard-SemiBold",
-          }}
+          {"구매 플랜(" + buyLength + ")"}
+        </LinkButton>
+        <LinkButton
+          selected={current === "REGISTER"}
+          onClick={() => setCurrent("REGISTER")}
         >
-          이용 중
-        </Link>
-        <div style={{ width: "50vw" }}></div>
-      </span>
+          {"이용 중(" + registerLength + ")"}
+        </LinkButton>
+      </LowerHeader>
     </>
   );
 }
 
 export default MyPlanHeader;
+
+const UpperHeader = styled.div`
+  background: #fbfbfb;
+  width: 327px;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  height: 56px;
+`;
+
+const LowerHeader = styled.div`
+  display: flex;
+  width: 327px;
+  margin: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  margin-left: 10;
+`;
+
+const Title = styled.div`
+  font-family: "SFProDisplay";
+  font-weight: 510;
+  font-size: 18px;
+  height: 56px;
+  line-height: 56px;
+`;
+
+const LinkButton = styled.button`
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0px;
+  background-color: #fbfbfb;
+  border-radius: 0;
+  border-width: 0px 0px 0px;
+  font-family: "PretendardMedium";
+  font-size: 16px;
+  margin-right: 15px;
+  padding: 0 0 1px;
+
+  color: ${(props) => (props.selected ? "black" : "#C4C4C4")};
+  border-bottom: ${(props) => (props.selected ? "2px solid #8977f7" : "none")};
+  padding-bottom: ${(props) => (props.selected ? "2px" : "4px")};
+`;
