@@ -10,7 +10,7 @@ function Login() {
         src="/images/logo.png"
         style={{ marginTop: "200px", width: "173px", marginBottom: "101px" }}
       />
-      <LogoText>어쩌구저쩌구, 마이플랜잇</LogoText>
+      <LogoText>당신의 목표 가이드, 마이플랜잇</LogoText>
       <Buttons>
         <Button
           primary
@@ -34,7 +34,7 @@ function Login() {
 
 const LogoText = styled.span`
   position: absolute;
-  width: 201px;
+  width: 230px;
   height: 20px;
   top: 250px;
   font-family: Pretendard;

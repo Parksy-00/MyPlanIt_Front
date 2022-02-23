@@ -1,11 +1,19 @@
 import { useState } from "react";
 import { Button } from "antd";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 function Login() {
   let navigate = useNavigate();
+
+  function kakaoLogin() {
+    window.location.href = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_KAKAO_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_KAKAO_REDIRECT_URI}&response_type=code`;
+  }
+
+  function googleLogin() {
+    alert("구글 로그인");
+  }
 
   function attemptLogin() {
     axios
@@ -68,18 +76,16 @@ function Login() {
             border: "1px solid transparent",
             borderColor: "#d9d9d9",
             borderRadius: "4px",
-            filter: "drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.12))",
           }}
-          onClick={() => alert("구글 로그인")}
+          onClick={googleLogin}
         />
-
         <img
           src="/images/kakao_login.png"
           alt="kakaoLogin"
           style={{
             marginTop: "15px",
           }}
-          onClick={() => alert("카카오 로그인")}
+          onClick={kakaoLogin}
         />
       </LoginButtons>
     </div>
@@ -87,10 +93,10 @@ function Login() {
 }
 
 const BackButton = styled.div`
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  left: 0px;
+  position: fixed;
+  width: 16px;
+  height: 16px;
+  left: 55px;
   top: 30px;
 `;
 
@@ -108,7 +114,8 @@ const LoginText = styled.span`
 `;
 
 const LoginButtons = styled.span`
-  position: absolute;
+  position: fixed;
+  width: 330px;
   bottom: 95px;
 `;
 
