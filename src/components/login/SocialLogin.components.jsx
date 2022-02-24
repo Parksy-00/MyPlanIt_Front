@@ -4,11 +4,18 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-function Login() {
+function SocialLogin() {
   let navigate = useNavigate();
 
   function kakaoLogin() {
-    window.location.href = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_KAKAO_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_KAKAO_REDIRECT_URI}&response_type=code`;
+    axios
+      .get("https://myplanit.link/login/kakao")
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   function googleLogin() {
@@ -80,4 +87,4 @@ const LoginButtons = styled.span`
   bottom: 95px;
 `;
 
-export default Login;
+export default SocialLogin;
