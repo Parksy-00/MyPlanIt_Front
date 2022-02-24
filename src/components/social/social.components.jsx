@@ -8,9 +8,7 @@ function Social() {
     const code = window.location.href.split("=")[1];
     console.log(code);
     axios
-      .get("https://myplanit.link/login/kakao/", {
-        code: code,
-      })
+      .get(`https://myplanit.link/login/kakao/callback?code=${code}`)
       .then((response) => {
         console.log(response);
       })
