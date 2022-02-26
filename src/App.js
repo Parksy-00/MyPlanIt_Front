@@ -23,6 +23,7 @@ import SocialLogin from "./components/login/SocialLogin.components";
 import MyPlan from "./components/myplan/MyPlan.components";
 import TodoDetail from "./components/todo/TodoDetail.components";
 import Social from "./components/social/social.components";
+import Admin from "./components/admin/admin.components";
 
 function App() {
   return (
@@ -32,7 +33,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/login" element={<SocialLogin />} />
           <Route path="/signup" element={<SignUp />} />
-
+          <Route path="/admin" element={<Admin />} />
           <Route path="/login/kakao/:code" element={<Social />} />
 
           <Route path="/onboard1" element={<Onboard1 />} />
