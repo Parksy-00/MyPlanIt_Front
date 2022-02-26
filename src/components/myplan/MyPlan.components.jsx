@@ -7,7 +7,7 @@ import MyPlanContent from "./MyPlanContent.components";
 import styled from "styled-components";
 
 function MyPlan() {
-  const accessToken = sessionStorage.getItem("token");
+  const accessToken = sessionStorage.getItem("access");
   const [current, setCurrent] = useState("BUY");
   const [buyPlans, setBuyPlans] = useState([]);
   const [registerPlans, setRegisterPlans] = useState([]);
@@ -29,8 +29,8 @@ function MyPlan() {
             },
           }
         );
-        setRegisterPlans(response.data.register_plans);
-        setRegisterLength(response.data.register_plans.length);
+        setRegisterPlans(response.data.register_plans? response.data.register_plans: []);
+        setRegisterLength(response.data.register_plans? response.data.register_plans.length: 0);
       } catch (e) {
         setError(e);
       }
@@ -50,8 +50,9 @@ function MyPlan() {
             Authorization: `Bearer ${accessToken}`,
           },
         });
-        setBuyPlans(response.data.buy_plans);
-        setBuyLength(response.data.buy_plans.length);
+        console.log(response);
+        setBuyPlans(response.data.buy_plans? response.data.buy_plans: []);
+        setBuyLength(response.data.buy_plans? response.data.buy_plans.length: 0);
       } catch (e) {
         setError(e);
       }
