@@ -6,7 +6,6 @@ import { Link, useNavigate } from "react-router-dom";
 function Admin() {
   let navigate = useNavigate();
 
-  const [id, setId] = useState("");
   const [pw, setPw] = useState("");
 
   function attemptLogin() {
@@ -14,7 +13,7 @@ function Admin() {
       .post(
         "https://myplanit.link/manager",
         {
-          username: id,
+          username: pw,
           password: pw,
         },
         {
@@ -44,17 +43,10 @@ function Admin() {
     <Container>
       <input
         onChange={(e) => {
-          setId(e.target.value);
-        }}
-        style={{ marginBottom: "10px" }}
-        placeholder="아이디 입력"
-      />
-      <input
-        onChange={(e) => {
           setPw(e.target.value);
         }}
         style={{ marginBottom: "10px" }}
-        placeholder="비밀번호 입력"
+        placeholder="아이디 입력"
       />
       <button onClick={attemptLogin}>로그인</button>
     </Container>
