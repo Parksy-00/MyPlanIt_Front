@@ -1,16 +1,21 @@
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Loading } from "@nextui-org/react";
 import styled from "styled-components";
 
 function Social() {
+  const navigate = useNavigate();
   useEffect(() => {
     const code = window.location.href.split("=")[1];
     console.log(code);
     axios
-      .get(`https://myplanit.link/login/kakao/callback?code=${code}`)
+      .get(`https://myplanit.link/auth/kakao/?code=${code}`)
       .then((response) => {
-        console.log(response);
+        const data = response.data;
+        sessionStorage.setItem("access", data.django_token.access);
+        sessionStorage.setItem("refresh", data.django_token.refresh);
+        navigate("/todo");
       })
       .catch((error) => {
         console.log(error.message);

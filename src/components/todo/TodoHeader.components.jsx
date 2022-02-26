@@ -21,7 +21,7 @@ function TodoHeader({
           selectedDate={selectedDate}
           setSelectedDate={setSelectedDate}
         />
-        <Link to="../main/buytemplate">
+        <Link to="../myplan">
           <StyledButton>MY PLAN</StyledButton>
         </Link>
       </UpperHeader>
@@ -93,7 +93,7 @@ const LinkButton = styled.button`
   margin-right: 15px;
   padding: 0 0 1px;
 
-  color: ${(props) => (props.selected ? "black" : "gray")};
+  color: ${(props) => (props.selected ? "black" : "#C4C4C4")};
   border-bottom: ${(props) => (props.selected ? "2px solid #8977f7" : "none")};
   padding-bottom: ${(props) => (props.selected ? "4px" : "6px")};
 `;

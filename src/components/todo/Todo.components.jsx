@@ -9,7 +9,7 @@ import EditFooter from "./EditFooter.components";
 import styled from 'styled-components';
 
 function Todo() {
-  const accessToken = sessionStorage.getItem("token");
+  const accessToken = sessionStorage.getItem("access");
   const [update, setUpdate] = useState(false);
   const [updateMy, setUpdateMy] = useState(false);
 
