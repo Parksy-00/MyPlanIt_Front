@@ -1,29 +1,27 @@
-import { useParams } from "react-router-dom";
-import BottomNavBar from "../globalcomponents/BottomNavBar.components";
-import { PageHeader } from "antd";
-import { Link } from "react-router-dom";
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import styled from "styled-components";
 import axios from "axios";
+import BottomNavBar from "../globalcomponents/BottomNavBar.components";
 
 function Detail() {
-  let accessToken = sessionStorage.getItem("token");
+  const accessToken = sessionStorage.getItem("access");
+  const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const { id } = useParams();
-  const [route, setRoute] = useState("");
+  const [imgUrl, setImgUrl] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  
+
   useEffect(() => {
-    accessToken = sessionStorage.getItem("token");
     const fetchData = async () => {
       try {
         setError(null);
-        setRoute(null);
+        setImgUrl(null);
         setLoading(true);
         await axios
           .get(`https://myplanit.link/todos/plan/${id}/detail`, {
-            Authorization: `Bearer ${accessToken}`,
             withCredentials: true,
             headers: {
               "Content-Type": "application/json",
@@ -31,7 +29,7 @@ function Detail() {
             },
           })
           .then((response) => {
-            setRoute(response.data.image_url);
+            setImgUrl(response.data.image_url);
             setTitle(response.data.plan_todo_name);
           });
       } catch (e) {
@@ -43,39 +41,64 @@ function Detail() {
   }, []);
 
   if (error) return <div>에러가 발생했습니다</div>;
-  if (!route) return null;
+  if (!imgUrl) return null;
+
   return (
-    <>
-      <div
-        className="view-contents"
-        style={{
-          position: "relative",
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-          width: "90vw",
-          marginTop: "30",
-          zIndex: "20",
-        }}
-      >
-        <Link to="../todo">
-          <ArrowBackIosIcon style={{ color: "#7965f4" }} />
-        </Link>
+    <Container>
+      <Header>
+        <FlexBox>
+          <ArrowBackIosIcon
+            style={{ height: 56, color: "black", position: "absolute", left: 0 }}
+            onClick={() => navigate("../todo")}
+          />
+          <Title>{title}</Title>
+        </FlexBox>
+      </Header>
+
+      <div style={{ overflowY: "scroll"}}>
+        <img src={imgUrl} style={{width: "327px", marginBottom: "120px"}} />
       </div>
 
-      <PageHeader
-        style={{ position: "absolute", top: "0", paddingBottom: 0 }}
-        title={title}
-      />
-      <hr style={{ width: "100%", marginTop: 20, marginBottom: 20 }} />
-      <img src={route} width="85%" />
-      <br />
-      <br />
-      <br />
-      <br />
       <BottomNavBar current="TODO" />
-    </>
+    </Container>
   );
 }
 
 export default Detail;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #fbfbfb;
+  position: relative;
+  height: 100vh;
+`;
+
+
+const FlexBox = styled.div`
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 327px;
+`
+
+const Header = styled.div`
+  background: #ffffff;
+  width: 100vw;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  height: 56px;
+  margin-bottom: 28px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
+`;
+
+const Title = styled.div`
+  font-family: "PretendardMedium";
+  font-weight: 510;
+  font-size: 18px;
+  height: 56px;
+  line-height: 56px;
+`;
