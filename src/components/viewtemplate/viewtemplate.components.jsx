@@ -24,7 +24,7 @@ function ViewTemplate(props) {
   const handleClickOpen = () => {
     setOpen(true);
   };
-  let accessToken = sessionStorage.getItem("token");
+  const accessToken = sessionStorage.getItem("access");
   const handleClose = (event, reason) => {
     if (reason && reason == "backdropClick") return;
     axios
@@ -61,7 +61,6 @@ function ViewTemplate(props) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    accessToken = sessionStorage.getItem("token");
     const fetchUsers = async () => {
       try {
         setError(null);
@@ -101,7 +100,7 @@ function ViewTemplate(props) {
           zIndex: "20",
         }}
       >
-        <Link to="../main/maintemplateroutine">
+        <Link to="/planmarket">
           <ArrowBackIosIcon style={{ color: "#7965f4", marginTop: "30px" }} />
         </Link>
       </div>
