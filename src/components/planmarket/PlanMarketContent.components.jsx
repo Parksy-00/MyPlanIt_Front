@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import PlanCard from "../myplan/PlanCard.components";
 
 function PlanMarketContent({ plans }) {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   return (
     <Container>
       {plans.map((plan, i) => (

@@ -36,10 +36,10 @@ function PlanMarket() {
   return (
     <Container>
       <PlanMarketHeader current={current} setCurrent={setCurrent} />
-      
-    { current === "ROUTINE" && <PlanMarketContent plans={users.Routine} />}
 
-    { current === "GROWTH" && <PlanMarketContent plans={users.Growth} /> }
+      {current === "ROUTINE" && <PlanMarketContent plans={users.Routine} />}
+
+      {current === "GROWTH" && <PlanMarketContent plans={users.Growth} />}
 
       <BottomNavBar current="PLAN" />
     </Container>

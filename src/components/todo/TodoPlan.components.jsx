@@ -20,7 +20,7 @@ function TodoPlan({
       style={{ width: "80%", marginTop: "50px" }}
       src={constants.NO_PLAN_IMG}
       onClick={() => {
-        navigate("/main/maintemplategrowth");
+        navigate("/planmarket");
       }}
     />
   );
@@ -56,5 +56,5 @@ const Container = styled.div`
   margin-bottom: 90px;
   width: 327px;
   overflow-Y: scroll;
-  font-family: "Pretendard-SemiBold";
+  font-family: "PretendardSemiBold";
 `
