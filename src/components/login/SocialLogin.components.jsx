@@ -16,7 +16,7 @@ function SocialLogin() {
   }
 
   return (
-    <div className="container">
+    <Container>
       <BackButton>
         <img
           src="/images/cross.png"
@@ -49,15 +49,27 @@ function SocialLogin() {
           onClick={kakaoLogin}
         />
       </LoginButtons>
-    </div>
+    </Container>
   );
 }
 
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #fbfbfb;
+  position: relative;
+  height: 100vh;
+`;
+
+
 const BackButton = styled.div`
-  position: fixed;
+  position: absolute;
   width: 16px;
   height: 16px;
-  left: 55px;
+  left: 0px;
   top: 30px;
 `;
 

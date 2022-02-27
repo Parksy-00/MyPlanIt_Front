@@ -4,9 +4,8 @@ function Login() {
   let navigate = useNavigate();
 
   return (
-    <div className="container">
+    <Container>
       <img
-        className="Logo"
         src="/images/logo.png"
         style={{ marginTop: "200px", width: "173px", marginBottom: "101px" }}
       />
@@ -28,9 +27,20 @@ function Login() {
           가입하기
         </Button>
       </Buttons>
-    </div>
+    </Container>
   );
 }
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #fbfbfb;
+  position: relative;
+  height: 100vh;
+`;
+
 
 const LogoText = styled.span`
   position: absolute;
