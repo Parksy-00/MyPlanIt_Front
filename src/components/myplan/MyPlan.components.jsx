@@ -50,7 +50,6 @@ function MyPlan() {
             Authorization: `Bearer ${accessToken}`,
           },
         });
-        console.log(response);
         setBuyPlans(response.data.buy_plans? response.data.buy_plans: []);
         setBuyLength(response.data.buy_plans? response.data.buy_plans.length: 0);
       } catch (e) {

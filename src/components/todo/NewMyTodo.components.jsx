@@ -88,6 +88,8 @@ const OpenAddModal = styled(Button)`
   position: absolute;
   bottom: 110px;
   right: -10px;
+  border-color: #7965f4 !important;
+  box-shadow: none !important;
 
   &: hover {
     background-color: #8977f7;

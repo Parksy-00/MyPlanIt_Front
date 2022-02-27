@@ -27,6 +27,7 @@
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   font-family: "KoreanDefault";
+  background: #fbfbfb;
 }
 @font-face {
   font-family: "KoreanDefault";
@@ -49,7 +50,7 @@
   src: url("./fonts/SF-Pro-Display-Medium.otf") format("truetype");
 }
 @font-face {
-  font-family: "Pretendard-SemiBold";
+  font-family: "PretendardSemiBold";
   src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff")
     format("woff");
   font-weight: 600;
@@ -70,3 +71,9 @@
   font-size: 14px !important;
 }
 
+.MuiInputBase-input {
+  font-family: "PretendardMedium" !important;
+  font-size: 22px !important;
+  font-weight: bold !important;
+  width: 150px !important;
+}
