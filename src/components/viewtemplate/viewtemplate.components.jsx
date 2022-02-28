@@ -31,7 +31,7 @@ function ViewTemplate(props) {
       .all([
         axios.post(
           "https://myplanit.link/plans/" + id + "/buy",
-          { token: `Bearer ${accessToken}` },
+          {},
           {
             headers: {
               "Content-Type": "application/json",
@@ -41,7 +41,7 @@ function ViewTemplate(props) {
         ),
         axios.post(
           "https://myplanit.link/myplans/" + id + "/register",
-          { token: `Bearer ${accessToken}` },
+          {},
           {
             headers: {
               "Content-Type": "application/json",
