@@ -9,7 +9,7 @@ import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <CssBaseline />
+      {/* <CssBaseline /> */}
       <App />
     </BrowserRouter>
   </React.StrictMode>,
