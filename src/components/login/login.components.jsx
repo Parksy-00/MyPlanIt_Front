@@ -41,16 +41,15 @@ const Container = styled.div`
   height: 100vh;
 `;
 
-
 const LogoText = styled.span`
-  position: absolute;
-  width: 230px;
+  position: fixed;
+  width: 250px;
   height: 20px;
-  top: 250px;
+  top: 240px;
   font-family: Pretendard;
   font-style: normal;
   font-weight: normal;
-  font-size: 17.5px;
+  font-size: 17px;
   line-height: 20px;
   text-align: center;
   color: #929292;
