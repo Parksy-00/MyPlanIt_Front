@@ -51,6 +51,6 @@ const Container = styled.div`
 
 const StyledDatePicker = styled(DatePicker)`
   width: auto;
-  font-family: "Pretendard-SemiBold"
+  font-family: "PretendardSemiBold"
 
 `
