@@ -20,6 +20,7 @@ function SocialLogin() {
       <BackButton>
         <img
           src="/images/cross.png"
+          style={{ width: "16px", height: "16px" }}
           onClick={() => {
             navigate("/");
           }}
@@ -36,7 +37,8 @@ function SocialLogin() {
             marginTop: "15px",
             border: "1px solid transparent",
             borderColor: "#d9d9d9",
-            borderRadius: "4px",
+            borderRadius: "6px",
+            width: "330px",
           }}
           onClick={googleLogin}
         />
@@ -45,6 +47,7 @@ function SocialLogin() {
           alt="kakaoLogin"
           style={{
             marginTop: "15px",
+            width: "330px",
           }}
           onClick={kakaoLogin}
         />
@@ -52,7 +55,6 @@ function SocialLogin() {
     </Container>
   );
 }
-
 
 const Container = styled.div`
   display: flex;
@@ -64,11 +66,8 @@ const Container = styled.div`
   height: 100vh;
 `;
 
-
 const BackButton = styled.div`
   position: absolute;
-  width: 16px;
-  height: 16px;
   left: 0px;
   top: 30px;
 `;
