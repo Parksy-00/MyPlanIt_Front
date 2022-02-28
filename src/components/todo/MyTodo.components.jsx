@@ -18,7 +18,7 @@ function MyTodo({
       await axios
         .post(
           `https://myplanit.link/todos/my/${todo["id"]}/check`,
-          { token: `Bearer ${accessToken}` },
+          {},
           {
             headers: {
               "Content-Type": "application/json",
