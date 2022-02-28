@@ -59,5 +59,5 @@ const Container = styled.div`
   margin-bottom: 95px;
   width: 327px;
   overflow-Y: scroll;
-  font-family: "Pretendard-SemiBold";
+  font-family: "PretendardSemiBold";
 `

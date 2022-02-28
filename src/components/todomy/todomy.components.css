@@ -1,23 +1,12 @@
-.todo-add-button {
-  margin-top: 25px;
-  width: 300px;
-  height: 52px;
-  /* my planit/main color 1 - 7965F4 */
-  border: 0;
-  background: #7965f4;
-  border-radius: 4px;
-  color: white;
-  font-family: PretendardMedium;
-  font-size: 18px;
-}
+/* 
 #main-container {
   background: #fbfbfb;
   font-family: "SF Pro Display" !important;
-}
-
+} */
+/* 
 .date {
   font-family: "Pretendard-SemiBold";
-}
+} */
 
 /* .ant-checkbox-checked .ant-checkbox-inner {
   background-color: #7965f4;
@@ -27,18 +16,18 @@
   padding-top: 0px !important;
 } */
 
-.ant-btn-primary {
+/* .ant-btn-primary {
   border-color: #7965f4 !important;
   box-shadow: none !important;
-}
-.MuiInput-underline::before {
+} */
+/* .MuiInput-underline::before {
   border-bottom: none !important;
-}
-.MuiInputBase-input {
+} */
+/* .MuiInputBase-input {
   font-family: "Pretendard-Medium" !important;
   font-size: 22px !important;
   width: 150px !important;
-}
+} */
 /* .MuiIconButton-root {
   padding-left: 0 !important;
   color: black !important;

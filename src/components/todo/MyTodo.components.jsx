@@ -48,7 +48,7 @@ function MyTodo({
         checked={edit? selected || isChecked: isChecked}
         onChange={() => (edit? selectTodo(todo): checkMyTodo(todo))}
       >
-        <span style={{ marginLeft: 5, fontFamily: "Pretendard-Medium" }}>
+        <span style={{ marginLeft: 5, fontFamily: "PretendardMedium" }}>
           {todo.todo_name}
         </span>
       </StyledCheckbox>

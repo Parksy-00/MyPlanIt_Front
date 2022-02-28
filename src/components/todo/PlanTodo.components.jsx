@@ -59,7 +59,7 @@ function PlanTodo({
         }}
         onClick={() => navigate(`/todo/detail/${item["todo_id"]}`)}
       >
-        <span style={{ fontFamily: "Pretendard-Medium" }}>{todoName}</span>
+        <span style={{ fontFamily: "PretendardMedium" }}>{todoName}</span>
         <DetailIcon src={constants.DETAIL_ICON} />
       </span>
     </Container>

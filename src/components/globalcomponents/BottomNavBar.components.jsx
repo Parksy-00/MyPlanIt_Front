@@ -45,7 +45,7 @@ const BottomNavBar = ({ current }) => {
             </>
           }
           component={Link}
-          to="/main/maintemplategrowth"
+          to="/planmarket"
         />
       </StyledBottomNavBar>
   );

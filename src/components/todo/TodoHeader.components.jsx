@@ -102,7 +102,7 @@ const EditButton = styled.p`
   position: absolute;
   right: 0;
   margin-top: 0;
-  font-family: "Pretendard-Medium";
+  font-family: "PretendardMedium";
   font-size: 12px;
   color: ${(props) => (props.editing ? "#8977F7" : "#929292")};
 `;
