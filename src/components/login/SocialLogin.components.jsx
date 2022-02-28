@@ -17,14 +17,12 @@ function SocialLogin() {
 
   return (
     <Container>
-      <BackButton>
-        <img
-          src="/images/cross.png"
-          onClick={() => {
-            navigate("/");
-          }}
-        />
-      </BackButton>
+      <BackButton
+        src="/images/cross.png"
+        onClick={() => {
+          navigate("/");
+        }}
+      />
       <LoginText>
         빠르고 간편한 로그인으로 마이플랜잇의 다양한 혜택을 누려 보세요!
       </LoginText>
@@ -33,6 +31,7 @@ function SocialLogin() {
           src="/images/google_login.png"
           alt="googleLogin"
           style={{
+            width: "330px",
             marginTop: "15px",
             border: "1px solid transparent",
             borderColor: "#d9d9d9",
@@ -44,6 +43,7 @@ function SocialLogin() {
           src="/images/kakao_login.png"
           alt="kakaoLogin"
           style={{
+            width: "330px",
             marginTop: "15px",
           }}
           onClick={kakaoLogin}
@@ -52,7 +52,6 @@ function SocialLogin() {
     </Container>
   );
 }
-
 
 const Container = styled.div`
   display: flex;
@@ -64,8 +63,7 @@ const Container = styled.div`
   height: 100vh;
 `;
 
-
-const BackButton = styled.div`
+const BackButton = styled.img`
   position: absolute;
   width: 16px;
   height: 16px;
