@@ -42,7 +42,7 @@ const Container = styled.div`
 `;
 
 const LogoText = styled.span`
-  position: fixed;
+  position: absolute;
   width: 250px;
   height: 20px;
   top: 240px;
