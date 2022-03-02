@@ -34,6 +34,7 @@ function SocialLogin() {
           src="/images/google_login.png"
           alt="googleLogin"
           style={{
+            width: "330px",
             marginTop: "15px",
             border: "1px solid transparent",
             borderColor: "#d9d9d9",
@@ -46,6 +47,7 @@ function SocialLogin() {
           src="/images/kakao_login.png"
           alt="kakaoLogin"
           style={{
+            width: "330px",
             marginTop: "15px",
             width: "330px",
           }}

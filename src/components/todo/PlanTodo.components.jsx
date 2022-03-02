@@ -21,7 +21,7 @@ function PlanTodo({
     axios
       .post(
         `https://myplanit.link/todos/plan/${item["plan_id"]}/${item["id"]}/check`,
-        { token: `Bearer ${accessToken}` },
+        {},
         {
           headers: {
             "Content-Type": "application/json",
