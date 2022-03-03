@@ -7,7 +7,7 @@ import constants from "../../constants";
 
 function PlanSheet({ isOpen, setIsOpen, title, writer_name, planId }) {
   const navigate = useNavigate();
-  const accessToken = sessionStorage.getItem("token");
+  const accessToken = sessionStorage.getItem("access");
   const deletePlan = () => {
     if (!window.confirm("정말 제거하시겠습니까?")) return;
     axios

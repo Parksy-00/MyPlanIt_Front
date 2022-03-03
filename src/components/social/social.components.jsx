@@ -8,9 +8,9 @@ function Social() {
   const navigate = useNavigate();
   useEffect(() => {
     const code = window.location.href.split("=")[1];
-    console.log(code);
+    // console.log(code);
     axios
-      .get(`https://myplanit.link/auth/kakao/?code=${code}`)
+      .get(`https://myplanit.link/auth/kakao?code=${code}`)
       .then((response) => {
         const data = response.data;
         const status = response.status;
