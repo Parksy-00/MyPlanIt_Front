@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Card, Checkbox } from "antd";
+import { Checkbox } from "antd";
 import styled from 'styled-components';
 
 function MyTodo({
@@ -42,16 +42,24 @@ function MyTodo({
     }
   };
   return (
-    <TodoCard>
+    <TodoCard onClick={() => edit && selectTodo(todo)} selected={selected}>
       <StyledCheckbox
         disabled={isChecked && edit}
-        checked={edit? selected || isChecked: isChecked}
-        onChange={() => (edit? selectTodo(todo): checkMyTodo(todo))}
+        checked={isChecked}
+        onChange={() => (!edit && checkMyTodo(todo))}
+      />
+      <span
+        style={{
+          width: "255px",
+          margin: "0px 8px",
+          fontSize: "14px",
+          opacity: isChecked && edit ? "0.4" : 1,
+          fontFamily: "PretendardMedium"
+        }}
+        onClick={() => !edit && checkMyTodo(todo)}
       >
-        <span style={{ marginLeft: 5, fontFamily: "PretendardMedium" }}>
-          {todo.todo_name}
-        </span>
-      </StyledCheckbox>
+        {todo.todo_name}
+      </span>
     </TodoCard>
   );
 }
@@ -60,11 +68,9 @@ export default MyTodo;
 
 const TodoCard = styled.div`
   box-sizing: border-box;
-  border: 1px solid #f0f0f0;
-  margin: 0;
+  border: 1.5px solid ${props => props.selected? "#8977f7": "#f0f0f0" };
   padding: 10px 20px;
-  position: relative;
-  border-radius: 5px;
+  border-radius: 4px;
   width: 327px;
   height: 52px;
   margin-top: 9px;
@@ -72,10 +78,13 @@ const TodoCard = styled.div`
   align-items: center;
   background-color: #ffffff;
 `
-
 const StyledCheckbox = styled(Checkbox)`
-  width: 300px;
-  
+  align-items: center;
+
+  .ant-checkbox {
+    top: 0;
+  }
+
   .ant-checkbox-checked .ant-checkbox-inner {
     background-color: ${props => props.checked? "#8977f7": "#FFFFFF"};
     border-color: #8977F7;
