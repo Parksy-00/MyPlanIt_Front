@@ -43,10 +43,10 @@ function PlanTodo({
   };
 
   return (
-    <Container>
+    <Container selected={selected} onClick={() => edit && selectTodo(item)}>
       <StyledCheckbox
         disabled={isChecked && edit}
-        checked={edit ? selected || isChecked : isChecked}
+        checked={isChecked}
         onChange={() => (edit ? selectTodo(item) : checkTodo(item))}
       />
       <span
@@ -55,9 +55,10 @@ function PlanTodo({
           width: "255px",
           margin: "0px 8px",
           fontSize: 14,
-          alignItems: "center"
+          alignItems: "center",
+          opacity: isChecked && edit ? "0.4" : 1,
         }}
-        onClick={() => navigate(`/todo/detail/${item["todo_id"]}`)}
+        onClick={() => !edit && navigate(`/todo/detail/${item["todo_id"]}`)}
       >
         <span style={{ fontFamily: "PretendardMedium" }}>{todoName}</span>
         <DetailIcon src={constants.DETAIL_ICON} />
@@ -69,15 +70,24 @@ function PlanTodo({
 export default PlanTodo;
 
 const Container = styled.div`
-width: 300px;
-margin-top: 14px;
-margin-left: 0 !important;
-display: flex;
-align-items: center;
+  padding: 5px 12px;
+  height: 36px;
+  margin-top: 5px;
+  margin-left: 0 !important;
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  box-sizing: border-box;
 
-`
+  border: 1.5px solid ${(props) => (props.selected ? "#8977f7" : "transparent")};
+`;
 
 const StyledCheckbox = styled(Checkbox)`
+  align-items: center;
+
+  .ant-checkbox {
+    top: 0;
+  }
   
   .ant-checkbox-checked .ant-checkbox-inner {
     background-color: ${(props) => (props.checked ? "#8977f7" : "#FFFFFF")};

@@ -55,7 +55,7 @@ function Detail() {
         </FlexBox>
       </Header>
 
-      <div style={{ overflowY: "scroll"}}>
+      <div style={{ overflowY: "scroll", paddingTop: "28px"}}>
         <img src={imgUrl} style={{width: "327px", marginBottom: "120px"}} />
       </div>
 
@@ -91,7 +91,6 @@ const Header = styled.div`
   position: relative;
   justify-content: center;
   height: 56px;
-  margin-bottom: 28px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
 `;
 
