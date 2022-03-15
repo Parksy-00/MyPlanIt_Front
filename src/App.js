@@ -15,7 +15,8 @@ import SocialLogin from "./components/login/SocialLogin.components";
 import MyPlan from "./components/myplan/MyPlan.components";
 import TodoDetail from "./components/todo/TodoDetail.components";
 import PlanMarket from "./components/planmarket/PlanMarket.components";
-import Social from "./components/social/social.components";
+import KakaoSocial from "./components/social/KakaoSocial.components";
+import GoogleSocial from "./components/social/GoogleSocial.components";
 import Admin from "./components/admin/admin.components";
 
 function App() {
@@ -26,14 +27,19 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/login" element={<SocialLogin />} />
           <Route path="/admin" element={<Admin />} />
-          <Route path="/login/kakao/:code" element={<Social />} />
+
+          <Route path="/login/kakao/:code" element={<KakaoSocial />} />
+          <Route path="/auth/google/callback" element={<GoogleSocial />} />
 
           <Route path="/onboard1" element={<Onboard1 />} />
           <Route path="/onboard2" element={<Onboard2 />} />
           <Route path="/onboard3" element={<Onboard3 />} />
+
           <Route path="/todo" element={<Todo />} />
+
           <Route path="/myplan" element={<MyPlan />} />
-          <Route path="/planmarket" element={<PlanMarket/>} />
+
+          <Route path="/planmarket" element={<PlanMarket />} />
 
           <Route path="/main/wishtemplate" element={<WishTemplate />} />
           <Route path="/main/viewtemplate/:id" element={<ViewTemplate />} />
