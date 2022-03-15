@@ -12,7 +12,13 @@ function SocialLogin() {
   }
 
   function googleLogin() {
-    alert("구글 로그인");
+    axios
+      .get(
+        `https://accounts.google.com/o/oauth2/v2/auth?client_id=${process.env.REACT_APP_GOOGLE_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_GOOGLE_REDIRECT_URI}&response_type=code&scope=https://www.googleapis.com/auth/userinfo.profile`
+      )
+      .then((response) => {
+        console.log(response);
+      });
   }
 
   return (
