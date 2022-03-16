@@ -32,7 +32,13 @@ function PlanMarket() {
     fetchUsers();
   }, []);
 
-  if (loading) return <LoadingScreen />;
+  if (loading)
+    return (
+      <div>
+        <LoadingScreen />
+        <BottomNavBar current="PLAN" />
+      </div>
+    );
   if (error) return <div>에러가 발생했습니다</div>;
   if (!users) return null;
   return (
