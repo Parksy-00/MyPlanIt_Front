@@ -1,5 +1,6 @@
 import React from "react";
 import { MuiPickersUtilsProvider, DatePicker } from "@material-ui/pickers";
+import { InputAdornment } from "@material-ui/core";
 import { ko } from "date-fns/locale";
 import DateFnsUtils from "@date-io/date-fns";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
@@ -13,25 +14,17 @@ function Calendar({ selectedDate, setSelectedDate }) {
 
   return (
     <Container>
-      <MuiPickersUtilsProvider
-        locale={ko}
-        utils={DateFnsUtils}
-      >
+      <MuiPickersUtilsProvider locale={ko} utils={DateFnsUtils}>
         <StyledDatePicker
           InputProps={{
             disableUnderline: true,
-            endAdornment: (
-              <ExpandMoreIcon
-                color="black"
-                fontSize="large"
-              />
-            ),
+            fullWidth: true,
+            endAdornment: <ExpandMoreIcon color="black" fontSize="large" />,
           }}
           disableToolbar
           format="M월 d일 eee요일"
           margin="normal"
           value={selectedDate}
-          className="date"
           onChange={handleDateChange}
         />
       </MuiPickersUtilsProvider>
@@ -46,11 +39,10 @@ const Container = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-
+  width: 190px;
 `;
 
 const StyledDatePicker = styled(DatePicker)`
   width: auto;
-  font-family: "PretendardSemiBold"
-
-`
+  font-family: "PretendardSemiBold";
+`;
