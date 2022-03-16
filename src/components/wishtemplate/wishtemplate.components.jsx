@@ -9,8 +9,8 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import React, { useState, useEffect, Component } from "react";
 import { NavLink, Route } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
-import BottomNavBarPlan from "../globalcomponents/bottomnavbarplan.components";
 import { useParams } from "react-router-dom";
+import BottomNavBar from "../globalcomponents/BottomNavBar.components";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import axios from "axios";
 function WishTemplate() {
@@ -276,7 +276,7 @@ function WishTemplate() {
         <div className="textbox"></div>
         <div style={{ height: "10px" }}></div>
       </ul>
-      <BottomNavBarPlan />
+      <BottomNavBar current="PLAN" />
     </div>
   );
 }

@@ -39,7 +39,7 @@ const Container = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  width: 190px;
+  width: 200px;
 `;
 
 const StyledDatePicker = styled(DatePicker)`
