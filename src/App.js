@@ -40,7 +40,6 @@ function App() {
 
           <Route path="/planmarket" element={<PlanMarket />} />
 
-          <Route path="/main/wishtemplate" element={<WishTemplate />} />
           <Route path="/main/viewtemplate/:id" element={<ViewTemplate />} />
           <Route path="/main/searchtemplate" element={<SearchTemplate />} />
 
