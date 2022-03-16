@@ -4,7 +4,7 @@ import axios from "axios";
 import { Loading } from "@nextui-org/react";
 import styled from "styled-components";
 
-function Social() {
+function KakaoSocial() {
   const navigate = useNavigate();
   useEffect(() => {
     const code = window.location.href.split("=")[1];
@@ -37,4 +37,4 @@ const LoadingIcon = styled.div`
   align-items: center;
 `;
 
-export default Social;
+export default KakaoSocial;
