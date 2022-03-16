@@ -1,19 +1,18 @@
-import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
+import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import { useState } from "react";
 import { Card } from "antd";
 import CheckIcon from "@mui/icons-material/Check";
 
-function ServiceDetail({ 
-    setShowDetail, 
-    setService, 
-    service, 
-    iconStyle, 
-    emailAgree, 
-    setEmailAgree, 
-    snsAgree, 
-    setSnsAgree 
+function ServiceDetail({
+  setShowDetail,
+  setService,
+  service,
+  iconStyle,
+  emailAgree,
+  setEmailAgree,
+  snsAgree,
+  setSnsAgree,
 }) {
-
   return (
     <div className="serviceDetail">
       <div className="header">
@@ -34,7 +33,11 @@ function ServiceDetail({
           <CheckIcon
             className={iconStyle(service[1])}
             onClick={() => {
-              setService([...service.slice(0, 1), !service[1], ...service.slice(2)]);
+              setService([
+                ...service.slice(0, 1),
+                !service[1],
+                ...service.slice(2),
+              ]);
             }}
           />
           <span style={{ marginTop: "2px" }}>만 14세 이상입니다. (필수)</span>
@@ -42,11 +45,15 @@ function ServiceDetail({
       </Card>
 
       <Card style={{ width: 327, height: 170, marginTop: 9 }}>
-        <span style={{ display: "flex", marginTop:"8px" }}>
+        <span style={{ display: "flex", marginTop: "8px" }}>
           <CheckIcon
             className={iconStyle(service[2])}
             onClick={() => {
-              setService([...service.slice(0, 2), !service[2], ...service.slice(3)]);
+              setService([
+                ...service.slice(0, 2),
+                !service[2],
+                ...service.slice(3),
+              ]);
             }}
           />
           <span style={{ marginTop: "2px" }}>서비스 이용 약관 동의 (필수)</span>
@@ -65,11 +72,15 @@ function ServiceDetail({
       </Card>
 
       <Card style={{ width: 327, height: 180, marginTop: 9 }}>
-        <span style={{ display: "flex", marginTop:"8px" }}>
+        <span style={{ display: "flex", marginTop: "8px" }}>
           <CheckIcon
             className={iconStyle(service[3])}
             onClick={() => {
-              setService([...service.slice(0, 3), !service[3], ...service.slice(4)]);
+              setService([
+                ...service.slice(0, 3),
+                !service[3],
+                ...service.slice(4),
+              ]);
             }}
           />
           <span style={{ marginTop: "2px" }}>
@@ -91,11 +102,15 @@ function ServiceDetail({
       </Card>
 
       <Card style={{ width: 327, height: 96, marginTop: 9 }}>
-        <span style={{ display: "flex", marginTop:"8px" }}>
+        <span style={{ display: "flex", marginTop: "8px" }}>
           <CheckIcon
             className={iconStyle(service[4])}
             onClick={() => {
-              setService([...service.slice(0, 4), !service[4], ...service.slice(5)]);
+              setService([
+                ...service.slice(0, 4),
+                !service[4],
+                ...service.slice(5),
+              ]);
               if (service[4]) {
                 setEmailAgree(false);
                 setSnsAgree(false);
@@ -114,7 +129,7 @@ function ServiceDetail({
           <span>
             <div className="check" style={{ marginLeft: 20 }}>
               <img
-                src={ emailAgree? "/images/check2.png": "/images/check1.png" }
+                src={emailAgree ? "/images/check2.png" : "/images/check1.png"}
                 onClick={() => {
                   setEmailAgree(!emailAgree);
                 }}
@@ -125,7 +140,14 @@ function ServiceDetail({
                 }}
               />
 
-              <p style={{ marginTop: 0, marginBottom: 0, color: "#C4C4C4", fontSize:"12px" }}>
+              <p
+                style={{
+                  marginTop: 0,
+                  marginBottom: 0,
+                  color: "#C4C4C4",
+                  fontSize: "12px",
+                }}
+              >
                 이메일 수신 동의
               </p>
             </div>
@@ -133,36 +155,39 @@ function ServiceDetail({
 
           <span>
             <div className="check" style={{ marginLeft: 20 }}>
-                <img
-                    src={ snsAgree? "/images/check2.png": "/images/check1.png" }
-                    onClick={() => {
-                        setSnsAgree(!snsAgree);
-                    }}
-                    style={{
-                        width: "18px",
-                        height: "18px",
-                        marginRight: "8px",
-                    }}
-                    />
+              <img
+                src={snsAgree ? "/images/check2.png" : "/images/check1.png"}
+                onClick={() => {
+                  setSnsAgree(!snsAgree);
+                }}
+                style={{
+                  width: "18px",
+                  height: "18px",
+                  marginRight: "8px",
+                }}
+              />
 
-                    <p style={{ marginTop: 0, marginBottom: 0, color: "#C4C4C4", fontSize:"12px" }}>
-                    SNS 수신 동의
-                    </p>
+              <p
+                style={{
+                  marginTop: 0,
+                  marginBottom: 0,
+                  color: "#C4C4C4",
+                  fontSize: "12px",
+                }}
+              >
+                SNS 수신 동의
+              </p>
             </div>
           </span>
         </span>
       </Card>
 
-      <button
-        onClick={() => setShowDetail(false)}
-        className="login-button"
-      >
+      <button onClick={() => setShowDetail(false)} className="login-button">
         닫기
       </button>
       <br />
-
     </div>
-  )
+  );
 }
 
-export default ServiceDetail
+export default ServiceDetail;

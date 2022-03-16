@@ -5,7 +5,7 @@ import PlanSheet from "./PlanSheet.components";
 
 function MyPlanContent({ plans, register }) {
   const [isOpen, setIsOpen] = useState(false);
-const [plan, setPlan] = useState({});
+  const [plan, setPlan] = useState({});
   return (
     <Container>
       {plans.map((item, i) => (
@@ -18,11 +18,14 @@ const [plan, setPlan] = useState({});
           writer_intro={item.plan.writer_intro}
           desc={item.plan.desc}
           tags={item.plan.tags}
-          onClick={() => {setPlan({...item.plan});setIsOpen(true)}}
+          onClick={() => {
+            setPlan({ ...item.plan });
+            setIsOpen(true);
+          }}
         />
       ))}
 
-      {register  && (
+      {register && (
         <PlanSheet
           isOpen={isOpen}
           setIsOpen={setIsOpen}

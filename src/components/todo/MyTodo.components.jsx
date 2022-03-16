@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Checkbox } from "antd";
-import styled from 'styled-components';
+import styled from "styled-components";
 
 function MyTodo({
   todo,
@@ -46,7 +46,7 @@ function MyTodo({
       <StyledCheckbox
         disabled={isChecked && edit}
         checked={isChecked}
-        onChange={() => (!edit && checkMyTodo(todo))}
+        onChange={() => !edit && checkMyTodo(todo)}
       />
       <span
         style={{
@@ -54,7 +54,7 @@ function MyTodo({
           margin: "0px 8px",
           fontSize: "14px",
           opacity: isChecked && edit ? "0.4" : 1,
-          fontFamily: "PretendardMedium"
+          fontFamily: "PretendardMedium",
         }}
         onClick={() => !edit && checkMyTodo(todo)}
       >
@@ -68,7 +68,7 @@ export default MyTodo;
 
 const TodoCard = styled.div`
   box-sizing: border-box;
-  border: 1.5px solid ${props => props.selected? "#8977f7": "#f0f0f0" };
+  border: 1.5px solid ${(props) => (props.selected ? "#8977f7" : "#f0f0f0")};
   padding: 10px 20px;
   border-radius: 4px;
   width: 327px;
@@ -77,7 +77,7 @@ const TodoCard = styled.div`
   display: flex;
   align-items: center;
   background-color: #ffffff;
-`
+`;
 const StyledCheckbox = styled(Checkbox)`
   align-items: center;
 
@@ -86,24 +86,26 @@ const StyledCheckbox = styled(Checkbox)`
   }
 
   .ant-checkbox-checked .ant-checkbox-inner {
-    background-color: ${props => props.checked? "#8977f7": "#FFFFFF"};
-    border-color: #8977F7;
+    background-color: ${(props) => (props.checked ? "#8977f7" : "#FFFFFF")};
+    border-color: #8977f7;
   }
 
   .ant-checkbox-checked::after {
-    border-color: #8977F7;
+    border-color: #8977f7;
   }
 
-  .ant-checkbox-wrapper:hover .ant-checkbox-inner, .ant-checkbox:hover, .ant-checkbox-input:focus + .ant-checkbox-inner {
-    border-color: #8977F7;
+  .ant-checkbox-wrapper:hover .ant-checkbox-inner,
+  .ant-checkbox:hover,
+  .ant-checkbox-input:focus + .ant-checkbox-inner {
+    border-color: #8977f7;
   }
 
   .ant-checkbox-disabled .ant-checkbox-inner {
-    background-color: #E1DCFE;
-    border-color: #E1DCFE !important;
+    background-color: #e1dcfe;
+    border-color: #e1dcfe !important;
   }
 
   .ant-checkbox-disabled.ant-checkbox-checked .ant-checkbox-inner::after {
-    border-color: #FFFFFF;
+    border-color: #ffffff;
   }
-`
+`;

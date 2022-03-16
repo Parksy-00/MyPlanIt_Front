@@ -3,7 +3,7 @@ import "./signup1.components.css";
 import { Input } from "antd";
 import validator from "validator";
 import Visibility from "./visibility.conponents";
-import Service from './service.components';
+import Service from "./service.components";
 
 function Signup1({
   email,
@@ -33,13 +33,14 @@ function Signup1({
   let schema = new passwordValidator();
   schema.is().min(8).has().digits(1);
 
-  const canGoNext = nameCheck &&
-  emailCheck &&
-  equalPw == password &&
-  pwCheck &&
-  service[1] &&
-  service[2] &&
-  service[3];
+  const canGoNext =
+    nameCheck &&
+    emailCheck &&
+    equalPw == password &&
+    pwCheck &&
+    service[1] &&
+    service[2] &&
+    service[3];
 
   const validateEmail = (e) => {
     const email = e.target.value;
@@ -63,19 +64,18 @@ function Signup1({
     }
   };
 
-  const checkIcon = (check) => check ? (
-    <img src="/images/greentick.png" style={{ width: "18px" }} />
-  ) : (
-    <span />
-  )
+  const checkIcon = (check) =>
+    check ? (
+      <img src="/images/greentick.png" style={{ width: "18px" }} />
+    ) : (
+      <span />
+    );
 
   return (
     <>
       <div className="main">
         <div className="id-input">
-          <p className="inputLabel">
-            아이디 (이메일)
-          </p>
+          <p className="inputLabel">아이디 (이메일)</p>
           <Input
             id="inputID"
             className="email-input inputText"
@@ -83,23 +83,21 @@ function Signup1({
             placeholder="자주 사용하는 이메일 입력"
             value={email}
             onChange={(e) => validateEmail(e)}
-            suffix={ checkIcon(emailCheck) }
+            suffix={checkIcon(emailCheck)}
           />
         </div>
         <div className="pw-input">
-          <p className="inputLabel">
-            비밀번호
-          </p>
+          <p className="inputLabel">비밀번호</p>
           <Input
             id="inputID"
             className="password-input inputText"
-            type={visible? "text" : "password"}
+            type={visible ? "text" : "password"}
             size="large"
             value={password}
             onChange={(e) => validatePassword(e)}
             suffix={
               <>
-                { checkIcon(pwCheck) }
+                {checkIcon(pwCheck)}
                 <Visibility visible={visible} setVisible={setVisible} />
               </>
             }
@@ -107,9 +105,7 @@ function Signup1({
           />
         </div>
         <div className="pw-check">
-          <p className="inputLabel">
-            비밀번호 확인
-          </p>
+          <p className="inputLabel">비밀번호 확인</p>
           <Input
             id="inputID"
             type="password"
@@ -122,9 +118,7 @@ function Signup1({
           />
         </div>
         <div className="nm-input">
-          <p className="inputLabel">
-            이름
-          </p>
+          <p className="inputLabel">이름</p>
           <Input
             id="inputID"
             className="name-input inputText"
@@ -139,19 +133,19 @@ function Signup1({
           />
         </div>
 
-        <Service 
-          service={service} 
-          setService={setService} 
+        <Service
+          service={service}
+          setService={setService}
           emailAgree={emailAgree}
           setEmailAgree={setEmailAgree}
           snsAgree={snsAgree}
           setSnsAgree={setSnsAgree}
         />
-        
+
         <button
           disabled={!canGoNext}
           className="login-button"
-          style={{ opacity: canGoNext? "1": "0.5"}}
+          style={{ opacity: canGoNext ? "1" : "0.5" }}
           onClick={() => setStep(2)}
         >
           다음

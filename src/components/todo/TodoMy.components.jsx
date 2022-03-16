@@ -2,7 +2,7 @@ import { useState } from "react";
 import MyTodo from "./MyTodo.components";
 import constants from "../../constants";
 import NewMyTodo from "./NewMyTodo.components";
-import styled from 'styled-components';
+import styled from "styled-components";
 
 function TodoMy({
   myTodoData,
@@ -12,7 +12,7 @@ function TodoMy({
   selectedDate,
   edit,
   delay,
-  setDelay
+  setDelay,
 }) {
   const todoExist = myTodoData?.length;
   const noTodoImg = (
@@ -58,6 +58,6 @@ const Container = styled.div`
   margin-top: 110px;
   margin-bottom: 95px;
   width: 327px;
-  overflow-Y: scroll;
+  overflow-y: scroll;
   font-family: "PretendardSemiBold";
-`
+`;

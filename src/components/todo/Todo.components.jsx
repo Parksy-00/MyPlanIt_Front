@@ -6,7 +6,8 @@ import TodoHeader from "./TodoHeader.components";
 import TodoPlan from "./TodoPlan.components";
 import TodoMy from "./TodoMy.components";
 import EditFooter from "./EditFooter.components";
-import styled from 'styled-components';
+import styled from "styled-components";
+import LoadingScreen from "../globalcomponents/Loading.components";
 
 function Todo() {
   const accessToken = sessionStorage.getItem("access");
@@ -90,20 +91,7 @@ function Todo() {
     setDelay([]);
   }, [selectedDate, updateMy]);
 
-  if (loading)
-    return (
-      <div
-        style={{
-          width: "100vw",
-          height: "100vh",
-          backgroundColor: "gray",
-          zIndex: 100000,
-        }}
-      >
-        <Oval color="#7965f4" height="40px" width="40px" />
-        <BottomNavBar />
-      </div>
-    );
+  if (loading) return <LoadingScreen />;
   if (error) return <div>에러가 발생했습니다</div>;
 
   return (
@@ -170,6 +158,6 @@ const Container = styled.div`
   justify-content: flex-start;
   align-items: center;
   background-color: #fbfbfb;
-  position:relative;
+  position: relative;
   height: 100vh;
-`
+`;
