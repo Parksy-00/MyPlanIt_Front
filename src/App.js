@@ -6,7 +6,6 @@ import Login from "./components/login/login.components";
 import Onboard1 from "./components/onboard/onboard1.components";
 import Onboard2 from "./components/onboard/onboard2.components";
 import Onboard3 from "./components/onboard/onboard3.components";
-import WishTemplate from "./components/wishtemplate/wishtemplate.components";
 import ViewTemplate from "./components/viewtemplate/viewtemplate.components";
 import SearchTemplate from "./components/searchtemplate/searchtemplate.components";
 import Todo from "./components/todo/Todo.components";
@@ -41,7 +40,6 @@ function App() {
 
           <Route path="/planmarket" element={<PlanMarket />} />
 
-          <Route path="/main/wishtemplate" element={<WishTemplate />} />
           <Route path="/main/viewtemplate/:id" element={<ViewTemplate />} />
           <Route path="/main/searchtemplate" element={<SearchTemplate />} />
 
