@@ -5,6 +5,7 @@ import BottomNavBar from "../globalcomponents/BottomNavBar.components";
 import MyPlanHeader from "./MyPlanHeader.components";
 import MyPlanContent from "./MyPlanContent.components";
 import styled from "styled-components";
+import LoadingScreen from "../globalcomponents/Loading.components";
 
 function MyPlan() {
   const accessToken = sessionStorage.getItem("access");
@@ -29,8 +30,12 @@ function MyPlan() {
             },
           }
         );
-        setRegisterPlans(response.data.register_plans? response.data.register_plans: []);
-        setRegisterLength(response.data.register_plans? response.data.register_plans.length: 0);
+        setRegisterPlans(
+          response.data.register_plans ? response.data.register_plans : []
+        );
+        setRegisterLength(
+          response.data.register_plans ? response.data.register_plans.length : 0
+        );
       } catch (e) {
         setError(e);
       }
@@ -50,8 +55,10 @@ function MyPlan() {
             Authorization: `Bearer ${accessToken}`,
           },
         });
-        setBuyPlans(response.data.buy_plans? response.data.buy_plans: []);
-        setBuyLength(response.data.buy_plans? response.data.buy_plans.length: 0);
+        setBuyPlans(response.data.buy_plans ? response.data.buy_plans : []);
+        setBuyLength(
+          response.data.buy_plans ? response.data.buy_plans.length : 0
+        );
       } catch (e) {
         setError(e);
       }
@@ -63,19 +70,7 @@ function MyPlan() {
 
   if (error) return error;
 
-  if (loading)
-    return (
-      <div
-        style={{
-          marginTop: "40vh",
-          marginBottom: "auto",
-          marginLeft: "auto",
-          marginRight: "auto",
-        }}
-      >
-        <Loading />
-      </div>
-    );
+  if (loading) return <LoadingScreen />;
 
   return (
     <Container>

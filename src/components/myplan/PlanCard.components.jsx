@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
-
 function PlanCard({
   title,
   profile_img,
@@ -11,9 +10,8 @@ function PlanCard({
   writer_intro,
   desc,
   tags,
-  onClick
+  onClick,
 }) {
-
   return (
     <Container onClick={onClick}>
       <PlanTitle>{title}</PlanTitle>

@@ -7,6 +7,7 @@ import { Oval } from "react-loader-spinner";
 import styled from "styled-components";
 import PlanMarketHeader from "./PlanMarketHeader.components";
 import PlanMarketContent from "./PlanMarketContent.components";
+import LoadingScreen from "../globalcomponents/Loading.components";
 
 function PlanMarket() {
   const [users, setUsers] = useState(null);
@@ -31,6 +32,7 @@ function PlanMarket() {
     fetchUsers();
   }, []);
 
+  if (loading) return <LoadingScreen />;
   if (error) return <div>에러가 발생했습니다</div>;
   if (!users) return null;
   return (

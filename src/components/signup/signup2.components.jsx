@@ -32,7 +32,7 @@ function Signup2({ email, password, name, emailAgree, snsAgree }) {
           username: username,
           email_agree: emailAgree,
           sns_agree: snsAgree,
-        })
+        });
         if (response.status === 201) {
           sessionStorage.setItem("username", username);
           navigate("/onboard1");

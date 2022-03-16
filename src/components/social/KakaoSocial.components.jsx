@@ -1,8 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Loading } from "@nextui-org/react";
-import styled from "styled-components";
+import LoadingScreen from "../globalcomponents/Loading.components";
 
 function KakaoSocial() {
   const navigate = useNavigate();
@@ -22,19 +21,7 @@ function KakaoSocial() {
         console.log(error.message);
       });
   });
-  return (
-    <LoadingIcon>
-      <Loading color="secondary" />
-    </LoadingIcon>
-  );
+  return <LoadingScreen />;
 }
-
-const LoadingIcon = styled.div`
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
 
 export default KakaoSocial;

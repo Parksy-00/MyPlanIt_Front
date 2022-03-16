@@ -4,14 +4,9 @@ import { Input } from "antd";
 import Sheet from "react-modal-sheet";
 import { Button } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
-import styled from 'styled-components';
+import styled from "styled-components";
 
-function NewMyTodo({
-  selectedDate,
-  accessToken,
-  updateMy,
-  setUpdateMy,
-}) {
+function NewMyTodo({ selectedDate, accessToken, updateMy, setUpdateMy }) {
   const [isOpen, setOpen] = useState(false);
   const [todo, setTodo] = useState([]);
   const inputRef = useRef(null);
@@ -38,7 +33,7 @@ function NewMyTodo({
         setOpen(false);
         setTodo("");
       });
-  }
+  };
 
   return (
     <>
@@ -67,11 +62,7 @@ function NewMyTodo({
               value={todo}
               ref={inputRef}
             />
-            <AddButton
-              onClick={addNewTodo}
-            >
-              추가하기
-            </AddButton>
+            <AddButton onClick={addNewTodo}>추가하기</AddButton>
           </Sheet.Content>
         </Sheet.Container>
 
@@ -98,7 +89,7 @@ const OpenAddModal = styled(Button)`
   &: focus {
     background-color: #8977f7;
   }
-`
+`;
 
 const AddButton = styled.button`
   width: 327px;
@@ -111,7 +102,7 @@ const AddButton = styled.button`
   font-size: 18px;
   margin: 25px auto;
   display: block;
-`
+`;
 
 const NewTodoInput = styled(Input)`
 display: block;
@@ -121,4 +112,4 @@ width: 327px;
 font-family: "PretendardRegular"
 font-size: 16px;
 color: black;
-`
+`;

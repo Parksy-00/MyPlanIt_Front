@@ -1,6 +1,6 @@
 import axios from "axios";
 import constants from "../../constants";
-import styled from 'styled-components';
+import styled from "styled-components";
 
 function EditFooter({
   current,
@@ -11,7 +11,6 @@ function EditFooter({
   updateMy,
   setUpdateMy,
 }) {
-
   const delayTodo = () => {
     for (let i = 0; i < delay.length; i++) {
       axios
@@ -76,4 +75,4 @@ const Footer = styled.div`
   bottom: 0;
   display: flex;
   justify-content: space-evenly;
-`
+`;

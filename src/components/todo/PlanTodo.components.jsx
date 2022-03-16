@@ -88,7 +88,7 @@ const StyledCheckbox = styled(Checkbox)`
   .ant-checkbox {
     top: 0;
   }
-  
+
   .ant-checkbox-checked .ant-checkbox-inner {
     background-color: ${(props) => (props.checked ? "#8977f7" : "#FFFFFF")};
     border-color: #8977f7;
