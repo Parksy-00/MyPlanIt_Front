@@ -70,7 +70,13 @@ function MyPlan() {
 
   if (error) return error;
 
-  if (loading) return <LoadingScreen />;
+  if (loading)
+    return (
+      <div>
+        <LoadingScreen />
+        <BottomNavBar current="TODO" />
+      </div>
+    );
 
   return (
     <Container>
