@@ -61,6 +61,7 @@ const PlanHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 10px;
 `
 const Title = styled.span`
   font-size: 16px;
