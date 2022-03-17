@@ -14,17 +14,17 @@ function Login() {
         <Button
           primary
           onClick={() => {
+            navigate("/login");
+          }}
+        >
+          시작하기
+        </Button>
+        <Button
+          onClick={() => {
             alert("둘러보기");
           }}
         >
           둘러보기
-        </Button>
-        <Button
-          onClick={() => {
-            navigate("/login");
-          }}
-        >
-          가입하기
         </Button>
       </Buttons>
     </Container>
