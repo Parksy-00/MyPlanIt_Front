@@ -10,7 +10,7 @@ function MyPlanHeader({ current, setCurrent, buyLength, registerLength }) {
       <UpperHeader>
         <ArrowBackIosIcon
           style={{ height: 56, color: "black", position: "absolute", left: 0 }}
-          onClick={() => navigate("../todo")}
+          onClick={() => navigate(-1)}
         />
         <Title>MY PLAN</Title>
       </UpperHeader>

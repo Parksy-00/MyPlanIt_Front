@@ -55,7 +55,7 @@ function Detail() {
               position: "absolute",
               left: 0,
             }}
-            onClick={() => navigate("../todo")}
+            onClick={() => navigate(-1)}
           />
           <Title>{title}</Title>
         </FlexBox>
