@@ -1,11 +1,13 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import PlanTodo from "./PlanTodo.components";
 import styled from "styled-components";
 
-function Plan({ accessToken, edit, update, setUpdate, delay, setDelay, plan }) {
+function Plan({ edit, update, setUpdate, delay, setDelay, plan }) {
   const title = plan[0].length > 15 ? plan[0].slice(0, 14) + "..." : plan[0];
   const percent = plan[1][0]["달성률"];
   const todos = plan[1].slice(1);
+  const navigate = useNavigate();
 
   return (
     <PlanContainer>
@@ -16,12 +18,12 @@ function Plan({ accessToken, edit, update, setUpdate, delay, setDelay, plan }) {
           <span style={{ marginLeft: 5 }}>달성</span>
         </Achievement>
       </PlanHeader>
+      
       {todos.map((item, i) => {
         return (
           <PlanTodo
             key={i}
             item={item}
-            accessToken={accessToken}
             update={update}
             setUpdate={setUpdate}
             edit={edit}

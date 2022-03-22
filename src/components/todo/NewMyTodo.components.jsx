@@ -6,9 +6,10 @@ import { Button } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import styled from "styled-components";
 
-function NewMyTodo({ selectedDate, accessToken, updateMy, setUpdateMy }) {
+function NewMyTodo({ selectedDate, updateMy, setUpdateMy }) {
   const [isOpen, setOpen] = useState(false);
   const [todo, setTodo] = useState([]);
+  const accessToken = sessionStorage.getItem("access");
   const inputRef = useRef(null);
 
   const addNewTodo = () => {

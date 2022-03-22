@@ -109,8 +109,6 @@ function Todo() {
       {current === "PLAN" && (
         <TodoPlan
           planData={planData}
-          myTodoData={myTodoData}
-          accessToken={accessToken}
           edit={edit}
           update={update}
           setUpdate={setUpdate}
@@ -123,7 +121,6 @@ function Todo() {
       {current === "MY" && (
         <TodoMy
           myTodoData={myTodoData}
-          accessToken={accessToken}
           updateMy={updateMy}
           setUpdateMy={setUpdateMy}
           selectedDate={selectedDate}
@@ -139,7 +136,6 @@ function Todo() {
         <EditFooter
           current={current}
           delay={delay}
-          accessToken={accessToken}
           update={update}
           setUpdate={setUpdate}
           updateMy={updateMy}

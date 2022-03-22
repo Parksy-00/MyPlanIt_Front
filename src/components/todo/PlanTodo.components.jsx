@@ -6,7 +6,6 @@ import styled from "styled-components";
 
 function PlanTodo({
   item,
-  accessToken,
   update,
   setUpdate,
   edit,
@@ -17,6 +16,7 @@ function PlanTodo({
   const todoName = item["plan_todo"];
   const isChecked = item["finish_flag"];
   const selected = delay.includes(item["id"]);
+  const accessToken = sessionStorage.getItem("access")
   const checkTodo = async (item) => {
     axios
       .post(
