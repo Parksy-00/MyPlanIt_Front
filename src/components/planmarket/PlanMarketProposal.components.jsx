@@ -37,7 +37,7 @@ function PlanMarketProposal() {
     };
 
     fetchData();
-  }, []);
+  }, [setInputText]);
 
   if (loading)
     return (
@@ -50,18 +50,23 @@ function PlanMarketProposal() {
   if (!plans) return null;
 
   function sendPlan() {
-    axios.post(
-      "https://myplanit.link/proposal",
-      {
-        proposal: inputText,
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${accessToken}`,
+    axios
+      .post(
+        "https://myplanit.link/proposal",
+        {
+          proposal: inputText,
         },
-      }
-    );
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response);
+        setInputText("");
+      });
   }
 
   return (
@@ -73,6 +78,7 @@ function PlanMarketProposal() {
             setInputText(e.target.value);
           }}
           normal={inputColor}
+          value={inputText}
         />
         <Button
           onClick={(e) => {
