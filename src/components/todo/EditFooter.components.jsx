@@ -5,12 +5,12 @@ import styled from "styled-components";
 function EditFooter({
   current,
   delay,
-  accessToken,
   update,
   setUpdate,
   updateMy,
   setUpdateMy,
 }) {
+  const accessToken = sessionStorage.getItem("access");
   const delayTodo = () => {
     for (let i = 0; i < delay.length; i++) {
       axios
@@ -18,7 +18,7 @@ function EditFooter({
           `https://myplanit.link/todos/${current.toLowerCase()}/${
             delay[i]
           }/delay`,
-          { token: `Bearer ${accessToken}` },
+          {},
           {
             headers: {
               "Content-Type": "application/json",
@@ -48,17 +48,28 @@ function EditFooter({
   };
   return (
     <Footer>
-      <img
-        src={constants.DO_TOMORROW}
-        style={{ width: 35, height: 36, margin: "15px 30px" }}
-        onClick={delayTodo}
-      />
-      {current === "MY" && (
+      {current == "PLANDETAIL" && <Button>
         <img
-          src={constants.DELETE}
-          style={{ width: 35, height: 36, margin: "15px 30px" }}
-          onClick={deleteTodo}
+          src={constants.DO_TOMORROW}
+          height="19"
         />
+        <NavText>하루 앞당기기</NavText>
+      </Button>}
+      <Button onClick={delayTodo}>
+        <img
+          src={constants.DO_TOMORROW}
+          height="19"
+        />
+        <NavText>{current == "PLANDETAIL"? "하루 미루기": "내일하기"}</NavText>
+      </Button>
+      {current === "MY" && (
+        <Button onClick={deleteTodo}>
+          <img
+            src={constants.DELETE}
+            height="19"
+          />
+          <NavText>삭제하기</NavText>
+        </Button>
       )}
     </Footer>
   );
@@ -70,9 +81,26 @@ const Footer = styled.div`
   right: 0;
   left: 0;
   height: 90px;
-  background-color: #7965f4;
+  background-color: #8977F7;
   position: fixed;
   bottom: 0;
   display: flex;
   justify-content: space-evenly;
+  padding: 0 20px;
+`;
+
+const Button = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 15px 30px 30px;
+  flex: 1;
+`
+
+const NavText = styled.span`
+  font-family: "PretendardMedium";
+  font-size: 10px;
+  font-style: normal;
+  color: #ffffff;
+  margin-top: 8px;
 `;
