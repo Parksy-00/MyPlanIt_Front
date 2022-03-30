@@ -166,17 +166,11 @@ const Body = styled.div`
   margin-top: 200px;
   overflow-y: scroll;
   margin-bottom: 85px;
-  // display: flex;
-  // align-items: center;
-  // justify-content: center;
-  // flex-direction: column;
-  padding-left: 27px;
 `;
 
 const BodyTitle = styled.p`
   margin-right: 170px;
   margin-bottom: 7px;
-  font-family: "SF Pro Display";
   font-weight: bold;
   width: 90%;
 `;
