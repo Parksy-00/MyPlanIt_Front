@@ -157,15 +157,17 @@ const Button = styled.button`
 
 const HR = styled.hr`
   margin-top: 15px;
-  width: 400px;
+  width: 100vw;
   background-color: #c4c4c4;
-  height: 0.1px;
+  border-top: 1px solid #eee;
 `;
 
 const Body = styled.div`
   margin-top: 200px;
   overflow-y: scroll;
   margin-bottom: 85px;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 const BodyTitle = styled.p`
