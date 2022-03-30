@@ -20,6 +20,12 @@ function PlanMarketHeader({ current, setCurrent }) {
         >
           Growth
         </LinkButton>
+        <LinkButton
+          selected={current === "PROPOSAL"}
+          onClick={() => setCurrent("PROPOSAL")}
+        >
+          Proposal
+        </LinkButton>
       </LowerHeader>
     </>
   );
@@ -63,7 +69,7 @@ const LinkButton = styled.button`
   border-radius: 0;
   border-width: 0px 0px 0px;
   font-family: "PretendardMedium";
-  font-size: 16px;
+  font-size: 15px;
   margin-right: 15px;
   padding: 0 0 1px;
 

@@ -7,6 +7,7 @@ import { Oval } from "react-loader-spinner";
 import styled from "styled-components";
 import PlanMarketHeader from "./PlanMarketHeader.components";
 import PlanMarketContent from "./PlanMarketContent.components";
+import PlanMarketProposal from "./PlanMarketProposal.components";
 import LoadingScreen from "../globalcomponents/Loading.components";
 
 function PlanMarket() {
@@ -48,6 +49,8 @@ function PlanMarket() {
       {current === "ROUTINE" && <PlanMarketContent plans={users.Routine} />}
 
       {current === "GROWTH" && <PlanMarketContent plans={users.Growth} />}
+
+      {current === "PROPOSAL" && <PlanMarketProposal />}
 
       <BottomNavBar current="PLAN" />
     </Container>
