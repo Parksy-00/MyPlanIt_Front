@@ -3,6 +3,7 @@ import axios from "axios";
 import BottomNavBar from "../globalcomponents/BottomNavBar.components";
 import styled from "styled-components";
 import LoadingScreen from "../globalcomponents/Loading.components";
+import PlanMarketCard from "./PlanMarketCard.components";
 
 function PlanMarketProposal() {
   const accessToken = sessionStorage.getItem("access");
@@ -49,7 +50,7 @@ function PlanMarketProposal() {
   if (error) return <div>에러가 발생했습니다</div>;
   if (!plans) return null;
 
-  function sendPlan() {
+  function SendPlan() {
     axios
       .post(
         "https://myplanit.link/proposal",
@@ -83,7 +84,7 @@ function PlanMarketProposal() {
         <Button
           onClick={(e) => {
             if (inputText !== "") {
-              sendPlan();
+              SendPlan();
             } else {
               setPlaceholder("필요한 플랜을 입력해주세요!");
               setInputColor("#F87676");
@@ -101,7 +102,17 @@ function PlanMarketProposal() {
         </Button>
         <HR />
       </Header>
-      <Body></Body>
+      <Body>
+        <BodyTitle>이런 플랜이 있으면 좋겠어요!</BodyTitle>
+        {plans.map((plan, i) => (
+          <PlanMarketCard
+            proposal={plan.proposal}
+            num={plan.id}
+            username={plan.user.realname}
+            key={i}
+          />
+        ))}
+      </Body>
     </>
   );
 }
@@ -129,6 +140,8 @@ const InputField = styled.textarea`
   resize: none;
   outline: none;
   caret-color: transparent;
+  font-family: "Pretendard";
+  font-size: 12px;
 `;
 
 const Button = styled.button`
@@ -139,6 +152,7 @@ const Button = styled.button`
   border: none;
   border-radius: 5px;
   margin-top: 7px;
+  font-family: "Pretendard";
 `;
 
 const HR = styled.hr`
@@ -148,6 +162,23 @@ const HR = styled.hr`
   height: 0.1px;
 `;
 
-const Body = styled.div``;
+const Body = styled.div`
+  margin-top: 200px;
+  overflow-y: scroll;
+  margin-bottom: 85px;
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  // flex-direction: column;
+  padding-left: 27px;
+`;
+
+const BodyTitle = styled.p`
+  margin-right: 170px;
+  margin-bottom: 7px;
+  font-family: "SF Pro Display";
+  font-weight: bold;
+  width: 90%;
+`;
 
 export default PlanMarketProposal;
