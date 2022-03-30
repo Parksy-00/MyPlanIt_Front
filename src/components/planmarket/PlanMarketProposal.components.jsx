@@ -15,6 +15,7 @@ function PlanMarketProposal() {
     "필요한 플랜을 알려주시면, 다음 플랜으로 준비할게요!"
   );
   const [inputColor, setInputColor] = useState("#CECECE");
+  const [update, setUpdate] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,7 +39,7 @@ function PlanMarketProposal() {
     };
 
     fetchData();
-  }, [setInputText]);
+  }, [update]);
 
   if (loading)
     return (
@@ -64,9 +65,9 @@ function PlanMarketProposal() {
           },
         }
       )
-      .then((response) => {
-        console.log(response);
+      .then(() => {
         setInputText("");
+        setUpdate(!update);
       });
   }
 
@@ -97,8 +98,7 @@ function PlanMarketProposal() {
             }
           }}
         >
-          {" "}
-          요청하기{" "}
+          요청하기
         </Button>
         <HR />
       </Header>
@@ -165,13 +165,15 @@ const HR = styled.hr`
 const Body = styled.div`
   margin-top: 200px;
   overflow-y: scroll;
-  margin-bottom: 85px;
-  margin-left: auto;
-  margin-right: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 90px;
 `;
 
 const BodyTitle = styled.p`
-  margin-right: 170px;
+  margin-right: 30px;
   margin-bottom: 7px;
   font-weight: bold;
   width: 90%;
