@@ -17,7 +17,7 @@ const BodyCard = styled.div`
   background-color: #8977f7;
   border-radius: 5px;
   border: 0.2px solid white;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 `;
 
 const Title = styled.p`
