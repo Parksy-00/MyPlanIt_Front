@@ -157,7 +157,7 @@ const Button = styled.button`
 
 const HR = styled.hr`
   margin-top: 15px;
-  width: 380px;
+  width: 400px;
   background-color: #c4c4c4;
   height: 0.1px;
 `;
