@@ -58,7 +58,7 @@ function PlanTodo({
           alignItems: "center",
           opacity: isChecked && edit ? "0.4" : 1,
         }}
-        onClick={() => !edit && navigate(`/todo/detail/${todo["todo_id"]}`)}
+        onClick={() => !edit && navigate(`/todo/detail/${todo["plan_todo_id"]}`)}
       >
         <span style={{ fontFamily: "PretendardMedium" }}>{todoName}</span>
         <DetailIcon src={constants.DETAIL_ICON} />
