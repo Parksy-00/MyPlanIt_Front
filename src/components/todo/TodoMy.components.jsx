@@ -6,7 +6,6 @@ import styled from "styled-components";
 
 function TodoMy({
   myTodoData,
-  accessToken,
   updateMy,
   setUpdateMy,
   selectedDate,
@@ -27,7 +26,6 @@ function TodoMy({
       {todoExist
         ? myTodoData.map((todo, i) => (
             <MyTodo
-              accessToken={accessToken}
               updateMy={updateMy}
               setUpdateMy={setUpdateMy}
               key={i}
@@ -41,7 +39,6 @@ function TodoMy({
 
       <NewMyTodo
         selectedDate={selectedDate}
-        accessToken={accessToken}
         updateMy={updateMy}
         setUpdateMy={setUpdateMy}
       />

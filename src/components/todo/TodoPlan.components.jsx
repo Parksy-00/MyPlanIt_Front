@@ -6,7 +6,6 @@ import styled from "styled-components";
 
 function TodoPlan({
   planData,
-  accessToken,
   edit,
   update,
   setUpdate,
@@ -30,13 +29,11 @@ function TodoPlan({
       {planExist
         ? planData.map((plan, i) => (
             <Plan
-              accessToken={accessToken}
               edit={edit}
               update={update}
               setUpdate={setUpdate}
               delay={delay}
               setDelay={setDelay}
-              i={i}
               key={i}
               plan={plan}
             />

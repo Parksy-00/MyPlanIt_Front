@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import BottomNavBar from "../globalcomponents/BottomNavBar.components";
 import axios from "axios";
-import { Oval } from "react-loader-spinner";
 import TodoHeader from "./TodoHeader.components";
 import TodoPlan from "./TodoPlan.components";
 import TodoMy from "./TodoMy.components";
@@ -27,14 +26,16 @@ function Todo() {
   const [edit, setEdit] = useState(false);
   const [delay, setDelay] = useState([]);
 
+  const formatDate = () => {
+    const timeOffset = selectedDate.getTimezoneOffset() * 60000;
+    return new Date(selectedDate.getTime() - timeOffset).toISOString().slice(0, 10);
+  };
+
   const fetchPlan = async () => {
     try {
       await axios
         .get(
-          `https://myplanit.link/todos/plan/${selectedDate.getFullYear()}-${(
-            "0" +
-            (selectedDate.getMonth() + 1)
-          ).slice(-2)}-${("0" + selectedDate.getDate()).slice(-2)}`,
+          `https://myplanit.link/todos/plan/${formatDate()}`,
           {
             Authorization: `Bearer ${accessToken}`,
             withCredentials: true,
@@ -57,10 +58,7 @@ function Todo() {
     try {
       await axios
         .get(
-          `https://myplanit.link/todos/my/${selectedDate.getFullYear()}-${(
-            "0" +
-            (selectedDate.getMonth() + 1)
-          ).slice(-2)}-${("0" + selectedDate.getDate()).slice(-2)}`,
+          `https://myplanit.link/todos/my/${formatDate()}`,
           {
             Authorization: `Bearer ${accessToken}`,
             withCredentials: true,
@@ -109,8 +107,6 @@ function Todo() {
       {current === "PLAN" && (
         <TodoPlan
           planData={planData}
-          myTodoData={myTodoData}
-          accessToken={accessToken}
           edit={edit}
           update={update}
           setUpdate={setUpdate}
@@ -123,7 +119,6 @@ function Todo() {
       {current === "MY" && (
         <TodoMy
           myTodoData={myTodoData}
-          accessToken={accessToken}
           updateMy={updateMy}
           setUpdateMy={setUpdateMy}
           selectedDate={selectedDate}
@@ -139,7 +134,6 @@ function Todo() {
         <EditFooter
           current={current}
           delay={delay}
-          accessToken={accessToken}
           update={update}
           setUpdate={setUpdate}
           updateMy={updateMy}

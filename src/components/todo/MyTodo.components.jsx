@@ -4,13 +4,13 @@ import styled from "styled-components";
 
 function MyTodo({
   todo,
-  accessToken,
   updateMy,
   setUpdateMy,
   edit,
   delay,
   setDelay,
 }) {
+  const accessToken = sessionStorage.getItem("access");
   const isChecked = todo["finish_flag"];
   const selected = delay.includes(todo["id"]);
   const checkMyTodo = async (todo) => {

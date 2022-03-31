@@ -13,6 +13,7 @@ import Todo from "./components/todo/Todo.components";
 import SocialLogin from "./components/login/SocialLogin.components";
 import MyPlan from "./components/myplan/MyPlan.components";
 import TodoDetail from "./components/todo/TodoDetail.components";
+import PlanDetail from "./components/todo/PlanDetail.components";
 import PlanMarket from "./components/planmarket/PlanMarket.components";
 import KakaoSocial from "./components/social/KakaoSocial.components";
 import GoogleSocial from "./components/social/GoogleSocial.components";
@@ -44,6 +45,7 @@ function App() {
           <Route path="/main/searchtemplate" element={<SearchTemplate />} />
 
           <Route path="todo/detail/:id" element={<TodoDetail />} />
+          <Route path="/todo/plan/:id" element={<PlanDetail />} />
         </Routes>
       </div>
     </div>

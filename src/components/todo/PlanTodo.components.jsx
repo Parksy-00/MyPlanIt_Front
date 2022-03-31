@@ -5,8 +5,7 @@ import constants from "../../constants";
 import styled from "styled-components";
 
 function PlanTodo({
-  item,
-  accessToken,
+  todo,
   update,
   setUpdate,
   edit,
@@ -14,13 +13,14 @@ function PlanTodo({
   setDelay,
 }) {
   const navigate = useNavigate();
-  const todoName = item["plan_todo"];
-  const isChecked = item["finish_flag"];
-  const selected = delay.includes(item["id"]);
-  const checkTodo = async (item) => {
+  const todoName = todo["plan_todo"];
+  const isChecked = todo["finish_flag"];
+  const selected = delay.includes(todo["id"]);
+  const accessToken = sessionStorage.getItem("access")
+  const checkTodo = async (todo) => {
     axios
       .post(
-        `https://myplanit.link/todos/plan/${item["plan_id"]}/${item["id"]}/check`,
+        `https://myplanit.link/todos/plan/${todo["plan_id"]}/${todo["id"]}/check`,
         {},
         {
           headers: {
@@ -34,20 +34,20 @@ function PlanTodo({
       });
   };
 
-  const selectTodo = (item) => {
+  const selectTodo = (todo) => {
     if (selected) {
-      setDelay(delay.filter((i) => i !== item["id"]));
+      setDelay(delay.filter((i) => i !== todo["id"]));
     } else {
-      setDelay([...delay, item["id"]]);
+      setDelay([...delay, todo["id"]]);
     }
   };
 
   return (
-    <Container selected={selected} onClick={() => edit && selectTodo(item)}>
+    <Container selected={selected} onClick={() => edit && selectTodo(todo)}>
       <StyledCheckbox
         disabled={isChecked && edit}
         checked={isChecked}
-        onChange={() => (edit ? selectTodo(item) : checkTodo(item))}
+        onChange={() => (edit ? selectTodo(todo) : checkTodo(todo))}
       />
       <span
         style={{
@@ -58,7 +58,7 @@ function PlanTodo({
           alignItems: "center",
           opacity: isChecked && edit ? "0.4" : 1,
         }}
-        onClick={() => !edit && navigate(`/todo/detail/${item["todo_id"]}`)}
+        onClick={() => !edit && navigate(`/todo/detail/${todo["plan_todo_id"]}`)}
       >
         <span style={{ fontFamily: "PretendardMedium" }}>{todoName}</span>
         <DetailIcon src={constants.DETAIL_ICON} />

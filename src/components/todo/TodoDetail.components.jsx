@@ -6,7 +6,7 @@ import axios from "axios";
 import BottomNavBar from "../globalcomponents/BottomNavBar.components";
 import LoadingScreen from "../globalcomponents/Loading.components";
 
-function Detail() {
+function TodoDetail() {
   const accessToken = sessionStorage.getItem("access");
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
@@ -55,7 +55,7 @@ function Detail() {
               position: "absolute",
               left: 0,
             }}
-            onClick={() => navigate("../todo")}
+            onClick={() => navigate(-1)}
           />
           <Title>{title}</Title>
         </FlexBox>
@@ -70,7 +70,7 @@ function Detail() {
   );
 }
 
-export default Detail;
+export default TodoDetail;
 
 const Container = styled.div`
   display: flex;
