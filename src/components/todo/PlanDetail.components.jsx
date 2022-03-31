@@ -114,7 +114,7 @@ function PlanDetail() {
           </PlanContainer>
         ))}
       </TodoContainer>
-      
+
       {edit ? (
         <EditFooter
           current="PLANDETAIL"
