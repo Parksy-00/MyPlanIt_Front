@@ -12,14 +12,10 @@ function EditFooter({
 }) {
   const accessToken = sessionStorage.getItem("access");
   const delayTodo = () => {
-    const requestUrl = (id) =>
-      current === "MY"
-        ? `https://myplanit.link/todos/my/${id}/delay`
-        : `https://myplanit.link/todos/plan/delay/${id}`;
     for (let i = 0; i < delay.length; i++) {
       axios
         .post(
-          requestUrl(delay[i]),
+          `https://myplanit.link/todos/plan/delay/${delay[i]}`,
           {},
           {
             headers: {
@@ -29,10 +25,29 @@ function EditFooter({
           }
         )
         .then(() => {
-          current === "PLAN" ? setUpdate(!update) : setUpdateMy(!updateMy);
+          setUpdate(!update);
         });
     }
   };
+
+  const delayMyTodo = () => {
+    for (let i = 0; i < delay.length; i++) {
+      axios
+        .post(
+          `https://myplanit.link/todos/my/${delay[i]}/delay`,
+          {},
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${accessToken}`,
+            },
+          }
+        )
+        .then(() => {
+          setUpdateMy(!updateMy);
+        });
+    }
+  }
 
   const advanceTodo = () => {
     for (let i = 0; i < delay.length; i++) {
@@ -48,7 +63,7 @@ function EditFooter({
           }
         )
         .then(() => {
-          current === "PLAN" ? setUpdate(!update) : setUpdateMy(!updateMy);
+          setUpdate(!update);
         });
     }
   };
@@ -75,7 +90,7 @@ function EditFooter({
           <NavText>하루 앞당기기</NavText>
         </Button>
       )}
-      <Button onClick={delayTodo}>
+      <Button onClick={current == "MY"? delayMyTodo: delayTodo}>
         <img src={constants.DO_TOMORROW} height="19" />
         <NavText>
           {current == "PLANDETAIL" ? "하루 미루기" : "내일하기"}
