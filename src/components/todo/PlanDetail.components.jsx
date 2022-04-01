@@ -40,10 +40,10 @@ function PlanDetail() {
         const plans = [];
         datas.data.forEach((todo) => {
             Object.assign(todo, {plan_id: id})
-          if (plans.length < todo.date + 1) {
-            plans.push([todo.date, [todo]]);
+          if (plans.length < todo.day + 1) {
+            plans.push([todo.day, [todo]]);
           } else {
-            plans[todo.date][1].push(todo);
+            plans[todo.day][1].push(todo);
           }
         });
         setData(plans);
