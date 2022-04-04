@@ -1,22 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Alata&family=Dongle:wght@300&display=swap");
-.BottomNavBar {
-  position: fixed;
-  bottom: 30px;
-  left: 0;
-  right: 0;
 
-  font-family: "EnglishDefault";
-}
 .App {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   font-family: "KoreanDefault";
   background-color: #fbfbfb;
+  height: 100%;
 }
 
-#main-container {
+#root {
   position: absolute;
   top: 0;
   bottom: 0;

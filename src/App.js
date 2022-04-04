@@ -21,33 +21,31 @@ import Admin from "./components/admin/admin.components";
 
 function App() {
   return (
-    <div id="main-container">
-      <div className="App">
-        <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/login" element={<SocialLogin />} />
-          <Route path="/admin" element={<Admin />} />
+    <div className="App">
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/login" element={<SocialLogin />} />
+        <Route path="/admin" element={<Admin />} />
 
-          <Route path="/login/kakao/:code" element={<KakaoSocial />} />
-          <Route path="/auth/google/callback" element={<GoogleSocial />} />
+        <Route path="/login/kakao/:code" element={<KakaoSocial />} />
+        <Route path="/auth/google/callback" element={<GoogleSocial />} />
 
-          <Route path="/onboard1" element={<Onboard1 />} />
-          <Route path="/onboard2" element={<Onboard2 />} />
-          <Route path="/onboard3" element={<Onboard3 />} />
+        <Route path="/onboard1" element={<Onboard1 />} />
+        <Route path="/onboard2" element={<Onboard2 />} />
+        <Route path="/onboard3" element={<Onboard3 />} />
 
-          <Route path="/todo" element={<Todo />} />
+        <Route path="/todo" element={<Todo />} />
 
-          <Route path="/myplan" element={<MyPlan />} />
+        <Route path="/myplan" element={<MyPlan />} />
 
-          <Route path="/planmarket" element={<PlanMarket />} />
+        <Route path="/planmarket" element={<PlanMarket />} />
 
-          <Route path="/main/viewtemplate/:id" element={<ViewTemplate />} />
-          <Route path="/main/searchtemplate" element={<SearchTemplate />} />
+        <Route path="/main/viewtemplate/:id" element={<ViewTemplate />} />
+        <Route path="/main/searchtemplate" element={<SearchTemplate />} />
 
-          <Route path="todo/detail/:id" element={<TodoDetail />} />
-          <Route path="/todo/plan/:id" element={<PlanDetail />} />
-        </Routes>
-      </div>
+        <Route path="todo/detail/:id" element={<TodoDetail />} />
+        <Route path="/todo/plan/:id" element={<PlanDetail />} />
+      </Routes>
     </div>
   );
 }

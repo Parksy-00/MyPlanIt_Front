@@ -140,7 +140,7 @@ const Container = styled.div`
   align-items: center;
   background-color: #fbfbfb;
   position: relative;
-  height: 100vh;
+  height: 100%;
 `;
 
 const TodoContainer = styled.div`
