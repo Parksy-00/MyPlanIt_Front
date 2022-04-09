@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "antd/dist/antd.css";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import Login from "./components/login/Login.components";
+import LoginPage from "./components/login/LoginPage.components";
 import Onboard1 from "./components/onboard/onboard1.components";
 import Onboard2 from "./components/onboard/onboard2.components";
 import Onboard3 from "./components/onboard/onboard3.components";
@@ -22,7 +22,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<LoginPage />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/login/kakao/:code" element={<KakaoSocial />} />
         <Route path="/auth/google/callback" element={<GoogleSocial />} />
