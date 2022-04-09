@@ -1,81 +1,37 @@
-import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
+import constants from "../../constants";
+import * as Styled from "./Login.style";
+
 function Login() {
-  let navigate = useNavigate();
+  const kakaoLogin = () => {
+    window.location.href = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_KAKAO_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_KAKAO_REDIRECT_URI}&response_type=code`;
+  };
+
+  const googleLogin = () => {
+    window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${process.env.REACT_APP_GOOGLE_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_GOOGLE_REDIRECT_URI}&response_type=code&scope=https://www.googleapis.com/auth/userinfo.profile`;
+  };
 
   return (
-    <Container>
-      <img
-        src="/images/logo.png"
-        style={{ marginTop: "200px", width: "173px", marginBottom: "101px" }}
+    <Styled.Container>
+      <Styled.LogoImg
+        src={constants.LOGO}
+        alt="logo"
       />
-      <LogoText>당신의 목표 가이드, 마이플랜잇</LogoText>
-      <Buttons>
-        <Button
-          primary
-          onClick={() => {
-            navigate("/login");
-          }}
-        >
-          시작하기
-        </Button>
-        <Button
-          onClick={() => {
-            alert("둘러보기");
-          }}
-        >
-          둘러보기
-        </Button>
-      </Buttons>
-    </Container>
+      <Styled.LogoText>당신의 목표 가이드, 마이플랜잇</Styled.LogoText>
+
+      <Styled.ButtonContainer>
+        <Styled.LoginButton
+          src="/images/kakao_login.svg"
+          alt="kakaoLogin"
+          onClick={kakaoLogin}
+        />
+        <Styled.LoginButton
+          src="/images/google_login.svg"
+          alt="googleLogin"
+          onClick={googleLogin}
+        />
+      </Styled.ButtonContainer>
+    </Styled.Container>
   );
 }
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  background-color: #fbfbfb;
-  position: relative;
-  height: 100vh;
-`;
-
-const LogoText = styled.span`
-  position: absolute;
-  width: 250px;
-  height: 20px;
-  top: 240px;
-  font-family: Pretendard;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 17px;
-  line-height: 20px;
-  text-align: center;
-  color: #929292;
-`;
-
-const Button = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-  width: 327px;
-  height: 52px;
-  border: 1px solid transparent;
-  border-color: #d9d9d9;
-  border-radius: 4px;
-  background: ${(props) => (props.primary ? "#7965f4" : "white")};
-  color: ${(props) => (props.primary ? "white" : "#7965f4")};
-  font-family: PretendardMedium;
-  font-size: 16px;
-  filter: ${(props) =>
-    props.primary ? null : "drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.12))"};
-`;
-
-const Buttons = styled.span`
-  position: absolute;
-  bottom: 95px;
-`;
 
 export default Login;

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "antd/dist/antd.css";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import Login from "./components/login/login.components";
+import Login from "./components/login/Login.components";
 import Onboard1 from "./components/onboard/onboard1.components";
 import Onboard2 from "./components/onboard/onboard2.components";
 import Onboard3 from "./components/onboard/onboard3.components";
@@ -10,7 +10,6 @@ import ViewTemplate from "./components/viewtemplate/viewtemplate.components";
 import SearchTemplate from "./components/searchtemplate/searchtemplate.components";
 import Todo from "./components/todo/Todo.components";
 
-import SocialLogin from "./components/login/SocialLogin.components";
 import MyPlan from "./components/myplan/MyPlan.components";
 import TodoDetail from "./components/todo/TodoDetail.components";
 import PlanDetail from "./components/todo/PlanDetail.components";
@@ -24,9 +23,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/login" element={<SocialLogin />} />
         <Route path="/admin" element={<Admin />} />
-
         <Route path="/login/kakao/:code" element={<KakaoSocial />} />
         <Route path="/auth/google/callback" element={<GoogleSocial />} />
 
