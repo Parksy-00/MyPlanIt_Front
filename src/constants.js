@@ -1,5 +1,4 @@
 const constants = {
-  LOGO: "/images/logo.png",
   TODO_COLORED: "/images/todo_on.svg",
   TODO_UNCOLORED: "/images/todo_off.svg",
   PLAN_COLORED: "/images/planmarket_on.svg",
