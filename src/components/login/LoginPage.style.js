@@ -32,5 +32,6 @@ export const ButtonContainer = styled.div`
 
 export const LoginButton = styled.img`
   width: 327px;
-  margin-top: 12px;
+  margin-top: 16px;
+  filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.12));
 `;
