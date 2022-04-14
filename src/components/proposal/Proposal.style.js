@@ -22,7 +22,7 @@ export const InputArea = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 60px 0 28px;
+  margin: 60px 0 10px;
 `;
 
 export const InputField = styled.textarea`
@@ -33,15 +33,16 @@ export const InputField = styled.textarea`
     font-size: 13px;
   }
   width: 327px;
-  height: 136px;
+  height: 78px;
   border: 1px ${props => props.warning? "#F87676": "#EDEDED"} solid;
-  border-radius: 6px;
+  border-radius: 4px;
   vertical-align: top;
   resize: none;
   outline: none;
   padding: 14px;
   font-family: "PretendardRegular";
   font-size: 12px;
+  line-height: 16px;
 `;
 
 export const Button = styled.button`
