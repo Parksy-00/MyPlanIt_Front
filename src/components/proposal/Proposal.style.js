@@ -6,7 +6,8 @@ export const Header = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
+  position: fixed;
+  z-index: 10;
   margin: 10px;
 `;
 
@@ -21,7 +22,7 @@ export const InputArea = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 10px 0 28px;
+  margin: 60px 0 28px;
 `;
 
 export const InputField = styled.textarea`
@@ -65,7 +66,9 @@ export const Content = styled.div`
   margin-top: 36px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   overflow-y: hidden;
+  width: 100%;
 `;
 
 export const CardContainer = styled.div`
@@ -75,7 +78,7 @@ export const CardContainer = styled.div`
   flex-direction: column;
   align-items: center;
   margin-bottom: 90px;
-
+  width: 100%;
 `;
 
 export const ContentTitle = styled.p`
@@ -86,5 +89,5 @@ export const ContentTitle = styled.p`
   font-size: 16px;
   line-height: 16px;
   letter-spacing: -0.3px;
-  width: 100%;
+  width: 327px;
 `;

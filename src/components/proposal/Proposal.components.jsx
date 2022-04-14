@@ -92,6 +92,7 @@ function Proposal() {
           onClick={() => navigate(-1)}
         />
       </Styled.Header>
+      
       <Styled.InputArea>
         <Styled.InputField
           placeholder={warning? warningText: placeholder}
