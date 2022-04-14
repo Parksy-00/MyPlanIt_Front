@@ -1,29 +1,23 @@
 import { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
 import axios from "axios";
-import { v4 as uuidv4 } from "uuid";
 import BottomNavBar from "../globalcomponents/BottomNavBar.components";
-import { Oval } from "react-loader-spinner";
 import styled from "styled-components";
 import PlanMarketHeader from "./PlanMarketHeader.components";
 import PlanMarketContent from "./PlanMarketContent.components";
-import PlanMarketProposal from "./PlanMarketProposal.components";
 import LoadingScreen from "../globalcomponents/Loading.components";
 
 function PlanMarket() {
-  const [users, setUsers] = useState(null);
+  const [plans, setPlans] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [current, setCurrent] = useState("ROUTINE");
 
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        setError(null);
-        setUsers(null);
         setLoading(true);
         const response = await axios.get("https://myplanit.link/plans");
-        setUsers(response.data);
+        const data = response.data;
+        setPlans([...data.Routine, ...data.Growth]);
       } catch (e) {
         setError(e);
       }
@@ -41,16 +35,13 @@ function PlanMarket() {
       </div>
     );
   if (error) return <div>에러가 발생했습니다</div>;
-  if (!users) return null;
+  if (!plans) return null;
+  
   return (
     <Container>
-      <PlanMarketHeader current={current} setCurrent={setCurrent} />
+      <PlanMarketHeader/>
 
-      {current === "ROUTINE" && <PlanMarketContent plans={users.Routine} />}
-
-      {current === "GROWTH" && <PlanMarketContent plans={users.Growth} />}
-
-      {current === "PROPOSAL" && <PlanMarketProposal />}
+      <PlanMarketContent plans={plans} />
 
       <BottomNavBar current="PLAN" />
     </Container>

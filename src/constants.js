@@ -9,6 +9,7 @@ const constants = {
   DO_TOMORROW: "/images/do_tomorrow.svg",
   DELETE: "/images/delete.svg",
   DETAIL_ICON: "/images/detail.png",
+  PROPOSAL: "/images/proposal.svg"
 };
 
 export default constants;
