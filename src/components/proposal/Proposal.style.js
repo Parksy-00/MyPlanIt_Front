@@ -31,7 +31,7 @@ export const InputField = styled.textarea`
     font-family: "PretendardRegular";
     font-size: 13px;
   }
-  width: 330px;
+  width: 327px;
   height: 136px;
   border: 1px ${props => props.warning? "#F87676": "#EDEDED"} solid;
   border-radius: 6px;
