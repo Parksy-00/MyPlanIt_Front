@@ -52,7 +52,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 110px;
+  margin-top: 90px;
   margin-bottom: 95px;
   width: 100%;
   overflow-y: scroll;

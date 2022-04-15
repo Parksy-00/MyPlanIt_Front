@@ -67,7 +67,7 @@ const HeaderContainer = styled.div`
   z-index: 999;
   width: 100%;
   background-color: #fbfbfb;
-  height: 110px;
+  height: 90px;
 `;
 
 const UpperHeader = styled.div`
