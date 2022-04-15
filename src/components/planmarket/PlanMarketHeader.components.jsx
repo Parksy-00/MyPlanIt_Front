@@ -23,7 +23,8 @@ const Header = styled.div`
   width: 327px;
   display: flex;
   align-items: center;
-  position: relative;
+  position: fixed;
+  z-index: 10;
   margin: 10px;
 `;
 
