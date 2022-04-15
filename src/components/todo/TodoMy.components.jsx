@@ -17,7 +17,7 @@ function TodoMy({
   const noTodoImg = (
     <img
       src={constants.NO_TODO_IMG}
-      style={{ width: "80%", marginTop: "140px" }}
+      style={{ width: "260px", marginTop: "140px" }}
     />
   );
 
