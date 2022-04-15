@@ -43,8 +43,10 @@ export default MyPlanContent;
 const Container = styled.div`
   overflow-y: scroll;
   position: relative;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 100px;
   margin-bottom: 90px;
 `;

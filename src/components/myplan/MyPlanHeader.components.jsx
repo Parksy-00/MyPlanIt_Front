@@ -6,7 +6,7 @@ import styled from "styled-components";
 function MyPlanHeader({ current, setCurrent, buyLength, registerLength }) {
   const navigate = useNavigate();
   return (
-    <>
+    <Header>
       <UpperHeader>
         <ArrowBackIosIcon
           style={{ height: 56, color: "black", position: "absolute", left: 0 }}
@@ -28,11 +28,21 @@ function MyPlanHeader({ current, setCurrent, buyLength, registerLength }) {
           {"이용 중(" + registerLength + ")"}
         </LinkButton>
       </LowerHeader>
-    </>
+    </Header>
   );
 }
 
 export default MyPlanHeader;
+
+const Header = styled.div`
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+  background: #fbfbfb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
 
 const UpperHeader = styled.div`
   background: #fbfbfb;
