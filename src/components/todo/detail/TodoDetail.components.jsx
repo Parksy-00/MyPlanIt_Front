@@ -3,8 +3,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import styled from "styled-components";
 import axios from "axios";
-import BottomNavBar from "../globalcomponents/BottomNavBar.components";
-import LoadingScreen from "../globalcomponents/Loading.components";
+import BottomNavBar from "../../globalcomponents/BottomNavBar.components";
+import LoadingScreen from "../../globalcomponents/Loading.components";
 
 function TodoDetail() {
   const accessToken = sessionStorage.getItem("access");

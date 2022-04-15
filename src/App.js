@@ -11,8 +11,8 @@ import SearchTemplate from "./components/searchtemplate/searchtemplate.component
 import Todo from "./components/todo/Todo.components";
 
 import MyPlan from "./components/myplan/MyPlan.components";
-import TodoDetail from "./components/todo/TodoDetail.components";
-import PlanDetail from "./components/todo/PlanDetail.components";
+import TodoDetail from "./components/todo/detail/TodoDetail.components";
+import PlanDetail from "./components/todo/plan/PlanDetail.components";
 import PlanMarket from "./components/planmarket/PlanMarket.components";
 import Proposal from "./components/proposal/Proposal.components";
 import KakaoSocial from "./components/social/KakaoSocial.components";

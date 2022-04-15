@@ -3,9 +3,9 @@ import { useNavigate, useParams, useLocation } from "react-router-dom";
 import axios from "axios";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import styled from "styled-components";
-import PlanTodo from "./PlanTodo.components";
-import BottomNavBar from "../globalcomponents/BottomNavBar.components";
-import EditFooter from "./EditFooter.components";
+import PlanTodo from "../PlanTodo.components";
+import BottomNavBar from "../../globalcomponents/BottomNavBar.components";
+import EditFooter from "../EditFooter.components";
 
 function PlanDetail() {
   const navigate = useNavigate();
