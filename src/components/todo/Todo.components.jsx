@@ -5,7 +5,6 @@ import TodoHeader from "./TodoHeader.components";
 import TodoPlan from "./TodoPlan.components";
 import TodoMy from "./TodoMy.components";
 import EditFooter from "./EditFooter.components";
-import styled from "styled-components";
 import LoadingScreen from "../globalcomponents/Loading.components";
 
 function Todo() {
@@ -93,7 +92,7 @@ function Todo() {
   if (error) return <div>에러가 발생했습니다</div>;
 
   return (
-    <Container>
+    <>
       <TodoHeader
         selectedDate={selectedDate}
         setSelectedDate={setSelectedDate}
@@ -140,18 +139,8 @@ function Todo() {
           setUpdateMy={setUpdateMy}
         />
       )}
-    </Container>
+    </>
   );
 }
 
 export default Todo;
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  background-color: #fbfbfb;
-  position: relative;
-  height: 100%;
-`;

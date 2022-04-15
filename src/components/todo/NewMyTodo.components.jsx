@@ -77,11 +77,12 @@ export default NewMyTodo;
 
 const OpenAddModal = styled(Button)`
   background-color: #8977f7;
-  position: absolute;
+  position: fixed;
   bottom: 110px;
-  right: -10px;
+  transform: translate(150px);
   border-color: #7965f4 !important;
   box-shadow: none !important;
+  z-index: 10;
 
   &: hover {
     background-color: #8977f7;

@@ -59,22 +59,27 @@ function TodoHeader({
 export default TodoHeader;
 
 const HeaderContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   position: fixed;
   top: 0;
   z-index: 999;
-  width: 327px;
+  width: 100%;
   background-color: #fbfbfb;
   height: 110px;
 `;
 
 const UpperHeader = styled.div`
   display: flex;
+  width: 327px;
   justify-content: space-between;
   align-items: center;
 `;
 
 const LowerHeader = styled.div`
   display: flex;
+  width: 327px;
   position: relative;
 `;
 

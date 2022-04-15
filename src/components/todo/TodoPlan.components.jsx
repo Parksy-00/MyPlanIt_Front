@@ -51,7 +51,7 @@ const Container = styled.div`
   align-items: center;
   margin-top: 110px;
   margin-bottom: 90px;
-  width: 327px;
+  width: 100%;
   overflow-y: scroll;
   font-family: "PretendardSemiBold";
 `;
